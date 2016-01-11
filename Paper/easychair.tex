@@ -35,42 +35,30 @@
 %%
 % Regular title as in the article class.
 %
-\title{The {\easychair} Class File\\
-       Documentation and Guide for Authors%
-\thanks{Other people who contributed to this document include Maria Voronkov
-  (Imperial College and EasyChair) and Graham Gough (The University of
-  Manchester).}}
+\title{Benchmarks for Autonomous Driving Verification using APEX}
+
 
 % Authors are joined by \and. Their affiliations are given by \inst, which indexes
 % into the list defined using \institute
 %
 \author{
-Serguei A. Mokhov\inst{1}\thanks{Designed and implemented the class style}
+Matthew O'Kelly\inst{1}
 \and
-    Geoff Sutcliffe\inst{2}\thanks{Did numerous tests and provided a lot of suggestions}
+    Houssam Abbas\inst{1}
 \and
-   Andrei Voronkov\inst{3}\inst{4}\inst{5}\thanks{Masterminded EasyChair and created versions
-     3.0--3.4 of the class style}
+  Satya Rama Aditya Pinapala \inst{1}
+\and
+ Rahul Mangharam \inst{1}
 }
 
 % Institutes for affiliations are also joined by \and,
 \institute{
-  Concordia University,
-  Montreal, Quebec, Canada\\
-  \email{mokhov@cse.concordia.ca}
-\and
-   University of Miami,
-   Miami, Florida, U.S.A.\\
-   \email{geoff@cs.miami.edu}\\
-\and
-   University of Manchester,
-   Manchester, U.K.\\
-   \email{andrei@voronkov.com}\\
-\and
-   Chalmers University of Technology,
-   Gothenburg, Sweden
-\and
-   EasyChair
+  University of Pennsylvania,
+  Philadelphia, PA, U.S.A.\\
+  \email{mokelly@seas.upenn.edu, }
+  \email{habbas@seas.upenn.edu, }
+  \email{pinapala@seas.upenn.edu, }
+  \email{rahulm@seas.upenn.edu}
  }
 
 %  \authorrunning{} has to be set for the shorter version of the authors' names;
@@ -78,7 +66,7 @@ Serguei A. Mokhov\inst{1}\thanks{Designed and implemented the class style}
 % EasyChair, this command is mandatory: a document without \authorrunning
 % will be rejected by EasyChair
 
-\authorrunning{Mokhov, Sutcliffe and Voronkov}
+\authorrunning{O'Kelly, Abbas, Pinapala, and Mangharam}
 
 % \titlerunning{} has to be set to either the main title or its shorter
 % version for the running heads. When processed by
@@ -101,9 +89,9 @@ Serguei A. Mokhov\inst{1}\thanks{Designed and implemented the class style}
 % the table of contents if you are preparing your paper for publication in the
 % EPiC series
 
-\setcounter{tocdepth}{2}
-{\small
-\tableofcontents}
+%\setcounter{tocdepth}{2}
+%{\small
+%\tableofcontents}
 
 %\section{To mention}
 %
@@ -112,27 +100,18 @@ Serguei A. Mokhov\inst{1}\thanks{Designed and implemented the class style}
 %Examples of how EasyChair processes papers. Caveats (replacement of EC
 %class, errors).
 
-\pagestyle{empty}
+%\pagestyle{empty}
 
 %------------------------------------------------------------------------------
 \section{Introduction}
 \label{sect:introduction}
 
-The {\easychair} class was designed to be easy to use, and specifically favors
-electronic and on-paper publishing by the EasyChair conference system
-\cite{easychair}, including the
-\href{http://www.easychair.org/publications/EPiC}{EasyChair EPiC Series}. It is
-also applicable to the Procedia publications series by Elsevier Science.
-EasyChair is a free conference management system that is flexible, easy to use,
-and has many features to make it suitable for various conference models.  It is
-currently probably the most commonly used conference management system
-\cite{easychair}.  The use of EasyChair and this style for creating Procedia
-volumes is a pilot project between Elsevier Science and EasyChair.
-
-The {\easychair} class was designed according to some requirements, which
-are described in Appendix~\ref{sect:easychair-requirements}. 
-An article that occupies approximately 15 LNCS-formatted pages
-takes up approximately 14 {\easychair} pages.
+\begin{itemize}
+	\item Need for AVs
+	\item Need for AV verification
+	\item Why it is hard
+	\item Contributions/Benchmarks
+\end{itemize}
 
 \begin{figure}[tb]
 	\begin{centering}

@@ -1,27 +1,11 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
-\BOOKMARK [1][-]{section.2}{Typesetting}{}% 2
-\BOOKMARK [2][-]{subsection.2.1}{Generalities}{section.2}% 3
-\BOOKMARK [2][-]{subsection.2.2}{Front Matter}{section.2}% 4
-\BOOKMARK [2][-]{subsection.2.3}{Page Numbering}{section.2}% 5
-\BOOKMARK [2][-]{subsection.2.4}{Section Headings and Capitalization}{section.2}% 6
-\BOOKMARK [3][-]{subsubsection.2.4.1}{Subsubsection Header}{subsection.2.4}% 7
-\BOOKMARK [2][-]{subsection.2.5}{Mathematics}{section.2}% 8
-\BOOKMARK [2][-]{subsection.2.6}{Tables}{section.2}% 9
-\BOOKMARK [2][-]{subsection.2.7}{References}{section.2}% 10
-\BOOKMARK [1][-]{section.3}{Installation and Usage Instructions}{}% 11
-\BOOKMARK [2][-]{subsection.3.1}{Installation}{section.3}% 12
-\BOOKMARK [2][-]{subsection.3.2}{Required Packages}{section.3}% 13
-\BOOKMARK [2][-]{subsection.3.3}{Recommended Packages}{section.3}% 14
-\BOOKMARK [2][-]{subsection.3.4}{Compiling}{section.3}% 15
-\BOOKMARK [2][-]{subsection.3.5}{Bug Reports}{section.3}% 16
-\BOOKMARK [1][-]{section.4}{Avoiding Text Overflows}{}% 17
-\BOOKMARK [2][-]{subsection.4.1}{Using the debug Option to Check for Overflows}{section.4}% 18
-\BOOKMARK [2][-]{subsection.4.2}{Tables}{section.4}% 19
-\BOOKMARK [2][-]{subsection.4.3}{Images}{section.4}% 20
-\BOOKMARK [2][-]{subsection.4.4}{A Universal Recipe}{section.4}% 21
-\BOOKMARK [1][-]{section.5}{Submitting Your Article Through EasyChair}{}% 22
-\BOOKMARK [2][-]{subsection.5.1}{Submitting the Article}{section.5}% 23
-\BOOKMARK [2][-]{subsection.5.2}{EPiC Series}{section.5}% 24
-\BOOKMARK [1][-]{section.6}{Future Work}{}% 25
-\BOOKMARK [1][-]{section.7}{Acknowledgments}{}% 26
-\BOOKMARK [1][-]{appendix.A}{easychair Requirements Specification}{}% 27
+\BOOKMARK [1][-]{section.2}{State of the Art}{}% 2
+\BOOKMARK [1][-]{section.3}{Models}{}% 3
+\BOOKMARK [1][-]{section.4}{Scenarios}{}% 4
+\BOOKMARK [1][-]{section.5}{Verification Engines}{}% 5
+\BOOKMARK [1][-]{section.6}{Results}{}% 6
+\BOOKMARK [1][-]{section.7}{Conclusions}{}% 7
+\BOOKMARK [2][-]{subsection.7.1}{Tables}{section.7}% 8
+\BOOKMARK [2][-]{subsection.7.2}{Images}{section.7}% 9
+\BOOKMARK [2][-]{subsection.7.3}{A Universal Recipe}{section.7}% 10
+\BOOKMARK [1][-]{appendix.A}{easychair Requirements Specification}{}% 11

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  10 JAN 2016 15:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  11 JAN 2016 17:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -588,139 +588,91 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 110.
 
-<logoEC.pdf, id=112, 301.125pt x 95.35625pt>
-File: logoEC.pdf Graphic file (type pdf)
- <use logoEC.pdf>
-Package pdftex.def Info: logoEC.pdf used on input line 118.
-(pdftex.def)             Requested size: 206.28247pt x 65.3259pt.
- [1
+Underfull \hbox (badness 10000) in paragraph at lines 135--136
 
-{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./logoE
-C.pdf>]
-[2] [3]
-LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 323
+ []
+
+[1
+
+{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+
+LaTeX Warning: Reference `fig:easychair-logo' on page 2 undefined on input line
+ 201.
+
+[2]
+
+LaTeX Warning: Reference `fig:easythrone' on page 3 undefined on input line 276
 .
-LaTeX Font Info:    No file OMScmtt.fd. on input line 323.
 
-
-LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
-(Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbraceleft' on input line 323.
-
-[4] [5] [6]
-LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 625.
- <debug.pdf, id=242, 614.295pt x 794.97pt>
-File: debug.pdf Graphic file (type pdf)
- <use debug.pdf>
-Package pdftex.def Info: debug.pdf used on input line 640.
-(pdftex.def)             Requested size: 367.18256pt x 475.17827pt.
- [7]
-[8 <./debug.pdf>] <chairEC.pdf, id=332, 150.5625pt x 185.69376pt>
+<chairEC.pdf, id=81, 150.5625pt x 185.69376pt>
 File: chairEC.pdf Graphic file (type pdf)
-
-<use chairEC.pdf>
-Package pdftex.def Info: chairEC.pdf used on input line 744.
+ <use chairEC.pdf>
+Package pdftex.def Info: chairEC.pdf used on input line 304.
 (pdftex.def)             Requested size: 115.51767pt x 142.47743pt.
 
 Underfull \vbox (badness 6032) has occurred while \output is active []
 
- [9]
+ [3]
 File: chairEC.pdf Graphic file (type pdf)
 
 <use chairEC.pdf>
-Package pdftex.def Info: chairEC.pdf used on input line 774.
+Package pdftex.def Info: chairEC.pdf used on input line 334.
 (pdftex.def)             Requested size: 115.51767pt x 142.47743pt.
 File: chairEC.pdf Graphic file (type pdf)
  <use chairEC.pdf>
-Package pdftex.def Info: chairEC.pdf used on input line 797.
+Package pdftex.def Info: chairEC.pdf used on input line 357.
 (pdftex.def)             Requested size: 115.51767pt x 142.47743pt.
 File: chairEC.pdf Graphic file (type pdf)
  <use chairEC.pdf>
-Package pdftex.def Info: chairEC.pdf used on input line 819.
+Package pdftex.def Info: chairEC.pdf used on input line 379.
 (pdftex.def)             Requested size: 115.51767pt x 142.47743pt.
- [10 <./chairEC.pdf>]
-<epic.pdf, id=351, 614.295pt x 794.97pt>
-File: epic.pdf Graphic file (type pdf)
- <use epic.pdf>
-Package pdftex.def Info: epic.pdf used on input line 881.
-(pdftex.def)             Requested size: 367.18256pt x 475.17827pt.
-
-<throneEC.jpg, id=354, 515.526pt x 573.5829pt>
-File: throneEC.jpg Graphic file (type jpg)
- <use throneEC.jpg>
-Package pdftex.def Info: throneEC.jpg used on input line 912.
-(pdftex.def)             Requested size: 206.28247pt x 229.51662pt.
-File: throneEC.jpg Graphic file (type jpg)
-
-<use throneEC.jpg>
-Package pdftex.def Info: throneEC.jpg used on input line 913.
-(pdftex.def)             Requested size: 123.77074pt x 137.70647pt.
-File: throneEC.jpg Graphic file (type jpg)
- <use throneEC.jpg>
-Package pdftex.def Info: throneEC.jpg used on input line 914.
-(pdftex.def)             Requested size: 61.88222pt x 68.84448pt.
- [11] [12 <./epic.pdf>] (./easychair.bbl
-[13 <./throneEC.jpg>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [14])
-
+ (./easychair.bbl)
+[4 <./chairEC.pdf>] 
 AED: lastpage setting LastPage
-[15]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 996.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 996.
+[5]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 439.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 439.
  (./easychair.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 996.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 996.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 439.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 439.
 Package rerunfilecheck Info: File `easychair.out' has not changed.
-(rerunfilecheck)             Checksum: 51054B0FA9A163D095EACB99A549B2C4;1721.
+(rerunfilecheck)             Checksum: 2BDB1463B2326CAEE8E3FA7A4B4F8BA3;577.
 
 
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 996.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 439.
  ) 
 Here is how much of TeX's memory you used:
- 9215 strings out of 493117
- 136200 string characters out of 6135433
- 253343 words of memory out of 5000000
- 12452 multiletter control sequences out of 15000+600000
- 16999 words of font info for 68 fonts, out of 8000000 for 9000
+ 9053 strings out of 493117
+ 133883 string characters out of 6135433
+ 249519 words of memory out of 5000000
+ 12361 multiletter control sequences out of 15000+600000
+ 16229 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 46i,13n,45p,282b,494s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 46i,13n,45p,282b,397s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
-usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></
-usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></u
-sr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
-r/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/
-local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/lo
-cal/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loca
-l/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/
-texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/te
-xlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texli
-ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/
-2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/201
-4/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2014/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2014/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/local/texlive/2014/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2014/texmf
--dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2014/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2014/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2014/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2014/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2014/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2014/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2014/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2014/texmf-dist/font
-s/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2014/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on easychair.pdf (15 pages, 828041 bytes).
+usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></us
+r/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/
+local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/lo
+cal/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/loca
+l/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/t
+exlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texl
+ive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive
+/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/20
+14/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/201
+4/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2014/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2014
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2014/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2014/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2014/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on easychair.pdf (5 pages, 222467 bytes).
 PDF statistics:
- 583 PDF objects out of 1000 (max. 8388607)
- 519 compressed objects within 6 object streams
- 95 named destinations out of 1000 (max. 500000)
- 242 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 180 PDF objects out of 1000 (max. 8388607)
+ 150 compressed objects within 2 object streams
+ 34 named destinations out of 1000 (max. 500000)
+ 94 words of extra memory for PDF output out of 10000 (max. 10000000)
 

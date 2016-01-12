@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  11 JAN 2016 17:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  11 JAN 2016 19:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -579,35 +579,31 @@ LaTeX Font Info:    Try loading font information for U+lasy on input line 79.
 (/usr/local/texlive/2014/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 110.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 107.
 
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 110.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 107.
+ [1
 
-Underfull \hbox (badness 10000) in paragraph at lines 135--136
-
- []
-
-[1
-
-{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./easy
+chair.bbl)
 
 LaTeX Warning: Reference `fig:easychair-logo' on page 2 undefined on input line
- 201.
+ 219.
 
 [2]
 
-LaTeX Warning: Reference `fig:easythrone' on page 3 undefined on input line 276
+LaTeX Warning: Reference `fig:easythrone' on page 3 undefined on input line 294
 .
 
 <chairEC.pdf, id=81, 150.5625pt x 185.69376pt>
 File: chairEC.pdf Graphic file (type pdf)
  <use chairEC.pdf>
-Package pdftex.def Info: chairEC.pdf used on input line 304.
+Package pdftex.def Info: chairEC.pdf used on input line 322.
 (pdftex.def)             Requested size: 115.51767pt x 142.47743pt.
 
 Underfull \vbox (badness 6032) has occurred while \output is active []
@@ -616,41 +612,41 @@ Underfull \vbox (badness 6032) has occurred while \output is active []
 File: chairEC.pdf Graphic file (type pdf)
 
 <use chairEC.pdf>
-Package pdftex.def Info: chairEC.pdf used on input line 334.
+Package pdftex.def Info: chairEC.pdf used on input line 352.
 (pdftex.def)             Requested size: 115.51767pt x 142.47743pt.
 File: chairEC.pdf Graphic file (type pdf)
  <use chairEC.pdf>
-Package pdftex.def Info: chairEC.pdf used on input line 357.
+Package pdftex.def Info: chairEC.pdf used on input line 375.
 (pdftex.def)             Requested size: 115.51767pt x 142.47743pt.
 File: chairEC.pdf Graphic file (type pdf)
  <use chairEC.pdf>
-Package pdftex.def Info: chairEC.pdf used on input line 379.
+Package pdftex.def Info: chairEC.pdf used on input line 397.
 (pdftex.def)             Requested size: 115.51767pt x 142.47743pt.
- (./easychair.bbl)
-[4 <./chairEC.pdf>] 
+
+
 AED: lastpage setting LastPage
-[5]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 439.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 439.
+[4 <./chairEC.pdf>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 411.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 411.
  (./easychair.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 439.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 439.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 411.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 411.
 Package rerunfilecheck Info: File `easychair.out' has not changed.
-(rerunfilecheck)             Checksum: 2BDB1463B2326CAEE8E3FA7A4B4F8BA3;577.
+(rerunfilecheck)             Checksum: D531EEEB54519361D97A301C2734F180;566.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 439.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 411.
  ) 
 Here is how much of TeX's memory you used:
- 9053 strings out of 493117
- 133883 string characters out of 6135433
- 249519 words of memory out of 5000000
- 12361 multiletter control sequences out of 15000+600000
- 16229 words of font info for 65 fonts, out of 8000000 for 9000
+ 9038 strings out of 493117
+ 133776 string characters out of 6135433
+ 249497 words of memory out of 5000000
+ 12359 multiletter control sequences out of 15000+600000
+ 15324 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 46i,13n,45p,282b,397s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 46i,13n,45p,282b,394s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
@@ -658,21 +654,17 @@ usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></us
 r/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/
 local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/lo
 cal/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/loca
-l/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/t
-exlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texl
-ive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive
-/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/20
-14/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/201
-4/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2014/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2014
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2014/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2014/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2014/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on easychair.pdf (5 pages, 222467 bytes).
+l/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/t
+exlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texl
+ive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive
+/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/
+2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2
+014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/20
+14/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on easychair.pdf (4 pages, 190401 bytes).
 PDF statistics:
- 180 PDF objects out of 1000 (max. 8388607)
- 150 compressed objects within 2 object streams
- 34 named destinations out of 1000 (max. 500000)
+ 149 PDF objects out of 1000 (max. 8388607)
+ 124 compressed objects within 2 object streams
+ 24 named destinations out of 1000 (max. 500000)
  94 words of extra memory for PDF output out of 10000 (max. 10000000)
 

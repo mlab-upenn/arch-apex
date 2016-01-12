@@ -79,10 +79,7 @@ Matthew O'Kelly\inst{1}
 \maketitle
 
 \begin{abstract}
-  In order to ease the lives of authors, editors, and trees, we present an
-  easy-to-read guide to the easy-to-use {\easychair} {\LaTeX2e} document style
-  class for EasyChair-based electronic and on-paper publishing of workshop and conference
-  proceedings.
+  To do...
 \end{abstract}
 
 % The table of contents below is added for your convenience. Please do not use
@@ -112,8 +109,18 @@ Matthew O'Kelly\inst{1}
 	\item Contributions/Benchmarks
 	\begin{itemize}
 		\item Scenario 1: Obstacle avoidance on a sharp curve
+		\begin{itemize}
+			\item No longer have clear invariant cut
+		\end{itemize}
 		\item Scenario 2: T-Junction
+		\begin{itemize}
+			\item Variant: Traffic light
+			\item Variant: Pedestrian
+		\end{itemize}
 		\item Scenario 3: Obstructed T-Junction
+		\begin{itemize}
+			\item Map provides knowledge of obstruction and automatically adjusts behavior
+		\end{itemize}
 	\end{itemize}
 \end{itemize}
 
@@ -124,6 +131,7 @@ Matthew O'Kelly\inst{1}
 	\item Levels of Abstraction
 	\item Verification Methods and Tools
 	\begin{itemize}
+		\item Industry Perspective: Testing and Simulation
 		\item Control Perspective: Lyapunov Functions
 		\item Software Perspective: Model Checking
 		\item Logic Perspective: Theorem Proving
@@ -133,6 +141,7 @@ Matthew O'Kelly\inst{1}
 \section{Models}
 \label{sect:model}
 \emph{Key new idea:} Examine continuous evolution of ego-vehicle, but only discrete evolution of environment. Give environment grid-based abstraction. We don't know the control inputs for the environment anyway\newline
+\emph{Re-examine grid based timed automaton:} Can't really capture accelerations and nuance? 
 
 \noindent \textbf{Vehicle}
 \begin{itemize}
@@ -162,46 +171,55 @@ Matthew O'Kelly\inst{1}
 \section{Scenarios}
 \label{sect:scenarios}
 
-The following are the general default parameters {\easychair}
-introduces into the typesetting aspect of articles. If you use
-\easychair\ for proceedings or other kinds of publishing through
-EasyChair, do not alter these -- papers deviating from the formatting
-standards will be rejected by EasyChair.
 \section{Verification Engines}
 
 \section{Results}
 
 \section{Conclusions}
 
+
+
+
+\label{sect:bib}
+\bibliographystyle{plain}
+%\bibliographystyle{alpha}
+%\bibliographystyle{unsrt}
+%\bibliographystyle{abbrv}
+\bibliography{easychair}
+
+%------------------------------------------------------------------------------
+\appendix
+\section{Formatting Information}
+\label{sect:easychair-requirements}
 \begin{enumerate}
-\item
-The default paper size is US letter. It can be explicitly set to A4 
-(\texttt{a4paper}) or letter (\texttt{letterpaper}) paper in the
-document class entry, e.g.:\\\verb+\documentclass[a4paper]{easychair}+
-
-\item
-The print area for both letter and A4 paper sizes is 145x224 mm. This size
-has been selected to allow for inexpensive printing using our current
-print-on-demand publisher.
-
-\item
-The base font is Computer Modern. The base font size is 10pt. If you
-use any other font size, there is no guarantee that the produced
-document will look nice or fit into our standard page size.
-
-\item
-The references list is condensed. The default bibliography styles, such as
-\texttt{plain}, \texttt{abbrv}, and \texttt{alpha}, are suggested.
-
-\item
-PNG, JPG, and PDF images are supported, i.e., those that are supported
-by the standard \texttt{graphicx} package \cite{graphicx-package}, and
-render nicely in online versions of PDF documents.  This document
-shows some examples of JPG and PDF images, for example in
-Figure~\ref{fig:easychair-logo}. If the papers are designed for
-publishing in print, the images should be at least 300dpi in
-resolution. 
-
+	\item
+	The default paper size is US letter. It can be explicitly set to A4 
+	(\texttt{a4paper}) or letter (\texttt{letterpaper}) paper in the
+	document class entry, e.g.:\\\verb+\documentclass[a4paper]{easychair}+
+	
+	\item
+	The print area for both letter and A4 paper sizes is 145x224 mm. This size
+	has been selected to allow for inexpensive printing using our current
+	print-on-demand publisher.
+	
+	\item
+	The base font is Computer Modern. The base font size is 10pt. If you
+	use any other font size, there is no guarantee that the produced
+	document will look nice or fit into our standard page size.
+	
+	\item
+	The references list is condensed. The default bibliography styles, such as
+	\texttt{plain}, \texttt{abbrv}, and \texttt{alpha}, are suggested.
+	
+	\item
+	PNG, JPG, and PDF images are supported, i.e., those that are supported
+	by the standard \texttt{graphicx} package \cite{graphicx-package}, and
+	render nicely in online versions of PDF documents.  This document
+	shows some examples of JPG and PDF images, for example in
+	Figure~\ref{fig:easychair-logo}. If the papers are designed for
+	publishing in print, the images should be at least 300dpi in
+	resolution. 
+	
 \end{enumerate}
 
 \subsection{Tables}
@@ -217,55 +235,55 @@ smaller values for this command may result in lower redability.
 
 %------------------------------------------------------------
 \begin{figure}[tb]\small
-\begin{center}
-  \begin{tabular}{lrrrrrrrr}
-    \hline
-    ATP System            & LTB & Avg  &Prfs & SOTA & \multicolumn{1}{c}{$\mu$} & CYC & MZR & SMO \\
-   \hline
-    Vampire-LTB 11.0      &  69 & 24.5 &  69 & 0.37 & 28.1 &  23 &  22 &  24 \\
-    iProver-SInE 0.7      &  67 & 76.5 &   0 & 0.36 &  8.8 &  28 &  14 &  25 \\
-   \hline
-  \end{tabular}
-\end{center}
-
-\begin{center}\renewcommand{\tabcolsep}{5pt}
-  \begin{tabular}{lrrrrrrrr}
-    \hline
-    ATP System            & LTB & Avg  &Prfs & SOTA & \multicolumn{1}{c}{$\mu$} & CYC & MZR & SMO \\
-   \hline
-    Vampire-LTB 11.0      &  69 & 24.5 &  69 & 0.37 & 28.1 &  23 &  22 &  24 \\
-    iProver-SInE 0.7      &  67 & 76.5 &   0 & 0.36 &  8.8 &  28 &  14 &  25 \\
-   \hline
-  \end{tabular}
-\end{center}
-
-\begin{center}\renewcommand{\tabcolsep}{3pt}
-  \begin{tabular}{lrrrrrrrr}
-    \hline
-    ATP System            & LTB & Avg  &Prfs & SOTA & \multicolumn{1}{c}{$\mu$} & CYC & MZR & SMO \\
-   \hline
-    Vampire-LTB 11.0      &  69 & 24.5 &  69 & 0.37 & 28.1 &  23 &  22 &  24 \\
-    iProver-SInE 0.7      &  67 & 76.5 &   0 & 0.36 &  8.8 &  28 &  14 &  25 \\
-   \hline
-  \end{tabular}
-\end{center}
-
-\begin{center}\renewcommand{\tabcolsep}{1pt}
-  \begin{tabular}{lrrrrrrrr}
-    \hline
-    ATP System            & LTB & Avg  &Prfs & SOTA & \multicolumn{1}{c}{$\mu$} & CYC & MZR & SMO \\
-   \hline
-    Vampire-LTB 11.0      &  69 & 24.5 &  69 & 0.37 & 28.1 &  23 &  22 &  24 \\
-    iProver-SInE 0.7      &  67 & 76.5 &   0 & 0.36 &  8.8 &  28 &  14 &  25 \\
-   \hline
-  \end{tabular}
-\end{center}
-\normalsize
-
-\caption{Original table and tables with \texttt{tabcolsep} set to 5pt,
-  3pt, and 1pt
-  \label{fig:tabcolsep}}
-
+	\begin{center}
+		\begin{tabular}{lrrrrrrrr}
+			\hline
+			ATP System            & LTB & Avg  &Prfs & SOTA & \multicolumn{1}{c}{$\mu$} & CYC & MZR & SMO \\
+			\hline
+			Vampire-LTB 11.0      &  69 & 24.5 &  69 & 0.37 & 28.1 &  23 &  22 &  24 \\
+			iProver-SInE 0.7      &  67 & 76.5 &   0 & 0.36 &  8.8 &  28 &  14 &  25 \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	\begin{center}\renewcommand{\tabcolsep}{5pt}
+		\begin{tabular}{lrrrrrrrr}
+			\hline
+			ATP System            & LTB & Avg  &Prfs & SOTA & \multicolumn{1}{c}{$\mu$} & CYC & MZR & SMO \\
+			\hline
+			Vampire-LTB 11.0      &  69 & 24.5 &  69 & 0.37 & 28.1 &  23 &  22 &  24 \\
+			iProver-SInE 0.7      &  67 & 76.5 &   0 & 0.36 &  8.8 &  28 &  14 &  25 \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	\begin{center}\renewcommand{\tabcolsep}{3pt}
+		\begin{tabular}{lrrrrrrrr}
+			\hline
+			ATP System            & LTB & Avg  &Prfs & SOTA & \multicolumn{1}{c}{$\mu$} & CYC & MZR & SMO \\
+			\hline
+			Vampire-LTB 11.0      &  69 & 24.5 &  69 & 0.37 & 28.1 &  23 &  22 &  24 \\
+			iProver-SInE 0.7      &  67 & 76.5 &   0 & 0.36 &  8.8 &  28 &  14 &  25 \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	\begin{center}\renewcommand{\tabcolsep}{1pt}
+		\begin{tabular}{lrrrrrrrr}
+			\hline
+			ATP System            & LTB & Avg  &Prfs & SOTA & \multicolumn{1}{c}{$\mu$} & CYC & MZR & SMO \\
+			\hline
+			Vampire-LTB 11.0      &  69 & 24.5 &  69 & 0.37 & 28.1 &  23 &  22 &  24 \\
+			iProver-SInE 0.7      &  67 & 76.5 &   0 & 0.36 &  8.8 &  28 &  14 &  25 \\
+			\hline
+		\end{tabular}
+	\end{center}
+	\normalsize
+	
+	\caption{Original table and tables with \texttt{tabcolsep} set to 5pt,
+		3pt, and 1pt
+		\label{fig:tabcolsep}}
+	
 \end{figure}
 %------------------------------------------------------------
 
@@ -277,9 +295,9 @@ Figure~\ref{fig:easythrone} shows three copies of the same image
 having different sizes obtained using the following commands:
 
 \begin{verbatim}
-  \includegraphics[width=0.5\textwidth]{throneEC.jpg}
-  \includegraphics[width=0.3\textwidth]{throneEC.jpg}
-  \includegraphics[width=0.15\textwidth]{throneEC.jpg}
+\includegraphics[width=0.5\textwidth]{throneEC.jpg}
+\includegraphics[width=0.3\textwidth]{throneEC.jpg}
+\includegraphics[width=0.15\textwidth]{throneEC.jpg}
 \end{verbatim}
 
 \subsection{A Universal Recipe}
@@ -291,145 +309,99 @@ anythings. More precisely, it can reduce anything producing what
 to see how it was produced).
 
 \begin{center}
-\begin{tabular}{|c|c|}
-\hline \Huge
-\begin{tabular}[b]{cr}
-year & users \\ \hline
-2007 &    47,753 \\
- 2008 &    114,494 \\
- 2009 &    207,506 \\
- 2010 &   371,054 \\
-\end{tabular}
-&
-\includegraphics[width=0.28\textwidth]{chairEC}\\
-\hline
-\multicolumn{2}{|c|}{The number of users of EasyChair and one of its
-  logos,}\\
-\multicolumn{2}{|c|}{scaled to the number of users in 2010} \\
-\hline
-\end{tabular}
+	\begin{tabular}{|c|c|}
+		\hline \Huge
+		\begin{tabular}[b]{cr}
+			year & users \\ \hline
+			2007 &    47,753 \\
+			2008 &    114,494 \\
+			2009 &    207,506 \\
+			2010 &   371,054 \\
+		\end{tabular}
+		&
+		\includegraphics[width=0.28\textwidth]{chairEC}\\
+		\hline
+		\multicolumn{2}{|c|}{The number of users of EasyChair and one of its
+			logos,}\\
+		\multicolumn{2}{|c|}{scaled to the number of users in 2010} \\
+		\hline
+	\end{tabular}
 \end{center}
 This is what happens when we put (almost) the same \LaTeX\ code in 
 \verb|\scalebox{0.55923}{...}| to scale it down to the number of users
 in 2009:
 
 \begin{center}
-\scalebox{0.55923}{%
-\begin{tabular}{|c|c|}
-\hline \Huge
-\begin{tabular}[b]{cr}
-year & users \\ \hline
-2007 &    47,753 \\
- 2008 &    114,494 \\
- 2009 &    207,506 \\
- 2010 &   371,054 \\
-\end{tabular}
-&
-\includegraphics[width=0.28\textwidth]{chairEC}\\
-\hline
-\multicolumn{2}{|c|}{The number of users of EasyChair and one of its
-  logos,}\\
-\multicolumn{2}{|c|}{scaled to the number of users in 2009} \\
-\hline
-\end{tabular}}
-\end{center}
-We can scale it down even further to the 2008 figure using
-\verb|\scalebox{0.30856}{...}|:
+	\scalebox{0.55923}{%
+		\begin{tabular}{|c|c|}
+			\hline \Huge
+			\begin{tabular}[b]{cr}
+				year & users \\ \hline
+				2007 &    47,753 \\
+				2008 &    114,494 \\
+				2009 &    207,506 \\
+				2010 &   371,054 \\
+			\end{tabular}
+			&
+			\includegraphics[width=0.28\textwidth]{chairEC}\\
+			\hline
+			\multicolumn{2}{|c|}{The number of users of EasyChair and one of its
+				logos,}\\
+			\multicolumn{2}{|c|}{scaled to the number of users in 2009} \\
+			\hline
+		\end{tabular}}
+	\end{center}
+	We can scale it down even further to the 2008 figure using
+	\verb|\scalebox{0.30856}{...}|:
+	
+	\begin{center}
+		\scalebox{0.30856}{%
+			\begin{tabular}{|c|c|}
+				\hline \Huge
+				\begin{tabular}[b]{cr}
+					year & users \\ \hline
+					2007 &    47,753 \\
+					2008 &    114,494 \\
+					2009 &    207,506 \\
+					2010 &   371,054 \\
+				\end{tabular}
+				&
+				\includegraphics[width=0.28\textwidth]{chairEC}\\
+				\hline
+				\multicolumn{2}{|c|}{The number of users of EasyChair and one of its
+					logos,}\\
+				\multicolumn{2}{|c|}{scaled to the number of users in 2008} \\
+				\hline
+			\end{tabular}}
+		\end{center}
+		or further down to 2007:
+		
+		\begin{center}
+			\scalebox{0.12870}{%
+				\begin{tabular}{|c|c|}
+					\hline \Huge
+					\begin{tabular}[b]{cr}
+						year & users \\ \hline
+						2007 &    47,753 \\
+						2008 &    114,494 \\
+						2009 &    207,506 \\
+						2010 &   371,054 \\
+					\end{tabular}
+					&
+					\includegraphics[width=0.28\textwidth]{chairEC}\\
+					\hline
+					\multicolumn{2}{|c|}{The number of users of EasyChair and one of its
+						logos,}\\
+					\multicolumn{2}{|c|}{scaled to the number of users in 2008} \\
+					\hline
+				\end{tabular}}
+			\end{center}
+			
+			This size reduction technique is very efficient: using the right scale
+			you may post your whole article on Twitter in a single tweet. However,
+			it may also may parts of your text virtually unreadable with an
+			unfortunate side effect of annoying reviewers. 
 
-\begin{center}
-\scalebox{0.30856}{%
-\begin{tabular}{|c|c|}
-\hline \Huge
-\begin{tabular}[b]{cr}
-year & users \\ \hline
-2007 &    47,753 \\
- 2008 &    114,494 \\
- 2009 &    207,506 \\
- 2010 &   371,054 \\
-\end{tabular}
-&
-\includegraphics[width=0.28\textwidth]{chairEC}\\
-\hline
-\multicolumn{2}{|c|}{The number of users of EasyChair and one of its
-  logos,}\\
-\multicolumn{2}{|c|}{scaled to the number of users in 2008} \\
-\hline
-\end{tabular}}
-\end{center}
-or further down to 2007:
-
-\begin{center}
-\scalebox{0.12870}{%
-\begin{tabular}{|c|c|}
-\hline \Huge
-\begin{tabular}[b]{cr}
-year & users \\ \hline
-2007 &    47,753 \\
- 2008 &    114,494 \\
- 2009 &    207,506 \\
- 2010 &   371,054 \\
-\end{tabular}
-&
-\includegraphics[width=0.28\textwidth]{chairEC}\\
-\hline
-\multicolumn{2}{|c|}{The number of users of EasyChair and one of its
-  logos,}\\
-\multicolumn{2}{|c|}{scaled to the number of users in 2008} \\
-\hline
-\end{tabular}}
-\end{center}
-
-This size reduction technique is very efficient: using the right scale
-you may post your whole article on Twitter in a single tweet. However,
-it may also may parts of your text virtually unreadable with an
-unfortunate side effect of annoying reviewers. 
-
-
-
-\label{sect:bib}
-\bibliographystyle{plain}
-%\bibliographystyle{alpha}
-%\bibliographystyle{unsrt}
-%\bibliographystyle{abbrv}
-\bibliography{easychair}
-
-%------------------------------------------------------------------------------
-\appendix
-\section{{\easychair} Requirements Specification}
-\label{sect:easychair-requirements}
-
-The following high-level requirements were set for the development of 
-the {\easychair} class, and were refined as development went along.
-
-\begin{enumerate}
-\item
-The style should be easy to use. 
-The average {\LaTeX} user should not need to read a long manual.
-
-\item
-It should be economical in space but the text should be nice-to-read.
-
-\item
-It should use fonts producing a reasonable-quality PDF.
-
-\item
-The bibliography should produce hyperlinks.
-
-\item
-Sections should produce menu sections in PDF.
-
-\item
-The text should look good on both A4 and letter paper.
-
-\item
-The style should be single-column for convenience of scrolling.
-
-\item
-The print area should be convenient for printing using print-on-demand publishers.
-
-\item
-Running heads.
-\end{enumerate}
 
 %------------------------------------------------------------------------------
 % Index

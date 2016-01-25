@@ -103,10 +103,85 @@ Matthew O'Kelly\inst{1}
 \section{Introduction}
 \label{sect:introduction}
 
+\subsection{State of the Art}
 \begin{itemize}
-	\item Need for AV verification
-	\item Why it is hard
-	\item Contributions/Benchmarks
+	\item Verification Methods and Tools
+	\begin{itemize}
+		\item Industry Perspective: Testing and Simulation
+		\item Control Perspective: Lyapunov Functions
+		\item Software Perspective: Model Checking
+		\item Logic Perspective: Theorem Proving
+	\end{itemize}
+\end{itemize}
+
+\subsection{A Simple Lane Change}
+\begin{itemize}
+	\item We first present this scenario in \cite{blah}
+	\item Other authors \cite{blah} have considered with static obstacles
+	\item Counterexamples are somewhat obvious
+	\item Inductive invariance argument allows verification of infinite time properties
+	\item We extend this scenario with differential inclusions. 
+	\item Problem: we are forced into the tree representation because we cannot bring the trajectory generator in the dReach framework, requires external libraries and iteration. Could be remedied via creation of a lookup table or Neural Network. Alternative is to change the trajectory generation strategy such as Pure Pursuit.
+	\item Pure Pursuit can be represented directly in the Hybrid Program and admits a closed form solution for curvature.
+	\item Using a Hybrid program we now show how the number of paths through the state space grows exponentially with the addition of other agents and events as well as increases in search depth. 
+\end{itemize}
+
+\subsection{Variations in Road Geometry}
+%\textbf{Random Ideas, not to be taken seriously}
+%\begin{itemize}
+%	\item Can we think of a type theoretic description of configuration space rather than set theoretic?
+%	\item For example think of configuration space as a type
+%	\item Pose and Goal can then be considered points of the configuration space type 
+%	\item There exists many paths between a single pose and goal pair, all of these paths are equivalent from a type theoretic perspective.
+	%\item Narrow down an instance of these paths by describing a decision procedure necessary to generate the path ie pure pursuit or cubic splines, the type of these functions is a path between goal and pose. 
+%\end{itemize}
+
+\begin{itemize}
+	\item Implement pure pursuit trajectory generation strategy...
+\end{itemize}
+\begin{itemize}
+	\item Most examples involving forward safety are monotonic ie selecting a lower operating speed implies an decrease in stopping time and improves the forward safety of the vehicle. 
+	\item In such problems there are no ``holes" in the interval. 
+	\item Resulting proofs seem to indicate that testing would be sufficient to find counterexamples because unsafe results occur at extreme points in the state space only.
+		\begin{itemize}
+			\item Verification still provides a guarantee of safety that was not previously available. 
+			\item Verification is still useful for formally verifying specifications and interaction between supplier systems and vehicle dynamics.
+			\item Helps to search for viable combinations of specifications
+		\end{itemize}
+	\item Open question if we can guarantee infinite time properties in general case, or on road by road basis via inductive invariant. 
+\end{itemize}
+%Here we present a toy problem which explains why testing and monotonicity arguments might fail. This example was first presented in \cite{blah blah}.
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[scale=.4]{figures/diunsafe.png}
+%	\caption{An example of a reach avoid problem with non-trivial counterexample}
+%\end{figure}
+
+
+\subsection{Proactive Expert Driver Assistance}
+\textbf{Copy Paste from Nagoya stuff I wrote over summer, must be changed later...}\\
+In many driving scenarios, the ego-vehicle must anticipate both visible and invisible dangers in the surrounding environment in order to plan safer paths. In residential areas, pedestrians and other vehicles are often completely occluded. In order to reduce the number of severe traffic accidents, proactive driving and pro-active driver models for unseen dangers are important next steps.
+
+Proactive driver models are differentiated from emergency braking systems such as pre-crash safety which react to (1) dangers already in sight, (2) longer-range phenomena still measurable by sensors, (3) or detailed knowledge of road infrastructure. Instead proactive driver models and ADAS must deal with a predicted level of danger in current traffic conditions as an input to the model. 
+
+For example, while passing through intersections with a blind corner, the proactive driver model would decelerate in relation to a prediction of the state of other traffic participants, even those which have not yet been sensed. We note, however, that the state space of the other traffic participants contains an infinite number of possible configurations and a large (but finite) number of scenarios, complicating proactive driver model construction. Although attempts have been made to develop controllers, which anticipate hazards in a blind area, the computational principals governing the design and safety of such a system are not yet clear. 
+
+In previous works as first step towards creating data-driven proactive ADAS is to understand the behavior of a variety of human drivers. Thus, we collected and analyzed driving data on a public road where drivers need to anticipate unseen dangers. Tests included driving in a residential area, performed by both expert and elderly subjects and accurately analyzed by means of a high-precision data acquisition system. 
+
+\subsection{Contributions}
+
+
+	
+	\begin{itemize}
+		\item Types of Uncertainty:
+		\begin{itemize}
+			\item Scenario Configuration
+			\item Initial Estimation Errors
+			\item Noise in dynamics
+			\item Sensor estimation errors
+			\item Sensing thresholds
+		\end{itemize}
+	\end{itemize}
 	\begin{itemize}
 		\item Scenario 1: Obstacle avoidance on a sharp curve
 		\begin{itemize}
@@ -122,35 +197,117 @@ Matthew O'Kelly\inst{1}
 			\item Map provides knowledge of obstruction and automatically adjusts behavior
 		\end{itemize}
 	\end{itemize}
-\end{itemize}
+
 
 %------------------------------------------------------------------------------
-\section{State of the Art}
-\begin{itemize}
-	\item Types of Autonomy
-	\item Levels of Abstraction
-	\item Verification Methods and Tools
-	\begin{itemize}
-		\item Industry Perspective: Testing and Simulation
-		\item Control Perspective: Lyapunov Functions
-		\item Software Perspective: Model Checking
-		\item Logic Perspective: Theorem Proving
-	\end{itemize}
-\end{itemize}
+
 %------------------------------------------------------------------------------
 \section{Models}
 \label{sect:model}
-\emph{Key new idea:} Examine continuous evolution of ego-vehicle, but only discrete evolution of environment. Give environment grid-based abstraction. We don't know the control inputs for the environment anyway\newline
-\emph{Re-examine grid based timed automaton:} Can't really capture accelerations and nuance? 
-
-\noindent \textbf{Vehicle}
+%\emph{Key new idea:} Examine continuous evolution of ego-vehicle, but only discrete evolution of environment. Give environment grid-based abstraction. We don't know the control inputs for the environment anyway\newline
+%\emph{Re-examine grid based timed automaton:} Can't really capture accelerations and nuance? 
+New ideas:
 \begin{itemize}
-	\item Vehicle Dynamics: Bicycle Model
-	\item Planning
 	\item Perception
 	\item Computation and Scheduling
 	\item Traffic Participants
 \end{itemize}
+
+
+\subsection{Vehicle}
+\begin{itemize}
+	\item Vehicle Dynamics: Bicycle Model
+	\item Planning
+\end{itemize}
+
+\subsection{Pure Pursuit}
+The simplest algorithm for path tracking and trajectory generation...
+From a type perspective what is the difference between arc and spline? 
+Geometrically, the arc satisfies \textbf{convexity}. 
+\begin{itemize}
+	\item Given a current position at the vehicles rear differential and a goal...
+	\item The algorithm computes a constant curvature arc between the current position and the goal.
+	\item The vehicle may then actuate its steering system such that the curvature of the arc is tracked.
+	\item Downside is discontinuity between curvatures when the algorithm is iterated
+	\item Is also reliant on waypoints, does not generate alternate maneuvers unless explicitly told to switch goals. 
+\end{itemize}
+\textbf{Algorithm:}
+\begin{itemize}
+	\item Update vehicle state
+	\item Find nearest path point
+	\item Find the goal point
+	\item Transform goal to vehicle coordinates
+	\item Calculate desired curvature
+	\item Set steering to desired curvature
+	\item Update position
+\end{itemize}
+\begin{figure}
+	\centering
+	\includegraphics[scale=.5]{figures/pure_pursuit_geom}
+	\caption{Geometry of Pure Pursuit Algorithm}
+\end{figure}
+\begin{align}
+	x^2+y^2=l^2\\
+	x+d=r
+\end{align}
+
+\noindent Now for the curvature such that:
+\begin{align}
+	r=\frac{l^2}{2x}\\
+	\gamma=\frac{2x}{l^2}
+\end{align}
+
+
+\subsection{Behavioral Controller}
+In \cite{Ninomiya} the authors develop a behavioral controller which mimics expert driving instructor behavior at blind corners. Specifically such drivers anticipate unseen obstacles and dangers. Such drivers should take different actions depending on their prediction of other potential traffic participants, including both pedestrians and vehicles. We allow that other traffic participants may not be within the sight of the test subject. As such the driver model is defined by three rules each of which produce an update to the vehicles acceleration: 
+\begin{itemize}
+	\item If a potential (even unseen) traffic participant is likely to collide, the driver will brake proactively, 
+	\item else if the current speed is below a desired speed, accelerate, 
+	\item otherwise, keep the current speed. 
+\end{itemize}
+
+Assuming that the ego vehicle and a potential traffic participant are point masses and will cross perpendicularly, we will model the above rules by acceleration of the ego vehicle:
+
+\begin{equation}
+y_{ot}+v_{ot}t_c < \frac{w}{2} \to a_{et} = \frac{v_{et}^2 - v_{min}^2}{2(x_{et}-x_{min})} 
+\end{equation} 
+
+\begin{equation}
+v_{et}<v_d \to a_{et}=	\frac{v_{d}^2 -v_{et}^2}{2(x_d - x_{et})}
+\end{equation}
+
+\noindent Otherwise...
+\begin{equation}
+  a_{et}=0
+\end{equation}
+Here, $(x_{et}, y_{et}, v_{et})$,$(x_{ot}, y_{ot}, v_{ot})$, $(x_d,v_d)$ are the position and speed of ego vehicle at time t, the current position and speed of a potential traffic participant at time t, and the desired final state of the ego vehicle, respectively. $(x_{min},v_{min})$  is the state (position and speed) after finishing deceleration. By introducing a minimum admissible displacement $\epsilon$ , $x_{min}$  can be expressed as
+\begin{equation}
+	x_{min} - x_0=\epsilon
+\end{equation}
+
+
+Where $t_c$  is a predicted time to collision derived as a function of the speed of the ego-vehicle:
+\begin{equation}
+	t_c=max(\frac{x_{ot}-x_{et}}{v_{et}},0)
+\end{equation}
+
+Thus, the condition $y_{ot}+v_{ot}t_c < \frac{w}{2}$  means that the trajectory of the potential traffic participant will reach and stay within a set in which collision is possible $w$, at the time to collision. We assume that the potential traffic participants begin their paths behind a wall in the occluded region on the left of the intersection.\\
+\textbf{This changes... because we will add differential inclusions}\\
+Each traffic participant may move at a constant speed, from left to right in the scene. This is a reasonable assumption because the side road restricts vehicles to drive one way. Given the wall position $(x_w,y_w)$, the position $(x_{ot},y_{ot})$  are expressed as
+\begin{equation}
+ x_{ot}=\gamma d + x_{w}
+\end{equation}
+\begin{equation}
+y_{ot} = \gamma d + (x_w - x_{et})tan(\rho_t) +y_{et}
+\end{equation}
+
+Here, $d$ is the width of the side road and $\rho_t$ is the current field of view from the ego vehicle driver computed as:
+\begin{equation}
+	tan(\rho_t) = \frac{y_w-y_{et}}{x_w - x_{et}}
+\end{equation}
+
+Note that   is a parameter defining the x position of a potential traffic participant that takes a value from 0 to 1. From equations (1) to (9), one can compute a desired speed profile and trajectory with which the driver can avoid collision to a potential traffic participant coming out from the position $(x_{ot},y_{ot})$ at speed $v_o$.
+
 
 \noindent \textbf{Traffic Control}
 \begin{itemize}

@@ -1,11 +1,18 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
-\BOOKMARK [1][-]{section.2}{State of the Art}{}% 2
-\BOOKMARK [1][-]{section.3}{Models}{}% 3
-\BOOKMARK [1][-]{section.4}{Scenarios}{}% 4
-\BOOKMARK [1][-]{section.5}{Verification Engines}{}% 5
-\BOOKMARK [1][-]{section.6}{Results}{}% 6
-\BOOKMARK [1][-]{section.7}{Conclusions}{}% 7
-\BOOKMARK [1][-]{appendix.A}{Formatting Information}{}% 8
-\BOOKMARK [2][-]{subsection.A.1}{Tables}{appendix.A}% 9
-\BOOKMARK [2][-]{subsection.A.2}{Images}{appendix.A}% 10
-\BOOKMARK [2][-]{subsection.A.3}{A Universal Recipe}{appendix.A}% 11
+\BOOKMARK [2][-]{subsection.1.1}{State of the Art}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{A Simple Lane Change}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{Variations in Road Geometry}{section.1}% 4
+\BOOKMARK [2][-]{subsection.1.4}{Proactive Expert Driver Assistance}{section.1}% 5
+\BOOKMARK [2][-]{subsection.1.5}{Contributions}{section.1}% 6
+\BOOKMARK [1][-]{section.2}{Models}{}% 7
+\BOOKMARK [2][-]{subsection.2.1}{Vehicle}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.2}{Pure Pursuit}{section.2}% 9
+\BOOKMARK [2][-]{subsection.2.3}{Behavioral Controller}{section.2}% 10
+\BOOKMARK [1][-]{section.3}{Scenarios}{}% 11
+\BOOKMARK [1][-]{section.4}{Verification Engines}{}% 12
+\BOOKMARK [1][-]{section.5}{Results}{}% 13
+\BOOKMARK [1][-]{section.6}{Conclusions}{}% 14
+\BOOKMARK [1][-]{appendix.A}{Formatting Information}{}% 15
+\BOOKMARK [2][-]{subsection.A.1}{Tables}{appendix.A}% 16
+\BOOKMARK [2][-]{subsection.A.2}{Images}{appendix.A}% 17
+\BOOKMARK [2][-]{subsection.A.3}{A Universal Recipe}{appendix.A}% 18

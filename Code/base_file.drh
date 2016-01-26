@@ -1,3 +1,28 @@
+// Scenario parameters
+// Width of road
+#define w 3.7
+// Desired velocity of ego vehicle
+#define v_d 11.11
+
+// Waypoints X: Lane 1
+#define waypoint1x 20.00
+
+// Waypoints Y: Lane 1
+#define waypoint1y 5.00
+
+// Waypoints: Lane 2
+
+// Left Boundary: Lane 1
+
+// Right Boundary: Lane 1
+
+// Left Boundary: Lane 1
+
+// Right Boundary: Lane 2
+
+// Left Boundary: Lane 2
+
+
 // Constants
 #define m 2273.0
 #define Iz 4423.0
@@ -12,14 +37,6 @@
 #define k5 1.0
 #define k6 10.0
 
-// Scenario parameters
-// Width of road
-#define w 3.7
-// Desired velocity
-#define v_d 11.11
-// Acceleration of environmental vehicle.
-#define a_env 0.0
-
 // Helpers to clean up equations...
 #define cl (Cr*lr-Cf*lf)
 
@@ -30,11 +47,10 @@
 // Longitudinal acceleration
 #define ax  k5*(cos(Psi_d)*(sx_d - sx) + sin(Psi_d)*(sy_d - sy)) +k6*(v_d-v)
 
-// Cubic spline inputs
-#define a (kappa_0)
-#define b ((-0.50)*(-2*kappa_3 + 11*kappa_0 - 18*kappa_1 + 9*kappa_2)/s)
-#define c ((4.50)*(-kappa_3 + 2*kappa_0 - 5*kappa_1 +4*kappa_2)/(s*s))
-#define e ((-4.50)*(-kappa_3 + kappa_0 - 3*kappa_1 + 3*kappa_2)/(s*s*s))
+// Pure Pursuit Arc
+#define l (pow(waypoint1x - sx, 2) + pow(waypoint1y - sy, 2))
+#define r (pow(l,2)/(2*(waypoint1x - sx)))
+#define kappa_d (1.00/r)
 
 // Bounds on variables
 [0,3.1] tau;

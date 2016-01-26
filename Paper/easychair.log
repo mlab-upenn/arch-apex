@@ -1,4 +1,4 @@
-This is LuaTeX, Version beta-0.79.1 (TeX Live 2014) (rev 4971)  (format=lualatex 2014.5.25)  25 JAN 2016 12:39
+This is LuaTeX, Version beta-0.79.1 (TeX Live 2014) (rev 4971)  (format=lualatex 2014.5.25)  26 JAN 2016 14:46
  restricted \write18 enabled.
 **easychair.tex
 (./easychair.tex
@@ -472,21 +472,24 @@ Package: multicol 2014/04/23 v1.8e multicolumn formatting (FMi)
 \wrong@table=\toks31
 \c@CodelineNo=\count149
 )
-(./easychair.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
+(/usr/local/texlive/2014/texmf-dist/tex/latex/comment/comment.sty
+\CommentStream=\write3
+
+Excluding comment 'comment') (./easychair.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
 
 (/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -503,7 +506,7 @@ LaTeX Font Info:    ... okay on input line 77.
 \everyMPtoPDFconversion=\toks33
 )
 \AtBeginShipoutBox=\box59
-Package hyperref Info: Link coloring ON on input line 77.
+Package hyperref Info: Link coloring ON on input line 78.
  (/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -512,12 +515,12 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count156
 )
-LaTeX Info: Redefining \ref on input line 77.
-LaTeX Info: Redefining \pageref on input line 77.
-LaTeX Info: Redefining \nameref on input line 77.
+LaTeX Info: Redefining \ref on input line 78.
+LaTeX Info: Redefining \pageref on input line 78.
+LaTeX Info: Redefining \nameref on input line 78.
 
 (./easychair.out) (./easychair.out)
-\@outlinefile=\write3
+\@outlinefile=\write4
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
@@ -578,115 +581,98 @@ Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             or
 (lastpage)             http://www.ctan.org/tex-archive/ 
 (lastpage)             install/macros/latex/contrib/pageslts.tds.zip
-(lastpage)             ! on input line 77.
-LaTeX Font Info:    Try loading font information for U+lasy on input line 79.
+(lastpage)             ! on input line 78.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 80.
 (/usr/local/texlive/2014/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 108.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 109.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 108.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 109.
 
 
-LaTeX Warning: Citation `blah' on page 1 undefined on input line 119.
+LaTeX Warning: Citation `blah' on page 1 undefined on input line 121.
 
 
-LaTeX Warning: Citation `blah' on page 1 undefined on input line 120.
+LaTeX Warning: Citation `blah' on page 1 undefined on input line 122.
 
 [1
 
 {/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-[2] <figures/pure_pursuit_geom.png, id=95, 601.0455pt x 397.2441pt>
+
+LaTeX Warning: Reference `fig:scenario2' on page 2 undefined on input line 164.
+
+<figures/scenario2.png, id=59, 1078.9911pt x 311.0019pt>
+File: figures/scenario2.png Graphic file (type png)
+
+<use figures/scenario2.png>
+Package pdftex.def Info: figures/scenario2.png used on input line 167.
+(pdftex.def)             Requested size: 431.5888pt x 124.39854pt.
+
+Overfull \hbox (19.02385pt too wide) in paragraph at lines 167--168
+ [][][] 
+ []
+
+[2<./figures/scenario2.png>] [3]
+<figures/pure_pursuit_geom.png, id=70, 601.0455pt x 397.2441pt>
 File: figures/pure_pursuit_geom.png Graphic file (type png)
 
 <use figures/pure_pursuit_geom.png>
-Package pdftex.def Info: figures/pure_pursuit_geom.png used on input line 246.
+Package pdftex.def Info: figures/pure_pursuit_geom.png used on input line 248.
 (pdftex.def)             Requested size: 300.522pt x 198.62155pt.
- [3]
-
-LaTeX Warning: Citation `Ninomiya' on page 4 undefined on input line 262.
-
-[4<./figures/pure_pursuit_geom.png>] (./easychair.bbl [5])
-
-LaTeX Warning: Reference `fig:easychair-logo' on page 6 undefined on input line 
-376.
 
 
-LaTeX Warning: Reference `fig:easythrone' on page 6 undefined on input line 451.
+LaTeX Warning: Citation `Ninomiya' on page 4 undefined on input line 264.
 
-
-[6] <chairEC.pdf, id=144, 150.5625pt x 185.69376pt>
-File: chairEC.pdf Graphic file (type pdf)
- <use chairEC.pdf>
-Package pdftex.def Info: chairEC.pdf used on input line 479.
-(pdftex.def)             Requested size: 115.51767pt x 142.47743pt.
-File: chairEC.pdf Graphic file (type pdf)
-
-<use chairEC.pdf>
-Package pdftex.def Info: chairEC.pdf used on input line 509.
-(pdftex.def)             Requested size: 115.51767pt x 142.47743pt.
-
-Underfull \vbox (badness 1082) has occurred while \output is active []
-
- [7<./chairEC.pdf>]
-File: chairEC.pdf Graphic file (type pdf)
- <use chairEC.pdf>
-Package pdftex.def Info: chairEC.pdf used on input line 532.
-(pdftex.def)             Requested size: 115.51767pt x 142.47743pt.
-File: chairEC.pdf Graphic file (type pdf)
- <use chairEC.pdf>
-Package pdftex.def Info: chairEC.pdf used on input line 554.
-(pdftex.def)             Requested size: 115.51767pt x 142.47743pt.
- 
+[4<./figures/pure_pursuit_geom.png>] [5] (./easychair.bbl)
+Excluding 'comment' comment. 
 AED: lastpage setting LastPage
-[8]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 568.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 568.
+[6]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 591.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 591.
  (./easychair.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 568.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 568.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 591.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 591.
 Package rerunfilecheck Info: File `easychair.out' has not changed.
-(rerunfilecheck)             Checksum: C8FCE036299BEBA62B5DF37BC2B65966;1064.
+(rerunfilecheck)             Checksum: 2A17C98568BA65A89D6ABA7B10F099D1;615.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 568.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 591.
 )
 
 Here is how much of LuaTeX's memory you used:
- 9681 strings out of 494695
+ 9651 strings out of 494695
  100000,266212 words of node,token memory allocated
- 438 words of node memory still in use:
+ 429 words of node memory still in use:
    6 hlist, 2 vlist, 2 rule, 2 glue, 9 kern, 51 glue_spec, 1 action, 2 write nod
 es
-   avail lists: 2:24,3:195,4:1837,5:190,6:2882,7:94,8:22,9:330,10:304
- 12943 multiletter control sequences out of 65536+600000
- 72 fonts using 2839431 bytes
- 46i,13n,45p,664b,491s stack positions out of 5000i,500n,10000p,200000b,100000s
+   avail lists: 2:26,3:163,4:891,5:221,6:2898,7:63,8:10,9:243,10:312
+ 12949 multiletter control sequences out of 65536+600000
+ 57 fonts using 2250595 bytes
+ 46i,11n,45p,664b,461s stack positions out of 5000i,500n,10000p,200000b,100000s
 <</usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><<
 /usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><</u
 sr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><</us
 r/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><</usr/
-local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb><</usr/lo
-cal/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><</usr/loca
-l/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><</usr/local/
-texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><</usr/local/te
-xlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><</usr/local/texli
-ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><</usr/local/texlive/
-2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><</usr/local/texlive/201
-4/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><</usr/local/texlive/2014
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><</usr/local/texlive/2014/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on easychair.pdf (8 pages, 431196 bytes).
+local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><</usr/lo
+cal/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><</usr/loca
+l/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><</usr/local/
+texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><</usr/local/tex
+live/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><</usr/local/texliv
+e/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><</usr/local/texlive/2
+014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><</usr/local/texlive/20
+14/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on easychair.pdf (6 pages, 1307186 bytes).
 
-PDF statistics: 211 PDF objects out of 1000 (max. 8388607)
- 179 compressed objects within 2 object streams
- 48 named destinations out of 1000 (max. 131072)
- 145 words of extra memory for PDF output out of 10000 (max. 10000000)
+PDF statistics: 152 PDF objects out of 1000 (max. 8388607)
+ 125 compressed objects within 2 object streams
+ 33 named destinations out of 1000 (max. 131072)
+ 81 words of extra memory for PDF output out of 10000 (max. 10000000)
 

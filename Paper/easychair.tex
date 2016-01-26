@@ -10,6 +10,7 @@
 %\documentclass[letterpaper]{easychair}
 
 \usepackage{doc}
+\usepackage{comment}
 
 % use this if you have a long article and want to create an index
 % \usepackage{makeidx}
@@ -113,6 +114,7 @@ Matthew O'Kelly\inst{1}
 		\item Logic Perspective: Theorem Proving
 	\end{itemize}
 \end{itemize}
+CPS perspective is an integrated approach that captures the manifestation of errors in the physical world. 
 
 \subsection{A Simple Lane Change}
 \begin{itemize}
@@ -122,8 +124,13 @@ Matthew O'Kelly\inst{1}
 	\item Inductive invariance argument allows verification of infinite time properties
 	\item We extend this scenario with differential inclusions. 
 	\item Problem: we are forced into the tree representation because we cannot bring the trajectory generator in the dReach framework, requires external libraries and iteration. Could be remedied via creation of a lookup table or Neural Network. Alternative is to change the trajectory generation strategy such as Pure Pursuit.
-	\item Pure Pursuit can be represented directly in the Hybrid Program and admits a closed form solution for curvature.
-	\item Using a Hybrid program we now show how the number of paths through the state space grows exponentially with the addition of other agents and events as well as increases in search depth. 
+\end{itemize}
+
+Proofs and lemmas:
+\begin{itemize}
+	\item Proof of compositional nature of safety of sequence of trajectories
+	\item Assume gurantee reasoning for parallelization of verification procedure
+	\item Inductive invariance for search termination at a specified depth. 
 \end{itemize}
 
 \subsection{Variations in Road Geometry}
@@ -149,6 +156,33 @@ Matthew O'Kelly\inst{1}
 			\item Helps to search for viable combinations of specifications
 		\end{itemize}
 	\item Open question if we can guarantee infinite time properties in general case, or on road by road basis via inductive invariant. 
+	\item A second question of interest is the scalability of results involving multiple agents and curved roads. 
+	\item Pure Pursuit can be represented directly in the Hybrid Program and admits a closed form solution for curvature.
+	\item Using a Hybrid program we now show how the number of paths through the state space grows exponentially with the addition of other agents and events as well as increases in search depth. 
+\end{itemize}
+
+We present a scenario as shown in Figure \ref{fig:scenario2}
+\begin{figure}
+	\centering
+	\includegraphics[scale=.4]{figures/scenario2}
+	\caption{A graphical representation of the lane change scenario on a curved road}
+\end{figure}
+\begin{itemize}
+	\item The previous example is the simplest possible instantiation of a lane change scenario
+	\item Here we present an increasingly nuanced view of the the vehicle environment system
+	\begin{itemize}
+		\item Singleton inital sets and deterministic transitions
+		\item Initial sets defined by intervals
+		\item Non-determinism as applied to discrete decisions by the environment
+		\item Automaton complexity in terms of states as number of agents grows
+		\item Automaton complexity in terms of states as number of reference trajectories grows
+		\item Search complexity in terms of path length as number of agents grows
+		\item Search complexity in terms of path length as number of reference trajectories grows
+		\item Non-deterministic scheduling of trajectory update
+		\item Environment agents continuous dynamics are represented as differential inclusions (another form of non-determinism)
+		\item Ego vehicle agents continuous dynamics are disturbed via errors represented as differntial inclusions
+		\item Ego vehicle and environmental agents subjected to discrete events representing sensor or actuator failures.
+	\end{itemize}
 \end{itemize}
 %Here we present a toy problem which explains why testing and monotonicity arguments might fail. This example was first presented in \cite{blah blah}.
 %\begin{figure}[h]
@@ -168,37 +202,6 @@ For example, while passing through intersections with a blind corner, the proact
 
 In previous works as first step towards creating data-driven proactive ADAS is to understand the behavior of a variety of human drivers. Thus, we collected and analyzed driving data on a public road where drivers need to anticipate unseen dangers. Tests included driving in a residential area, performed by both expert and elderly subjects and accurately analyzed by means of a high-precision data acquisition system. 
 
-\subsection{Contributions}
-
-
-	
-	\begin{itemize}
-		\item Types of Uncertainty:
-		\begin{itemize}
-			\item Scenario Configuration
-			\item Initial Estimation Errors
-			\item Noise in dynamics
-			\item Sensor estimation errors
-			\item Sensing thresholds
-		\end{itemize}
-	\end{itemize}
-	\begin{itemize}
-		\item Scenario 1: Obstacle avoidance on a sharp curve
-		\begin{itemize}
-			\item No longer have clear invariant cut
-		\end{itemize}
-		\item Scenario 2: T-Junction
-		\begin{itemize}
-			\item Variant: Traffic light
-			\item Variant: Pedestrian
-		\end{itemize}
-		\item Scenario 3: Obstructed T-Junction
-		\begin{itemize}
-			\item Map provides knowledge of obstruction and automatically adjusts behavior
-		\end{itemize}
-	\end{itemize}
-
-
 %------------------------------------------------------------------------------
 
 %------------------------------------------------------------------------------
@@ -206,12 +209,11 @@ In previous works as first step towards creating data-driven proactive ADAS is t
 \label{sect:model}
 %\emph{Key new idea:} Examine continuous evolution of ego-vehicle, but only discrete evolution of environment. Give environment grid-based abstraction. We don't know the control inputs for the environment anyway\newline
 %\emph{Re-examine grid based timed automaton:} Can't really capture accelerations and nuance? 
-New ideas:
-\begin{itemize}
-	\item Perception
-	\item Computation and Scheduling
-	\item Traffic Participants
-\end{itemize}
+%\begin{itemize}
+%	\item Perception
+%	\item Computation and Scheduling
+%	\item Traffic Participants
+%\end{itemize}
 
 
 \subsection{Vehicle}
@@ -325,16 +327,36 @@ Note that   is a parameter defining the x position of a potential traffic partic
 \end{itemize}
 
 %------------------------------------------------------------------------------
-\section{Scenarios}
-\label{sect:scenarios}
 
-\section{Verification Engines}
-
-\section{Results}
 
 \section{Conclusions}
 
-
+	\begin{itemize}
+		\item Types of Uncertainty:
+		\begin{itemize}
+			\item Scenario Configuration
+			\item Initial Estimation Errors
+			\item Noise in dynamics
+			\item Sensor estimation errors
+			\item Sensing thresholds
+		\end{itemize}
+	\end{itemize}
+	\begin{itemize}
+		\item Scenario 1: Lane change on straight road with two agents
+		
+		\item Scenario 2: Curved road with hybrid program representation
+		\begin{itemize}
+			\item No longer have clear invariant cut
+		\end{itemize}
+		\item Scenario 3: Obstructed T-Junction
+		\begin{itemize}
+			\item Map provides knowledge of obstruction and automatically adjusts behavior
+		\end{itemize}
+		\begin{itemize}
+			\item Variant: Traffic light
+			\item Variant: Pedestrian
+		\end{itemize}
+	\end{itemize}
 
 
 \label{sect:bib}
@@ -344,6 +366,7 @@ Note that   is a parameter defining the x position of a potential traffic partic
 %\bibliographystyle{abbrv}
 \bibliography{easychair}
 
+\begin{comment}
 %------------------------------------------------------------------------------
 \appendix
 \section{Formatting Information}
@@ -558,7 +581,7 @@ in 2009:
 			you may post your whole article on Twitter in a single tweet. However,
 			it may also may parts of your text virtually unreadable with an
 			unfortunate side effect of annoying reviewers. 
-
+\end{comment}
 
 %------------------------------------------------------------------------------
 % Index

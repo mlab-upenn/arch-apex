@@ -3,9 +3,11 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: easychair.aux
 The style file: plain.bst
 Database file #1: easychair.bib
+Warning--I didn't find a database entry for "blah"
+Warning--I didn't find a database entry for "Ninomiya"
 You've used 1 entry,
             2118 wiz_defined-function locations,
-            501 strings with 4168 characters,
+            504 strings with 4188 characters,
 and the built_in function-call counts, 228 in all, are:
 = -- 20
 > -- 7
@@ -44,3 +46,4 @@ warning$ -- 0
 while$ -- 2
 width$ -- 2
 write$ -- 12
+(There were 2 warnings)

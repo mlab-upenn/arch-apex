@@ -29,7 +29,13 @@
 \newcommand{\texniccenter}{{\TeX}nicCenter}
 \newcommand{\makefile}{\texttt{Makefile}}
 \newcommand{\latexeditor}{LEd}
+\usepackage[ruled]{algorithm}
+\usepackage{algpseudocode}
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}
 
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
 %\makeindex
 
 %% Front Matter
@@ -116,22 +122,184 @@ Matthew O'Kelly\inst{1}
 \end{itemize}
 CPS perspective is an integrated approach that captures the manifestation of errors in the physical world. 
 
+%------------------------------------------------------------------------------
+\section{Models}
+\label{sect:model}
+%\emph{Key new idea:} Examine continuous evolution of ego-vehicle, but only discrete evolution of environment. Give environment grid-based abstraction. We don't know the control inputs for the environment anyway\newline
+%\emph{Re-examine grid based timed automaton:} Can't really capture accelerations and nuance? 
+%\begin{itemize}
+%	\item Perception
+%	\item Computation and Scheduling
+%	\item Traffic Participants
+%\end{itemize}
+
+
+\subsection{Vehicle}
+\begin{itemize}
+	\item Vehicle Dynamics: Bicycle Model
+	\item Planning
+\end{itemize}
+
+\subsection{Pure Pursuit}
+The simplest algorithm for path tracking and trajectory generation...
+From a type perspective what is the difference between arc and spline? 
+Geometrically, the arc satisfies \textbf{convexity}. 
+\begin{itemize}
+	\item Given a current position at the vehicles rear differential and a goal...
+	\item The algorithm computes a constant curvature arc between the current position and the goal.
+	\item The vehicle may then actuate its steering system such that the curvature of the arc is tracked.
+	\item Downside is discontinuity between curvatures when the algorithm is iterated
+	\item Is also reliant on waypoints, does not generate alternate maneuvers unless explicitly told to switch goals. 
+\end{itemize}
+\textbf{Algorithm:}
+\begin{itemize}
+	\item Update vehicle state
+	\item Find nearest path point
+	\item Find the goal point
+	\item Transform goal to vehicle coordinates
+	\item Calculate desired curvature
+	\item Set steering to desired curvature
+	\item Update position
+\end{itemize}
+\begin{figure}
+	\centering
+	\includegraphics[scale=.5]{figures/pure_pursuit_geom}
+	\caption{Geometry of Pure Pursuit Algorithm}
+\end{figure}
+\begin{align}
+x^2+y^2=l^2\\
+x+d=r
+\end{align}
+
+\noindent Now for the curvature such that:
+\begin{align}
+r=\frac{l^2}{2x}\\
+\gamma=\frac{2x}{l^2}
+\end{align}
+
+
+\subsection{Behavioral Controller}
+In \cite{Ninomiya} the authors develop a behavioral controller which mimics expert driving instructor behavior at blind corners. Specifically such drivers anticipate unseen obstacles and dangers. Such drivers should take different actions depending on their prediction of other potential traffic participants, including both pedestrians and vehicles. We allow that other traffic participants may not be within the sight of the test subject. As such the driver model is defined by three rules each of which produce an update to the vehicles acceleration: 
+\begin{itemize}
+	\item If a potential (even unseen) traffic participant is likely to collide, the driver will brake proactively, 
+	\item else if the current speed is below a desired speed, accelerate, 
+	\item otherwise, keep the current speed. 
+\end{itemize}
+
+Assuming that the ego vehicle and a potential traffic participant are point masses and will cross perpendicularly, we will model the above rules by acceleration of the ego vehicle:
+
+\begin{equation}
+y_{ot}+v_{ot}t_c < \frac{w}{2} \to a_{et} = \frac{v_{et}^2 - v_{min}^2}{2(x_{et}-x_{min})} 
+\end{equation} 
+
+\begin{equation}
+v_{et}<v_d \to a_{et}=	\frac{v_{d}^2 -v_{et}^2}{2(x_d - x_{et})}
+\end{equation}
+
+\noindent Otherwise...
+\begin{equation}
+a_{et}=0
+\end{equation}
+Here, $(x_{et}, y_{et}, v_{et})$,$(x_{ot}, y_{ot}, v_{ot})$, $(x_d,v_d)$ are the position and speed of ego vehicle at time t, the current position and speed of a potential traffic participant at time t, and the desired final state of the ego vehicle, respectively. $(x_{min},v_{min})$  is the state (position and speed) after finishing deceleration. By introducing a minimum admissible displacement $\epsilon$ , $x_{min}$  can be expressed as
+\begin{equation}
+x_{min} - x_0=\epsilon
+\end{equation}
+
+
+Where $t_c$  is a predicted time to collision derived as a function of the speed of the ego-vehicle:
+\begin{equation}
+t_c=max(\frac{x_{ot}-x_{et}}{v_{et}},0)
+\end{equation}
+
+Thus, the condition $y_{ot}+v_{ot}t_c < \frac{w}{2}$  means that the trajectory of the potential traffic participant will reach and stay within a set in which collision is possible $w$, at the time to collision. We assume that the potential traffic participants begin their paths behind a wall in the occluded region on the left of the intersection.\\
+\textbf{This changes... because we will add differential inclusions}\\
+Each traffic participant may move at a constant speed, from left to right in the scene. This is a reasonable assumption because the side road restricts vehicles to drive one way. Given the wall position $(x_w,y_w)$, the position $(x_{ot},y_{ot})$  are expressed as
+\begin{equation}
+x_{ot}=\gamma d + x_{w}
+\end{equation}
+\begin{equation}
+y_{ot} = \gamma d + (x_w - x_{et})tan(\rho_t) +y_{et}
+\end{equation}
+
+Here, $d$ is the width of the side road and $\rho_t$ is the current field of view from the ego vehicle driver computed as:
+\begin{equation}
+tan(\rho_t) = \frac{y_w-y_{et}}{x_w - x_{et}}
+\end{equation}
+
+Note that   is a parameter defining the x position of a potential traffic participant that takes a value from 0 to 1. From equations (1) to (9), one can compute a desired speed profile and trajectory with which the driver can avoid collision to a potential traffic participant coming out from the position $(x_{ot},y_{ot})$ at speed $v_o$.
+
+
+\noindent \textbf{Traffic Control}
+\begin{itemize}
+	\item Stop Sign
+	\item Speed Limit
+	\item Yield
+	\item Traffic Light
+\end{itemize}
+
+\noindent \textbf{Pedestrians}
+\begin{itemize}
+	\item Dynamics
+	\item Grid based abstraction
+	\item Non determinism
+\end{itemize}
+
+%------------------------------------------------------------------------------
+\section{Benchmarks}
 \subsection{A Simple Lane Change}
 \begin{itemize}
 	\item We first present this scenario in \cite{blah}
 	\item Other authors \cite{blah} have considered with static obstacles
 	\item Counterexamples are somewhat obvious
 	\item Inductive invariance argument allows verification of infinite time properties
+		\item Most examples involving forward safety are monotonic ie selecting a lower operating speed implies an decrease in stopping time and improves the forward safety of the vehicle. 
+		\item In such problems there are no ``holes" in the interval. 
+		\item Resulting proofs seem to indicate that testing would be sufficient to find counterexamples because unsafe results occur at extreme points in the state space only.
+		\begin{itemize}
+			\item Verification still provides a guarantee of safety that was not previously available. 
+			\item Verification is still useful for formally verifying specifications and interaction between supplier systems and vehicle dynamics.
+			\item Helps to search for viable combinations of specifications
+		\end{itemize}
 	\item We extend this scenario with differential inclusions. 
 	\item Problem: we are forced into the tree representation because we cannot bring the trajectory generator in the dReach framework, requires external libraries and iteration. Could be remedied via creation of a lookup table or Neural Network. Alternative is to change the trajectory generation strategy such as Pure Pursuit.
 \end{itemize}
 
+\subsection{Algorithm}
+How we establish safety of a decision controller.
+\begin{algorithm}
+	\caption{Check Trajectory Sequence}
+	\label{algo:trajseq}
+	\begin{algorithmic}
+		\State \textbf{checkSequence} (searchDepth)
+		\State  bool $safetyVar := TRUE$
+		\State int $depth := 0$
+		\While {$depth \leq searchDepth$}
+		\State float* $trajectoryParam = getNextTrajectory(depth)$
+		\State $safetyVar := checkTrajectory(trajectoryParam)$
+		\State
+		\EndWhile
+		\State \Return {$safetyVar$}
+	\end{algorithmic}
+\end{algorithm}
 Proofs and lemmas:
 \begin{itemize}
 	\item Proof of compositional nature of safety of sequence of trajectories
 	\item Assume gurantee reasoning for parallelization of verification procedure
 	\item Inductive invariance for search termination at a specified depth. 
 \end{itemize}
+
+\begin{theorem}
+	Proof of compositional nature of safety of sequence of trajectories
+\end{theorem}
+
+\begin{theorem}
+	Contract for parallel composition of verification instances
+\end{theorem}
+
+\begin{theorem}
+	Inductive invariance for search termination at a specified depth. 
+\end{theorem}
+
 
 \subsection{Variations in Road Geometry}
 %\textbf{Random Ideas, not to be taken seriously}
@@ -144,17 +312,11 @@ Proofs and lemmas:
 %\end{itemize}
 
 \begin{itemize}
+	\item In order to pursue more complex scenarios with more expressive agents we propose a variation in the trajectory generation strategy which admits a closed form
 	\item Implement pure pursuit trajectory generation strategy...
 \end{itemize}
 \begin{itemize}
-	\item Most examples involving forward safety are monotonic ie selecting a lower operating speed implies an decrease in stopping time and improves the forward safety of the vehicle. 
-	\item In such problems there are no ``holes" in the interval. 
-	\item Resulting proofs seem to indicate that testing would be sufficient to find counterexamples because unsafe results occur at extreme points in the state space only.
-		\begin{itemize}
-			\item Verification still provides a guarantee of safety that was not previously available. 
-			\item Verification is still useful for formally verifying specifications and interaction between supplier systems and vehicle dynamics.
-			\item Helps to search for viable combinations of specifications
-		\end{itemize}
+
 	\item Open question if we can guarantee infinite time properties in general case, or on road by road basis via inductive invariant. 
 	\item A second question of interest is the scalability of results involving multiple agents and curved roads. 
 	\item Pure Pursuit can be represented directly in the Hybrid Program and admits a closed form solution for curvature.
@@ -205,126 +367,6 @@ In previous works as first step towards creating data-driven proactive ADAS is t
 %------------------------------------------------------------------------------
 
 %------------------------------------------------------------------------------
-\section{Models}
-\label{sect:model}
-%\emph{Key new idea:} Examine continuous evolution of ego-vehicle, but only discrete evolution of environment. Give environment grid-based abstraction. We don't know the control inputs for the environment anyway\newline
-%\emph{Re-examine grid based timed automaton:} Can't really capture accelerations and nuance? 
-%\begin{itemize}
-%	\item Perception
-%	\item Computation and Scheduling
-%	\item Traffic Participants
-%\end{itemize}
-
-
-\subsection{Vehicle}
-\begin{itemize}
-	\item Vehicle Dynamics: Bicycle Model
-	\item Planning
-\end{itemize}
-
-\subsection{Pure Pursuit}
-The simplest algorithm for path tracking and trajectory generation...
-From a type perspective what is the difference between arc and spline? 
-Geometrically, the arc satisfies \textbf{convexity}. 
-\begin{itemize}
-	\item Given a current position at the vehicles rear differential and a goal...
-	\item The algorithm computes a constant curvature arc between the current position and the goal.
-	\item The vehicle may then actuate its steering system such that the curvature of the arc is tracked.
-	\item Downside is discontinuity between curvatures when the algorithm is iterated
-	\item Is also reliant on waypoints, does not generate alternate maneuvers unless explicitly told to switch goals. 
-\end{itemize}
-\textbf{Algorithm:}
-\begin{itemize}
-	\item Update vehicle state
-	\item Find nearest path point
-	\item Find the goal point
-	\item Transform goal to vehicle coordinates
-	\item Calculate desired curvature
-	\item Set steering to desired curvature
-	\item Update position
-\end{itemize}
-\begin{figure}
-	\centering
-	\includegraphics[scale=.5]{figures/pure_pursuit_geom}
-	\caption{Geometry of Pure Pursuit Algorithm}
-\end{figure}
-\begin{align}
-	x^2+y^2=l^2\\
-	x+d=r
-\end{align}
-
-\noindent Now for the curvature such that:
-\begin{align}
-	r=\frac{l^2}{2x}\\
-	\gamma=\frac{2x}{l^2}
-\end{align}
-
-
-\subsection{Behavioral Controller}
-In \cite{Ninomiya} the authors develop a behavioral controller which mimics expert driving instructor behavior at blind corners. Specifically such drivers anticipate unseen obstacles and dangers. Such drivers should take different actions depending on their prediction of other potential traffic participants, including both pedestrians and vehicles. We allow that other traffic participants may not be within the sight of the test subject. As such the driver model is defined by three rules each of which produce an update to the vehicles acceleration: 
-\begin{itemize}
-	\item If a potential (even unseen) traffic participant is likely to collide, the driver will brake proactively, 
-	\item else if the current speed is below a desired speed, accelerate, 
-	\item otherwise, keep the current speed. 
-\end{itemize}
-
-Assuming that the ego vehicle and a potential traffic participant are point masses and will cross perpendicularly, we will model the above rules by acceleration of the ego vehicle:
-
-\begin{equation}
-y_{ot}+v_{ot}t_c < \frac{w}{2} \to a_{et} = \frac{v_{et}^2 - v_{min}^2}{2(x_{et}-x_{min})} 
-\end{equation} 
-
-\begin{equation}
-v_{et}<v_d \to a_{et}=	\frac{v_{d}^2 -v_{et}^2}{2(x_d - x_{et})}
-\end{equation}
-
-\noindent Otherwise...
-\begin{equation}
-  a_{et}=0
-\end{equation}
-Here, $(x_{et}, y_{et}, v_{et})$,$(x_{ot}, y_{ot}, v_{ot})$, $(x_d,v_d)$ are the position and speed of ego vehicle at time t, the current position and speed of a potential traffic participant at time t, and the desired final state of the ego vehicle, respectively. $(x_{min},v_{min})$  is the state (position and speed) after finishing deceleration. By introducing a minimum admissible displacement $\epsilon$ , $x_{min}$  can be expressed as
-\begin{equation}
-	x_{min} - x_0=\epsilon
-\end{equation}
-
-
-Where $t_c$  is a predicted time to collision derived as a function of the speed of the ego-vehicle:
-\begin{equation}
-	t_c=max(\frac{x_{ot}-x_{et}}{v_{et}},0)
-\end{equation}
-
-Thus, the condition $y_{ot}+v_{ot}t_c < \frac{w}{2}$  means that the trajectory of the potential traffic participant will reach and stay within a set in which collision is possible $w$, at the time to collision. We assume that the potential traffic participants begin their paths behind a wall in the occluded region on the left of the intersection.\\
-\textbf{This changes... because we will add differential inclusions}\\
-Each traffic participant may move at a constant speed, from left to right in the scene. This is a reasonable assumption because the side road restricts vehicles to drive one way. Given the wall position $(x_w,y_w)$, the position $(x_{ot},y_{ot})$  are expressed as
-\begin{equation}
- x_{ot}=\gamma d + x_{w}
-\end{equation}
-\begin{equation}
-y_{ot} = \gamma d + (x_w - x_{et})tan(\rho_t) +y_{et}
-\end{equation}
-
-Here, $d$ is the width of the side road and $\rho_t$ is the current field of view from the ego vehicle driver computed as:
-\begin{equation}
-	tan(\rho_t) = \frac{y_w-y_{et}}{x_w - x_{et}}
-\end{equation}
-
-Note that   is a parameter defining the x position of a potential traffic participant that takes a value from 0 to 1. From equations (1) to (9), one can compute a desired speed profile and trajectory with which the driver can avoid collision to a potential traffic participant coming out from the position $(x_{ot},y_{ot})$ at speed $v_o$.
-
-
-\noindent \textbf{Traffic Control}
-\begin{itemize}
-	\item Stop Sign
-	\item Speed Limit
-	\item Yield
-	\item Traffic Light
-\end{itemize}
-
-\noindent \textbf{Pedestrians}
-\begin{itemize}
-	\item Dynamics
-	\item Grid based abstraction
-	\item Non determinism
-\end{itemize}
 
 %------------------------------------------------------------------------------
 

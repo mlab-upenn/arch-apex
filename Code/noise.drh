@@ -1,0 +1,24 @@
+[0, 20] x;
+[-9.8] g;
+[-100, 100] v;
+[0, 20] time;
+[-1, 0] noise [1.0];
+
+{ mode 1;
+
+  invt:
+        (v <= 0);
+        (x >= 0);
+  flow:
+        d/dt[x] = v + noise;
+        d/dt[v] = g + noise;
+        d/dt[noise] = 0;
+  jump:
+
+}
+
+init:
+@1(and (x=18) (v=-2));
+
+goal:
+@1 (x<2);

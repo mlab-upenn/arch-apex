@@ -1,0 +1,113 @@
+// Constants
+#define m 2273.0
+#define Iz 4423.0
+#define Cf 108000.0
+#define Cr 108000.0
+#define lf 1.292
+#define lr 1.515
+#define k1 2.0
+#define k2 12.0
+#define k3 4.0
+#define k4 2.0
+#define k5 1.0
+#define k6 10.0
+
+// Scenario parameters
+// Width of road
+#define w 3.7
+// Desired velocity
+#define v_d 11.11
+// Acceleration of environmental vehicle.
+#define a_env 0.0
+
+// Helpers to clean up equations...
+#define cl (Cr*lr-Cf*lf)
+
+// Tracking controller inputs
+// Rate of change of front wheel angle
+#define vw k1*(cos(Psi_d)*(sy_d - sy) - sin(Psi_d)*(sx_d - sx)) +k2*(Psi_d - Psi) +k3*(Psi_dot_d - Psi_dot) -k4*(delta)
+
+// Longitudinal acceleration
+#define ax  k5*(cos(Psi_d)*(sx_d - sx) + sin(Psi_d)*(sy_d - sy)) +k6*(v_d-v)
+
+// Cubic spline inputs
+#define a (kappa_0)
+#define b ((-0.50)*(-2*kappa_3 + 11*kappa_0 - 18*kappa_1 + 9*kappa_2)/s)
+#define c ((4.50)*(-kappa_3 + 2*kappa_0 - 5*kappa_1 +4*kappa_2)/(s*s))
+#define e ((-4.50)*(-kappa_3 + kappa_0 - 3*kappa_1 + 3*kappa_2)/(s*s*s))
+
+// Bounds on variables
+[0,3.1] tau;
+[-2,2.03] Beta;
+[-2,2.04] Psi;
+[-2,2.05] Psi_dot;
+[6,12] v;
+[0,50] sx;
+[0,10] sy;
+[-2, 2.04] delta;
+[0, 3.1] time;
+
+[-2,2.06] kappa_d;
+[-2,2.07] Psi_d;
+[0,50] sx_d;
+[0,10] sy_d;
+[-2,2.08] Psi_dot_d;
+[0, 51] sx_env;
+
+// Dynamics
+{
+    // Lane change motion primitive
+    mode 1;
+
+    invt:
+    // X position must be greater than or equal to 0
+    (sx>=0);
+    // Velocity must be greater than or equal to 0
+    (v>=0);
+
+    flow:
+    /* TARGET VEHICLE */
+    /* Plant equations */
+    // Time
+    d/dt[tau]=1;
+    // Compute rate of change of the slip angle
+    d/dt[Beta]=((cl/(m*v*v))-1.0)*Psi_dot + Cf*delta/(m*v) - (Cf+Cr)*Beta/(m*v);
+    // Rate of change of the heading angle is equal to yaw rate
+    d/dt[Psi]=Psi_dot;
+    // Rate of change of yaw rate
+    d/dt[Psi_dot]=(cl*Beta/Iz) - ((lf*lf*Cf+lr*lr*Cr)/Iz)*(Psi_dot/v) + (lf*Cf)*delta/Iz;
+    // Longitudinal acceleration
+    d/dt[v]=ax;
+    // X component of velocity
+    d/dt[sx]=v*cos(Beta+Psi);
+    // Y component of velocity
+    d/dt[sy]=v*sin(Beta+Psi);
+    // Rate of change of front wheel angle.
+    d/dt[delta]=vw;
+
+    /*Trajectory and Tracking Equations*/
+    d/dt[kappa_d] = b*v_d + 2*c*v_d*v_d*tau + 3*e*v_d*v_d*v_d*tau*tau ;
+    d/dt[Psi_d] = v_d*kappa_d;
+    d/dt[sx_d] = v_d*cos(Psi_d);
+    d/dt[sy_d] = v_d*sin(Psi_d);
+    d/dt[Psi_dot_d] = v_d*(b*v_d + 2*c*v_d*v_d*tau + 3*e*v_d*v_d*v_d*tau*tau);
+
+    
+    // Other Vehicle 
+    d/dt[sx_env]=0.0;
+
+    jump:
+}
+
+init: 
+@1 (and (sx>=0) (sx<=0.5) (sy>=0) (sy<=0.05) (v>=10.9) (v=11.1) (sx_d=0) (sy_d=0) 
+    (Psi>=0) (Psi<=0.2) (Psi_dot=0) (Beta=0) (delta=0) (tau=0) 
+    (Psi_d=0) (Psi_dot_d=0)
+    (sx_env=20) (kappa_d=0));
+
+goal:
+//@1 (tau=4);
+//@1 (or (and (sy<w) (tau>2) (tau<3)) (and (sy<w) (sx>sx_env)));
+//@1 (and (sy>w) (sx>sx_env));
+@1 (and (sy<w) (sx>sx_env));
+//@1 ((and (sy<w) (tau=3) ));

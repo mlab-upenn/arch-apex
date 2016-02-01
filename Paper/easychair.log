@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  28 JAN 2016 20:42
 entering extended mode
+=======
+This is LuaTeX, Version beta-0.79.1 (TeX Live 2014) (rev 4971)  (format=lualatex 2014.5.25)  30 JAN 2016 19:19
+>>>>>>> 89af5deb8c5b5a59ebf2a52634e24f764d847bc4
  restricted \write18 enabled.
  %&-line parsing enabled.
 **easychair.tex
@@ -479,8 +483,13 @@ Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 Package: xkeyval 2014/05/09 v2.6d package option processing (HA)
 
 (/usr/local/texlive/2014/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+<<<<<<< HEAD
 \XKV@toks=\toks31
 \XKV@tempa@toks=\toks32
+=======
+\XKV@toks=\toks32
+\XKV@tempa@toks=\toks33
+>>>>>>> 89af5deb8c5b5a59ebf2a52634e24f764d847bc4
 \XKV@depth=\count150
 File: xkeyval.tex 2014/05/09 v2.6d key=value parser (HA)
 ))
@@ -507,7 +516,11 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 (/usr/local/texlive/2014/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
 (/usr/local/texlive/2014/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
 x
+<<<<<<< HEAD
 \pgfutil@everybye=\toks33
+=======
+\pgfutil@everybye=\toks34
+>>>>>>> 89af5deb8c5b5a59ebf2a52634e24f764d847bc4
 \pgfutil@tempdima=\dimen162
 \pgfutil@tempdimb=\dimen163
 
@@ -522,17 +535,30 @@ Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
 Package: pgfrcs 2013/12/20 v3.0.0 (rcs-revision 1.28)
 ))
 Package: pgf 2013/12/18 v3.0.0 (rcs-revision 1.14)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 89af5deb8c5b5a59ebf2a52634e24f764d847bc4
 (/usr/local/texlive/2014/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
 (/usr/local/texlive/2014/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
 (/usr/local/texlive/2014/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2013/11/30 v3.0.0 (rcs-revision 1.47)
 (/usr/local/texlive/2014/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+<<<<<<< HEAD
 \pgfkeys@pathtoks=\toks34
 \pgfkeys@temptoks=\toks35
 
 (/usr/local/texlive/2014/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.c
 ode.tex
 \pgfkeys@tmptoks=\toks36
+=======
+\pgfkeys@pathtoks=\toks35
+\pgfkeys@temptoks=\toks36
+
+(/usr/local/texlive/2014/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.c
+ode.tex
+\pgfkeys@tmptoks=\toks37
+>>>>>>> 89af5deb8c5b5a59ebf2a52634e24f764d847bc4
 ))
 \pgf@x=\dimen164
 \pgf@y=\dimen165
@@ -548,9 +574,15 @@ ode.tex
 \c@pgf@countb=\count152
 \c@pgf@countc=\count153
 \c@pgf@countd=\count154
+<<<<<<< HEAD
 \t@pgf@toka=\toks37
 \t@pgf@tokb=\toks38
 \t@pgf@tokc=\toks39
+=======
+\t@pgf@toka=\toks38
+\t@pgf@tokb=\toks39
+\t@pgf@tokc=\toks40
+>>>>>>> 89af5deb8c5b5a59ebf2a52634e24f764d847bc4
 
 (/usr/local/texlive/2014/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
@@ -584,9 +616,15 @@ Package: pgfcore 2010/04/11 v3.0.0 (rcs-revision 1.7)
 \pgfmath@dimen=\dimen172
 \pgfmath@count=\count157
 \pgfmath@box=\box59
+<<<<<<< HEAD
 \pgfmath@toks=\toks40
 \pgfmath@stack@operand=\toks41
 \pgfmath@stack@operation=\toks42
+=======
+\pgfmath@toks=\toks41
+\pgfmath@stack@operand=\toks42
+\pgfmath@stack@operation=\toks43
+>>>>>>> 89af5deb8c5b5a59ebf2a52634e24f764d847bc4
 )
 (/usr/local/texlive/2014/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.
 tex
@@ -724,8 +762,13 @@ Package: pgfcomp-version-1-18 2007/07/23 v3.0.0 (rcs-revision 1.1)
 ))
 (/usr/local/texlive/2014/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
 (/usr/local/texlive/2014/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+<<<<<<< HEAD
 (/usr/local/texlive/2014/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)
 ) (/usr/local/texlive/2014/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+=======
+(/usr/local/texlive/2014/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+>>>>>>> 89af5deb8c5b5a59ebf2a52634e24f764d847bc4
 (/usr/local/texlive/2014/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
 (/usr/local/texlive/2014/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 Package: pgffor 2013/12/13 v3.0.0 (rcs-revision 1.25)
@@ -733,8 +776,13 @@ Package: pgffor 2013/12/13 v3.0.0 (rcs-revision 1.25)
 (/usr/local/texlive/2014/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
 \pgffor@iter=\dimen199
 \pgffor@skip=\dimen200
+<<<<<<< HEAD
 \pgffor@stack=\toks43
 \pgffor@toks=\toks44
+=======
+\pgffor@stack=\toks44
+\pgffor@toks=\toks45
+>>>>>>> 89af5deb8c5b5a59ebf2a52634e24f764d847bc4
 ))
 (/usr/local/texlive/2014/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.cod
 e.tex
@@ -787,12 +835,21 @@ nment
 (/usr/local/texlive/2014/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count171
+<<<<<<< HEAD
 \float@exts=\toks45
 \float@box=\box69
 \@float@everytoks=\toks46
 \@floatcapt=\box70
 )
 \@float@every@algorithm=\toks47
+=======
+\float@exts=\toks46
+\float@box=\box69
+\@float@everytoks=\toks47
+\@floatcapt=\box70
+)
+\@float@every@algorithm=\toks48
+>>>>>>> 89af5deb8c5b5a59ebf2a52634e24f764d847bc4
 \c@algorithm=\count172
 )
 (/usr/local/texlive/2014/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
@@ -819,6 +876,7 @@ Document Style - pseudocode environments for use with the `algorithmicx' style
 Package amsthm Warning: Unknown theoremstyle `theorem' on input line 34.
 
 \c@theorem=\count180
+<<<<<<< HEAD
 (./easychair.aux)
 \openout1 = `easychair.aux'.
 
@@ -836,6 +894,108 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 84.
 LaTeX Font Info:    ... okay on input line 84.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 84.
 LaTeX Font Info:    ... okay on input line 84.
+=======
+! Misplaced \crcr.
+\endtabular  -\crcr 
+                    \egroup \egroup $\egroup 
+l.73 \and
+       
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Too many }'s.
+\endtabular \-\crcr \egroup 
+                            \egroup $\egroup 
+l.73 \and
+       
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+! Too many }'s.
+\endtabular \-\crcr \egroup \egroup 
+                                    $\egroup 
+l.73 \and
+       
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.73 \and
+       
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+LaTeX Font Info:    Try loading font information for U+lasy on input line 73.
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+! Extra }, or forgotten $.
+<recently read> \egroup 
+        
+l.73 \and
+       
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+! LaTeX Error: \begin{document} ended by \end{tabular}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.73 \and
+       
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+$
+l.73 \and
+       
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Extra \endgroup.
+<recently read> \endgroup 
+          
+l.73 \and
+       
+Things are pretty mixed up, but I think the worst is over.
+
+(./easychair.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 95.
+LaTeX Font Info:    ... okay on input line 95.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 95.
+LaTeX Font Info:    ... okay on input line 95.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 95.
+LaTeX Font Info:    ... okay on input line 95.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 95.
+LaTeX Font Info:    ... okay on input line 95.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 95.
+LaTeX Font Info:    ... okay on input line 95.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 95.
+LaTeX Font Info:    ... okay on input line 95.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 95.
+LaTeX Font Info:    ... okay on input line 95.
+>>>>>>> 89af5deb8c5b5a59ebf2a52634e24f764d847bc4
 
 (/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -844,15 +1004,26 @@ LaTeX Font Info:    ... okay on input line 84.
 \scratchbox=\box71
 \nofMPsegments=\count182
 \nofMParguments=\count183
+<<<<<<< HEAD
 \everyMPshowfont=\toks48
+=======
+\everyMPshowfont=\toks49
+>>>>>>> 89af5deb8c5b5a59ebf2a52634e24f764d847bc4
 \MPscratchCnt=\count184
 \MPscratchDim=\dimen209
 \MPnumerator=\count185
 \makeMPintoPDFobject=\count186
+<<<<<<< HEAD
 \everyMPtoPDFconversion=\toks49
 )
 \AtBeginShipoutBox=\box72
 Package hyperref Info: Link coloring ON on input line 84.
+=======
+\everyMPtoPDFconversion=\toks50
+)
+\AtBeginShipoutBox=\box72
+Package hyperref Info: Link coloring ON on input line 95.
+>>>>>>> 89af5deb8c5b5a59ebf2a52634e24f764d847bc4
  (/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -861,14 +1032,17 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count187
 )
-LaTeX Info: Redefining \ref on input line 84.
-LaTeX Info: Redefining \pageref on input line 84.
-LaTeX Info: Redefining \nameref on input line 84.
+LaTeX Info: Redefining \ref on input line 95.
+LaTeX Info: Redefining \pageref on input line 95.
+LaTeX Info: Redefining \nameref on input line 95.
 
 (./easychair.out) (./easychair.out)
 \@outlinefile=\write5
+<<<<<<< HEAD
 \openout5 = `easychair.out'.
 
+=======
+>>>>>>> 89af5deb8c5b5a59ebf2a52634e24f764d847bc4
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
@@ -929,6 +1103,7 @@ Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             or
 (lastpage)             http://www.ctan.org/tex-archive/ 
 (lastpage)             install/macros/latex/contrib/pageslts.tds.zip
+<<<<<<< HEAD
 (lastpage)             ! on input line 84.
 ABD: EveryShipout initializing macros
 LaTeX Font Info:    Try loading font information for U+lasy on input line 86.
@@ -1047,3 +1222,26 @@ PDF statistics:
  41 named destinations out of 1000 (max. 500000)
  127 words of extra memory for PDF output out of 10000 (max. 10000000)
 
+=======
+(lastpage)             ! on input line 95.
+ABD: EveryShipout initializing macros
+! Missing \endgroup inserted.
+<inserted text> 
+\endgroup 
+l.97 \maketitle
+             
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+}
+l.97 \maketitle
+             
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this w
+>>>>>>> 89af5deb8c5b5a59ebf2a52634e24f764d847bc4

@@ -1,16 +1,38 @@
-// Scenario parameters
+// SCENARIO PARAMETERS //
+
 // Width of road
 #define w 3.7
+
 // Desired velocity of ego vehicle
 #define v_d 11.11
 
 // Waypoints X: Lane 1
-#define waypoint1x 20.00
+#define L1_waypoint1x 5.00
+#define L1_waypoint2x 10.00
+#define L1_waypoint15x 15.00
+
+// Note: here I would prefer to define an array ie waypointsLane1x [15.00, 20.00,...40.00]
+// Similarly I would like to do the same thing for the lane boundarys...
 
 // Waypoints Y: Lane 1
-#define waypoint1y 5.00
+#define L1_waypoint1y 1.00
+#define L1_waypoint2y 1.00
+#define L1_waypoint3y 1.00
+
+// Note: here I would prefer to define an array ie waypointsLane1y 
+// To do: Write script to automatically generate these follow naming convention as above
 
 // Waypoints: Lane 2
+
+// Waypoints X: Lane 1
+#define L2_waypoint1x 5.00
+#define L2_waypoint2x 10.00
+#define L2_waypoint15x 15.00
+
+// Waypoints Y: Lane 1
+#define L2_waypoint1y 4.70
+#define L2_waypoint2y 4.70
+#define L2_waypoint3y 4.70
 
 // Left Boundary: Lane 1
 
@@ -22,7 +44,7 @@
 
 // Left Boundary: Lane 2
 
-
+// VEHICLE PARAMETERS //
 // Constants
 #define m 2273.0
 #define Iz 4423.0
@@ -30,6 +52,8 @@
 #define Cr 108000.0
 #define lf 1.292
 #define lr 1.515
+
+// CONTROLLER PARAMETERS//
 #define k1 2.0
 #define k2 12.0
 #define k3 4.0
@@ -40,19 +64,19 @@
 // Helpers to clean up equations...
 #define cl (Cr*lr-Cf*lf)
 
-// Tracking controller inputs
+// TRACKING CONTROLLER INPUTS //
 // Rate of change of front wheel angle
 #define vw k1*(cos(Psi_d)*(sy_d - sy) - sin(Psi_d)*(sx_d - sx)) +k2*(Psi_d - Psi) +k3*(Psi_dot_d - Psi_dot) -k4*(delta)
 
 // Longitudinal acceleration
 #define ax  k5*(cos(Psi_d)*(sx_d - sx) + sin(Psi_d)*(sy_d - sy)) +k6*(v_d-v)
 
-// Pure Pursuit Arc
+// PURE PURSUIT ALGORITHM //
 #define l (pow(waypoint1x - sx, 2) + pow(waypoint1y - sy, 2))
 #define r (pow(l,2)/(2*(waypoint1x - sx)))
 #define kappa_d (1.00/r)
 
-// Bounds on variables
+// BOUNDS ON VARIABLES //
 [0,3.1] tau;
 [-2,2.03] Beta;
 [-2,2.04] Psi;
@@ -62,7 +86,6 @@
 [0,10] sy;
 [-2, 2.04] delta;
 [0, 3.1] time;
-
 [-2,2.06] kappa_d;
 [-2,2.07] Psi_d;
 [0,50] sx_d;
@@ -70,14 +93,72 @@
 [-2,2.08] Psi_dot_d;
 [0, 51] sx_env;
 
-// Dynamics
+// DEFINE MEASUREMENT NOISE //
+[-1,1] beta_noise [2.0];
+[-1,1] psi_dot_noise [2.0];
+[-1,1] v_noise [2.0];
+[-1,1] sx_noise [2.0];
+[-1,1] sy_noise [2.0];
+[-1,1] delta_noise [2.0];
+
+// NON DETERMINISM FOR ENVIRONMENT //
+[-1,1] ax_env_nondet [2.0];
+[-1,1] ay_env_nondet [2.0];
+
+// HYBRID AUTOMATON//
 {
     // Lane change motion primitive
     mode 1;
 
     invt:
-    // X position must be greater than or equal to 0
-    (sx>=0);
+    // Velocity must be greater than or equal to 0
+    (v>=0);
+
+    flow:
+
+    // TARGET VEHICLE //
+    // Plant equations
+    // Time
+    d/dt[tau]=1;
+    // Compute rate of change of the slip angle
+    d/dt[Beta]=((cl/(m*v*v))-1.0)*Psi_dot + Cf*delta/(m*v) - (Cf+Cr)*Beta/(m*v) + beta_noise;
+    // Rate of change of the heading angle is equal to yaw rate
+    d/dt[Psi]=Psi_/dot;
+    // Rate of change of yaw rate
+    d/dt[Psi_dot]=(cl*Beta/Iz) - ((lf*lf*Cf+lr*lr*Cr)/Iz)*(Psi_dot/v) + (lf*Cf)*delta/Iz + psi_dot_noise;
+    // Longitudinal acceleration
+    d/dt[v]=ax + v_noise;
+    // X component of velocity
+    d/dt[sx]=v*cos(Beta+Psi) + sx_noise;
+    // Y component of velocity
+    d/dt[sy]=v*sin(Beta+Psi) + sy_noise;
+    // Rate of change of front wheel angle.
+    d/dt[delta]=vw + delta_noise;
+
+    /*Trajectory and Tracking Equations*/
+    d/dt[kappa_d] = b*v_d + 2*c*v_d*v_d*tau + 3*e*v_d*v_d*v_d*tau*tau ;
+    d/dt[Psi_d] = v_d*kappa_d;
+    d/dt[sx_d] = 0;
+    d/dt[sy_d] = 0;
+    d/dt[Psi_dot_d] = v_d*(b*v_d + 2*c*v_d*v_d*tau + 3*e*v_d*v_d*v_d*tau*tau);
+
+    
+    // Other Vehicle 
+    d/dt[sx_env]= vx_env_dot;
+    d/dt[vx_env]= ax_env_nondet;
+    d/dt[sy_env]= vy_env_dot;
+    d/dt[vy_env]= ay_env_nondet;
+
+    jump:
+        (or (tau >= 0.100)) ==> @1
+        (and (tau>=100) (sx - sx_env <= buffer) (v- vx_env<= epsilon)) ==> @2
+        // Conditions to move to the lane following motion primative...
+        //(or ((Gp/Vgs) <= aclow ) ((Gp/Vgs) >= achigh)) ==> @2 
+                           // (and (Ip' = Ip)
+                           // (X' = X)
+                           // (I1' = I1));
+    mode 2;
+    invt:
     // Velocity must be greater than or equal to 0
     (v>=0);
 
@@ -101,18 +182,6 @@
     // Rate of change of front wheel angle.
     d/dt[delta]=vw;
 
-    /*Trajectory and Tracking Equations*/
-    d/dt[kappa_d] = b*v_d + 2*c*v_d*v_d*tau + 3*e*v_d*v_d*v_d*tau*tau ;
-    d/dt[Psi_d] = v_d*kappa_d;
-    d/dt[sx_d] = v_d*cos(Psi_d);
-    d/dt[sy_d] = v_d*sin(Psi_d);
-    d/dt[Psi_dot_d] = v_d*(b*v_d + 2*c*v_d*v_d*tau + 3*e*v_d*v_d*v_d*tau*tau);
-
-    
-    // Other Vehicle 
-    d/dt[sx_env]=0.0;
-
-    jump:
 }
 
 init: 

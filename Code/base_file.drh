@@ -102,8 +102,8 @@
 [-1,1] delta_noise [2.0];
 
 // NON DETERMINISM FOR ENVIRONMENT //
-[-1,1] sx_env_nondet [2.0];
-[-1,1] sy_env_nondet [2.0];
+[-1,1] ax_env_nondet [2.0];
+[-1,1] ay_env_nondet [2.0];
 
 // HYBRID AUTOMATON//
 {
@@ -144,10 +144,14 @@
 
     
     // Other Vehicle 
-    d/dt[sx_env]= 0 + sx_env_nondet; 
-    d/dt[sy_env]= 0 + sy_env_nondet;
+    d/dt[sx_env]= vx_env_dot;
+    d/dt[vx_env]= ax_env_nondet;
+    d/dt[sy_env]= vy_env_dot;
+    d/dt[vy_env]= ay_env_nondet;
 
     jump:
+        (or (tau >= 0.100)) ==> @1
+        (and (tau>=100) (sx - sx_env <= buffer) (v- vx_env<= epsilon)) ==> @2
         // Conditions to move to the lane following motion primative...
         //(or ((Gp/Vgs) <= aclow ) ((Gp/Vgs) >= achigh)) ==> @2 
                            // (and (Ip' = Ip)

@@ -1,3 +1,4 @@
+#define blah (10*x)
 [0, 20] x;
 [-9.8] g;
 [-100, 100] v;
@@ -10,7 +11,7 @@
         (v <= 0);
         (x >= 0);
   flow:
-        d/dt[x] = v + noise;
+        d/dt[x] = v + noise +blah;
         d/dt[v] = g + noise;
         d/dt[noise] = 0;
   jump:

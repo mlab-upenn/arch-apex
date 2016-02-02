@@ -72,7 +72,7 @@
 #define ax  k5*(cos(Psi_d)*(sx_d - sx) + sin(Psi_d)*(sy_d - sy)) +k6*(v_d-v)
 
 // PURE PURSUIT ALGORITHM //
-#define l (pow(waypoint1x - sx, 2) + pow(waypoint1y - sy, 2))
+#define l (pow(waypointx - sx, 2) + pow(waypointy - sy, 2))
 #define r (pow(l,2)/(2*(waypoint1x - sx)))
 #define kappa_d (1.00/r)
 
@@ -150,13 +150,13 @@
     d/dt[vy_env]= ay_env_nondet;
 
     jump:
+        // Schedule
         (or (tau >= 0.100)) ==> @1
+        // Lane Change Mode
         (and (tau>=100) (sx - sx_env <= buffer) (v- vx_env<= epsilon)) ==> @2
-        // Conditions to move to the lane following motion primative...
-        //(or ((Gp/Vgs) <= aclow ) ((Gp/Vgs) >= achigh)) ==> @2 
-                           // (and (Ip' = Ip)
-                           // (X' = X)
-                           // (I1' = I1));
+        (and)(waypointx' = L2_waypoint2x)
+             (waypointy' = L2_waypoint2y));
+
     mode 2;
     invt:
     // Velocity must be greater than or equal to 0

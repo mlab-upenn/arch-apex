@@ -10,7 +10,7 @@
 (declare-fun noise_0_t () Real [1.000000])
 (declare-fun time_0 () Real)
 (declare-fun mode_0 () Real)
-(define-ode flow_1 ((= d/dt[noise] 0) (= d/dt[v] (+ -9.8 noise)) (= d/dt[x] (+ v noise))))
+(define-ode flow_1 ((= d/dt[noise] 0) (= d/dt[v] (+ -9.8 noise)) (= d/dt[x] (+ (+ v noise) (* 10 x)))))
 (assert (<= 0 x_0_0))
 (assert (<= x_0_0 20))
 (assert (<= 0 x_0_t))

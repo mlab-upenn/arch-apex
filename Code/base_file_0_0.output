@@ -1,0 +1,912 @@
+# OpenSMTContext::Declaring function waypointy of sort () Real
+# OpenSMTContext::Declaring function waypointx of sort () Real
+# OpenSMTContext::Declaring function v of sort () Real
+# OpenSMTContext::Declaring function tau of sort () Real
+# OpenSMTContext::Declaring function sy_d of sort () Real
+# OpenSMTContext::Declaring function sy of sort () Real
+# OpenSMTContext::Declaring function sx_env of sort () Real
+# OpenSMTContext::Declaring function sx_d of sort () Real
+# OpenSMTContext::Declaring function sx of sort () Real
+# OpenSMTContext::Declaring function kappa_d of sort () Real
+# OpenSMTContext::Declaring function delta of sort () Real
+# OpenSMTContext::Declaring function Psi_dot_d of sort () Real
+# OpenSMTContext::Declaring function Psi_dot of sort () Real
+# OpenSMTContext::Declaring function Psi_d of sort () Real
+# OpenSMTContext::Declaring function Psi of sort () Real
+# OpenSMTContext::Declaring function Beta of sort () Real
+# OpenSMTContext::Declaring function waypointy_0_0 of sort () Real
+# OpenSMTContext::Declaring function waypointy_0_t of sort () Real
+# OpenSMTContext::Declaring function waypointx_0_0 of sort () Real
+# OpenSMTContext::Declaring function waypointx_0_t of sort () Real
+# OpenSMTContext::Declaring function v_0_0 of sort () Real
+# OpenSMTContext::Declaring function v_0_t of sort () Real
+# OpenSMTContext::Declaring function tau_0_0 of sort () Real
+# OpenSMTContext::Declaring function tau_0_t of sort () Real
+# OpenSMTContext::Declaring function sy_d_0_0 of sort () Real
+# OpenSMTContext::Declaring function sy_d_0_t of sort () Real
+# OpenSMTContext::Declaring function sy_0_0 of sort () Real
+# OpenSMTContext::Declaring function sy_0_t of sort () Real
+# OpenSMTContext::Declaring function sx_env_0_0 of sort () Real
+# OpenSMTContext::Declaring function sx_env_0_t of sort () Real
+# OpenSMTContext::Declaring function sx_d_0_0 of sort () Real
+# OpenSMTContext::Declaring function sx_d_0_t of sort () Real
+# OpenSMTContext::Declaring function sx_0_0 of sort () Real
+# OpenSMTContext::Declaring function sx_0_t of sort () Real
+# OpenSMTContext::Declaring function kappa_d_0_0 of sort () Real
+# OpenSMTContext::Declaring function kappa_d_0_t of sort () Real
+# OpenSMTContext::Declaring function delta_0_0 of sort () Real
+# OpenSMTContext::Declaring function delta_0_t of sort () Real
+# OpenSMTContext::Declaring function Psi_dot_d_0_0 of sort () Real
+# OpenSMTContext::Declaring function Psi_dot_d_0_t of sort () Real
+# OpenSMTContext::Declaring function Psi_dot_0_0 of sort () Real
+# OpenSMTContext::Declaring function Psi_dot_0_t of sort () Real
+# OpenSMTContext::Declaring function Psi_d_0_0 of sort () Real
+# OpenSMTContext::Declaring function Psi_d_0_t of sort () Real
+# OpenSMTContext::Declaring function Psi_0_0 of sort () Real
+# OpenSMTContext::Declaring function Psi_0_t of sort () Real
+# OpenSMTContext::Declaring function Beta_0_0 of sort () Real
+# OpenSMTContext::Declaring function Beta_0_t of sort () Real
+# OpenSMTContext::Declaring function time_0 of sort () Real
+# OpenSMTContext::Declaring function mode_0 of sort () Real
+#
+# -------------------------------------------------------------------------
+# dReal 3.16.1.01                                   https://dreal.github.io
+# Compiled with gcc 4.2.1 Compatible Clang 3.6.2 (tags/RELEASE_362/final) on Jan 30 2016
+# -------------------------------------------------------------------------
+#
+# OpenSMTContext::Asserting formula (<= -20 waypointy_0_0)
+# OpenSMTContext::Asserting formula (<= waypointy_0_0 20)
+# OpenSMTContext::Asserting formula (<= -20 waypointy_0_t)
+# OpenSMTContext::Asserting formula (<= waypointy_0_t 20)
+# OpenSMTContext::Asserting formula (<= -20 waypointx_0_0)
+# OpenSMTContext::Asserting formula (<= waypointx_0_0 20)
+# OpenSMTContext::Asserting formula (<= -20 waypointx_0_t)
+# OpenSMTContext::Asserting formula (<= waypointx_0_t 20)
+# OpenSMTContext::Asserting formula (<= 6 v_0_0)
+# OpenSMTContext::Asserting formula (<= v_0_0 12)
+# OpenSMTContext::Asserting formula (<= 6 v_0_t)
+# OpenSMTContext::Asserting formula (<= v_0_t 12)
+# OpenSMTContext::Asserting formula (<= 0 tau_0_0)
+# OpenSMTContext::Asserting formula (<= tau_0_0 100)
+# OpenSMTContext::Asserting formula (<= 0 tau_0_t)
+# OpenSMTContext::Asserting formula (<= tau_0_t 100)
+# OpenSMTContext::Asserting formula (<= 0 sy_d_0_0)
+# OpenSMTContext::Asserting formula (<= sy_d_0_0 100)
+# OpenSMTContext::Asserting formula (<= 0 sy_d_0_t)
+# OpenSMTContext::Asserting formula (<= sy_d_0_t 100)
+# OpenSMTContext::Asserting formula (<= 0 sy_0_0)
+# OpenSMTContext::Asserting formula (<= sy_0_0 100)
+# OpenSMTContext::Asserting formula (<= 0 sy_0_t)
+# OpenSMTContext::Asserting formula (<= sy_0_t 100)
+# OpenSMTContext::Asserting formula (<= 0 sx_env_0_0)
+# OpenSMTContext::Asserting formula (<= sx_env_0_0 51)
+# OpenSMTContext::Asserting formula (<= 0 sx_env_0_t)
+# OpenSMTContext::Asserting formula (<= sx_env_0_t 51)
+# OpenSMTContext::Asserting formula (<= 0 sx_d_0_0)
+# OpenSMTContext::Asserting formula (<= sx_d_0_0 100)
+# OpenSMTContext::Asserting formula (<= 0 sx_d_0_t)
+# OpenSMTContext::Asserting formula (<= sx_d_0_t 100)
+# OpenSMTContext::Asserting formula (<= 0 sx_0_0)
+# OpenSMTContext::Asserting formula (<= sx_0_0 100)
+# OpenSMTContext::Asserting formula (<= 0 sx_0_t)
+# OpenSMTContext::Asserting formula (<= sx_0_t 100)
+# OpenSMTContext::Asserting formula (<= -2 kappa_d_0_0)
+# OpenSMTContext::Asserting formula (<= kappa_d_0_0 2.06)
+# OpenSMTContext::Asserting formula (<= -2 kappa_d_0_t)
+# OpenSMTContext::Asserting formula (<= kappa_d_0_t 2.06)
+# OpenSMTContext::Asserting formula (<= -2 delta_0_0)
+# OpenSMTContext::Asserting formula (<= delta_0_0 2.04)
+# OpenSMTContext::Asserting formula (<= -2 delta_0_t)
+# OpenSMTContext::Asserting formula (<= delta_0_t 2.04)
+# OpenSMTContext::Asserting formula (<= -2 Psi_dot_d_0_0)
+# OpenSMTContext::Asserting formula (<= Psi_dot_d_0_0 2.08)
+# OpenSMTContext::Asserting formula (<= -2 Psi_dot_d_0_t)
+# OpenSMTContext::Asserting formula (<= Psi_dot_d_0_t 2.08)
+# OpenSMTContext::Asserting formula (<= -2 Psi_dot_0_0)
+# OpenSMTContext::Asserting formula (<= Psi_dot_0_0 2.05)
+# OpenSMTContext::Asserting formula (<= -2 Psi_dot_0_t)
+# OpenSMTContext::Asserting formula (<= Psi_dot_0_t 2.05)
+# OpenSMTContext::Asserting formula (<= -2 Psi_d_0_0)
+# OpenSMTContext::Asserting formula (<= Psi_d_0_0 2.07)
+# OpenSMTContext::Asserting formula (<= -2 Psi_d_0_t)
+# OpenSMTContext::Asserting formula (<= Psi_d_0_t 2.07)
+# OpenSMTContext::Asserting formula (<= -2 Psi_0_0)
+# OpenSMTContext::Asserting formula (<= Psi_0_0 2.04)
+# OpenSMTContext::Asserting formula (<= -2 Psi_0_t)
+# OpenSMTContext::Asserting formula (<= Psi_0_t 2.04)
+# OpenSMTContext::Asserting formula (<= -2 Beta_0_0)
+# OpenSMTContext::Asserting formula (<= Beta_0_0 2.03)
+# OpenSMTContext::Asserting formula (<= -2 Beta_0_t)
+# OpenSMTContext::Asserting formula (<= Beta_0_t 2.03)
+# OpenSMTContext::Asserting formula (<= 0 time_0)
+# OpenSMTContext::Asserting formula (<= time_0 3.1)
+# OpenSMTContext::Asserting formula (<= 1 mode_0)
+# OpenSMTContext::Asserting formula (<= mode_0 1)
+# OpenSMTContext::Asserting formula (and (and (= waypointy_0_0 5) (= waypointx_0_0 15) (= (/ 1 (/ (^ (^ (+ (^ (+ waypointx_0_0 (* -1 sx_0_0)) 2) (^ (+ waypointy_0_0 (* -1 sy_0_0)) 2)) 0.5) 2) (* 2 (+ waypointx_0_0 (* -1 sx_0_0))))) 0.01) (= sx_env_0_0 15) (= Psi_dot_d_0_0 0) (= Psi_d_0_0 0) (= tau_0_0 0) (= delta_0_0 0) (= Beta_0_0 0) (= Psi_dot_0_0 0) (= Psi_0_0 0) (= sy_d_0_0 0) (= sx_d_0_0 0) (= v_0_0 10.9) (= sy_0_0 0) (= sx_0_0 0)) (= mode_0 1) (= waypointy_0_t (+ waypointy_0_0 0)) (= waypointx_0_t (+ waypointx_0_0 0)) (= tau_0_t (+ tau_0_0 (* 1 time_0))) (= kappa_d_0_t (+ kappa_d_0_0 0)) (integral 1 0 time_0 Beta_0_0 Beta_0_t Psi_0_0 Psi_0_t Psi_d_0_0 Psi_d_0_t Psi_dot_0_0 Psi_dot_0_t Psi_dot_d_0_0 Psi_dot_d_0_t delta_0_0 delta_0_t kappa_d_0_0 kappa_d_0_t sx_0_0 sx_0_t sx_d_0_0 sx_d_0_t sx_env_0_0 sx_env_0_t sy_0_0 sy_0_t sy_d_0_0 sy_d_0_t tau_0_0 tau_0_t v_0_0 v_0_t waypointx_0_0 waypointx_0_t waypointy_0_0 waypointy_0_t) (forallt 1 0 time_0 (<= 0 v_0_t)) (<= 0 v_0_t) (<= 0 v_0_0) (= tau_0_t 1)) with id 894
+# OpenSMTContext::Checking satisfiability
+# OpenSMTContext::Processing: (and (and (and (= waypointy_0_0 5) (= waypointx_0_0 15) (= (/ 1 (/ (^ (^ (+ (^ (+ waypointx_0_0 (* -1 sx_0_0)) 2) (^ (+ waypointy_0_0 (* -1 sy_0_0)) 2)) 0.5) 2) (* 2 (+ waypointx_0_0 (* -1 sx_0_0))))) 0.01) (= sx_env_0_0 15) (= Psi_dot_d_0_0 0) (= Psi_d_0_0 0) (= tau_0_0 0) (= delta_0_0 0) (= Beta_0_0 0) (= Psi_dot_0_0 0) (= Psi_0_0 0) (= sy_d_0_0 0) (= sx_d_0_0 0) (= v_0_0 10.9) (= sy_0_0 0) (= sx_0_0 0)) (= mode_0 1) (= waypointy_0_t (+ waypointy_0_0 0)) (= waypointx_0_t (+ waypointx_0_0 0)) (= tau_0_t (+ tau_0_0 (* 1 time_0))) (= kappa_d_0_t (+ kappa_d_0_0 0)) (integral 1 0 time_0 Beta_0_0 Beta_0_t Psi_0_0 Psi_0_t Psi_d_0_0 Psi_d_0_t Psi_dot_0_0 Psi_dot_0_t Psi_dot_d_0_0 Psi_dot_d_0_t delta_0_0 delta_0_t kappa_d_0_0 kappa_d_0_t sx_0_0 sx_0_t sx_d_0_0 sx_d_0_t sx_env_0_0 sx_env_0_t sy_0_0 sy_0_t sy_d_0_0 sy_d_0_t tau_0_0 tau_0_t v_0_0 v_0_t waypointx_0_0 waypointx_0_t waypointy_0_0 waypointy_0_t) (forallt 1 0 time_0 (<= 0 v_0_t)) (<= 0 v_0_t) (<= 0 v_0_0) (= tau_0_t 1)) (<= mode_0 1) (<= 1 mode_0) (<= time_0 3.1) (<= 0 time_0) (<= Beta_0_t 2.03) (<= -2 Beta_0_t) (<= Beta_0_0 2.03) (<= -2 Beta_0_0) (<= Psi_0_t 2.04) (<= -2 Psi_0_t) (<= Psi_0_0 2.04) (<= -2 Psi_0_0) (<= Psi_d_0_t 2.07) (<= -2 Psi_d_0_t) (<= Psi_d_0_0 2.07) (<= -2 Psi_d_0_0) (<= Psi_dot_0_t 2.05) (<= -2 Psi_dot_0_t) (<= Psi_dot_0_0 2.05) (<= -2 Psi_dot_0_0) (<= Psi_dot_d_0_t 2.08) (<= -2 Psi_dot_d_0_t) (<= Psi_dot_d_0_0 2.08) (<= -2 Psi_dot_d_0_0) (<= delta_0_t 2.04) (<= -2 delta_0_t) (<= delta_0_0 2.04) (<= -2 delta_0_0) (<= kappa_d_0_t 2.06) (<= -2 kappa_d_0_t) (<= kappa_d_0_0 2.06) (<= -2 kappa_d_0_0) (<= sx_0_t 100) (<= 0 sx_0_t) (<= sx_0_0 100) (<= 0 sx_0_0) (<= sx_d_0_t 100) (<= 0 sx_d_0_t) (<= sx_d_0_0 100) (<= 0 sx_d_0_0) (<= sx_env_0_t 51) (<= 0 sx_env_0_t) (<= sx_env_0_0 51) (<= 0 sx_env_0_0) (<= sy_0_t 100) (<= 0 sy_0_t) (<= sy_0_0 100) (<= 0 sy_0_0) (<= sy_d_0_t 100) (<= 0 sy_d_0_t) (<= sy_d_0_0 100) (<= 0 sy_d_0_0) (<= tau_0_t 100) (<= 0 tau_0_t) (<= tau_0_0 100) (<= 0 tau_0_0) (<= v_0_t 12) (<= 6 v_0_t) (<= v_0_0 12) (<= 6 v_0_0) (<= waypointx_0_t 20) (<= -20 waypointx_0_t) (<= waypointx_0_0 20) (<= -20 waypointx_0_0) (<= waypointy_0_t 20) (<= -20 waypointy_0_t) (<= waypointy_0_0 20) (<= -20 waypointy_0_0))
+nra_solver::inform: (= waypointy_0_0 5)
+nra_solver::inform: (= waypointx_0_0 15)
+nra_solver::inform: (= (/ 1 (/ (^ (^ (+ (^ (+ waypointx_0_0 (* -1 sx_0_0)) 2) (^ (+ waypointy_0_0 (* -1 sy_0_0)) 2)) 0.5) 2) (* 2 (+ waypointx_0_0 (* -1 sx_0_0))))) 0.01)
+nra_solver::inform: (= sx_env_0_0 15)
+nra_solver::inform: (= Psi_dot_d_0_0 0)
+nra_solver::inform: (= Psi_d_0_0 0)
+nra_solver::inform: (= tau_0_0 0)
+nra_solver::inform: (= delta_0_0 0)
+nra_solver::inform: (= Beta_0_0 0)
+nra_solver::inform: (= Psi_dot_0_0 0)
+nra_solver::inform: (= Psi_0_0 0)
+nra_solver::inform: (= sy_d_0_0 0)
+nra_solver::inform: (= sx_d_0_0 0)
+nra_solver::inform: (= v_0_0 10.9)
+nra_solver::inform: (= sy_0_0 0)
+nra_solver::inform: (= sx_0_0 0)
+nra_solver::inform: (= mode_0 1)
+nra_solver::inform: (= waypointy_0_t (+ waypointy_0_0 0))
+nra_solver::inform: (= waypointx_0_t (+ waypointx_0_0 0))
+nra_solver::inform: (= tau_0_t (+ tau_0_0 (* 1 time_0)))
+nra_solver::inform: (= kappa_d_0_t (+ kappa_d_0_0 0))
+nra_solver::inform: (integral 1 0 time_0 Beta_0_0 Beta_0_t Psi_0_0 Psi_0_t Psi_d_0_0 Psi_d_0_t Psi_dot_0_0 Psi_dot_0_t Psi_dot_d_0_0 Psi_dot_d_0_t delta_0_0 delta_0_t kappa_d_0_0 kappa_d_0_t sx_0_0 sx_0_t sx_d_0_0 sx_d_0_t sx_env_0_0 sx_env_0_t sy_0_0 sy_0_t sy_d_0_0 sy_d_0_t tau_0_0 tau_0_t v_0_0 v_0_t waypointx_0_0 waypointx_0_t waypointy_0_0 waypointy_0_t)
+nra_solver::inform: (forallt 1 0 time_0 (<= 0 v_0_t))
+nra_solver::inform: (<= 0 v_0_t)
+nra_solver::inform: (<= 0 v_0_0)
+nra_solver::inform: (= tau_0_t 1)
+nra_solver::inform: (<= mode_0 1)
+nra_solver::inform: (<= 1 mode_0)
+nra_solver::inform: (<= time_0 3.1)
+nra_solver::inform: (<= 0 time_0)
+nra_solver::inform: (<= Beta_0_t 2.03)
+nra_solver::inform: (<= -2 Beta_0_t)
+nra_solver::inform: (<= Beta_0_0 2.03)
+nra_solver::inform: (<= -2 Beta_0_0)
+nra_solver::inform: (<= Psi_0_t 2.04)
+nra_solver::inform: (<= -2 Psi_0_t)
+nra_solver::inform: (<= Psi_0_0 2.04)
+nra_solver::inform: (<= -2 Psi_0_0)
+nra_solver::inform: (<= Psi_d_0_t 2.07)
+nra_solver::inform: (<= -2 Psi_d_0_t)
+nra_solver::inform: (<= Psi_d_0_0 2.07)
+nra_solver::inform: (<= -2 Psi_d_0_0)
+nra_solver::inform: (<= Psi_dot_0_t 2.05)
+nra_solver::inform: (<= -2 Psi_dot_0_t)
+nra_solver::inform: (<= Psi_dot_0_0 2.05)
+nra_solver::inform: (<= -2 Psi_dot_0_0)
+nra_solver::inform: (<= Psi_dot_d_0_t 2.08)
+nra_solver::inform: (<= -2 Psi_dot_d_0_t)
+nra_solver::inform: (<= Psi_dot_d_0_0 2.08)
+nra_solver::inform: (<= -2 Psi_dot_d_0_0)
+nra_solver::inform: (<= delta_0_t 2.04)
+nra_solver::inform: (<= -2 delta_0_t)
+nra_solver::inform: (<= delta_0_0 2.04)
+nra_solver::inform: (<= -2 delta_0_0)
+nra_solver::inform: (<= kappa_d_0_t 2.06)
+nra_solver::inform: (<= -2 kappa_d_0_t)
+nra_solver::inform: (<= kappa_d_0_0 2.06)
+nra_solver::inform: (<= -2 kappa_d_0_0)
+nra_solver::inform: (<= sx_0_t 100)
+nra_solver::inform: (<= 0 sx_0_t)
+nra_solver::inform: (<= sx_0_0 100)
+nra_solver::inform: (<= 0 sx_0_0)
+nra_solver::inform: (<= sx_d_0_t 100)
+nra_solver::inform: (<= 0 sx_d_0_t)
+nra_solver::inform: (<= sx_d_0_0 100)
+nra_solver::inform: (<= 0 sx_d_0_0)
+nra_solver::inform: (<= sx_env_0_t 51)
+nra_solver::inform: (<= 0 sx_env_0_t)
+nra_solver::inform: (<= sx_env_0_0 51)
+nra_solver::inform: (<= 0 sx_env_0_0)
+nra_solver::inform: (<= sy_0_t 100)
+nra_solver::inform: (<= 0 sy_0_t)
+nra_solver::inform: (<= sy_0_0 100)
+nra_solver::inform: (<= 0 sy_0_0)
+nra_solver::inform: (<= sy_d_0_t 100)
+nra_solver::inform: (<= 0 sy_d_0_t)
+nra_solver::inform: (<= sy_d_0_0 100)
+nra_solver::inform: (<= 0 sy_d_0_0)
+nra_solver::inform: (<= tau_0_t 100)
+nra_solver::inform: (<= 0 tau_0_t)
+nra_solver::inform: (<= tau_0_0 100)
+nra_solver::inform: (<= 0 tau_0_0)
+nra_solver::inform: (<= v_0_t 12)
+nra_solver::inform: (<= 6 v_0_t)
+nra_solver::inform: (<= v_0_0 12)
+nra_solver::inform: (<= 6 v_0_0)
+nra_solver::inform: (<= waypointx_0_t 20)
+nra_solver::inform: (<= -20 waypointx_0_t)
+nra_solver::inform: (<= waypointx_0_0 20)
+nra_solver::inform: (<= -20 waypointx_0_0)
+nra_solver::inform: (<= waypointy_0_t 20)
+nra_solver::inform: (<= -20 waypointy_0_t)
+nra_solver::inform: (<= waypointy_0_0 20)
+nra_solver::inform: (<= -20 waypointy_0_0)
+#         0 |        0        0 |    0.015 s |  2.949 MBnra_solver::pushBacktrackPoint 0
+nonlinear_constraint: nonlinear_constraint (0-v_0_t)<=0
+nra_solver::initialize_constraints: collect ODEConstraint: ode_constraint(integral_constraint = (integral 1 0 time_0 Beta_0_0 Beta_0_t Psi_0_0 Psi_0_t Psi_d_0_0 Psi_d_0_t Psi_dot_0_0 Psi_dot_0_t Psi_dot_d_0_0 Psi_dot_d_0_t delta_0_0 delta_0_t kappa_d_0_0 kappa_d_0_t sx_0_0 sx_0_t sx_d_0_0 sx_d_0_t sx_env_0_0 sx_env_0_t sy_0_0 sy_0_t sy_d_0_0 sy_d_0_t tau_0_0 tau_0_t v_0_0 v_0_t waypointx_0_0 waypointx_0_t waypointy_0_0 waypointy_0_t)
+	flow_id = 1
+	time = [0,time_0]
+	par: kappa_d_0_0 kappa_d_0_t
+	par: v_0_0 v_0_t
+	par: waypointx_0_0 waypointx_0_t
+	var: Beta_0_0 Beta_0_t
+	var: Psi_0_0 Psi_0_t
+	var: Psi_d_0_0 Psi_d_0_t
+	var: Psi_dot_0_0 Psi_dot_0_t
+	var: Psi_dot_d_0_0 Psi_dot_d_0_t
+	var: delta_0_0 delta_0_t
+	var: sx_0_0 sx_0_t
+	var: sx_d_0_0 sx_d_0_t
+	var: sx_env_0_0 sx_env_0_t
+	var: sy_0_0 sy_0_t
+	var: sy_d_0_0 sy_d_0_t
+	var: tau_0_0 tau_0_t
+	d/dt[Beta] = (+ (+ (* (+ (/ 24084 (* (* 2273 v) v)) -1) Psi_dot) (/ (* 108000 delta) (* 2273 v))) (* -1 (/ (* 216000 Beta) (* 2273 v))))
+	d/dt[Psi] = Psi_dot
+	d/dt[Psi_d] = (+ 0.785397 (* -1 (/ (* 11.11 tau) (* 6.28318 (/ (^ (^ (+ (^ (+ waypointx (* -1 sx)) 2) (^ (+ waypointy (* -1 sy)) 2)) 0.5) 2) (* 2 (+ waypointx (* -1 sx))))))))
+	d/dt[Psi_dot] = (+ (+ (/ (* 24084 Beta) 4423) (* -1 (* 96.8042 (/ Psi_dot v)))) (/ (* 139536 delta) 4423))
+	d/dt[Psi_dot_d] = (+ 0 (* -1 (/ v (* 2 (/ (^ (^ (+ (^ (+ waypointx (* -1 sx)) 2) (^ (+ waypointy (* -1 sy)) 2)) 0.5) 2) (* 2 (+ waypointx (* -1 sx))))))))
+	d/dt[delta] = (+ (+ (+ (* 2 (+ (* (cos Psi_d) (+ sy_d (* -1 sy))) (* -1 (* (sin Psi_d) (+ sx_d (* -1 sx)))))) (* 12 (+ Psi_d (* -1 Psi)))) (* 4 (+ Psi_dot_d (* -1 Psi_dot)))) (* -1 (* 2 delta)))
+	d/dt[sx] = (* v (cos (+ Beta Psi)))
+	d/dt[sx_d] = (* 11.11 (cos Psi_d))
+	d/dt[sy] = (* v (sin (+ Beta Psi)))
+	d/dt[sy_d] = (* 11.11 (sin Psi_d))
+	d/dt[tau] = 1
+	d/dt[v] = (+ (* 1 (+ (* (cos Psi_d) (+ sx_d (* -1 sx))) (* (sin Psi_d) (+ sy_d (* -1 sy))))) (* 10 (+ 11.11 (* -1 v))))
+)
+
+nonlinear_constraint: nonlinear_constraint (waypointy_0_0-5)=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (waypointy_0_0-5)=0
+nonlinear_constraint: nonlinear_constraint !((waypointy_0_0-5)=0)
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint !((waypointy_0_0-5)=0)
+nonlinear_constraint: nonlinear_constraint (waypointx_0_0-15)=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (waypointx_0_0-15)=0
+nonlinear_constraint: nonlinear_constraint !((waypointx_0_0-15)=0)
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint !((waypointx_0_0-15)=0)
+nonlinear_constraint: nonlinear_constraint ((1/(exp((0.5*log(((waypointx_0_0+(-1*sx_0_0))^2+(waypointy_0_0+(-1*sy_0_0))^2))))^2/(2*(waypointx_0_0+(-1*sx_0_0)))))-0.01)=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint ((1/(exp((0.5*log(((waypointx_0_0+(-1*sx_0_0))^2+(waypointy_0_0+(-1*sy_0_0))^2))))^2/(2*(waypointx_0_0+(-1*sx_0_0)))))-0.01)=0
+nonlinear_constraint: nonlinear_constraint !(((1/(exp((0.5*log(((waypointx_0_0+(-1*sx_0_0))^2+(waypointy_0_0+(-1*sy_0_0))^2))))^2/(2*(waypointx_0_0+(-1*sx_0_0)))))-0.01)=0)
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint !(((1/(exp((0.5*log(((waypointx_0_0+(-1*sx_0_0))^2+(waypointy_0_0+(-1*sy_0_0))^2))))^2/(2*(waypointx_0_0+(-1*sx_0_0)))))-0.01)=0)
+nonlinear_constraint: nonlinear_constraint (sx_env_0_0-15)=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (sx_env_0_0-15)=0
+nonlinear_constraint: nonlinear_constraint !((sx_env_0_0-15)=0)
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint !((sx_env_0_0-15)=0)
+nonlinear_constraint: nonlinear_constraint Psi_dot_d_0_0=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint Psi_dot_d_0_0=0
+nonlinear_constraint: nonlinear_constraint !(Psi_dot_d_0_0=0)
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint !(Psi_dot_d_0_0=0)
+nonlinear_constraint: nonlinear_constraint Psi_d_0_0=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint Psi_d_0_0=0
+nonlinear_constraint: nonlinear_constraint !(Psi_d_0_0=0)
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint !(Psi_d_0_0=0)
+nonlinear_constraint: nonlinear_constraint tau_0_0=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint tau_0_0=0
+nonlinear_constraint: nonlinear_constraint !(tau_0_0=0)
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint !(tau_0_0=0)
+nonlinear_constraint: nonlinear_constraint delta_0_0=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint delta_0_0=0
+nonlinear_constraint: nonlinear_constraint !(delta_0_0=0)
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint !(delta_0_0=0)
+nonlinear_constraint: nonlinear_constraint Beta_0_0=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint Beta_0_0=0
+nonlinear_constraint: nonlinear_constraint !(Beta_0_0=0)
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint !(Beta_0_0=0)
+nonlinear_constraint: nonlinear_constraint Psi_dot_0_0=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint Psi_dot_0_0=0
+nonlinear_constraint: nonlinear_constraint !(Psi_dot_0_0=0)
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint !(Psi_dot_0_0=0)
+nonlinear_constraint: nonlinear_constraint Psi_0_0=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint Psi_0_0=0
+nonlinear_constraint: nonlinear_constraint !(Psi_0_0=0)
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint !(Psi_0_0=0)
+nonlinear_constraint: nonlinear_constraint sy_d_0_0=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint sy_d_0_0=0
+nonlinear_constraint: nonlinear_constraint !(sy_d_0_0=0)
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint !(sy_d_0_0=0)
+nonlinear_constraint: nonlinear_constraint sx_d_0_0=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint sx_d_0_0=0
+nonlinear_constraint: nonlinear_constraint !(sx_d_0_0=0)
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint !(sx_d_0_0=0)
+nonlinear_constraint: nonlinear_constraint (v_0_0-10.9)=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (v_0_0-10.9)=0
+nonlinear_constraint: nonlinear_constraint !((v_0_0-10.9)=0)
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint !((v_0_0-10.9)=0)
+nonlinear_constraint: nonlinear_constraint sy_0_0=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint sy_0_0=0
+nonlinear_constraint: nonlinear_constraint !(sy_0_0=0)
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint !(sy_0_0=0)
+nonlinear_constraint: nonlinear_constraint sx_0_0=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint sx_0_0=0
+nonlinear_constraint: nonlinear_constraint !(sx_0_0=0)
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint !(sx_0_0=0)
+nonlinear_constraint: nonlinear_constraint (mode_0-1)=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (mode_0-1)=0
+nonlinear_constraint: nonlinear_constraint !((mode_0-1)=0)
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint !((mode_0-1)=0)
+nonlinear_constraint: nonlinear_constraint (waypointy_0_t-(waypointy_0_0+0))=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (waypointy_0_t-(waypointy_0_0+0))=0
+nonlinear_constraint: nonlinear_constraint !((waypointy_0_t-(waypointy_0_0+0))=0)
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint !((waypointy_0_t-(waypointy_0_0+0))=0)
+nonlinear_constraint: nonlinear_constraint (waypointx_0_t-(waypointx_0_0+0))=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (waypointx_0_t-(waypointx_0_0+0))=0
+nonlinear_constraint: nonlinear_constraint !((waypointx_0_t-(waypointx_0_0+0))=0)
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint !((waypointx_0_t-(waypointx_0_0+0))=0)
+nonlinear_constraint: nonlinear_constraint (tau_0_t-(tau_0_0+(1*time_0)))=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (tau_0_t-(tau_0_0+(1*time_0)))=0
+nonlinear_constraint: nonlinear_constraint !((tau_0_t-(tau_0_0+(1*time_0)))=0)
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint !((tau_0_t-(tau_0_0+(1*time_0)))=0)
+nonlinear_constraint: nonlinear_constraint (kappa_d_0_t-(kappa_d_0_0+0))=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (kappa_d_0_t-(kappa_d_0_0+0))=0
+nonlinear_constraint: nonlinear_constraint !((kappa_d_0_t-(kappa_d_0_0+0))=0)
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint !((kappa_d_0_t-(kappa_d_0_0+0))=0)
+nonlinear_constraint: nonlinear_constraint (0-v_0_t)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (0-v_0_t)<=0
+nonlinear_constraint: nonlinear_constraint (0-v_0_t)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (0-v_0_t)>0
+nonlinear_constraint: nonlinear_constraint (0-v_0_0)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (0-v_0_0)<=0
+nonlinear_constraint: nonlinear_constraint (0-v_0_0)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (0-v_0_0)>0
+nonlinear_constraint: nonlinear_constraint (tau_0_t-1)=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (tau_0_t-1)=0
+nonlinear_constraint: nonlinear_constraint !((tau_0_t-1)=0)
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint !((tau_0_t-1)=0)
+nonlinear_constraint: nonlinear_constraint (mode_0-1)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (mode_0-1)<=0
+nonlinear_constraint: nonlinear_constraint (mode_0-1)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (mode_0-1)>0
+nonlinear_constraint: nonlinear_constraint (1-mode_0)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (1-mode_0)<=0
+nonlinear_constraint: nonlinear_constraint (1-mode_0)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (1-mode_0)>0
+nonlinear_constraint: nonlinear_constraint (time_0-3.1)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (time_0-3.1)<=0
+nonlinear_constraint: nonlinear_constraint (time_0-3.1)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (time_0-3.1)>0
+nonlinear_constraint: nonlinear_constraint (0-time_0)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (0-time_0)<=0
+nonlinear_constraint: nonlinear_constraint (0-time_0)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (0-time_0)>0
+nonlinear_constraint: nonlinear_constraint (Beta_0_t-2.03)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (Beta_0_t-2.03)<=0
+nonlinear_constraint: nonlinear_constraint (Beta_0_t-2.03)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (Beta_0_t-2.03)>0
+nonlinear_constraint: nonlinear_constraint (-2-Beta_0_t)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (-2-Beta_0_t)<=0
+nonlinear_constraint: nonlinear_constraint (-2-Beta_0_t)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (-2-Beta_0_t)>0
+nonlinear_constraint: nonlinear_constraint (Beta_0_0-2.03)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (Beta_0_0-2.03)<=0
+nonlinear_constraint: nonlinear_constraint (Beta_0_0-2.03)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (Beta_0_0-2.03)>0
+nonlinear_constraint: nonlinear_constraint (-2-Beta_0_0)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (-2-Beta_0_0)<=0
+nonlinear_constraint: nonlinear_constraint (-2-Beta_0_0)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (-2-Beta_0_0)>0
+nonlinear_constraint: nonlinear_constraint (Psi_0_t-2.04)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (Psi_0_t-2.04)<=0
+nonlinear_constraint: nonlinear_constraint (Psi_0_t-2.04)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (Psi_0_t-2.04)>0
+nonlinear_constraint: nonlinear_constraint (-2-Psi_0_t)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (-2-Psi_0_t)<=0
+nonlinear_constraint: nonlinear_constraint (-2-Psi_0_t)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (-2-Psi_0_t)>0
+nonlinear_constraint: nonlinear_constraint (Psi_0_0-2.04)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (Psi_0_0-2.04)<=0
+nonlinear_constraint: nonlinear_constraint (Psi_0_0-2.04)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (Psi_0_0-2.04)>0
+nonlinear_constraint: nonlinear_constraint (-2-Psi_0_0)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (-2-Psi_0_0)<=0
+nonlinear_constraint: nonlinear_constraint (-2-Psi_0_0)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (-2-Psi_0_0)>0
+nonlinear_constraint: nonlinear_constraint (Psi_d_0_t-2.07)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (Psi_d_0_t-2.07)<=0
+nonlinear_constraint: nonlinear_constraint (Psi_d_0_t-2.07)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (Psi_d_0_t-2.07)>0
+nonlinear_constraint: nonlinear_constraint (-2-Psi_d_0_t)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (-2-Psi_d_0_t)<=0
+nonlinear_constraint: nonlinear_constraint (-2-Psi_d_0_t)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (-2-Psi_d_0_t)>0
+nonlinear_constraint: nonlinear_constraint (Psi_d_0_0-2.07)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (Psi_d_0_0-2.07)<=0
+nonlinear_constraint: nonlinear_constraint (Psi_d_0_0-2.07)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (Psi_d_0_0-2.07)>0
+nonlinear_constraint: nonlinear_constraint (-2-Psi_d_0_0)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (-2-Psi_d_0_0)<=0
+nonlinear_constraint: nonlinear_constraint (-2-Psi_d_0_0)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (-2-Psi_d_0_0)>0
+nonlinear_constraint: nonlinear_constraint (Psi_dot_0_t-2.05)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (Psi_dot_0_t-2.05)<=0
+nonlinear_constraint: nonlinear_constraint (Psi_dot_0_t-2.05)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (Psi_dot_0_t-2.05)>0
+nonlinear_constraint: nonlinear_constraint (-2-Psi_dot_0_t)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (-2-Psi_dot_0_t)<=0
+nonlinear_constraint: nonlinear_constraint (-2-Psi_dot_0_t)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (-2-Psi_dot_0_t)>0
+nonlinear_constraint: nonlinear_constraint (Psi_dot_0_0-2.05)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (Psi_dot_0_0-2.05)<=0
+nonlinear_constraint: nonlinear_constraint (Psi_dot_0_0-2.05)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (Psi_dot_0_0-2.05)>0
+nonlinear_constraint: nonlinear_constraint (-2-Psi_dot_0_0)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (-2-Psi_dot_0_0)<=0
+nonlinear_constraint: nonlinear_constraint (-2-Psi_dot_0_0)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (-2-Psi_dot_0_0)>0
+nonlinear_constraint: nonlinear_constraint (Psi_dot_d_0_t-2.08)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (Psi_dot_d_0_t-2.08)<=0
+nonlinear_constraint: nonlinear_constraint (Psi_dot_d_0_t-2.08)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (Psi_dot_d_0_t-2.08)>0
+nonlinear_constraint: nonlinear_constraint (-2-Psi_dot_d_0_t)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (-2-Psi_dot_d_0_t)<=0
+nonlinear_constraint: nonlinear_constraint (-2-Psi_dot_d_0_t)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (-2-Psi_dot_d_0_t)>0
+nonlinear_constraint: nonlinear_constraint (Psi_dot_d_0_0-2.08)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (Psi_dot_d_0_0-2.08)<=0
+nonlinear_constraint: nonlinear_constraint (Psi_dot_d_0_0-2.08)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (Psi_dot_d_0_0-2.08)>0
+nonlinear_constraint: nonlinear_constraint (-2-Psi_dot_d_0_0)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (-2-Psi_dot_d_0_0)<=0
+nonlinear_constraint: nonlinear_constraint (-2-Psi_dot_d_0_0)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (-2-Psi_dot_d_0_0)>0
+nonlinear_constraint: nonlinear_constraint (delta_0_t-2.04)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (delta_0_t-2.04)<=0
+nonlinear_constraint: nonlinear_constraint (delta_0_t-2.04)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (delta_0_t-2.04)>0
+nonlinear_constraint: nonlinear_constraint (-2-delta_0_t)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (-2-delta_0_t)<=0
+nonlinear_constraint: nonlinear_constraint (-2-delta_0_t)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (-2-delta_0_t)>0
+nonlinear_constraint: nonlinear_constraint (delta_0_0-2.04)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (delta_0_0-2.04)<=0
+nonlinear_constraint: nonlinear_constraint (delta_0_0-2.04)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (delta_0_0-2.04)>0
+nonlinear_constraint: nonlinear_constraint (-2-delta_0_0)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (-2-delta_0_0)<=0
+nonlinear_constraint: nonlinear_constraint (-2-delta_0_0)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (-2-delta_0_0)>0
+nonlinear_constraint: nonlinear_constraint (kappa_d_0_t-2.06)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (kappa_d_0_t-2.06)<=0
+nonlinear_constraint: nonlinear_constraint (kappa_d_0_t-2.06)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (kappa_d_0_t-2.06)>0
+nonlinear_constraint: nonlinear_constraint (-2-kappa_d_0_t)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (-2-kappa_d_0_t)<=0
+nonlinear_constraint: nonlinear_constraint (-2-kappa_d_0_t)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (-2-kappa_d_0_t)>0
+nonlinear_constraint: nonlinear_constraint (kappa_d_0_0-2.06)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (kappa_d_0_0-2.06)<=0
+nonlinear_constraint: nonlinear_constraint (kappa_d_0_0-2.06)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (kappa_d_0_0-2.06)>0
+nonlinear_constraint: nonlinear_constraint (-2-kappa_d_0_0)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (-2-kappa_d_0_0)<=0
+nonlinear_constraint: nonlinear_constraint (-2-kappa_d_0_0)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (-2-kappa_d_0_0)>0
+nonlinear_constraint: nonlinear_constraint (sx_0_t-100)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (sx_0_t-100)<=0
+nonlinear_constraint: nonlinear_constraint (sx_0_t-100)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (sx_0_t-100)>0
+nonlinear_constraint: nonlinear_constraint (0-sx_0_t)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (0-sx_0_t)<=0
+nonlinear_constraint: nonlinear_constraint (0-sx_0_t)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (0-sx_0_t)>0
+nonlinear_constraint: nonlinear_constraint (sx_0_0-100)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (sx_0_0-100)<=0
+nonlinear_constraint: nonlinear_constraint (sx_0_0-100)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (sx_0_0-100)>0
+nonlinear_constraint: nonlinear_constraint (0-sx_0_0)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (0-sx_0_0)<=0
+nonlinear_constraint: nonlinear_constraint (0-sx_0_0)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (0-sx_0_0)>0
+nonlinear_constraint: nonlinear_constraint (sx_d_0_t-100)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (sx_d_0_t-100)<=0
+nonlinear_constraint: nonlinear_constraint (sx_d_0_t-100)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (sx_d_0_t-100)>0
+nonlinear_constraint: nonlinear_constraint (0-sx_d_0_t)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (0-sx_d_0_t)<=0
+nonlinear_constraint: nonlinear_constraint (0-sx_d_0_t)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (0-sx_d_0_t)>0
+nonlinear_constraint: nonlinear_constraint (sx_d_0_0-100)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (sx_d_0_0-100)<=0
+nonlinear_constraint: nonlinear_constraint (sx_d_0_0-100)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (sx_d_0_0-100)>0
+nonlinear_constraint: nonlinear_constraint (0-sx_d_0_0)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (0-sx_d_0_0)<=0
+nonlinear_constraint: nonlinear_constraint (0-sx_d_0_0)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (0-sx_d_0_0)>0
+nonlinear_constraint: nonlinear_constraint (sx_env_0_t-51)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (sx_env_0_t-51)<=0
+nonlinear_constraint: nonlinear_constraint (sx_env_0_t-51)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (sx_env_0_t-51)>0
+nonlinear_constraint: nonlinear_constraint (0-sx_env_0_t)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (0-sx_env_0_t)<=0
+nonlinear_constraint: nonlinear_constraint (0-sx_env_0_t)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (0-sx_env_0_t)>0
+nonlinear_constraint: nonlinear_constraint (sx_env_0_0-51)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (sx_env_0_0-51)<=0
+nonlinear_constraint: nonlinear_constraint (sx_env_0_0-51)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (sx_env_0_0-51)>0
+nonlinear_constraint: nonlinear_constraint (0-sx_env_0_0)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (0-sx_env_0_0)<=0
+nonlinear_constraint: nonlinear_constraint (0-sx_env_0_0)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (0-sx_env_0_0)>0
+nonlinear_constraint: nonlinear_constraint (sy_0_t-100)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (sy_0_t-100)<=0
+nonlinear_constraint: nonlinear_constraint (sy_0_t-100)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (sy_0_t-100)>0
+nonlinear_constraint: nonlinear_constraint (0-sy_0_t)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (0-sy_0_t)<=0
+nonlinear_constraint: nonlinear_constraint (0-sy_0_t)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (0-sy_0_t)>0
+nonlinear_constraint: nonlinear_constraint (sy_0_0-100)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (sy_0_0-100)<=0
+nonlinear_constraint: nonlinear_constraint (sy_0_0-100)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (sy_0_0-100)>0
+nonlinear_constraint: nonlinear_constraint (0-sy_0_0)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (0-sy_0_0)<=0
+nonlinear_constraint: nonlinear_constraint (0-sy_0_0)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (0-sy_0_0)>0
+nonlinear_constraint: nonlinear_constraint (sy_d_0_t-100)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (sy_d_0_t-100)<=0
+nonlinear_constraint: nonlinear_constraint (sy_d_0_t-100)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (sy_d_0_t-100)>0
+nonlinear_constraint: nonlinear_constraint (0-sy_d_0_t)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (0-sy_d_0_t)<=0
+nonlinear_constraint: nonlinear_constraint (0-sy_d_0_t)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (0-sy_d_0_t)>0
+nonlinear_constraint: nonlinear_constraint (sy_d_0_0-100)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (sy_d_0_0-100)<=0
+nonlinear_constraint: nonlinear_constraint (sy_d_0_0-100)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (sy_d_0_0-100)>0
+nonlinear_constraint: nonlinear_constraint (0-sy_d_0_0)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (0-sy_d_0_0)<=0
+nonlinear_constraint: nonlinear_constraint (0-sy_d_0_0)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (0-sy_d_0_0)>0
+nonlinear_constraint: nonlinear_constraint (tau_0_t-100)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (tau_0_t-100)<=0
+nonlinear_constraint: nonlinear_constraint (tau_0_t-100)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (tau_0_t-100)>0
+nonlinear_constraint: nonlinear_constraint (0-tau_0_t)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (0-tau_0_t)<=0
+nonlinear_constraint: nonlinear_constraint (0-tau_0_t)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (0-tau_0_t)>0
+nonlinear_constraint: nonlinear_constraint (tau_0_0-100)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (tau_0_0-100)<=0
+nonlinear_constraint: nonlinear_constraint (tau_0_0-100)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (tau_0_0-100)>0
+nonlinear_constraint: nonlinear_constraint (0-tau_0_0)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (0-tau_0_0)<=0
+nonlinear_constraint: nonlinear_constraint (0-tau_0_0)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (0-tau_0_0)>0
+nonlinear_constraint: nonlinear_constraint (v_0_t-12)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (v_0_t-12)<=0
+nonlinear_constraint: nonlinear_constraint (v_0_t-12)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (v_0_t-12)>0
+nonlinear_constraint: nonlinear_constraint (6-v_0_t)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (6-v_0_t)<=0
+nonlinear_constraint: nonlinear_constraint (6-v_0_t)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (6-v_0_t)>0
+nonlinear_constraint: nonlinear_constraint (v_0_0-12)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (v_0_0-12)<=0
+nonlinear_constraint: nonlinear_constraint (v_0_0-12)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (v_0_0-12)>0
+nonlinear_constraint: nonlinear_constraint (6-v_0_0)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (6-v_0_0)<=0
+nonlinear_constraint: nonlinear_constraint (6-v_0_0)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (6-v_0_0)>0
+nonlinear_constraint: nonlinear_constraint (waypointx_0_t-20)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (waypointx_0_t-20)<=0
+nonlinear_constraint: nonlinear_constraint (waypointx_0_t-20)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (waypointx_0_t-20)>0
+nonlinear_constraint: nonlinear_constraint (-20-waypointx_0_t)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (-20-waypointx_0_t)<=0
+nonlinear_constraint: nonlinear_constraint (-20-waypointx_0_t)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (-20-waypointx_0_t)>0
+nonlinear_constraint: nonlinear_constraint (waypointx_0_0-20)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (waypointx_0_0-20)<=0
+nonlinear_constraint: nonlinear_constraint (waypointx_0_0-20)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (waypointx_0_0-20)>0
+nonlinear_constraint: nonlinear_constraint (-20-waypointx_0_0)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (-20-waypointx_0_0)<=0
+nonlinear_constraint: nonlinear_constraint (-20-waypointx_0_0)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (-20-waypointx_0_0)>0
+nonlinear_constraint: nonlinear_constraint (waypointy_0_t-20)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (waypointy_0_t-20)<=0
+nonlinear_constraint: nonlinear_constraint (waypointy_0_t-20)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (waypointy_0_t-20)>0
+nonlinear_constraint: nonlinear_constraint (-20-waypointy_0_t)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (-20-waypointy_0_t)<=0
+nonlinear_constraint: nonlinear_constraint (-20-waypointy_0_t)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (-20-waypointy_0_t)>0
+nonlinear_constraint: nonlinear_constraint (waypointy_0_0-20)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (waypointy_0_0-20)<=0
+nonlinear_constraint: nonlinear_constraint (waypointy_0_0-20)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (waypointy_0_0-20)>0
+nonlinear_constraint: nonlinear_constraint (-20-waypointy_0_0)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (-20-waypointy_0_0)<=0
+nonlinear_constraint: nonlinear_constraint (-20-waypointy_0_0)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (-20-waypointy_0_0)>0
+# Egraph::Asserting Literal:      (= waypointy_0_0 5)
+nra_solver::assertLit: (= waypointy_0_0 5), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 0, ded.size = 0
+nra_solver::pushBacktrackPoint 1
+# Egraph::Asserting Literal:      (= waypointx_0_0 15)
+nra_solver::assertLit: (= waypointx_0_0 15), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 1, ded.size = 0
+nra_solver::pushBacktrackPoint 2
+# Egraph::Asserting Literal:      (= (/ 1 (/ (^ (^ (+ (^ (+ waypointx_0_0 (* -1 sx_0_0)) 2) (^ (+ waypointy_0_0 (* -1 sy_0_0)) 2)) 0.5) 2) (* 2 (+ waypointx_0_0 (* -1 sx_0_0))))) 0.01)
+nra_solver::assertLit: (= (/ 1 (/ (^ (^ (+ (^ (+ waypointx_0_0 (* -1 sx_0_0)) 2) (^ (+ waypointy_0_0 (* -1 sy_0_0)) 2)) 0.5) 2) (* 2 (+ waypointx_0_0 (* -1 sx_0_0))))) 0.01), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 2, ded.size = 0
+nra_solver::pushBacktrackPoint 3
+# Egraph::Asserting Literal:      (= sx_env_0_0 15)
+nra_solver::assertLit: (= sx_env_0_0 15), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 3, ded.size = 0
+nra_solver::pushBacktrackPoint 4
+# Egraph::Asserting Literal:      (= Psi_dot_d_0_0 0)
+nra_solver::assertLit: (= Psi_dot_d_0_0 0), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 4, ded.size = 0
+nra_solver::pushBacktrackPoint 5
+# Egraph::Asserting Literal:      (= Psi_d_0_0 0)
+nra_solver::assertLit: (= Psi_d_0_0 0), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 5, ded.size = 0
+nra_solver::pushBacktrackPoint 6
+# Egraph::Asserting Literal:      (= tau_0_0 0)
+nra_solver::assertLit: (= tau_0_0 0), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 6, ded.size = 0
+nra_solver::pushBacktrackPoint 7
+# Egraph::Asserting Literal:      (= delta_0_0 0)
+nra_solver::assertLit: (= delta_0_0 0), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 7, ded.size = 0
+nra_solver::pushBacktrackPoint 8
+# Egraph::Asserting Literal:      (= Beta_0_0 0)
+nra_solver::assertLit: (= Beta_0_0 0), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 8, ded.size = 0
+nra_solver::pushBacktrackPoint 9
+# Egraph::Asserting Literal:      (= Psi_dot_0_0 0)
+nra_solver::assertLit: (= Psi_dot_0_0 0), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 9, ded.size = 0
+nra_solver::pushBacktrackPoint 10
+# Egraph::Asserting Literal:      (= Psi_0_0 0)
+nra_solver::assertLit: (= Psi_0_0 0), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 10, ded.size = 0
+nra_solver::pushBacktrackPoint 11
+# Egraph::Asserting Literal:      (= sy_d_0_0 0)
+nra_solver::assertLit: (= sy_d_0_0 0), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 11, ded.size = 0
+nra_solver::pushBacktrackPoint 12
+# Egraph::Asserting Literal:      (= sx_d_0_0 0)
+nra_solver::assertLit: (= sx_d_0_0 0), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 12, ded.size = 0
+nra_solver::pushBacktrackPoint 13
+# Egraph::Asserting Literal:      (= v_0_0 10.9)
+nra_solver::assertLit: (= v_0_0 10.9), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 13, ded.size = 0
+nra_solver::pushBacktrackPoint 14
+# Egraph::Asserting Literal:      (= sy_0_0 0)
+nra_solver::assertLit: (= sy_0_0 0), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 14, ded.size = 0
+nra_solver::pushBacktrackPoint 15
+# Egraph::Asserting Literal:      (= sx_0_0 0)
+nra_solver::assertLit: (= sx_0_0 0), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 15, ded.size = 0
+nra_solver::pushBacktrackPoint 16
+# Egraph::Asserting Literal:      (= mode_0 1)
+nra_solver::assertLit: (= mode_0 1), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 16, ded.size = 0
+nra_solver::pushBacktrackPoint 17
+# Egraph::Asserting Literal:      (= waypointy_0_t (+ waypointy_0_0 0))
+nra_solver::assertLit: (= waypointy_0_t (+ waypointy_0_0 0)), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 17, ded.size = 0
+nra_solver::pushBacktrackPoint 18
+# Egraph::Asserting Literal:      (= waypointx_0_t (+ waypointx_0_0 0))
+nra_solver::assertLit: (= waypointx_0_t (+ waypointx_0_0 0)), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 18, ded.size = 0
+nra_solver::pushBacktrackPoint 19
+# Egraph::Asserting Literal:      (= tau_0_t (+ tau_0_0 (* 1 time_0)))
+nra_solver::assertLit: (= tau_0_t (+ tau_0_0 (* 1 time_0))), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 19, ded.size = 0
+nra_solver::pushBacktrackPoint 20
+# Egraph::Asserting Literal:      (= kappa_d_0_t (+ kappa_d_0_0 0))
+nra_solver::assertLit: (= kappa_d_0_t (+ kappa_d_0_0 0)), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 20, ded.size = 0
+nra_solver::pushBacktrackPoint 21
+# Egraph::Asserting Literal:      (integral 1 0 time_0 Beta_0_0 Beta_0_t Psi_0_0 Psi_0_t Psi_d_0_0 Psi_d_0_t Psi_dot_0_0 Psi_dot_0_t Psi_dot_d_0_0 Psi_dot_d_0_t delta_0_0 delta_0_t kappa_d_0_0 kappa_d_0_t sx_0_0 sx_0_t sx_d_0_0 sx_d_0_t sx_env_0_0 sx_env_0_t sy_0_0 sy_0_t sy_d_0_0 sy_d_0_t tau_0_0 tau_0_t v_0_0 v_0_t waypointx_0_0 waypointx_0_t waypointy_0_0 waypointy_0_t)
+nra_solver::assertLit: (integral 1 0 time_0 Beta_0_0 Beta_0_t Psi_0_0 Psi_0_t Psi_d_0_0 Psi_d_0_t Psi_dot_0_0 Psi_dot_0_t Psi_dot_d_0_0 Psi_dot_d_0_t delta_0_0 delta_0_t kappa_d_0_0 kappa_d_0_t sx_0_0 sx_0_t sx_d_0_0 sx_d_0_t sx_env_0_0 sx_env_0_t sy_0_0 sy_0_t sy_d_0_0 sy_d_0_t tau_0_0 tau_0_t v_0_0 v_0_t waypointx_0_0 waypointx_0_t waypointy_0_0 waypointy_0_t), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 21, ded.size = 0
+nra_solver::pushBacktrackPoint 22
+# Egraph::Asserting Literal:      (forallt 1 0 time_0 (<= 0 v_0_t))
+nra_solver::assertLit: (forallt 1 0 time_0 (<= 0 v_0_t)), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 22, ded.size = 0
+nra_solver::pushBacktrackPoint 23
+# Egraph::Asserting Literal:      (<= 0 v_0_t)
+nra_solver::assertLit: (<= 0 v_0_t), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 23, ded.size = 0
+nra_solver::pushBacktrackPoint 24
+# Egraph::Asserting Literal:      (<= 0 v_0_0)
+nra_solver::assertLit: (<= 0 v_0_0), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 24, ded.size = 0
+nra_solver::pushBacktrackPoint 25
+# Egraph::Asserting Literal:      (= tau_0_t 1)
+nra_solver::assertLit: (= tau_0_t 1), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 25, ded.size = 0
+nra_solver::pushBacktrackPoint 26
+# Egraph::Asserting Literal:      (<= mode_0 1)
+nra_solver::assertLit: (<= mode_0 1), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 26, ded.size = 1
+nra_solver::pushBacktrackPoint 27
+# Egraph::Asserting Literal:      (<= 1 mode_0)
+nra_solver::assertLit: (<= 1 mode_0), reason: false, polarity: 1, deduced: true, getDeduced: 1, getIndex: 0, level: 27, ded.size = 1
+nra_solver::pushBacktrackPoint 28
+# Egraph::Asserting Literal:      (<= time_0 3.1)
+nra_solver::assertLit: (<= time_0 3.1), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 28, ded.size = 1
+nra_solver::pushBacktrackPoint 29
+# Egraph::Asserting Literal:      (<= 0 time_0)
+nra_solver::assertLit: (<= 0 time_0), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 29, ded.size = 1
+nra_solver::pushBacktrackPoint 30
+# Egraph::Asserting Literal:      (<= Beta_0_t 2.03)
+nra_solver::assertLit: (<= Beta_0_t 2.03), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 30, ded.size = 1
+nra_solver::pushBacktrackPoint 31
+# Egraph::Asserting Literal:      (<= -2 Beta_0_t)
+nra_solver::assertLit: (<= -2 Beta_0_t), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 31, ded.size = 1
+nra_solver::pushBacktrackPoint 32
+# Egraph::Asserting Literal:      (<= Beta_0_0 2.03)
+nra_solver::assertLit: (<= Beta_0_0 2.03), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 32, ded.size = 1
+nra_solver::pushBacktrackPoint 33
+# Egraph::Asserting Literal:      (<= -2 Beta_0_0)
+nra_solver::assertLit: (<= -2 Beta_0_0), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 33, ded.size = 6
+nra_solver::pushBacktrackPoint 34
+# Egraph::Asserting Literal:      (<= Psi_0_t 2.04)
+nra_solver::assertLit: (<= Psi_0_t 2.04), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 34, ded.size = 6
+nra_solver::pushBacktrackPoint 35
+# Egraph::Asserting Literal:      (<= -2 Psi_0_t)
+nra_solver::assertLit: (<= -2 Psi_0_t), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 35, ded.size = 6
+nra_solver::pushBacktrackPoint 36
+# Egraph::Asserting Literal:      (<= Psi_0_0 2.04)
+nra_solver::assertLit: (<= Psi_0_0 2.04), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 36, ded.size = 7
+nra_solver::pushBacktrackPoint 37
+# Egraph::Asserting Literal:      (<= -2 Psi_0_0)
+nra_solver::assertLit: (<= -2 Psi_0_0), reason: false, polarity: 1, deduced: true, getDeduced: 1, getIndex: 0, level: 37, ded.size = 7
+nra_solver::pushBacktrackPoint 38
+# Egraph::Asserting Literal:      (<= Psi_d_0_t 2.07)
+nra_solver::assertLit: (<= Psi_d_0_t 2.07), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 38, ded.size = 7
+nra_solver::pushBacktrackPoint 39
+# Egraph::Asserting Literal:      (<= -2 Psi_d_0_t)
+nra_solver::assertLit: (<= -2 Psi_d_0_t), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 39, ded.size = 7
+nra_solver::pushBacktrackPoint 40
+# Egraph::Asserting Literal:      (<= Psi_d_0_0 2.07)
+nra_solver::assertLit: (<= Psi_d_0_0 2.07), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 40, ded.size = 7
+nra_solver::pushBacktrackPoint 41
+# Egraph::Asserting Literal:      (<= -2 Psi_d_0_0)
+nra_solver::assertLit: (<= -2 Psi_d_0_0), reason: false, polarity: 1, deduced: true, getDeduced: 1, getIndex: 0, level: 41, ded.size = 7
+nra_solver::pushBacktrackPoint 42
+# Egraph::Asserting Literal:      (<= Psi_dot_0_t 2.05)
+nra_solver::assertLit: (<= Psi_dot_0_t 2.05), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 42, ded.size = 7
+nra_solver::pushBacktrackPoint 43
+# Egraph::Asserting Literal:      (<= -2 Psi_dot_0_t)
+nra_solver::assertLit: (<= -2 Psi_dot_0_t), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 43, ded.size = 7
+nra_solver::pushBacktrackPoint 44
+# Egraph::Asserting Literal:      (<= Psi_dot_0_0 2.05)
+nra_solver::assertLit: (<= Psi_dot_0_0 2.05), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 44, ded.size = 7
+nra_solver::pushBacktrackPoint 45
+# Egraph::Asserting Literal:      (<= -2 Psi_dot_0_0)
+nra_solver::assertLit: (<= -2 Psi_dot_0_0), reason: false, polarity: 1, deduced: true, getDeduced: 1, getIndex: 0, level: 45, ded.size = 7
+nra_solver::pushBacktrackPoint 46
+# Egraph::Asserting Literal:      (<= Psi_dot_d_0_t 2.08)
+nra_solver::assertLit: (<= Psi_dot_d_0_t 2.08), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 46, ded.size = 7
+nra_solver::pushBacktrackPoint 47
+# Egraph::Asserting Literal:      (<= -2 Psi_dot_d_0_t)
+nra_solver::assertLit: (<= -2 Psi_dot_d_0_t), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 47, ded.size = 7
+nra_solver::pushBacktrackPoint 48
+# Egraph::Asserting Literal:      (<= Psi_dot_d_0_0 2.08)
+nra_solver::assertLit: (<= Psi_dot_d_0_0 2.08), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 48, ded.size = 7
+nra_solver::pushBacktrackPoint 49
+# Egraph::Asserting Literal:      (<= -2 Psi_dot_d_0_0)
+nra_solver::assertLit: (<= -2 Psi_dot_d_0_0), reason: false, polarity: 1, deduced: true, getDeduced: 1, getIndex: 0, level: 49, ded.size = 7
+nra_solver::pushBacktrackPoint 50
+# Egraph::Asserting Literal:      (<= delta_0_t 2.04)
+nra_solver::assertLit: (<= delta_0_t 2.04), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 50, ded.size = 7
+nra_solver::pushBacktrackPoint 51
+# Egraph::Asserting Literal:      (<= -2 delta_0_t)
+nra_solver::assertLit: (<= -2 delta_0_t), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 51, ded.size = 7
+nra_solver::pushBacktrackPoint 52
+# Egraph::Asserting Literal:      (<= delta_0_0 2.04)
+nra_solver::assertLit: (<= delta_0_0 2.04), reason: false, polarity: 1, deduced: true, getDeduced: 1, getIndex: 0, level: 52, ded.size = 7
+nra_solver::pushBacktrackPoint 53
+# Egraph::Asserting Literal:      (<= -2 delta_0_0)
+nra_solver::assertLit: (<= -2 delta_0_0), reason: false, polarity: 1, deduced: true, getDeduced: 1, getIndex: 0, level: 53, ded.size = 7
+nra_solver::pushBacktrackPoint 54
+# Egraph::Asserting Literal:      (<= kappa_d_0_t 2.06)
+nra_solver::assertLit: (<= kappa_d_0_t 2.06), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 54, ded.size = 7
+nra_solver::pushBacktrackPoint 55
+# Egraph::Asserting Literal:      (<= -2 kappa_d_0_t)
+nra_solver::assertLit: (<= -2 kappa_d_0_t), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 55, ded.size = 7
+nra_solver::pushBacktrackPoint 56
+# Egraph::Asserting Literal:      (<= kappa_d_0_0 2.06)
+nra_solver::assertLit: (<= kappa_d_0_0 2.06), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 56, ded.size = 7
+nra_solver::pushBacktrackPoint 57
+# Egraph::Asserting Literal:      (<= -2 kappa_d_0_0)
+nra_solver::assertLit: (<= -2 kappa_d_0_0), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 57, ded.size = 7
+nra_solver::pushBacktrackPoint 58
+# Egraph::Asserting Literal:      (<= sx_0_t 100)
+nra_solver::assertLit: (<= sx_0_t 100), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 58, ded.size = 7
+nra_solver::pushBacktrackPoint 59
+# Egraph::Asserting Literal:      (<= 0 sx_0_t)
+nra_solver::assertLit: (<= 0 sx_0_t), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 59, ded.size = 7
+nra_solver::pushBacktrackPoint 60
+# Egraph::Asserting Literal:      (<= sx_0_0 100)
+nra_solver::assertLit: (<= sx_0_0 100), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 60, ded.size = 11
+nra_solver::pushBacktrackPoint 61
+# Egraph::Asserting Literal:      (<= 0 sx_0_0)
+nra_solver::assertLit: (<= 0 sx_0_0), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 61, ded.size = 15
+nra_solver::pushBacktrackPoint 62
+# Egraph::Asserting Literal:      (<= sx_d_0_t 100)
+nra_solver::assertLit: (<= sx_d_0_t 100), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 62, ded.size = 15
+nra_solver::pushBacktrackPoint 63
+# Egraph::Asserting Literal:      (<= 0 sx_d_0_t)
+nra_solver::assertLit: (<= 0 sx_d_0_t), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 63, ded.size = 15
+nra_solver::pushBacktrackPoint 64
+# Egraph::Asserting Literal:      (<= sx_d_0_0 100)
+nra_solver::assertLit: (<= sx_d_0_0 100), reason: false, polarity: 1, deduced: true, getDeduced: 1, getIndex: 0, level: 64, ded.size = 15
+nra_solver::pushBacktrackPoint 65
+# Egraph::Asserting Literal:      (<= 0 sx_d_0_0)
+nra_solver::assertLit: (<= 0 sx_d_0_0), reason: false, polarity: 1, deduced: true, getDeduced: 1, getIndex: 0, level: 65, ded.size = 15
+nra_solver::pushBacktrackPoint 66
+# Egraph::Asserting Literal:      (<= sx_env_0_t 51)
+nra_solver::assertLit: (<= sx_env_0_t 51), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 66, ded.size = 15
+nra_solver::pushBacktrackPoint 67
+# Egraph::Asserting Literal:      (<= 0 sx_env_0_t)
+nra_solver::assertLit: (<= 0 sx_env_0_t), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 67, ded.size = 15
+nra_solver::pushBacktrackPoint 68
+# Egraph::Asserting Literal:      (<= sx_env_0_0 51)
+nra_solver::assertLit: (<= sx_env_0_0 51), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 68, ded.size = 15
+nra_solver::pushBacktrackPoint 69
+# Egraph::Asserting Literal:      (<= 0 sx_env_0_0)
+nra_solver::assertLit: (<= 0 sx_env_0_0), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 69, ded.size = 15
+nra_solver::pushBacktrackPoint 70
+# Egraph::Asserting Literal:      (<= sy_0_t 100)
+nra_solver::assertLit: (<= sy_0_t 100), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 70, ded.size = 15
+nra_solver::pushBacktrackPoint 71
+# Egraph::Asserting Literal:      (<= 0 sy_0_t)
+nra_solver::assertLit: (<= 0 sy_0_t), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 71, ded.size = 15
+nra_solver::pushBacktrackPoint 72
+# Egraph::Asserting Literal:      (<= sy_0_0 100)
+nra_solver::assertLit: (<= sy_0_0 100), reason: false, polarity: 1, deduced: true, getDeduced: 1, getIndex: 0, level: 72, ded.size = 15
+nra_solver::pushBacktrackPoint 73
+# Egraph::Asserting Literal:      (<= 0 sy_0_0)
+nra_solver::assertLit: (<= 0 sy_0_0), reason: false, polarity: 1, deduced: true, getDeduced: 1, getIndex: 0, level: 73, ded.size = 15
+nra_solver::pushBacktrackPoint 74
+# Egraph::Asserting Literal:      (<= sy_d_0_t 100)
+nra_solver::assertLit: (<= sy_d_0_t 100), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 74, ded.size = 15
+nra_solver::pushBacktrackPoint 75
+# Egraph::Asserting Literal:      (<= 0 sy_d_0_t)
+nra_solver::assertLit: (<= 0 sy_d_0_t), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 75, ded.size = 15
+nra_solver::pushBacktrackPoint 76
+# Egraph::Asserting Literal:      (<= sy_d_0_0 100)
+nra_solver::assertLit: (<= sy_d_0_0 100), reason: false, polarity: 1, deduced: true, getDeduced: 1, getIndex: 0, level: 76, ded.size = 15
+nra_solver::pushBacktrackPoint 77
+# Egraph::Asserting Literal:      (<= 0 sy_d_0_0)
+nra_solver::assertLit: (<= 0 sy_d_0_0), reason: false, polarity: 1, deduced: true, getDeduced: 1, getIndex: 0, level: 77, ded.size = 15
+nra_solver::pushBacktrackPoint 78
+# Egraph::Asserting Literal:      (<= tau_0_t 100)
+nra_solver::assertLit: (<= tau_0_t 100), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 78, ded.size = 15
+nra_solver::pushBacktrackPoint 79
+# Egraph::Asserting Literal:      (<= 0 tau_0_t)
+nra_solver::assertLit: (<= 0 tau_0_t), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 79, ded.size = 15
+nra_solver::pushBacktrackPoint 80
+# Egraph::Asserting Literal:      (<= tau_0_0 100)
+nra_solver::assertLit: (<= tau_0_0 100), reason: false, polarity: 1, deduced: true, getDeduced: 1, getIndex: 0, level: 80, ded.size = 15
+nra_solver::pushBacktrackPoint 81
+# Egraph::Asserting Literal:      (<= 0 tau_0_0)
+nra_solver::assertLit: (<= 0 tau_0_0), reason: false, polarity: 1, deduced: true, getDeduced: 1, getIndex: 0, level: 81, ded.size = 15
+nra_solver::pushBacktrackPoint 82
+# Egraph::Asserting Literal:      (<= v_0_t 12)
+nra_solver::assertLit: (<= v_0_t 12), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 82, ded.size = 15
+nra_solver::pushBacktrackPoint 83
+# Egraph::Asserting Literal:      (<= 6 v_0_t)
+nra_solver::assertLit: (<= 6 v_0_t), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 83, ded.size = 15
+nra_solver::pushBacktrackPoint 84
+# Egraph::Asserting Literal:      (<= v_0_0 12)
+nra_solver::assertLit: (<= v_0_0 12), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 84, ded.size = 15
+nra_solver::pushBacktrackPoint 85
+# Egraph::Asserting Literal:      (<= 6 v_0_0)
+nra_solver::assertLit: (<= 6 v_0_0), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 85, ded.size = 15
+nra_solver::pushBacktrackPoint 86
+# Egraph::Asserting Literal:      (<= waypointx_0_t 20)
+nra_solver::assertLit: (<= waypointx_0_t 20), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 86, ded.size = 15
+nra_solver::pushBacktrackPoint 87
+# Egraph::Asserting Literal:      (<= -20 waypointx_0_t)
+nra_solver::assertLit: (<= -20 waypointx_0_t), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 87, ded.size = 15
+nra_solver::pushBacktrackPoint 88
+# Egraph::Asserting Literal:      (<= waypointx_0_0 20)
+nra_solver::assertLit: (<= waypointx_0_0 20), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 88, ded.size = 15
+nra_solver::pushBacktrackPoint 89
+# Egraph::Asserting Literal:      (<= -20 waypointx_0_0)
+nra_solver::assertLit: (<= -20 waypointx_0_0), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 89, ded.size = 15
+nra_solver::pushBacktrackPoint 90
+# Egraph::Asserting Literal:      (<= waypointy_0_t 20)
+nra_solver::assertLit: (<= waypointy_0_t 20), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 90, ded.size = 15
+nra_solver::pushBacktrackPoint 91
+# Egraph::Asserting Literal:      (<= -20 waypointy_0_t)
+nra_solver::assertLit: (<= -20 waypointy_0_t), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 91, ded.size = 15
+nra_solver::pushBacktrackPoint 92
+# Egraph::Asserting Literal:      (<= waypointy_0_0 20)
+nra_solver::assertLit: (<= waypointy_0_0 20), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 92, ded.size = 15
+nra_solver::pushBacktrackPoint 93
+# Egraph::Asserting Literal:      (<= -20 waypointy_0_0)
+nra_solver::assertLit: (<= -20 waypointy_0_0), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 93, ded.size = 15
+nra_solver::check(complete = false)stack size = 94
+nra_solver::check: result = false
+unsat
+#
+# CPU Time used: 0.0682877 s
+# Memory used: 7.098 MB
+#
+~nra_solver()

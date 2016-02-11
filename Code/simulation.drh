@@ -142,7 +142,7 @@
     d/dt[sy_0] = 0; 
 
     jump:
-        (and (schedtime = 0.2)) ==> @2
+        (and (schedtime = 0.1)) ==> @2
             (and 
              (tau' = tau)
              (Beta' = Beta)
@@ -172,7 +172,7 @@
             // ' End the syntax highlight madness!
 }
 
-// MODE 2, compute the next waypoint
+// MODE 2, compute the next waypoint, vehicle state does not evolve here
 {
     mode 2;
 
@@ -249,11 +249,20 @@
              (lookahead' = lookahead + 0.4)
              (kappa_d_spline' = kappa_d_spline)
              (Psi_d_spline' = Psi_d_spline)
-             (sx_d_spline'=sx_d_spline)
+             (sx_d_spline'= sx_d_spline)
              (sy_d_spline' = sy_d_spline)
-             (Psi_dot_d_spline' =Psi_dot_d_spline)
+             (Psi_dot_d_spline' = Psi_dot_d_spline)
              (sx_0' = sx)
              (sy_0' = sy));
+
+             //(simtime' = simtime)
+             //(schedtime'= schedtime)
+             //(lookahead' = lookahead + 0.4)
+             //(kappa_d_spline' = kappa_d_spline)
+             //(Psi_d_spline' = Psi_d_spline)
+             //(sx_d_spline'=sx_d_spline)
+             //(sy_d_spline' = sy_d_spline)
+             //(Psi_dot_d_spline' =Psi_dot_d_spline)
 
             // ' End the syntax highlight madness!
 }
@@ -285,4 +294,4 @@ init:
     (Psi_dot_d_spline=0));
 
 goal:
-@1 (tau>0.5);
+@1 (tau>0.1);

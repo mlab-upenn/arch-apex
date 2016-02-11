@@ -1,0 +1,13 @@
+\BOOKMARK [1][-]{section.1}{Outline}{}% 1
+\BOOKMARK [1][-]{section.2}{Introduction}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{State of the Art}{section.2}% 3
+\BOOKMARK [1][-]{section.3}{Models}{}% 4
+\BOOKMARK [2][-]{subsection.3.1}{Vehicle}{section.3}% 5
+\BOOKMARK [2][-]{subsection.3.2}{Pure Pursuit}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.3}{Behavioral Controller}{section.3}% 7
+\BOOKMARK [1][-]{section.4}{Benchmarks}{}% 8
+\BOOKMARK [2][-]{subsection.4.1}{A Simple Lane Change}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.2}{Algorithm}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.3}{Variations in Road Geometry}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.4}{Proactive Expert Driver Assistance}{section.4}% 12
+\BOOKMARK [1][-]{section.5}{Conclusions}{}% 13

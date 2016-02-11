@@ -1,0 +1,1026 @@
+# OpenSMTContext::Declaring function x of sort () Real
+# OpenSMTContext::Declaring function v of sort () Real
+# OpenSMTContext::Declaring function x_0_0 of sort () Real
+# OpenSMTContext::Declaring function x_0_t of sort () Real
+# OpenSMTContext::Declaring function v_0_0 of sort () Real
+# OpenSMTContext::Declaring function v_0_t of sort () Real
+# OpenSMTContext::Declaring function time_0 of sort () Real
+# OpenSMTContext::Declaring function mode_0 of sort () Real
+#
+# -------------------------------------------------------------------------
+# dReal 3.16.1.01                                   https://dreal.github.io
+# Compiled with gcc 4.2.1 Compatible Clang 3.6.2 (tags/RELEASE_362/final) on Jan 30 2016
+# -------------------------------------------------------------------------
+#
+# OpenSMTContext::Asserting formula (<= 0 x_0_0)
+# OpenSMTContext::Asserting formula (<= x_0_0 20)
+# OpenSMTContext::Asserting formula (<= 0 x_0_t)
+# OpenSMTContext::Asserting formula (<= x_0_t 20)
+# OpenSMTContext::Asserting formula (<= -100 v_0_0)
+# OpenSMTContext::Asserting formula (<= v_0_0 100)
+# OpenSMTContext::Asserting formula (<= -100 v_0_t)
+# OpenSMTContext::Asserting formula (<= v_0_t 100)
+# OpenSMTContext::Asserting formula (<= 0 time_0)
+# OpenSMTContext::Asserting formula (<= time_0 20)
+# OpenSMTContext::Asserting formula (<= 1 mode_0)
+# OpenSMTContext::Asserting formula (<= mode_0 1)
+# OpenSMTContext::Asserting formula (and (and (= v_0_0 -2) (= x_0_0 18)) (= mode_0 1) (= v_0_t (+ v_0_0 (* -9.8 time_0))) (integral 1 0 time_0 v_0_0 v_0_t x_0_0 x_0_t) (forallt 1 0 time_0 (<= v_0_t 0)) (<= v_0_t 0) (<= v_0_0 0) (forallt 1 0 time_0 (<= 0 x_0_t)) (<= 0 x_0_t) (<= 0 x_0_0) (not (<= 2 x_0_t))) with id 193
+# OpenSMTContext::Checking satisfiability
+# OpenSMTContext::Processing: (and (and (and (= v_0_0 -2) (= x_0_0 18)) (= mode_0 1) (= v_0_t (+ v_0_0 (* -9.8 time_0))) (integral 1 0 time_0 v_0_0 v_0_t x_0_0 x_0_t) (forallt 1 0 time_0 (<= v_0_t 0)) (<= v_0_t 0) (<= v_0_0 0) (forallt 1 0 time_0 (<= 0 x_0_t)) (<= 0 x_0_t) (<= 0 x_0_0) (not (<= 2 x_0_t))) (<= mode_0 1) (<= 1 mode_0) (<= time_0 20) (<= 0 time_0) (<= v_0_t 100) (<= -100 v_0_t) (<= v_0_0 100) (<= -100 v_0_0) (<= x_0_t 20) (<= 0 x_0_t) (<= x_0_0 20) (<= 0 x_0_0))
+nra_solver::inform: (= v_0_0 -2)
+nra_solver::inform: (= x_0_0 18)
+nra_solver::inform: (= mode_0 1)
+nra_solver::inform: (= v_0_t (+ v_0_0 (* -9.8 time_0)))
+nra_solver::inform: (integral 1 0 time_0 v_0_0 v_0_t x_0_0 x_0_t)
+nra_solver::inform: (forallt 1 0 time_0 (<= v_0_t 0))
+nra_solver::inform: (<= v_0_t 0)
+nra_solver::inform: (<= v_0_0 0)
+nra_solver::inform: (forallt 1 0 time_0 (<= 0 x_0_t))
+nra_solver::inform: (<= 0 x_0_t)
+nra_solver::inform: (<= 0 x_0_0)
+nra_solver::inform: (<= 2 x_0_t)
+nra_solver::inform: (<= mode_0 1)
+nra_solver::inform: (<= 1 mode_0)
+nra_solver::inform: (<= time_0 20)
+nra_solver::inform: (<= 0 time_0)
+nra_solver::inform: (<= v_0_t 100)
+nra_solver::inform: (<= -100 v_0_t)
+nra_solver::inform: (<= v_0_0 100)
+nra_solver::inform: (<= -100 v_0_0)
+nra_solver::inform: (<= x_0_t 20)
+nra_solver::inform: (<= x_0_0 20)
+#         0 |        0        0 |    0.008 s |  2.699 MBnra_solver::pushBacktrackPoint 0
+nonlinear_constraint: nonlinear_constraint v_0_t<=0
+nonlinear_constraint: nonlinear_constraint (0-x_0_t)<=0
+nra_solver::initialize_constraints: collect ODEConstraint: ode_constraint(integral_constraint = (integral 1 0 time_0 v_0_0 v_0_t x_0_0 x_0_t)
+	flow_id = 1
+	time = [0,time_0]
+	var: v_0_0 v_0_t
+	var: x_0_0 x_0_t
+	d/dt[v] = -9.8
+	d/dt[x] = v
+)
+
+nonlinear_constraint: nonlinear_constraint (v_0_0--2)=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (v_0_0--2)=0
+nonlinear_constraint: nonlinear_constraint !((v_0_0--2)=0)
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint !((v_0_0--2)=0)
+nonlinear_constraint: nonlinear_constraint (x_0_0-18)=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (x_0_0-18)=0
+nonlinear_constraint: nonlinear_constraint !((x_0_0-18)=0)
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint !((x_0_0-18)=0)
+nonlinear_constraint: nonlinear_constraint (mode_0-1)=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (mode_0-1)=0
+nonlinear_constraint: nonlinear_constraint !((mode_0-1)=0)
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint !((mode_0-1)=0)
+nonlinear_constraint: nonlinear_constraint (v_0_t-(v_0_0+(-9.8*time_0)))=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (v_0_t-(v_0_0+(-9.8*time_0)))=0
+nonlinear_constraint: nonlinear_constraint !((v_0_t-(v_0_0+(-9.8*time_0)))=0)
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint !((v_0_t-(v_0_0+(-9.8*time_0)))=0)
+nonlinear_constraint: nonlinear_constraint v_0_t<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint v_0_t<=0
+nonlinear_constraint: nonlinear_constraint v_0_t>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint v_0_t>0
+nonlinear_constraint: nonlinear_constraint v_0_0<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint v_0_0<=0
+nonlinear_constraint: nonlinear_constraint v_0_0>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint v_0_0>0
+nonlinear_constraint: nonlinear_constraint (0-x_0_t)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (0-x_0_t)<=0
+nonlinear_constraint: nonlinear_constraint (0-x_0_t)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (0-x_0_t)>0
+nonlinear_constraint: nonlinear_constraint (0-x_0_0)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (0-x_0_0)<=0
+nonlinear_constraint: nonlinear_constraint (0-x_0_0)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (0-x_0_0)>0
+nonlinear_constraint: nonlinear_constraint (2-x_0_t)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (2-x_0_t)<=0
+nonlinear_constraint: nonlinear_constraint (2-x_0_t)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (2-x_0_t)>0
+nonlinear_constraint: nonlinear_constraint (mode_0-1)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (mode_0-1)<=0
+nonlinear_constraint: nonlinear_constraint (mode_0-1)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (mode_0-1)>0
+nonlinear_constraint: nonlinear_constraint (1-mode_0)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (1-mode_0)<=0
+nonlinear_constraint: nonlinear_constraint (1-mode_0)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (1-mode_0)>0
+nonlinear_constraint: nonlinear_constraint (time_0-20)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (time_0-20)<=0
+nonlinear_constraint: nonlinear_constraint (time_0-20)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (time_0-20)>0
+nonlinear_constraint: nonlinear_constraint (0-time_0)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (0-time_0)<=0
+nonlinear_constraint: nonlinear_constraint (0-time_0)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (0-time_0)>0
+nonlinear_constraint: nonlinear_constraint (v_0_t-100)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (v_0_t-100)<=0
+nonlinear_constraint: nonlinear_constraint (v_0_t-100)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (v_0_t-100)>0
+nonlinear_constraint: nonlinear_constraint (-100-v_0_t)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (-100-v_0_t)<=0
+nonlinear_constraint: nonlinear_constraint (-100-v_0_t)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (-100-v_0_t)>0
+nonlinear_constraint: nonlinear_constraint (v_0_0-100)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (v_0_0-100)<=0
+nonlinear_constraint: nonlinear_constraint (v_0_0-100)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (v_0_0-100)>0
+nonlinear_constraint: nonlinear_constraint (-100-v_0_0)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (-100-v_0_0)<=0
+nonlinear_constraint: nonlinear_constraint (-100-v_0_0)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (-100-v_0_0)>0
+nonlinear_constraint: nonlinear_constraint (x_0_t-20)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (x_0_t-20)<=0
+nonlinear_constraint: nonlinear_constraint (x_0_t-20)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (x_0_t-20)>0
+nonlinear_constraint: nonlinear_constraint (x_0_0-20)<=0
+nra_solver::initialize_constraints: collect NonlinearConstraint (+): nonlinear_constraint (x_0_0-20)<=0
+nonlinear_constraint: nonlinear_constraint (x_0_0-20)>0
+nra_solver::initialize_constraints: collect NonlinearConstraint (-): nonlinear_constraint (x_0_0-20)>0
+# Egraph::Asserting Literal:      (= v_0_0 -2)
+nra_solver::assertLit: (= v_0_0 -2), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 0, ded.size = 0
+nra_solver::pushBacktrackPoint 1
+# Egraph::Asserting Literal:      (= x_0_0 18)
+nra_solver::assertLit: (= x_0_0 18), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 1, ded.size = 0
+nra_solver::pushBacktrackPoint 2
+# Egraph::Asserting Literal:      (= mode_0 1)
+nra_solver::assertLit: (= mode_0 1), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 2, ded.size = 0
+nra_solver::pushBacktrackPoint 3
+# Egraph::Asserting Literal:      (= v_0_t (+ v_0_0 (* -9.8 time_0)))
+nra_solver::assertLit: (= v_0_t (+ v_0_0 (* -9.8 time_0))), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 3, ded.size = 0
+nra_solver::pushBacktrackPoint 4
+# Egraph::Asserting Literal:      (integral 1 0 time_0 v_0_0 v_0_t x_0_0 x_0_t)
+nra_solver::assertLit: (integral 1 0 time_0 v_0_0 v_0_t x_0_0 x_0_t), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 4, ded.size = 0
+nra_solver::pushBacktrackPoint 5
+# Egraph::Asserting Literal:      (forallt 1 0 time_0 (<= v_0_t 0))
+nra_solver::assertLit: (forallt 1 0 time_0 (<= v_0_t 0)), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 5, ded.size = 0
+nra_solver::pushBacktrackPoint 6
+# Egraph::Asserting Literal:      (<= v_0_t 0)
+nra_solver::assertLit: (<= v_0_t 0), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 6, ded.size = 0
+nra_solver::pushBacktrackPoint 7
+# Egraph::Asserting Literal:      (<= v_0_0 0)
+nra_solver::assertLit: (<= v_0_0 0), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 7, ded.size = 0
+nra_solver::pushBacktrackPoint 8
+# Egraph::Asserting Literal:      (forallt 1 0 time_0 (<= 0 x_0_t))
+nra_solver::assertLit: (forallt 1 0 time_0 (<= 0 x_0_t)), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 8, ded.size = 0
+nra_solver::pushBacktrackPoint 9
+# Egraph::Asserting Literal:      (<= 0 x_0_t)
+nra_solver::assertLit: (<= 0 x_0_t), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 9, ded.size = 0
+nra_solver::pushBacktrackPoint 10
+# Egraph::Asserting Literal:      (<= 0 x_0_0)
+nra_solver::assertLit: (<= 0 x_0_0), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 10, ded.size = 0
+nra_solver::pushBacktrackPoint 11
+# Egraph::Asserting Literal: (not (<= 2 x_0_t))
+nra_solver::assertLit: (<= 2 x_0_t), reason: false, polarity: -1, deduced: false, getDeduced: 0, getIndex: -2, level: 11, ded.size = 0
+nra_solver::pushBacktrackPoint 12
+# Egraph::Asserting Literal:      (<= mode_0 1)
+nra_solver::assertLit: (<= mode_0 1), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 12, ded.size = 1
+nra_solver::pushBacktrackPoint 13
+# Egraph::Asserting Literal:      (<= 1 mode_0)
+nra_solver::assertLit: (<= 1 mode_0), reason: false, polarity: 1, deduced: true, getDeduced: 1, getIndex: 0, level: 13, ded.size = 1
+nra_solver::pushBacktrackPoint 14
+# Egraph::Asserting Literal:      (<= time_0 20)
+nra_solver::assertLit: (<= time_0 20), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 14, ded.size = 1
+nra_solver::pushBacktrackPoint 15
+# Egraph::Asserting Literal:      (<= 0 time_0)
+nra_solver::assertLit: (<= 0 time_0), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 15, ded.size = 1
+nra_solver::pushBacktrackPoint 16
+# Egraph::Asserting Literal:      (<= v_0_t 100)
+nra_solver::assertLit: (<= v_0_t 100), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 16, ded.size = 1
+nra_solver::pushBacktrackPoint 17
+# Egraph::Asserting Literal:      (<= -100 v_0_t)
+nra_solver::assertLit: (<= -100 v_0_t), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 17, ded.size = 1
+nra_solver::pushBacktrackPoint 18
+# Egraph::Asserting Literal:      (<= v_0_0 100)
+nra_solver::assertLit: (<= v_0_0 100), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 18, ded.size = 1
+nra_solver::pushBacktrackPoint 19
+# Egraph::Asserting Literal:      (<= -100 v_0_0)
+nra_solver::assertLit: (<= -100 v_0_0), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 19, ded.size = 1
+nra_solver::pushBacktrackPoint 20
+# Egraph::Asserting Literal:      (<= x_0_t 20)
+nra_solver::assertLit: (<= x_0_t 20), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 20, ded.size = 1
+nra_solver::pushBacktrackPoint 21
+# Egraph::Asserting Literal:      (<= x_0_0 20)
+nra_solver::assertLit: (<= x_0_0 20), reason: false, polarity: 1, deduced: false, getDeduced: 0, getIndex: -2, level: 21, ded.size = 1
+nra_solver::check(complete = false)stack size = 22
+nra_solver::check: result = true
+Found Model after # decisions 0
+
+nra_solver::check(complete = true)stack size = 22
+contractor_capd_full::contractor_capd_full()
+Subst Map (Var): v -> v_0_0
+Subst Map (Var): x -> x_0_0
+contractor_capd_full: diff sys = var:v_0_0, x_0_0;fun:(-9.8), v_0_0;
+contractor_capd_full::contractor_capd_full()
+Subst Map (Var): v -> v_0_t
+Subst Map (Var): x -> x_0_t
+contractor_capd_full: diff sys = var:v_0_t, x_0_t;fun:-(-9.8), -v_0_t;
+naive_icp::solve - loop	box stack Size = 1
+X_0 : {[-2,-2],[18,18]}
+X_t : {[-100,-2],[0,2]}
+T   : [0,10]
+compute_enclosures: subsetOfDomain = [0,0.09375]
+compute_enclosures:[0,0.09375]	{[-2.91875,-2],[17.7694,18]}
+compute_enclosures: subsetOfDomain = [0.09375,0.1875]
+compute_enclosures:[0.09375,0.1875]	{[-3.8375,-2.91875],[17.4527,17.7694]}
+compute_enclosures: subsetOfDomain = [0.1875,0.28125]
+compute_enclosures:[0.1875,0.28125]	{[-4.75625,-3.8375],[17.0499,17.4527]}
+compute_enclosures: subsetOfDomain = [0.28125,0.375]
+compute_enclosures:[0.28125,0.375]	{[-5.675,-4.75625],[16.5609,17.0499]}
+compute_enclosures: subsetOfDomain = [0.375,0.46875]
+compute_enclosures:[0.375,0.46875]	{[-6.59375,-5.675],[15.9858,16.5609]}
+compute_enclosures: subsetOfDomain = [0.46875,0.5625]
+compute_enclosures:[0.46875,0.5625]	{[-7.5125,-6.59375],[15.3246,15.9858]}
+compute_enclosures: subsetOfDomain = [0.5625,0.65625]
+compute_enclosures:[0.5625,0.65625]	{[-8.43125,-7.5125],[14.5772,15.3246]}
+compute_enclosures: subsetOfDomain = [0.65625,0.75]
+compute_enclosures:[0.65625,0.75]	{[-9.35,-8.43125],[13.7437,14.5772]}
+compute_enclosures: subsetOfDomain = [0.75,0.84375]
+compute_enclosures:[0.75,0.84375]	{[-10.2687,-9.35],[12.8241,13.7438]}
+compute_enclosures: subsetOfDomain = [0.84375,0.9375]
+compute_enclosures:[0.84375,0.9375]	{[-11.1875,-10.2687],[11.8184,12.8241]}
+compute_enclosures: subsetOfDomain = [0.9375,1.03125]
+compute_enclosures:[0.9375,1.03125]	{[-12.1062,-11.1875],[10.7265,11.8184]}
+compute_enclosures: subsetOfDomain = [1.03125,1.125]
+compute_enclosures:[1.03125,1.125]	{[-13.025,-12.1062],[9.54844,10.7265]}
+compute_enclosures: subsetOfDomain = [1.125,1.21875]
+compute_enclosures:[1.125,1.21875]	{[-13.9437,-13.025],[8.28428,9.54844]}
+compute_enclosures: subsetOfDomain = [1.21875,1.3125]
+compute_enclosures:[1.21875,1.3125]	{[-14.8625,-13.9437],[6.93398,8.28428]}
+compute_enclosures: subsetOfDomain = [1.3125,1.40625]
+compute_enclosures:[1.3125,1.40625]	{[-15.7812,-14.8625],[5.49756,6.93398]}
+compute_enclosures: subsetOfDomain = [1.40625,1.5]
+compute_enclosures:[1.40625,1.5]	{[-16.7,-15.7812],[3.975,5.49756]}
+                                                                                              ODE Progress [FWD]:  Time =    1.50000 / 10.00     15%  Box Width =   98.00000	compute_enclosures: subsetOfDomain = [0,0.140625]
+compute_enclosures:[1.5,1.64062]	{[-18.0781,-16.7],[1.52966,3.975]}
+compute_enclosures: subsetOfDomain = [0.140625,0.28125]
+compute_enclosures:[1.64062,1.78125]	{[-19.4563,-18.0781],[-1.10947,1.52966]}
+compute_enclosures: subsetOfDomain = [0.28125,0.421875]
+compute_enclosures:[1.78125,1.92188]	{[-20.8344,-19.4562],[-3.94241,-1.10947]}
+contractor_capd_full::prune - invariant violated
+ [Done] 
+X_0 : {[-19.4563,-16.7],[0,2]}
+X_t : {[-2,-2],[18,18]}
+T   : [1.5,1.78125]
+compute_enclosures: subsetOfDomain = [1.5,1.5]
+compute_enclosures:[1.5,1.5]	{[-4.75625,-2],[14.025,20.1594]}
+                                                                                              ODE Progress [BWD]:  Time =    1.50000 / 1.78      84%  Box Width =    2.75625	compute_enclosures: subsetOfDomain = [0,0.0175781]
+compute_enclosures:[1.5,1.51758]	{[-4.75625,-1.82773],[14.025,20.243]}
+compute_enclosures: subsetOfDomain = [0.0175781,0.0351562]
+compute_enclosures:[1.51758,1.53516]	{[-4.58398,-1.65547],[14.0571,20.3236]}
+compute_enclosures: subsetOfDomain = [0.0351562,0.0527344]
+compute_enclosures:[1.53516,1.55273]	{[-4.41172,-1.4832],[14.0862,20.4011]}
+compute_enclosures: subsetOfDomain = [0.0527344,0.0703125]
+compute_enclosures:[1.55273,1.57031]	{[-4.23945,-1.31094],[14.1123,20.4756]}
+compute_enclosures: subsetOfDomain = [0.0703125,0.0878906]
+compute_enclosures:[1.57031,1.58789]	{[-4.06719,-1.13867],[14.1353,20.5471]}
+compute_enclosures: subsetOfDomain = [0.0878906,0.105469]
+compute_enclosures:[1.58789,1.60547]	{[-3.89492,-0.966406],[14.1554,20.6156]}
+compute_enclosures: subsetOfDomain = [0.105469,0.123047]
+compute_enclosures:[1.60547,1.62305]	{[-3.72266,-0.794141],[14.1723,20.681]}
+compute_enclosures: subsetOfDomain = [0.123047,0.140625]
+compute_enclosures:[1.62305,1.64062]	{[-3.55039,-0.621875],[14.1863,20.7434]}
+compute_enclosures: subsetOfDomain = [0.140625,0.158203]
+compute_enclosures:[1.64062,1.6582]	{[-3.37813,-0.449609],[14.1972,20.8028]}
+compute_enclosures: subsetOfDomain = [0.158203,0.175781]
+compute_enclosures:[1.6582,1.67578]	{[-3.20586,-0.277344],[14.2051,20.8592]}
+compute_enclosures: subsetOfDomain = [0.175781,0.193359]
+compute_enclosures:[1.67578,1.69336]	{[-3.03359,-0.105078],[14.21,20.9125]}
+compute_enclosures: subsetOfDomain = [0.193359,0.210938]
+compute_enclosures:[1.69336,1.71094]	{[-2.86133,0.0671875],[14.2119,20.9628]}
+compute_enclosures: subsetOfDomain = [0.210938,0.228516]
+compute_enclosures:[1.71094,1.72852]	{[-2.68906,0.239453],[14.2107,21.0101]}
+compute_enclosures: subsetOfDomain = [0.228516,0.246094]
+compute_enclosures:[1.72852,1.74609]	{[-2.5168,0.411719],[14.2065,21.0543]}
+compute_enclosures: subsetOfDomain = [0.246094,0.263672]
+compute_enclosures:[1.74609,1.76367]	{[-2.34453,0.583984],[14.1992,21.0955]}
+compute_enclosures: subsetOfDomain = [0.263672,0.28125]
+compute_enclosures:[1.76367,1.78125]	{[-2.17227,0.75625],[14.189,21.1337]}
+                                                                                              ODE Progress [BWD]:  Time =    1.78125 / 1.78     100%  Box Width =    2.75625	 [Done] 
+naive_icp::solve - loop	box stack Size = 2
+X_0 : {[-2,-2],[18,18]}
+X_t : {[-19.4563,-18.0781],[0,2]}
+T   : [1.64062,1.78125]
+                                                                                              ODE Progress [FWD]:  Time =    1.50000 / 1.78      84%  Box Width =    2.00000	compute_enclosures: subsetOfDomain = [0.140625,0.149414]
+compute_enclosures:[1.64062,1.64941]	{[-18.1643,-18.0781],[1.37039,1.52966]}
+compute_enclosures: subsetOfDomain = [0.149414,0.158203]
+compute_enclosures:[1.64941,1.6582]	{[-18.2504,-18.1643],[1.21037,1.37039]}
+compute_enclosures: subsetOfDomain = [0.158203,0.166992]
+compute_enclosures:[1.6582,1.66699]	{[-18.3365,-18.2504],[1.04959,1.21037]}
+compute_enclosures: subsetOfDomain = [0.166992,0.175781]
+compute_enclosures:[1.66699,1.67578]	{[-18.4227,-18.3365],[0.888048,1.04959]}
+compute_enclosures: subsetOfDomain = [0.175781,0.18457]
+compute_enclosures:[1.67578,1.68457]	{[-18.5088,-18.4227],[0.725751,0.888048]}
+compute_enclosures: subsetOfDomain = [0.18457,0.193359]
+compute_enclosures:[1.68457,1.69336]	{[-18.5949,-18.5088],[0.562698,0.725751]}
+compute_enclosures: subsetOfDomain = [0.193359,0.202148]
+compute_enclosures:[1.69336,1.70215]	{[-18.6811,-18.5949],[0.398888,0.562698]}
+compute_enclosures: subsetOfDomain = [0.202148,0.210938]
+compute_enclosures:[1.70215,1.71094]	{[-18.7672,-18.6811],[0.23432,0.398888]}
+compute_enclosures: subsetOfDomain = [0.210938,0.219727]
+compute_enclosures:[1.71094,1.71973]	{[-18.8533,-18.7672],[0.0689956,0.23432]}
+compute_enclosures: subsetOfDomain = [0.219727,0.228516]
+compute_enclosures:[1.71973,1.72852]	{[-18.9395,-18.8533],[-0.097086,0.0689956]}
+compute_enclosures: subsetOfDomain = [0.228516,0.237305]
+compute_enclosures:[1.72852,1.7373]	{[-19.0256,-18.9395],[-0.263925,-0.097086]}
+contractor_capd_full::prune - invariant violated
+ [Done] 
+X_0 : {[-18.9395,-18.0781],[0,1.52966]}
+X_t : {[-2,-2],[18,18]}
+T   : [1.64062,1.72852]
+                                                                                              ODE Progress [BWD]:  Time =    1.50000 / 1.73      86%  Box Width =    1.52966	compute_enclosures: subsetOfDomain = [0.140625,0.146118]
+compute_enclosures:[1.64062,1.64612]	{[-2.86133,-1.94617],[16.4666,19.4326]}
+compute_enclosures: subsetOfDomain = [0.146118,0.151611]
+compute_enclosures:[1.64612,1.65161]	{[-2.8075,-1.89233],[16.4772,19.448]}
+compute_enclosures: subsetOfDomain = [0.151611,0.157104]
+compute_enclosures:[1.65161,1.6571]	{[-2.75366,-1.8385],[16.4876,19.4632]}
+compute_enclosures: subsetOfDomain = [0.157104,0.162598]
+compute_enclosures:[1.6571,1.6626]	{[-2.69983,-1.78467],[16.4977,19.478]}
+compute_enclosures: subsetOfDomain = [0.162598,0.168091]
+compute_enclosures:[1.6626,1.66809]	{[-2.646,-1.73083],[16.5075,19.4925]}
+compute_enclosures: subsetOfDomain = [0.168091,0.173584]
+compute_enclosures:[1.66809,1.67358]	{[-2.59216,-1.677],[16.517,19.5068]}
+compute_enclosures: subsetOfDomain = [0.173584,0.179077]
+compute_enclosures:[1.67358,1.67908]	{[-2.53833,-1.62317],[16.5263,19.5207]}
+compute_enclosures: subsetOfDomain = [0.179077,0.18457]
+compute_enclosures:[1.67908,1.68457]	{[-2.4845,-1.56934],[16.5352,19.5344]}
+compute_enclosures: subsetOfDomain = [0.18457,0.190063]
+compute_enclosures:[1.68457,1.69006]	{[-2.43066,-1.5155],[16.5438,19.5477]}
+compute_enclosures: subsetOfDomain = [0.190063,0.195557]
+compute_enclosures:[1.69006,1.69556]	{[-2.37683,-1.46167],[16.5521,19.5608]}
+compute_enclosures: subsetOfDomain = [0.195557,0.20105]
+compute_enclosures:[1.69556,1.70105]	{[-2.323,-1.40784],[16.5602,19.5735]}
+compute_enclosures: subsetOfDomain = [0.20105,0.206543]
+compute_enclosures:[1.70105,1.70654]	{[-2.26917,-1.354],[16.5679,19.586]}
+compute_enclosures: subsetOfDomain = [0.206543,0.212036]
+compute_enclosures:[1.70654,1.71204]	{[-2.21533,-1.30017],[16.5753,19.5982]}
+compute_enclosures: subsetOfDomain = [0.212036,0.217529]
+compute_enclosures:[1.71204,1.71753]	{[-2.1615,-1.24634],[16.5825,19.61]}
+compute_enclosures: subsetOfDomain = [0.217529,0.223022]
+compute_enclosures:[1.71753,1.72302]	{[-2.10767,-1.1925],[16.5893,19.6216]}
+compute_enclosures: subsetOfDomain = [0.223022,0.228516]
+compute_enclosures:[1.72302,1.72852]	{[-2.05383,-1.13867],[16.5959,19.6329]}
+                                                                                              ODE Progress [BWD]:  Time =    1.72852 / 1.73     100%  Box Width =    1.52966	 [Done] 
+naive_icp::solve - loop	box stack Size = 3
+X_0 : {[-2,-2],[18,18]}
+X_t : {[-18.9395,-18.0781],[0,0.764832]}
+T   : [1.64062,1.72852]
+                                                                                              ODE Progress [FWD]:  Time =    1.50000 / 1.73      86%  Box Width =    0.86133	compute_enclosures: subsetOfDomain = [0.140625,0.146118]
+compute_enclosures:[1.64062,1.64612]	{[-18.132,-18.0781],[1.43021,1.52966]}
+compute_enclosures: subsetOfDomain = [0.146118,0.151611]
+compute_enclosures:[1.64612,1.65161]	{[-18.1858,-18.132],[1.33046,1.43021]}
+compute_enclosures: subsetOfDomain = [0.151611,0.157104]
+compute_enclosures:[1.65161,1.6571]	{[-18.2396,-18.1858],[1.23041,1.33046]}
+compute_enclosures: subsetOfDomain = [0.157104,0.162598]
+compute_enclosures:[1.6571,1.6626]	{[-18.2935,-18.2396],[1.13007,1.23041]}
+compute_enclosures: subsetOfDomain = [0.162598,0.168091]
+compute_enclosures:[1.6626,1.66809]	{[-18.3473,-18.2935],[1.02944,1.13007]}
+compute_enclosures: subsetOfDomain = [0.168091,0.173584]
+compute_enclosures:[1.66809,1.67358]	{[-18.4011,-18.3473],[0.928504,1.02944]}
+compute_enclosures: subsetOfDomain = [0.173584,0.179077]
+compute_enclosures:[1.67358,1.67908]	{[-18.455,-18.4011],[0.827275,0.928504]}
+compute_enclosures: subsetOfDomain = [0.179077,0.18457]
+compute_enclosures:[1.67908,1.68457]	{[-18.5088,-18.455],[0.725751,0.827275]}
+compute_enclosures: subsetOfDomain = [0.18457,0.190063]
+compute_enclosures:[1.68457,1.69006]	{[-18.5626,-18.5088],[0.623932,0.725751]}
+compute_enclosures: subsetOfDomain = [0.190063,0.195557]
+compute_enclosures:[1.69006,1.69556]	{[-18.6165,-18.5626],[0.521816,0.623932]}
+compute_enclosures: subsetOfDomain = [0.195557,0.20105]
+compute_enclosures:[1.69556,1.70105]	{[-18.6703,-18.6165],[0.419405,0.521816]}
+compute_enclosures: subsetOfDomain = [0.20105,0.206543]
+compute_enclosures:[1.70105,1.70654]	{[-18.7241,-18.6703],[0.316698,0.419405]}
+compute_enclosures: subsetOfDomain = [0.206543,0.212036]
+compute_enclosures:[1.70654,1.71204]	{[-18.778,-18.7241],[0.213696,0.316698]}
+compute_enclosures: subsetOfDomain = [0.212036,0.217529]
+compute_enclosures:[1.71204,1.71753]	{[-18.8318,-18.778],[0.110398,0.213696]}
+compute_enclosures: subsetOfDomain = [0.217529,0.223022]
+compute_enclosures:[1.71753,1.72302]	{[-18.8856,-18.8318],[0.00680371,0.110398]}
+compute_enclosures: subsetOfDomain = [0.223022,0.228516]
+compute_enclosures:[1.72302,1.72852]	{[-18.9395,-18.8856],[-0.097086,0.00680371]}
+                                                                                              ODE Progress [FWD]:  Time =    1.72852 / 1.73     100%  Box Width =    0.86133	 [Done] 
+X_0 : {[-18.9395,-18.455],[0,0.764832]}
+X_t : {[-2,-2],[18,18]}
+T   : [1.67908,1.72852]
+                                                                                              ODE Progress [BWD]:  Time =    1.50000 / 1.73      86%  Box Width =    0.76483	compute_enclosures: subsetOfDomain = [0.179077,0.182167]
+compute_enclosures:[1.67908,1.68217]	{[-2.4845,-1.96972],[17.17,18.7615]}
+compute_enclosures: subsetOfDomain = [0.182167,0.185257]
+compute_enclosures:[1.68217,1.68526]	{[-2.45422,-1.93944],[17.1761,18.769]}
+compute_enclosures: subsetOfDomain = [0.185257,0.188347]
+compute_enclosures:[1.68526,1.68835]	{[-2.42393,-1.90916],[17.1821,18.7765]}
+compute_enclosures: subsetOfDomain = [0.188347,0.191437]
+compute_enclosures:[1.68835,1.69144]	{[-2.39365,-1.87888],[17.188,18.7839]}
+compute_enclosures: subsetOfDomain = [0.191437,0.194527]
+compute_enclosures:[1.69144,1.69453]	{[-2.36337,-1.84859],[17.1938,18.7912]}
+compute_enclosures: subsetOfDomain = [0.194527,0.197617]
+compute_enclosures:[1.69453,1.69762]	{[-2.33309,-1.81831],[17.1995,18.7984]}
+compute_enclosures: subsetOfDomain = [0.197617,0.200706]
+compute_enclosures:[1.69762,1.70071]	{[-2.30281,-1.78803],[17.2051,18.8055]}
+compute_enclosures: subsetOfDomain = [0.200706,0.203796]
+compute_enclosures:[1.70071,1.7038]	{[-2.27253,-1.75775],[17.2107,18.8126]}
+compute_enclosures: subsetOfDomain = [0.203796,0.206886]
+compute_enclosures:[1.7038,1.70689]	{[-2.24225,-1.72747],[17.2161,18.8195]}
+compute_enclosures: subsetOfDomain = [0.206886,0.209976]
+compute_enclosures:[1.70689,1.70998]	{[-2.21197,-1.69719],[17.2214,18.8263]}
+compute_enclosures: subsetOfDomain = [0.209976,0.213066]
+compute_enclosures:[1.70998,1.71307]	{[-2.18169,-1.66691],[17.2267,18.8331]}
+compute_enclosures: subsetOfDomain = [0.213066,0.216156]
+compute_enclosures:[1.71307,1.71616]	{[-2.15141,-1.63663],[17.2318,18.8397]}
+compute_enclosures: subsetOfDomain = [0.216156,0.219246]
+compute_enclosures:[1.71616,1.71925]	{[-2.12112,-1.60635],[17.2369,18.8463]}
+compute_enclosures: subsetOfDomain = [0.219246,0.222336]
+compute_enclosures:[1.71925,1.72234]	{[-2.09084,-1.57607],[17.2418,18.8527]}
+compute_enclosures: subsetOfDomain = [0.222336,0.225426]
+compute_enclosures:[1.72234,1.72543]	{[-2.06056,-1.54578],[17.2467,18.8591]}
+compute_enclosures: subsetOfDomain = [0.225426,0.228516]
+compute_enclosures:[1.72543,1.72852]	{[-2.03028,-1.5155],[17.2515,18.8654]}
+                                                                                              ODE Progress [BWD]:  Time =    1.72852 / 1.73     100%  Box Width =    0.76483	 [Done] 
+naive_icp::solve - loop	box stack Size = 4
+X_0 : {[-2,-2],[18,18]}
+X_t : {[-18.9395,-18.455],[0,0.382416]}
+T   : [1.67908,1.72852]
+                                                                                              ODE Progress [FWD]:  Time =    1.50000 / 1.73      86%  Box Width =    0.48450	compute_enclosures: subsetOfDomain = [0.179077,0.182167]
+compute_enclosures:[1.67908,1.68217]	{[-18.4852,-18.455],[0.770205,0.827275]}
+compute_enclosures: subsetOfDomain = [0.182167,0.185257]
+compute_enclosures:[1.68217,1.68526]	{[-18.5155,-18.4852],[0.71304,0.770205]}
+compute_enclosures: subsetOfDomain = [0.185257,0.188347]
+compute_enclosures:[1.68526,1.68835]	{[-18.5458,-18.5155],[0.655782,0.71304]}
+compute_enclosures: subsetOfDomain = [0.188347,0.191437]
+compute_enclosures:[1.68835,1.69144]	{[-18.5761,-18.5458],[0.598431,0.655782]}
+compute_enclosures: subsetOfDomain = [0.191437,0.194527]
+compute_enclosures:[1.69144,1.69453]	{[-18.6064,-18.5761],[0.540986,0.598431]}
+compute_enclosures: subsetOfDomain = [0.194527,0.197617]
+compute_enclosures:[1.69453,1.69762]	{[-18.6366,-18.6064],[0.483447,0.540986]}
+compute_enclosures: subsetOfDomain = [0.197617,0.200706]
+compute_enclosures:[1.69762,1.70071]	{[-18.6669,-18.6366],[0.425815,0.483447]}
+compute_enclosures: subsetOfDomain = [0.200706,0.203796]
+compute_enclosures:[1.70071,1.7038]	{[-18.6972,-18.6669],[0.368089,0.425815]}
+compute_enclosures: subsetOfDomain = [0.203796,0.206886]
+compute_enclosures:[1.7038,1.70689]	{[-18.7275,-18.6972],[0.310269,0.368089]}
+compute_enclosures: subsetOfDomain = [0.206886,0.209976]
+compute_enclosures:[1.70689,1.70998]	{[-18.7578,-18.7275],[0.252357,0.310269]}
+compute_enclosures: subsetOfDomain = [0.209976,0.213066]
+compute_enclosures:[1.70998,1.71307]	{[-18.788,-18.7578],[0.19435,0.252357]}
+compute_enclosures: subsetOfDomain = [0.213066,0.216156]
+compute_enclosures:[1.71307,1.71616]	{[-18.8183,-18.788],[0.13625,0.19435]}
+compute_enclosures: subsetOfDomain = [0.216156,0.219246]
+compute_enclosures:[1.71616,1.71925]	{[-18.8486,-18.8183],[0.0780563,0.13625]}
+compute_enclosures: subsetOfDomain = [0.219246,0.222336]
+compute_enclosures:[1.71925,1.72234]	{[-18.8789,-18.8486],[0.0197691,0.0780563]}
+compute_enclosures: subsetOfDomain = [0.222336,0.225426]
+compute_enclosures:[1.72234,1.72543]	{[-18.9092,-18.8789],[-0.0386116,0.0197691]}
+compute_enclosures: subsetOfDomain = [0.225426,0.228516]
+compute_enclosures:[1.72543,1.72852]	{[-18.9395,-18.9092],[-0.097086,-0.0386116]}
+contractor_capd_full::prune - invariant violated
+ [Done] 
+X_0 : {[-18.9092,-18.6669],[0,0.382416]}
+X_t : {[-2,-2],[18,18]}
+T   : [1.70071,1.72543]
+                                                                                              ODE Progress [BWD]:  Time =    1.50000 / 1.73      86%  Box Width =    0.38242	compute_enclosures: subsetOfDomain = [0.200706,0.202251]
+compute_enclosures:[1.70071,1.70225]	{[-2.24225,-1.98486],[17.5727,18.3736]}
+compute_enclosures: subsetOfDomain = [0.202251,0.203796]
+compute_enclosures:[1.70225,1.7038]	{[-2.22711,-1.96972],[17.5757,18.377]}
+compute_enclosures: subsetOfDomain = [0.203796,0.205341]
+compute_enclosures:[1.7038,1.70534]	{[-2.21197,-1.95458],[17.5788,18.3804]}
+compute_enclosures: subsetOfDomain = [0.205341,0.206886]
+compute_enclosures:[1.70534,1.70689]	{[-2.19683,-1.93944],[17.5818,18.3838]}
+compute_enclosures: subsetOfDomain = [0.206886,0.208431]
+compute_enclosures:[1.70689,1.70843]	{[-2.18169,-1.9243],[17.5848,18.3872]}
+compute_enclosures: subsetOfDomain = [0.208431,0.209976]
+compute_enclosures:[1.70843,1.70998]	{[-2.16655,-1.90916],[17.5878,18.3905]}
+compute_enclosures: subsetOfDomain = [0.209976,0.211521]
+compute_enclosures:[1.70998,1.71152]	{[-2.15141,-1.89402],[17.5907,18.3939]}
+compute_enclosures: subsetOfDomain = [0.211521,0.213066]
+compute_enclosures:[1.71152,1.71307]	{[-2.13626,-1.87888],[17.5936,18.3972]}
+compute_enclosures: subsetOfDomain = [0.213066,0.214611]
+compute_enclosures:[1.71307,1.71461]	{[-2.12112,-1.86374],[17.5965,18.4004]}
+compute_enclosures: subsetOfDomain = [0.214611,0.216156]
+compute_enclosures:[1.71461,1.71616]	{[-2.10598,-1.84859],[17.5994,18.4037]}
+compute_enclosures: subsetOfDomain = [0.216156,0.217701]
+compute_enclosures:[1.71616,1.7177]	{[-2.09084,-1.83345],[17.6023,18.4069]}
+compute_enclosures: subsetOfDomain = [0.217701,0.219246]
+compute_enclosures:[1.7177,1.71925]	{[-2.0757,-1.81831],[17.6051,18.4101]}
+compute_enclosures: subsetOfDomain = [0.219246,0.220791]
+compute_enclosures:[1.71925,1.72079]	{[-2.06056,-1.80317],[17.6079,18.4133]}
+compute_enclosures: subsetOfDomain = [0.220791,0.222336]
+compute_enclosures:[1.72079,1.72234]	{[-2.04542,-1.78803],[17.6107,18.4165]}
+compute_enclosures: subsetOfDomain = [0.222336,0.223881]
+compute_enclosures:[1.72234,1.72388]	{[-2.03028,-1.77289],[17.6135,18.4196]}
+compute_enclosures: subsetOfDomain = [0.223881,0.225426]
+compute_enclosures:[1.72388,1.72543]	{[-2.01514,-1.75775],[17.6162,18.4227]}
+                                                                                              ODE Progress [BWD]:  Time =    1.72543 / 1.73     100%  Box Width =    0.38242	 [Done] 
+naive_icp::solve - loop	box stack Size = 5
+X_0 : {[-2,-2],[18,18]}
+X_t : {[-18.9092,-18.6669],[0,0.191208]}
+T   : [1.70071,1.72543]
+                                                                                              ODE Progress [FWD]:  Time =    1.50000 / 1.73      86%  Box Width =    0.24225	compute_enclosures: subsetOfDomain = [0.200706,0.202251]
+compute_enclosures:[1.70071,1.70225]	{[-18.6821,-18.6669],[0.396963,0.425815]}
+compute_enclosures: subsetOfDomain = [0.202251,0.203796]
+compute_enclosures:[1.70225,1.7038]	{[-18.6972,-18.6821],[0.368089,0.396963]}
+compute_enclosures: subsetOfDomain = [0.203796,0.205341]
+compute_enclosures:[1.7038,1.70534]	{[-18.7123,-18.6972],[0.339191,0.368089]}
+compute_enclosures: subsetOfDomain = [0.205341,0.206886]
+compute_enclosures:[1.70534,1.70689]	{[-18.7275,-18.7123],[0.310269,0.339191]}
+compute_enclosures: subsetOfDomain = [0.206886,0.208431]
+compute_enclosures:[1.70689,1.70843]	{[-18.7426,-18.7275],[0.281325,0.310269]}
+compute_enclosures: subsetOfDomain = [0.208431,0.209976]
+compute_enclosures:[1.70843,1.70998]	{[-18.7578,-18.7426],[0.252357,0.281325]}
+compute_enclosures: subsetOfDomain = [0.209976,0.211521]
+compute_enclosures:[1.70998,1.71152]	{[-18.7729,-18.7578],[0.223365,0.252357]}
+compute_enclosures: subsetOfDomain = [0.211521,0.213066]
+compute_enclosures:[1.71152,1.71307]	{[-18.788,-18.7729],[0.19435,0.223365]}
+compute_enclosures: subsetOfDomain = [0.213066,0.214611]
+compute_enclosures:[1.71307,1.71461]	{[-18.8032,-18.788],[0.165312,0.19435]}
+compute_enclosures: subsetOfDomain = [0.214611,0.216156]
+compute_enclosures:[1.71461,1.71616]	{[-18.8183,-18.8032],[0.13625,0.165312]}
+compute_enclosures: subsetOfDomain = [0.216156,0.217701]
+compute_enclosures:[1.71616,1.7177]	{[-18.8335,-18.8183],[0.107165,0.13625]}
+compute_enclosures: subsetOfDomain = [0.217701,0.219246]
+compute_enclosures:[1.7177,1.71925]	{[-18.8486,-18.8335],[0.0780563,0.107165]}
+compute_enclosures: subsetOfDomain = [0.219246,0.220791]
+compute_enclosures:[1.71925,1.72079]	{[-18.8638,-18.8486],[0.0489244,0.0780563]}
+compute_enclosures: subsetOfDomain = [0.220791,0.222336]
+compute_enclosures:[1.72079,1.72234]	{[-18.8789,-18.8638],[0.0197691,0.0489244]}
+compute_enclosures: subsetOfDomain = [0.222336,0.223881]
+compute_enclosures:[1.72234,1.72388]	{[-18.894,-18.8789],[-0.00940955,0.0197691]}
+compute_enclosures: subsetOfDomain = [0.223881,0.225426]
+compute_enclosures:[1.72388,1.72543]	{[-18.9092,-18.894],[-0.0386116,-0.00940955]}
+contractor_capd_full::prune - invariant violated
+ [Done] 
+X_0 : {[-18.894,-18.788],[0,0.191208]}
+X_t : {[-2,-2],[18,18]}
+T   : [1.71307,1.72388]
+                                                                                              ODE Progress [BWD]:  Time =    1.50000 / 1.72      87%  Box Width =    0.19121	compute_enclosures: subsetOfDomain = [0.213066,0.213742]
+compute_enclosures:[1.71307,1.71374]	{[-2.10598,-1.99338],[17.8049,18.1805]}
+compute_enclosures: subsetOfDomain = [0.213742,0.214418]
+compute_enclosures:[1.71374,1.71442]	{[-2.09936,-1.98675],[17.8063,18.182]}
+compute_enclosures: subsetOfDomain = [0.214418,0.215094]
+compute_enclosures:[1.71442,1.71509]	{[-2.09274,-1.98013],[17.8076,18.1834]}
+compute_enclosures: subsetOfDomain = [0.215094,0.21577]
+compute_enclosures:[1.71509,1.71577]	{[-2.08611,-1.9735],[17.809,18.1848]}
+compute_enclosures: subsetOfDomain = [0.21577,0.216446]
+compute_enclosures:[1.71577,1.71645]	{[-2.07949,-1.96688],[17.8103,18.1862]}
+compute_enclosures: subsetOfDomain = [0.216446,0.217122]
+compute_enclosures:[1.71645,1.71712]	{[-2.07286,-1.96026],[17.8116,18.1876]}
+compute_enclosures: subsetOfDomain = [0.217122,0.217798]
+compute_enclosures:[1.71712,1.7178]	{[-2.06624,-1.95363],[17.813,18.189]}
+compute_enclosures: subsetOfDomain = [0.217798,0.218473]
+compute_enclosures:[1.7178,1.71847]	{[-2.05962,-1.94701],[17.8143,18.1904]}
+compute_enclosures: subsetOfDomain = [0.218473,0.219149]
+compute_enclosures:[1.71847,1.71915]	{[-2.05299,-1.94038],[17.8156,18.1918]}
+compute_enclosures: subsetOfDomain = [0.219149,0.219825]
+compute_enclosures:[1.71915,1.71983]	{[-2.04637,-1.93376],[17.8169,18.1932]}
+compute_enclosures: subsetOfDomain = [0.219825,0.220501]
+compute_enclosures:[1.71983,1.7205]	{[-2.03974,-1.92714],[17.8182,18.1945]}
+compute_enclosures: subsetOfDomain = [0.220501,0.221177]
+compute_enclosures:[1.7205,1.72118]	{[-2.03312,-1.92051],[17.8195,18.1959]}
+compute_enclosures: subsetOfDomain = [0.221177,0.221853]
+compute_enclosures:[1.72118,1.72185]	{[-2.0265,-1.91389],[17.8208,18.1973]}
+compute_enclosures: subsetOfDomain = [0.221853,0.222529]
+compute_enclosures:[1.72185,1.72253]	{[-2.01987,-1.90726],[17.8221,18.1986]}
+compute_enclosures: subsetOfDomain = [0.222529,0.223205]
+compute_enclosures:[1.72253,1.7232]	{[-2.01325,-1.90064],[17.8234,18.2]}
+compute_enclosures: subsetOfDomain = [0.223205,0.223881]
+compute_enclosures:[1.7232,1.72388]	{[-2.00662,-1.89402],[17.8247,18.2014]}
+                                                                                              ODE Progress [BWD]:  Time =    1.72388 / 1.72     100%  Box Width =    0.19121	 [Done] 
+naive_icp::solve - loop	box stack Size = 6
+X_0 : {[-2,-2],[18,18]}
+X_t : {[-18.894,-18.788],[0,0.0956039]}
+T   : [1.71307,1.72388]
+                                                                                              ODE Progress [FWD]:  Time =    1.50000 / 1.72      87%  Box Width =    0.10598	compute_enclosures: subsetOfDomain = [0.213066,0.213742]
+compute_enclosures:[1.71307,1.71374]	{[-18.7947,-18.788],[0.181649,0.19435]}
+compute_enclosures: subsetOfDomain = [0.213742,0.214418]
+compute_enclosures:[1.71374,1.71442]	{[-18.8013,-18.7947],[0.168943,0.181649]}
+compute_enclosures: subsetOfDomain = [0.214418,0.215094]
+compute_enclosures:[1.71442,1.71509]	{[-18.8079,-18.8013],[0.156232,0.168943]}
+compute_enclosures: subsetOfDomain = [0.215094,0.21577]
+compute_enclosures:[1.71509,1.71577]	{[-18.8145,-18.8079],[0.143518,0.156232]}
+compute_enclosures: subsetOfDomain = [0.21577,0.216446]
+compute_enclosures:[1.71577,1.71645]	{[-18.8212,-18.8145],[0.130798,0.143518]}
+compute_enclosures: subsetOfDomain = [0.216446,0.217122]
+compute_enclosures:[1.71645,1.71712]	{[-18.8278,-18.8212],[0.118074,0.130798]}
+compute_enclosures: subsetOfDomain = [0.217122,0.217798]
+compute_enclosures:[1.71712,1.7178]	{[-18.8344,-18.8278],[0.105346,0.118074]}
+compute_enclosures: subsetOfDomain = [0.217798,0.218473]
+compute_enclosures:[1.7178,1.71847]	{[-18.841,-18.8344],[0.0926135,0.105346]}
+compute_enclosures: subsetOfDomain = [0.218473,0.219149]
+compute_enclosures:[1.71847,1.71915]	{[-18.8477,-18.841],[0.0798763,0.0926135]}
+compute_enclosures: subsetOfDomain = [0.219149,0.219825]
+compute_enclosures:[1.71915,1.71983]	{[-18.8543,-18.8477],[0.0671346,0.0798763]}
+compute_enclosures: subsetOfDomain = [0.219825,0.220501]
+compute_enclosures:[1.71983,1.7205]	{[-18.8609,-18.8543],[0.0543884,0.0671346]}
+compute_enclosures: subsetOfDomain = [0.220501,0.221177]
+compute_enclosures:[1.7205,1.72118]	{[-18.8675,-18.8609],[0.0416378,0.0543884]}
+compute_enclosures: subsetOfDomain = [0.221177,0.221853]
+compute_enclosures:[1.72118,1.72185]	{[-18.8742,-18.8675],[0.0288827,0.0416378]}
+compute_enclosures: subsetOfDomain = [0.221853,0.222529]
+compute_enclosures:[1.72185,1.72253]	{[-18.8808,-18.8742],[0.0161231,0.0288827]}
+compute_enclosures: subsetOfDomain = [0.222529,0.223205]
+compute_enclosures:[1.72253,1.7232]	{[-18.8874,-18.8808],[0.003359,0.0161231]}
+compute_enclosures: subsetOfDomain = [0.223205,0.223881]
+compute_enclosures:[1.7232,1.72388]	{[-18.894,-18.8874],[-0.00940955,0.003359]}
+                                                                                              ODE Progress [FWD]:  Time =    1.72388 / 1.72     100%  Box Width =    0.10598	 [Done] 
+X_0 : {[-18.894,-18.8344],[0,0.0956039]}
+X_t : {[-2,-2],[18,18]}
+T   : [1.7178,1.72388]
+                                                                                              ODE Progress [BWD]:  Time =    1.50000 / 1.72      87%  Box Width =    0.09560	compute_enclosures: subsetOfDomain = [0.217798,0.218178]
+compute_enclosures:[1.7178,1.71818]	{[-2.05962,-1.99627],[17.8942,18.0939]}
+compute_enclosures: subsetOfDomain = [0.218178,0.218558]
+compute_enclosures:[1.71818,1.71856]	{[-2.05589,-1.99255],[17.895,18.0946]}
+compute_enclosures: subsetOfDomain = [0.218558,0.218938]
+compute_enclosures:[1.71856,1.71894]	{[-2.05216,-1.98882],[17.8958,18.0954]}
+compute_enclosures: subsetOfDomain = [0.218938,0.219318]
+compute_enclosures:[1.71894,1.71932]	{[-2.04844,-1.9851],[17.8965,18.0962]}
+compute_enclosures: subsetOfDomain = [0.219318,0.219699]
+compute_enclosures:[1.71932,1.7197]	{[-2.04471,-1.98137],[17.8973,18.097]}
+compute_enclosures: subsetOfDomain = [0.219699,0.220079]
+compute_enclosures:[1.7197,1.72008]	{[-2.04099,-1.97764],[17.898,18.0977]}
+compute_enclosures: subsetOfDomain = [0.220079,0.220459]
+compute_enclosures:[1.72008,1.72046]	{[-2.03726,-1.97392],[17.8988,18.0985]}
+compute_enclosures: subsetOfDomain = [0.220459,0.220839]
+compute_enclosures:[1.72046,1.72084]	{[-2.03353,-1.97019],[17.8995,18.0993]}
+compute_enclosures: subsetOfDomain = [0.220839,0.221219]
+compute_enclosures:[1.72084,1.72122]	{[-2.02981,-1.96647],[17.9003,18.1001]}
+compute_enclosures: subsetOfDomain = [0.221219,0.2216]
+compute_enclosures:[1.72122,1.7216]	{[-2.02608,-1.96274],[17.901,18.1008]}
+compute_enclosures: subsetOfDomain = [0.2216,0.22198]
+compute_enclosures:[1.7216,1.72198]	{[-2.02236,-1.95901],[17.9018,18.1016]}
+compute_enclosures: subsetOfDomain = [0.22198,0.22236]
+compute_enclosures:[1.72198,1.72236]	{[-2.01863,-1.95529],[17.9025,18.1024]}
+compute_enclosures: subsetOfDomain = [0.22236,0.22274]
+compute_enclosures:[1.72236,1.72274]	{[-2.0149,-1.95156],[17.9033,18.1031]}
+compute_enclosures: subsetOfDomain = [0.22274,0.22312]
+compute_enclosures:[1.72274,1.72312]	{[-2.01118,-1.94784],[17.904,18.1039]}
+compute_enclosures: subsetOfDomain = [0.22312,0.223501]
+compute_enclosures:[1.72312,1.7235]	{[-2.00745,-1.94411],[17.9047,18.1047]}
+compute_enclosures: subsetOfDomain = [0.223501,0.223881]
+compute_enclosures:[1.7235,1.72388]	{[-2.00373,-1.94038],[17.9055,18.1054]}
+                                                                                              ODE Progress [BWD]:  Time =    1.72388 / 1.72     100%  Box Width =    0.09560	 [Done] 
+naive_icp::solve - loop	box stack Size = 7
+X_0 : {[-2,-2],[18,18]}
+X_t : {[-18.894,-18.8344],[0,0.047802]}
+T   : [1.7178,1.72388]
+                                                                                              ODE Progress [FWD]:  Time =    1.50000 / 1.72      87%  Box Width =    0.05962	compute_enclosures: subsetOfDomain = [0.217798,0.218178]
+compute_enclosures:[1.7178,1.71818]	{[-18.8381,-18.8344],[0.0981846,0.105346]}
+compute_enclosures: subsetOfDomain = [0.218178,0.218558]
+compute_enclosures:[1.71818,1.71856]	{[-18.8419,-18.8381],[0.0910216,0.0981846]}
+compute_enclosures: subsetOfDomain = [0.218558,0.218938]
+compute_enclosures:[1.71856,1.71894]	{[-18.8456,-18.8419],[0.0838571,0.0910216]}
+compute_enclosures: subsetOfDomain = [0.218938,0.219318]
+compute_enclosures:[1.71894,1.71932]	{[-18.8493,-18.8456],[0.0766913,0.0838571]}
+compute_enclosures: subsetOfDomain = [0.219318,0.219699]
+compute_enclosures:[1.71932,1.7197]	{[-18.853,-18.8493],[0.069524,0.0766913]}
+compute_enclosures: subsetOfDomain = [0.219699,0.220079]
+compute_enclosures:[1.7197,1.72008]	{[-18.8568,-18.853],[0.0623553,0.069524]}
+compute_enclosures: subsetOfDomain = [0.220079,0.220459]
+compute_enclosures:[1.72008,1.72046]	{[-18.8605,-18.8568],[0.0551852,0.0623553]}
+compute_enclosures: subsetOfDomain = [0.220459,0.220839]
+compute_enclosures:[1.72046,1.72084]	{[-18.8642,-18.8605],[0.0480137,0.0551852]}
+compute_enclosures: subsetOfDomain = [0.220839,0.221219]
+compute_enclosures:[1.72084,1.72122]	{[-18.8679,-18.8642],[0.0408407,0.0480137]}
+compute_enclosures: subsetOfDomain = [0.221219,0.2216]
+compute_enclosures:[1.72122,1.7216]	{[-18.8717,-18.8679],[0.0336664,0.0408407]}
+compute_enclosures: subsetOfDomain = [0.2216,0.22198]
+compute_enclosures:[1.7216,1.72198]	{[-18.8754,-18.8717],[0.0264906,0.0336664]}
+compute_enclosures: subsetOfDomain = [0.22198,0.22236]
+compute_enclosures:[1.72198,1.72236]	{[-18.8791,-18.8754],[0.0193134,0.0264906]}
+compute_enclosures: subsetOfDomain = [0.22236,0.22274]
+compute_enclosures:[1.72236,1.72274]	{[-18.8829,-18.8791],[0.0121348,0.0193134]}
+compute_enclosures: subsetOfDomain = [0.22274,0.22312]
+compute_enclosures:[1.72274,1.72312]	{[-18.8866,-18.8829],[0.00495475,0.0121348]}
+compute_enclosures: subsetOfDomain = [0.22312,0.223501]
+compute_enclosures:[1.72312,1.7235]	{[-18.8903,-18.8866],[-0.00222669,0.00495475]}
+compute_enclosures: subsetOfDomain = [0.223501,0.223881]
+compute_enclosures:[1.7235,1.72388]	{[-18.894,-18.8903],[-0.00940955,-0.00222669]}
+contractor_capd_full::prune - invariant violated
+ [Done] 
+X_0 : {[-18.8903,-18.8642],[0,0.047802]}
+X_t : {[-2,-2],[18,18]}
+T   : [1.72084,1.7235]
+                                                                                              ODE Progress [BWD]:  Time =    1.50000 / 1.72      87%  Box Width =    0.04780	compute_enclosures: subsetOfDomain = [0.220839,0.221005]
+compute_enclosures:[1.72084,1.72101]	{[-2.02608,-1.99837],[17.9518,18.0452]}
+compute_enclosures: subsetOfDomain = [0.221005,0.221172]
+compute_enclosures:[1.72101,1.72117]	{[-2.02445,-1.99674],[17.9521,18.0455]}
+compute_enclosures: subsetOfDomain = [0.221172,0.221338]
+compute_enclosures:[1.72117,1.72134]	{[-2.02282,-1.99511],[17.9525,18.0459]}
+compute_enclosures: subsetOfDomain = [0.221338,0.221504]
+compute_enclosures:[1.72134,1.7215]	{[-2.02119,-1.99348],[17.9528,18.0462]}
+compute_enclosures: subsetOfDomain = [0.221504,0.221671]
+compute_enclosures:[1.7215,1.72167]	{[-2.01956,-1.99185],[17.9531,18.0465]}
+compute_enclosures: subsetOfDomain = [0.221671,0.221837]
+compute_enclosures:[1.72167,1.72184]	{[-2.01793,-1.99022],[17.9535,18.0469]}
+compute_enclosures: subsetOfDomain = [0.221837,0.222004]
+compute_enclosures:[1.72184,1.722]	{[-2.0163,-1.98859],[17.9538,18.0472]}
+compute_enclosures: subsetOfDomain = [0.222004,0.22217]
+compute_enclosures:[1.722,1.72217]	{[-2.01467,-1.98696],[17.9541,18.0475]}
+compute_enclosures: subsetOfDomain = [0.22217,0.222336]
+compute_enclosures:[1.72217,1.72234]	{[-2.01304,-1.98533],[17.9545,18.0479]}
+compute_enclosures: subsetOfDomain = [0.222336,0.222503]
+compute_enclosures:[1.72234,1.7225]	{[-2.01141,-1.9837],[17.9548,18.0482]}
+compute_enclosures: subsetOfDomain = [0.222503,0.222669]
+compute_enclosures:[1.7225,1.72267]	{[-2.00978,-1.98207],[17.9551,18.0485]}
+compute_enclosures: subsetOfDomain = [0.222669,0.222835]
+compute_enclosures:[1.72267,1.72284]	{[-2.00815,-1.98044],[17.9554,18.0489]}
+compute_enclosures: subsetOfDomain = [0.222835,0.223002]
+compute_enclosures:[1.72284,1.723]	{[-2.00652,-1.97881],[17.9558,18.0492]}
+compute_enclosures: subsetOfDomain = [0.223002,0.223168]
+compute_enclosures:[1.723,1.72317]	{[-2.00489,-1.97718],[17.9561,18.0495]}
+compute_enclosures: subsetOfDomain = [0.223168,0.223334]
+compute_enclosures:[1.72317,1.72333]	{[-2.00326,-1.97555],[17.9564,18.0499]}
+compute_enclosures: subsetOfDomain = [0.223334,0.223501]
+compute_enclosures:[1.72333,1.7235]	{[-2.00163,-1.97392],[17.9568,18.0502]}
+                                                                                              ODE Progress [BWD]:  Time =    1.72350 / 1.72     100%  Box Width =    0.04780	 [Done] 
+naive_icp::solve - loop	box stack Size = 8
+X_0 : {[-2,-2],[18,18]}
+X_t : {[-18.8903,-18.8642],[0,0.023901]}
+T   : [1.72084,1.7235]
+                                                                                              ODE Progress [FWD]:  Time =    1.50000 / 1.72      87%  Box Width =    0.02608	compute_enclosures: subsetOfDomain = [0.220839,0.221005]
+compute_enclosures:[1.72084,1.72101]	{[-18.8659,-18.8642],[0.0448757,0.0480137]}
+compute_enclosures: subsetOfDomain = [0.221005,0.221172]
+compute_enclosures:[1.72101,1.72117]	{[-18.8675,-18.8659],[0.0417374,0.0448757]}
+compute_enclosures: subsetOfDomain = [0.221172,0.221338]
+compute_enclosures:[1.72117,1.72134]	{[-18.8691,-18.8675],[0.0385989,0.0417374]}
+compute_enclosures: subsetOfDomain = [0.221338,0.221504]
+compute_enclosures:[1.72134,1.7215]	{[-18.8707,-18.8691],[0.0354601,0.0385989]}
+compute_enclosures: subsetOfDomain = [0.221504,0.221671]
+compute_enclosures:[1.7215,1.72167]	{[-18.8724,-18.8707],[0.032321,0.0354601]}
+compute_enclosures: subsetOfDomain = [0.221671,0.221837]
+compute_enclosures:[1.72167,1.72184]	{[-18.874,-18.8724],[0.0291817,0.032321]}
+compute_enclosures: subsetOfDomain = [0.221837,0.222004]
+compute_enclosures:[1.72184,1.722]	{[-18.8756,-18.874],[0.0260421,0.0291817]}
+compute_enclosures: subsetOfDomain = [0.222004,0.22217]
+compute_enclosures:[1.722,1.72217]	{[-18.8773,-18.8756],[0.0229022,0.0260421]}
+compute_enclosures: subsetOfDomain = [0.22217,0.222336]
+compute_enclosures:[1.72217,1.72234]	{[-18.8789,-18.8773],[0.019762,0.0229022]}
+compute_enclosures: subsetOfDomain = [0.222336,0.222503]
+compute_enclosures:[1.72234,1.7225]	{[-18.8805,-18.8789],[0.0166216,0.019762]}
+compute_enclosures: subsetOfDomain = [0.222503,0.222669]
+compute_enclosures:[1.7225,1.72267]	{[-18.8822,-18.8805],[0.0134809,0.0166216]}
+compute_enclosures: subsetOfDomain = [0.222669,0.222835]
+compute_enclosures:[1.72267,1.72284]	{[-18.8838,-18.8822],[0.0103399,0.0134809]}
+compute_enclosures: subsetOfDomain = [0.222835,0.223002]
+compute_enclosures:[1.72284,1.723]	{[-18.8854,-18.8838],[0.00719866,0.0103399]}
+compute_enclosures: subsetOfDomain = [0.223002,0.223168]
+compute_enclosures:[1.723,1.72317]	{[-18.887,-18.8854],[0.00405715,0.00719866]}
+compute_enclosures: subsetOfDomain = [0.223168,0.223334]
+compute_enclosures:[1.72317,1.72333]	{[-18.8887,-18.887],[0.000915364,0.00405715]}
+compute_enclosures: subsetOfDomain = [0.223334,0.223501]
+compute_enclosures:[1.72333,1.7235]	{[-18.8903,-18.8887],[-0.00222669,0.000915364]}
+                                                                                              ODE Progress [FWD]:  Time =    1.72350 / 1.72     100%  Box Width =    0.02608	 [Done] 
+X_0 : {[-18.8903,-18.8756],[0,0.023901]}
+X_t : {[-2,-2],[18,18]}
+T   : [1.722,1.7235]
+                                                                                              ODE Progress [BWD]:  Time =    1.50000 / 1.72      87%  Box Width =    0.02390	compute_enclosures: subsetOfDomain = [0.222004,0.222097]
+compute_enclosures:[1.722,1.7221]	{[-2.01467,-1.99908],[17.9739,18.0234]}
+compute_enclosures: subsetOfDomain = [0.222097,0.222191]
+compute_enclosures:[1.7221,1.72219]	{[-2.01375,-1.99817],[17.974,18.0236]}
+compute_enclosures: subsetOfDomain = [0.222191,0.222284]
+compute_enclosures:[1.72219,1.72228]	{[-2.01284,-1.99725],[17.9742,18.0238]}
+compute_enclosures: subsetOfDomain = [0.222284,0.222378]
+compute_enclosures:[1.72228,1.72238]	{[-2.01192,-1.99633],[17.9744,18.024]}
+compute_enclosures: subsetOfDomain = [0.222378,0.222471]
+compute_enclosures:[1.72238,1.72247]	{[-2.011,-1.99542],[17.9746,18.0242]}
+compute_enclosures: subsetOfDomain = [0.222471,0.222565]
+compute_enclosures:[1.72247,1.72256]	{[-2.01009,-1.9945],[17.9748,18.0244]}
+compute_enclosures: subsetOfDomain = [0.222565,0.222658]
+compute_enclosures:[1.72256,1.72266]	{[-2.00917,-1.99358],[17.975,18.0245]}
+compute_enclosures: subsetOfDomain = [0.222658,0.222752]
+compute_enclosures:[1.72266,1.72275]	{[-2.00825,-1.99266],[17.9752,18.0247]}
+compute_enclosures: subsetOfDomain = [0.222752,0.222846]
+compute_enclosures:[1.72275,1.72285]	{[-2.00734,-1.99175],[17.9754,18.0249]}
+compute_enclosures: subsetOfDomain = [0.222846,0.222939]
+compute_enclosures:[1.72285,1.72294]	{[-2.00642,-1.99083],[17.9755,18.0251]}
+compute_enclosures: subsetOfDomain = [0.222939,0.223033]
+compute_enclosures:[1.72294,1.72303]	{[-2.0055,-1.98991],[17.9757,18.0253]}
+compute_enclosures: subsetOfDomain = [0.223033,0.223126]
+compute_enclosures:[1.72303,1.72313]	{[-2.00458,-1.989],[17.9759,18.0255]}
+compute_enclosures: subsetOfDomain = [0.223126,0.22322]
+compute_enclosures:[1.72313,1.72322]	{[-2.00367,-1.98808],[17.9761,18.0257]}
+compute_enclosures: subsetOfDomain = [0.22322,0.223313]
+compute_enclosures:[1.72322,1.72331]	{[-2.00275,-1.98716],[17.9763,18.0259]}
+compute_enclosures: subsetOfDomain = [0.223313,0.223407]
+compute_enclosures:[1.72331,1.72341]	{[-2.00183,-1.98625],[17.9765,18.026]}
+compute_enclosures: subsetOfDomain = [0.223407,0.223501]
+compute_enclosures:[1.72341,1.7235]	{[-2.00092,-1.98533],[17.9767,18.0262]}
+                                                                                              ODE Progress [BWD]:  Time =    1.72350 / 1.72     100%  Box Width =    0.02390	 [Done] 
+naive_icp::solve - loop	box stack Size = 9
+X_0 : {[-2,-2],[18,18]}
+X_t : {[-18.8903,-18.8756],[0,0.0119505]}
+T   : [1.722,1.7235]
+                                                                                              ODE Progress [FWD]:  Time =    1.50000 / 1.72      87%  Box Width =    0.01467	compute_enclosures: subsetOfDomain = [0.222004,0.222097]
+compute_enclosures:[1.722,1.7221]	{[-18.8766,-18.8756],[0.0242759,0.0260421]}
+compute_enclosures: subsetOfDomain = [0.222097,0.222191]
+compute_enclosures:[1.7221,1.72219]	{[-18.8775,-18.8766],[0.0225097,0.0242759]}
+compute_enclosures: subsetOfDomain = [0.222191,0.222284]
+compute_enclosures:[1.72219,1.72228]	{[-18.8784,-18.8775],[0.0207433,0.0225097]}
+compute_enclosures: subsetOfDomain = [0.222284,0.222378]
+compute_enclosures:[1.72228,1.72238]	{[-18.8793,-18.8784],[0.0189769,0.0207433]}
+compute_enclosures: subsetOfDomain = [0.222378,0.222471]
+compute_enclosures:[1.72238,1.72247]	{[-18.8802,-18.8793],[0.0172104,0.0189769]}
+compute_enclosures: subsetOfDomain = [0.222471,0.222565]
+compute_enclosures:[1.72247,1.72256]	{[-18.8811,-18.8802],[0.0154438,0.0172104]}
+compute_enclosures: subsetOfDomain = [0.222565,0.222658]
+compute_enclosures:[1.72256,1.72266]	{[-18.8821,-18.8811],[0.0136772,0.0154438]}
+compute_enclosures: subsetOfDomain = [0.222658,0.222752]
+compute_enclosures:[1.72266,1.72275]	{[-18.883,-18.8821],[0.0119104,0.0136772]}
+compute_enclosures: subsetOfDomain = [0.222752,0.222846]
+compute_enclosures:[1.72275,1.72285]	{[-18.8839,-18.883],[0.0101436,0.0119104]}
+compute_enclosures: subsetOfDomain = [0.222846,0.222939]
+compute_enclosures:[1.72285,1.72294]	{[-18.8848,-18.8839],[0.00837666,0.0101436]}
+compute_enclosures: subsetOfDomain = [0.222939,0.223033]
+compute_enclosures:[1.72294,1.72303]	{[-18.8857,-18.8848],[0.00660965,0.00837666]}
+compute_enclosures: subsetOfDomain = [0.223033,0.223126]
+compute_enclosures:[1.72303,1.72313]	{[-18.8866,-18.8857],[0.00484255,0.00660965]}
+compute_enclosures: subsetOfDomain = [0.223126,0.22322]
+compute_enclosures:[1.72313,1.72322]	{[-18.8876,-18.8866],[0.00307537,0.00484255]}
+compute_enclosures: subsetOfDomain = [0.22322,0.223313]
+compute_enclosures:[1.72322,1.72331]	{[-18.8885,-18.8876],[0.0013081,0.00307537]}
+compute_enclosures: subsetOfDomain = [0.223313,0.223407]
+compute_enclosures:[1.72331,1.72341]	{[-18.8894,-18.8885],[-0.000459252,0.0013081]}
+compute_enclosures: subsetOfDomain = [0.223407,0.223501]
+compute_enclosures:[1.72341,1.7235]	{[-18.8903,-18.8894],[-0.00222669,-0.000459252]}
+contractor_capd_full::prune - invariant violated
+ [Done] 
+X_0 : {[-18.8894,-18.8821],[0,0.0119505]}
+X_t : {[-2,-2],[18,18]}
+T   : [1.72266,1.72341]
+                                                                                              ODE Progress [BWD]:  Time =    1.50000 / 1.72      87%  Box Width =    0.01195	compute_enclosures: subsetOfDomain = [0.222658,0.222705]
+compute_enclosures:[1.72266,1.72271]	{[-2.00734,-1.99954],[17.9863,18.0111]}
+compute_enclosures: subsetOfDomain = [0.222705,0.222752]
+compute_enclosures:[1.72271,1.72275]	{[-2.00688,-1.99908],[17.9864,18.0111]}
+compute_enclosures: subsetOfDomain = [0.222752,0.222799]
+compute_enclosures:[1.72275,1.7228]	{[-2.00642,-1.99862],[17.9865,18.0112]}
+compute_enclosures: subsetOfDomain = [0.222799,0.222846]
+compute_enclosures:[1.7228,1.72285]	{[-2.00596,-1.99817],[17.9866,18.0113]}
+compute_enclosures: subsetOfDomain = [0.222846,0.222892]
+compute_enclosures:[1.72285,1.72289]	{[-2.0055,-1.99771],[17.9866,18.0114]}
+compute_enclosures: subsetOfDomain = [0.222892,0.222939]
+compute_enclosures:[1.72289,1.72294]	{[-2.00504,-1.99725],[17.9867,18.0115]}
+compute_enclosures: subsetOfDomain = [0.222939,0.222986]
+compute_enclosures:[1.72294,1.72299]	{[-2.00458,-1.99679],[17.9868,18.0116]}
+compute_enclosures: subsetOfDomain = [0.222986,0.223033]
+compute_enclosures:[1.72299,1.72303]	{[-2.00413,-1.99633],[17.9869,18.0117]}
+compute_enclosures: subsetOfDomain = [0.223033,0.22308]
+compute_enclosures:[1.72303,1.72308]	{[-2.00367,-1.99587],[17.987,18.0118]}
+compute_enclosures: subsetOfDomain = [0.22308,0.223126]
+compute_enclosures:[1.72308,1.72313]	{[-2.00321,-1.99542],[17.9871,18.0119]}
+compute_enclosures: subsetOfDomain = [0.223126,0.223173]
+compute_enclosures:[1.72313,1.72317]	{[-2.00275,-1.99496],[17.9872,18.012]}
+compute_enclosures: subsetOfDomain = [0.223173,0.22322]
+compute_enclosures:[1.72317,1.72322]	{[-2.00229,-1.9945],[17.9873,18.0121]}
+compute_enclosures: subsetOfDomain = [0.22322,0.223267]
+compute_enclosures:[1.72322,1.72327]	{[-2.00183,-1.99404],[17.9874,18.0122]}
+compute_enclosures: subsetOfDomain = [0.223267,0.223313]
+compute_enclosures:[1.72327,1.72331]	{[-2.00138,-1.99358],[17.9875,18.0123]}
+compute_enclosures: subsetOfDomain = [0.223313,0.22336]
+compute_enclosures:[1.72331,1.72336]	{[-2.00092,-1.99312],[17.9876,18.0124]}
+compute_enclosures: subsetOfDomain = [0.22336,0.223407]
+compute_enclosures:[1.72336,1.72341]	{[-2.00046,-1.99266],[17.9877,18.0125]}
+                                                                                              ODE Progress [BWD]:  Time =    1.72341 / 1.72     100%  Box Width =    0.01195	 [Done] 
+naive_icp::solve - loop	box stack Size = 10
+X_0 : {[-2,-2],[18,18]}
+X_t : {[-18.8894,-18.8821],[0,0.00597525]}
+T   : [1.72266,1.72341]
+                                                                                              ODE Progress [FWD]:  Time =    1.50000 / 1.72      87%  Box Width =    0.00734	compute_enclosures: subsetOfDomain = [0.222658,0.222705]
+compute_enclosures:[1.72266,1.72271]	{[-18.8825,-18.8821],[0.0127938,0.0136772]}
+compute_enclosures: subsetOfDomain = [0.222705,0.222752]
+compute_enclosures:[1.72271,1.72275]	{[-18.883,-18.8825],[0.0119104,0.0127938]}
+compute_enclosures: subsetOfDomain = [0.222752,0.222799]
+compute_enclosures:[1.72275,1.7228]	{[-18.8834,-18.883],[0.011027,0.0119104]}
+compute_enclosures: subsetOfDomain = [0.222799,0.222846]
+compute_enclosures:[1.7228,1.72285]	{[-18.8839,-18.8834],[0.0101436,0.011027]}
+compute_enclosures: subsetOfDomain = [0.222846,0.222892]
+compute_enclosures:[1.72285,1.72289]	{[-18.8843,-18.8839],[0.00926014,0.0101436]}
+compute_enclosures: subsetOfDomain = [0.222892,0.222939]
+compute_enclosures:[1.72289,1.72294]	{[-18.8848,-18.8843],[0.00837666,0.00926014]}
+compute_enclosures: subsetOfDomain = [0.222939,0.222986]
+compute_enclosures:[1.72294,1.72299]	{[-18.8853,-18.8848],[0.00749317,0.00837666]}
+compute_enclosures: subsetOfDomain = [0.222986,0.223033]
+compute_enclosures:[1.72299,1.72303]	{[-18.8857,-18.8853],[0.00660965,0.00749317]}
+compute_enclosures: subsetOfDomain = [0.223033,0.22308]
+compute_enclosures:[1.72303,1.72308]	{[-18.8862,-18.8857],[0.00572611,0.00660965]}
+compute_enclosures: subsetOfDomain = [0.22308,0.223126]
+compute_enclosures:[1.72308,1.72313]	{[-18.8866,-18.8862],[0.00484255,0.00572611]}
+compute_enclosures: subsetOfDomain = [0.223126,0.223173]
+compute_enclosures:[1.72313,1.72317]	{[-18.8871,-18.8866],[0.00395897,0.00484255]}
+compute_enclosures: subsetOfDomain = [0.223173,0.22322]
+compute_enclosures:[1.72317,1.72322]	{[-18.8876,-18.8871],[0.00307537,0.00395897]}
+compute_enclosures: subsetOfDomain = [0.22322,0.223267]
+compute_enclosures:[1.72322,1.72327]	{[-18.888,-18.8876],[0.00219175,0.00307537]}
+compute_enclosures: subsetOfDomain = [0.223267,0.223313]
+compute_enclosures:[1.72327,1.72331]	{[-18.8885,-18.888],[0.0013081,0.00219175]}
+compute_enclosures: subsetOfDomain = [0.223313,0.22336]
+compute_enclosures:[1.72331,1.72336]	{[-18.8889,-18.8885],[0.000424436,0.0013081]}
+compute_enclosures: subsetOfDomain = [0.22336,0.223407]
+compute_enclosures:[1.72336,1.72341]	{[-18.8894,-18.8889],[-0.000459252,0.000424436]}
+                                                                                              ODE Progress [FWD]:  Time =    1.72341 / 1.72     100%  Box Width =    0.00734	 [Done] 
+X_0 : {[-18.8894,-18.8857],[0,0.00597525]}
+X_t : {[-2,-2],[18,18]}
+T   : [1.72303,1.72341]
+                                                                                              ODE Progress [BWD]:  Time =    1.50000 / 1.72      87%  Box Width =    0.00598	compute_enclosures: subsetOfDomain = [0.223033,0.223056]
+compute_enclosures:[1.72303,1.72306]	{[-2.00367,-1.99977],[17.9934,18.0058]}
+compute_enclosures: subsetOfDomain = [0.223056,0.22308]
+compute_enclosures:[1.72306,1.72308]	{[-2.00344,-1.99954],[17.9934,18.0058]}
+compute_enclosures: subsetOfDomain = [0.22308,0.223103]
+compute_enclosures:[1.72308,1.7231]	{[-2.00321,-1.99931],[17.9935,18.0059]}
+compute_enclosures: subsetOfDomain = [0.223103,0.223126]
+compute_enclosures:[1.7231,1.72313]	{[-2.00298,-1.99908],[17.9935,18.0059]}
+compute_enclosures: subsetOfDomain = [0.223126,0.22315]
+compute_enclosures:[1.72313,1.72315]	{[-2.00275,-1.99885],[17.9936,18.0059]}
+compute_enclosures: subsetOfDomain = [0.22315,0.223173]
+compute_enclosures:[1.72315,1.72317]	{[-2.00252,-1.99862],[17.9936,18.006]}
+compute_enclosures: subsetOfDomain = [0.223173,0.223196]
+compute_enclosures:[1.72317,1.7232]	{[-2.00229,-1.9984],[17.9936,18.006]}
+compute_enclosures: subsetOfDomain = [0.223196,0.22322]
+compute_enclosures:[1.7232,1.72322]	{[-2.00206,-1.99817],[17.9937,18.0061]}
+compute_enclosures: subsetOfDomain = [0.22322,0.223243]
+compute_enclosures:[1.72322,1.72324]	{[-2.00183,-1.99794],[17.9937,18.0061]}
+compute_enclosures: subsetOfDomain = [0.223243,0.223267]
+compute_enclosures:[1.72324,1.72327]	{[-2.0016,-1.99771],[17.9938,18.0062]}
+compute_enclosures: subsetOfDomain = [0.223267,0.22329]
+compute_enclosures:[1.72327,1.72329]	{[-2.00138,-1.99748],[17.9938,18.0062]}
+compute_enclosures: subsetOfDomain = [0.22329,0.223313]
+compute_enclosures:[1.72329,1.72331]	{[-2.00115,-1.99725],[17.9939,18.0063]}
+compute_enclosures: subsetOfDomain = [0.223313,0.223337]
+compute_enclosures:[1.72331,1.72334]	{[-2.00092,-1.99702],[17.9939,18.0063]}
+compute_enclosures: subsetOfDomain = [0.223337,0.22336]
+compute_enclosures:[1.72334,1.72336]	{[-2.00069,-1.99679],[17.994,18.0064]}
+compute_enclosures: subsetOfDomain = [0.22336,0.223384]
+compute_enclosures:[1.72336,1.72338]	{[-2.00046,-1.99656],[17.994,18.0064]}
+compute_enclosures: subsetOfDomain = [0.223384,0.223407]
+compute_enclosures:[1.72338,1.72341]	{[-2.00023,-1.99633],[17.9941,18.0065]}
+                                                                                              ODE Progress [BWD]:  Time =    1.72341 / 1.72     100%  Box Width =    0.00598	 [Done] 
+nra_solver::check: result = true
+contractor_capd_full::contractor_capd_full()
+Subst Map (Var): v -> v_0_0
+Subst Map (Var): x -> x_0_0
+contractor_capd_full: diff sys = var:v_0_0, x_0_0;fun:(-9.8), v_0_0;
+compute_enclosures: subsetOfDomain = [0,0.09375]
+compute_enclosures:[0,0.09375]	{[-2.91875,-2],[17.7694,18]}
+compute_enclosures: subsetOfDomain = [0.09375,0.1875]
+compute_enclosures:[0.09375,0.1875]	{[-3.8375,-2.91875],[17.4527,17.7694]}
+compute_enclosures: subsetOfDomain = [0.1875,0.28125]
+compute_enclosures:[0.1875,0.28125]	{[-4.75625,-3.8375],[17.0499,17.4527]}
+compute_enclosures: subsetOfDomain = [0.28125,0.375]
+compute_enclosures:[0.28125,0.375]	{[-5.675,-4.75625],[16.5609,17.0499]}
+compute_enclosures: subsetOfDomain = [0.375,0.46875]
+compute_enclosures:[0.375,0.46875]	{[-6.59375,-5.675],[15.9858,16.5609]}
+compute_enclosures: subsetOfDomain = [0.46875,0.5625]
+compute_enclosures:[0.46875,0.5625]	{[-7.5125,-6.59375],[15.3246,15.9858]}
+compute_enclosures: subsetOfDomain = [0.5625,0.65625]
+compute_enclosures:[0.5625,0.65625]	{[-8.43125,-7.5125],[14.5772,15.3246]}
+compute_enclosures: subsetOfDomain = [0.65625,0.75]
+compute_enclosures:[0.65625,0.75]	{[-9.35,-8.43125],[13.7437,14.5772]}
+compute_enclosures: subsetOfDomain = [0.75,0.84375]
+compute_enclosures:[0.75,0.84375]	{[-10.2687,-9.35],[12.8241,13.7438]}
+compute_enclosures: subsetOfDomain = [0.84375,0.9375]
+compute_enclosures:[0.84375,0.9375]	{[-11.1875,-10.2687],[11.8184,12.8241]}
+compute_enclosures: subsetOfDomain = [0.9375,1.03125]
+compute_enclosures:[0.9375,1.03125]	{[-12.1062,-11.1875],[10.7265,11.8184]}
+compute_enclosures: subsetOfDomain = [1.03125,1.125]
+compute_enclosures:[1.03125,1.125]	{[-13.025,-12.1062],[9.54844,10.7265]}
+compute_enclosures: subsetOfDomain = [1.125,1.21875]
+compute_enclosures:[1.125,1.21875]	{[-13.9437,-13.025],[8.28428,9.54844]}
+compute_enclosures: subsetOfDomain = [1.21875,1.3125]
+compute_enclosures:[1.21875,1.3125]	{[-14.8625,-13.9437],[6.93398,8.28428]}
+compute_enclosures: subsetOfDomain = [1.3125,1.40625]
+compute_enclosures:[1.3125,1.40625]	{[-15.7812,-14.8625],[5.49756,6.93398]}
+compute_enclosures: subsetOfDomain = [1.40625,1.5]
+compute_enclosures:[1.40625,1.5]	{[-16.7,-15.7812],[3.975,5.49756]}
+compute_enclosures: subsetOfDomain = [0,0.0139629]
+compute_enclosures:[1.5,1.51396]	{[-16.8368,-16.7],[3.74086,3.975]}
+compute_enclosures: subsetOfDomain = [0.0139629,0.0279259]
+compute_enclosures:[1.51396,1.52793]	{[-16.9737,-16.8368],[3.50482,3.74086]}
+compute_enclosures: subsetOfDomain = [0.0279259,0.0418888]
+compute_enclosures:[1.52793,1.54189]	{[-17.1105,-16.9737],[3.26686,3.50482]}
+compute_enclosures: subsetOfDomain = [0.0418888,0.0558517]
+compute_enclosures:[1.54189,1.55585]	{[-17.2473,-17.1105],[3.02699,3.26686]}
+compute_enclosures: subsetOfDomain = [0.0558517,0.0698147]
+compute_enclosures:[1.55585,1.56981]	{[-17.3842,-17.2473],[2.78521,3.02699]}
+compute_enclosures: subsetOfDomain = [0.0698147,0.0837776]
+compute_enclosures:[1.56981,1.58378]	{[-17.521,-17.3842],[2.54152,2.78521]}
+compute_enclosures: subsetOfDomain = [0.0837776,0.0977406]
+compute_enclosures:[1.58378,1.59774]	{[-17.6579,-17.521],[2.29592,2.54152]}
+compute_enclosures: subsetOfDomain = [0.0977406,0.111703]
+compute_enclosures:[1.59774,1.6117]	{[-17.7947,-17.6579],[2.04841,2.29592]}
+compute_enclosures: subsetOfDomain = [0.111703,0.125666]
+compute_enclosures:[1.6117,1.62567]	{[-17.9315,-17.7947],[1.79899,2.04841]}
+compute_enclosures: subsetOfDomain = [0.125666,0.139629]
+compute_enclosures:[1.62567,1.63963]	{[-18.0684,-17.9315],[1.54766,1.79899]}
+compute_enclosures: subsetOfDomain = [0.139629,0.153592]
+compute_enclosures:[1.63963,1.65359]	{[-18.2052,-18.0684],[1.29441,1.54766]}
+compute_enclosures: subsetOfDomain = [0.153592,0.167555]
+compute_enclosures:[1.65359,1.66756]	{[-18.342,-18.2052],[1.03926,1.29441]}
+compute_enclosures: subsetOfDomain = [0.167555,0.181518]
+compute_enclosures:[1.66756,1.68152]	{[-18.4789,-18.342],[0.782197,1.03926]}
+compute_enclosures: subsetOfDomain = [0.181518,0.195481]
+compute_enclosures:[1.68152,1.69548]	{[-18.6157,-18.4789],[0.523222,0.782197]}
+compute_enclosures: subsetOfDomain = [0.195481,0.209444]
+compute_enclosures:[1.69548,1.70944]	{[-18.7526,-18.6157],[0.262337,0.523222]}
+compute_enclosures: subsetOfDomain = [0.209444,0.223407]
+compute_enclosures:[1.70944,1.72341]	{[-18.8894,-18.7526],[-0.000459252,0.262337]}
+delta-sat with delta = 0.01000000000000000
+#
+# CPU Time used: 0.0840049 s
+# Memory used: 3.930 MB
+#
+~nra_solver()

@@ -3,7 +3,7 @@
 [-9.8] g;
 [-100, 100] v;
 [0, 20] time;
-[-1, 0] noise [1.0];
+//[-1, 0] noise [1.0];
 
 { mode 1;
 
@@ -11,9 +11,9 @@
         (v <= 0);
         (x >= 0);
   flow:
-        d/dt[x] = v + noise +blah;
-        d/dt[v] = g + noise;
-        d/dt[noise] = 0;
+        d/dt[x] = v;//+ noise +blah;
+        d/dt[v] = g; //+ noise;
+        //d/dt[noise] = 0;
   jump:
 
 }

@@ -459,6 +459,11 @@ We define a lookahead time $t_{la}$ and forward simulate motion along the center
 		\includegraphics[scale=0.35]{figures/environment}
 		\caption{Environment Vehicle Automaton}
 	\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=\textwidth]{figures/dreachenv}
+			\caption{Environment Vehicle Automaton}
+		\end{figure}
 The other vehicles operating within a scenario present both an interesting challenge and a primary motivation for formal verification. It is clear that it is impossible to know the intentions of the agents operating such vehicles; their execution represents a significant source of non-determinism. In fact, a more complex model of such agents which includes details such as steering angle or tire friction will not enable less conservative results, for it is the control input not the plant that remains the largest unknown. Thus, we conclude that:
 {\it for verifying the autonomous agent, only the perceptible behavior of other agents is important, not their internal structure.}
 

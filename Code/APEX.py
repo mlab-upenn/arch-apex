@@ -66,7 +66,7 @@ def getNextGoal():
     # Depth first search on BDD produced by behavior controller
 
     # Change so that it reads from the csv file...
-    goalLC = (22.22, 3.8, 0.00, 11.1, 0.0)
+    goalLC = (50.7553, 2.04623, 0.0726169, 11.1111, 0.0)
     goalLF= (22.22, 0.00, 0.00, 11.1, 0.0)
     return goalLC
 
@@ -222,7 +222,7 @@ def runCheckStderr(runParams, stdin=None, stdout=None):
 # creates a dReach instance for the problem instance
 
 goal = getNextGoal();
-result = runStateLattice(goal,"LF");
+result = runStateLattice(goal,"LC");
 problem_instance = writeController(result,1);
 
 #if len(sys.argv) != 3 and len(sys.argv) != 4:

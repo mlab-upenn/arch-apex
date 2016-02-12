@@ -1,0 +1,298 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[0,2] tau;
+[-2,2.03] Beta;
+[-2,2.04] Psi;
+[-2,2.05] Psi_dot;
+[6,12] v;
+[0,100] sx;
+[-20,20] sy;
+[-2, 2.04] delta;
+[0, 2] time;
+[-2,2.07] Psi_d;
+[0,100] sx_d;
+[-20,20] sy_d;
+[-2,2.08] Psi_dot_d;
+[0,35] waypointx;
+[-5,5] waypointy;
+[0,2] simtime;
+[0,2]schedtime;
+[0,100] sx_0; 
+[-20,20] sy_0; 
+
+
+
+[-2,2.06] kappa_d_spline;
+[-2,2.07] Psi_d_spline;
+[0,100] sx_d_spline;
+[-20,20] sy_d_spline;
+[-2,2.08] Psi_dot_d_spline;
+[0,2] lookahead;
+
+
+
+
+{
+    mode 1;
+
+    invt:
+
+    
+    (v>=0);
+
+    flow:
+
+    
+    
+    
+    d/dt[tau]=1;
+    
+    d/dt[schedtime]=1;
+    
+    d/dt[simtime]=0;
+    
+    d/dt[Beta]=(((108000.0*1.515 -108000.0*1.292)/(2273.0*v*v))-1.0)*Psi_dot + 108000.0*delta/(2273.0*v) - (108000.0 +108000.0)*Beta/(2273.0*v); 
+    
+    d/dt[Psi]=Psi_dot;
+    
+    d/dt[Psi_dot]=((108000.0*1.515 -108000.0*1.292)*Beta/4423.0) - ((1.292*1.292*108000.0 +1.515*1.515*108000.0)/4423.0)*(Psi_dot/v) + (1.292*108000.0)*delta/4423.0 ;
+    
+    d/dt[v]=1.0*(cos(Psi_d)*(sx_d - sx) + sin(Psi_d)*(sy_d - sy)) +10.0*(11.11 -v); 
+    
+    d/dt[sx]=v*cos(Beta+Psi); 
+    
+    d/dt[sy]=v*sin(Beta+Psi); 
+    
+    d/dt[delta]=2.0*(cos(Psi_d)*(sy_d - sy) - sin(Psi_d)*(sx_d - sx)) +12.0*(Psi_d - Psi) +4.0*(Psi_dot_d - Psi_dot) -2.0*(delta); 
+
+    
+    d/dt[Psi_d] = -11.11/(sqrt((waypointx - sx_0)*(waypointx - sx_0) + (waypointy - sy_0)*(waypointy - sy_0))*sqrt((waypointx - sx_0)*(waypointx - sx_0) + (waypointy - sy_0)*(waypointy - sy_0))/(2*(waypointx - sx_0)));
+    d/dt[sx_d] = 11.11*cos(Psi_d);
+    d/dt[sy_d] = 11.11*sin(Psi_d);
+    d/dt[Psi_dot_d] = 0;
+
+    
+    d/dt[kappa_d_spline] = 0;
+    d/dt[Psi_d_spline] = 0;
+    d/dt[sx_d_spline] = 0;
+    d/dt[sy_d_spline] = 0;
+    d/dt[Psi_dot_d_spline] = 0;
+
+    
+    d/dt[waypointx]= 0;
+    d/dt[waypointy]= 0;
+    d/dt[lookahead]= 0;
+    d/dt[sx_0] = 0;
+    d/dt[sy_0] = 0; 
+
+    jump:
+        (and (schedtime = 0.1)) ==> @2
+            (and 
+             (tau' = tau)
+             (Beta' = Beta)
+             (Psi' = Psi)
+             (Psi_dot' = Psi_dot)
+             (v' = v)
+             (sx' = sx)
+             (sy' = sy)
+             (delta' = delta)
+             (Psi_d' = Psi_d)
+             (sx_d' = sx_d)
+             (sy_d' = sy_d)
+             (Psi_dot_d' = Psi_dot_d)
+             (waypointx' = waypointx) 
+             (waypointy' = waypointy) 
+             (simtime' = simtime)
+             (schedtime'= 0)
+             (lookahead' = lookahead)
+             (kappa_d_spline' = kappa_d_spline)
+             (Psi_d_spline' = Psi_d_spline)
+             (sx_d_spline'=sx_d_spline)
+             (sy_d_spline' = sy_d_spline)
+             (Psi_dot_d_spline' =Psi_dot_d_spline)
+             (sx_0' = sx_0)
+             (sy_0' = sy_0));
+
+            
+}
+
+
+{
+    mode 2;
+
+    invt:
+
+    
+    (v>=0);
+
+    flow:
+
+    
+    
+    
+
+    
+    d/dt[tau]= 0;
+    d/dt[schedtime]= 0;
+    
+    d/dt[Beta]= 0; 
+    
+    d/dt[Psi]= 0;
+    
+    d/dt[Psi_dot]= 0;
+    
+    d/dt[v]= 0; 
+    
+    d/dt[sx]= 0; 
+    
+    d/dt[sy]= 0; 
+    
+    d/dt[delta]= 0; 
+
+    
+    d/dt[Psi_d]= 0;
+    d/dt[sx_d]= 0;
+    d/dt[sy_d]= 0;
+    d/dt[Psi_dot_d]= 0;
+
+    
+    d/dt[waypointx]= 0;
+    d/dt[waypointy]= 0;
+    d/dt[lookahead]= 0;
+    d/dt[sx_0] = 0;
+    d/dt[sy_0] = 0; 
+
+    
+    d/dt[simtime]= 1;
+    d/dt[kappa_d_spline]= (-0.50*(-2*(0.000000) + 11*(0.000000) - 18*(0.006046) + 9*(-0.000322))/(33.831636))*11.11 + 2*((4.50)*(-(0.000000) + 2*(0.000000) - 5*(0.006046) +4*(-0.000322))/((33.831636)*(33.831636)))*11.11*11.11*simtime + 3*((-4.50)*(-(0.000000) + (0.000000) - 3*(0.006046) + 3*(-0.000322))/((33.831636)*(33.831636)*(33.831636)))*11.11*11.11*11.11*simtime*simtime ;
+    d/dt[Psi_d_spline]= 11.11*kappa_d_spline;
+    d/dt[sx_d_spline]= 11.11*cos(Psi_d_spline);
+    d/dt[sy_d_spline] = 11.11*sin(Psi_d_spline);
+    d/dt[Psi_dot_d_spline]= 11.11*((-0.50*(-2*(0.000000) + 11*(0.000000) - 18*(0.006046) + 9*(-0.000322))/(33.831636))*11.11 + 2*((4.50)*(-(0.000000) + 2*(0.000000) - 5*(0.006046) +4*(-0.000322))/((33.831636)*(33.831636)))*11.11*11.11*simtime + 3*((-4.50)*(-(0.000000) + (0.000000) - 3*(0.006046) + 3*(-0.000322))/((33.831636)*(33.831636)*(33.831636)))*11.11*11.11*11.11*simtime*simtime);
+ 
+
+    jump:
+    (and (simtime = lookahead)) ==> @1
+        (and 
+             (tau' = tau)
+             (Beta' = Beta)
+             (Psi' = Psi)
+             (Psi_dot' = Psi_dot)
+             (v' = v)
+             (sx' = sx)
+             (sy' = sy)
+             (delta' = delta)
+             (Psi_d' = Psi_d)
+             (sx_d' = sx_d)
+             (sy_d' = sy_d)
+             (Psi_dot_d' = Psi_dot_d)
+             (waypointx' = sx_d_spline) 
+             (waypointy' = sy_d_spline) 
+             (simtime' = simtime)
+             (schedtime'= schedtime)
+             (lookahead' = lookahead + 0.4)
+             (kappa_d_spline' = kappa_d_spline)
+             (Psi_d_spline' = Psi_d_spline)
+             (sx_d_spline'= sx_d_spline)
+             (sy_d_spline' = sy_d_spline)
+             (Psi_dot_d_spline' = Psi_dot_d_spline)
+             (sx_0' = sx)
+             (sy_0' = sy));
+
+             
+             
+             
+             
+             
+             
+             
+             
+
+            
+}
+
+init: 
+@2 (and 
+    (tau=0) 
+    (Beta=0) 
+    (Psi=0) 
+    (Psi_dot=0) 
+    (v=10.9) 
+    (sx=0) 
+    (sy=0) 
+    (sx_0=sx)
+    (sy_0=sy)
+    (delta=0) 
+    (Psi_d=0) 
+    (sx_d=0) 
+    (sy_d=0) 
+    (Psi_dot_d=0) 
+    (waypointx=0) 
+    (waypointy=0) 
+    (lookahead=0.4)
+    (simtime = 0) 
+    (kappa_d_spline= 0)
+    (Psi_d_spline =0)
+    (sx_d_spline= 0) 
+    (sy_d_spline=0)
+    (Psi_dot_d_spline=0));
+
+goal:
+@1 (tau>0.3);
+

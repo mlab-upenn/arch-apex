@@ -1,0 +1,184 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[0,100] tau;
+[-2,2.03] Beta;
+[-2,2.04] Psi;
+[-2,2.05] Psi_dot;
+[6,12] v;
+[0,100] sx;
+[0,100] sy;
+[-2, 2.04] delta;
+[0, 3.1] time;
+[-2,2.06] (1.00/sqrt((waypointx - sx)*(waypointx - sx) + (waypointy - sy)*(waypointy - sy))*sqrt((waypointx - sx)*(waypointx - sx) + (waypointy - sy)*(waypointy - sy))/(2*(waypointx - sx)));
+[-2,2.07] Psi_d;
+[0,100] sx_d;
+[0,100] sy_d;
+[-2,2.08] Psi_dot_d;
+[0, 51] sx_env;
+[-20,20] waypointx;
+[-20,20] waypointy;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+    
+    mode 1;
+
+    invt:
+
+    
+    (v>=0);
+
+    flow:
+
+    
+    
+    
+    d/dt[tau]=1;
+    
+    d/dt[Beta]=(((108000.0*1.515 -108000.0*1.292)/(2273.0*v*v))-1.0)*Psi_dot + 108000.0*delta/(2273.0*v) - (108000.0 +108000.0)*Beta/(2273.0*v); 
+    
+    d/dt[Psi]=Psi_dot;
+    
+    d/dt[Psi_dot]=((108000.0*1.515 -108000.0*1.292)*Beta/4423.0) - ((1.292*1.292*108000.0 +1.515*1.515*108000.0)/4423.0)*(Psi_dot/v) + (1.292*108000.0)*delta/4423.0 ;
+    
+    d/dt[v]=1.0*(cos(Psi_d)*(sx_d - sx) + sin(Psi_d)*(sy_d - sy)) +10.0*(11.11 -v) ;
+    
+    d/dt[sx]=v*cos(Beta+Psi); 
+    
+    d/dt[sy]=v*sin(Beta+Psi); 
+    
+    d/dt[delta]=2.0*(cos(Psi_d)*(sy_d - sy) - sin(Psi_d)*(sx_d - sx)) +12.0*(Psi_d - Psi) +4.0*(Psi_dot_d - Psi_dot) -2.0*(delta); 
+
+    
+    d/dt[(1.00/sqrt((waypointx - sx)*(waypointx - sx) + (waypointy - sy)*(waypointy - sy))*sqrt((waypointx - sx)*(waypointx - sx) + (waypointy - sy)*(waypointy - sy))/(2*(waypointx - sx)))] = 0;
+    d/dt[Psi_d] = (3.14159265359/4.00) - (11.11*tau/(2*3.14159265359*sqrt((waypointx - sx)*(waypointx - sx) + (waypointy - sy)*(waypointy - sy))*sqrt((waypointx - sx)*(waypointx - sx) + (waypointy - sy)*(waypointy - sy))/(2*(waypointx - sx))));
+    d/dt[sx_d] = 11.11*cos(Psi_d);
+    d/dt[sy_d] = 11.11*sin(Psi_d);
+    d/dt[Psi_dot_d] = -(v/(2*sqrt((waypointx - sx)*(waypointx - sx) + (waypointy - sy)*(waypointy - sy))*sqrt((waypointx - sx)*(waypointx - sx) + (waypointy - sy)*(waypointy - sy))/(2*(waypointx - sx))));
+
+    d/dt[waypointx]= 0;
+    d/dt[waypointy]= 0;
+
+    
+    
+    
+    
+    
+    
+
+    jump:
+
+}
+
+init: 
+
+  
+    
+    
+init: 
+@1 (and (sx=0) (sy=0) (v=10.9) (sx_d=0) (sy_d=0) 
+    (Psi=0) (Psi_dot=0) (Beta=0) (delta=0) (tau=0) 
+    (Psi_d=0) (Psi_dot_d=0) (sx_env=15) ((1.00/sqrt((waypointx - sx)*(waypointx - sx) + (waypointy - sy)*(waypointy - sy))*sqrt((waypointx - sx)*(waypointx - sx) + (waypointy - sy)*(waypointy - sy))/(2*(waypointx - sx)))=0.01) (waypointx=15) (waypointy=5));
+
+
+goal:
+@1 (tau=1);
+
+
+
+
+

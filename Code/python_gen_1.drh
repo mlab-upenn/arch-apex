@@ -111,10 +111,10 @@
 }
 
 init: 
-@1 (and (sx>=0) (sx<=0.1) (sy>=0) (sy<=0.1) (v>=10.9) (v=11.1) (sx_d=0) (sy_d=0) 
+@1 (and (sx>=0) (sx<=0.5) (sy>=0) (sy<=0.1) (v>=10.9) (v=11.1) (sx_d=0) (sy_d=0) 
     (Psi>=0) (Psi<=0.05) (Psi_dot=0) (Beta=0) (delta=0) (tau=0) 
     (Psi_d=0) (Psi_dot_d=0)
-    (sx_env=19.439) (kappa_d=0) (vx_env=0));
+    (sx_env=12) (kappa_d=0) (vx_env=5));
 
 goal:
 //@1 (tau=4);

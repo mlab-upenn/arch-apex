@@ -1,0 +1,99 @@
+// SCENARIO PARAMETERS //
+
+// Reference Trajectory
+#define s (33.831636)
+#define kappa_0 (0.000000)
+#define kappa_1 (0.006046)
+#define kappa_2 (-0.000322)
+#define kappa_3 (0.000000)
+
+// Cubic spline inputs
+#define a kappa_0
+#define b (-0.50*(-2*kappa_3 + 11*kappa_0 - 18*kappa_1 + 9*kappa_2)/s)
+#define c ((4.50)*(-kappa_3 + 2*kappa_0 - 5*kappa_1 +4*kappa_2)/(s*s))
+#define e ((-4.50)*(-kappa_3 + kappa_0 - 3*kappa_1 + 3*kappa_2)/(s*s*s))
+
+// Mathematical constants...
+#define pi 3.14159265359
+
+// Width of road
+#define w 3.7
+
+// Desired velocity of ego vehicle
+#define v_d 11.11 // Approximately 25 mph
+
+// VEHICLE PARAMETERS //
+// Constants
+#define m  2273.0
+#define Iz 4423.0
+#define Cf 108000.0
+#define Cr 108000.0
+#define lf 1.292
+#define lr 1.515
+
+// CONTROLLER PARAMETERS//
+#define k1 2.0
+#define k2 12.0
+#define k3 4.0
+#define k4 2.0
+#define k5 1.0
+#define k6 10.0
+
+// Helpers to clean up equations...
+#define cl (Cr*lr-Cf*lf)
+
+// TRACKING CONTROLLER INPUTS //
+// Rate of change of front wheel angle
+#define vw k1*(cos(Psi_d)*(sy_d - sy) - sin(Psi_d)*(sx_d - sx)) +k2*(Psi_d - Psi) +k3*(Psi_dot_d - Psi_dot) -k4*(delta)
+
+// Longitudinal acceleration
+#define ax  k5*(cos(Psi_d)*(sx_d - sx) + sin(Psi_d)*(sy_d - sy)) +k6*(v_d-v)
+
+// PURE PURSUIT ALGORITHM //
+#define l sqrt((waypointx - sx_0)*(waypointx - sx_0) + (waypointy - sy_0)*(waypointy - sy_0))
+#define r l*l/(2*(waypointx - sx_0))
+#define kappa_d (1.00/r)
+#define lookahead_time 0.4
+
+// BOUNDS ON VARIABLES //
+[0,2] simtime;
+[-2,2.06] kappa_d_spline;
+[-2,2.07] Psi_d_spline;
+[0,100] sx_d_spline;
+[-20,20] sy_d_spline;
+[-2,2.08] Psi_dot_d_spline;
+[0,2] lookahead;
+[-1,1] xi_d [2];
+
+// HYBRID AUTOMATON//
+
+// MODE 2, compute the next waypoint, vehicle state does not evolve here
+{
+    mode 1;
+
+    invt:
+
+    flow:
+    /*Forward Simulation to find next waypoint*/
+    d/dt[simtime]= 1;
+    d/dt[kappa_d_spline]= b*v_d + 2*c*v_d*v_d*simtime + 3*e*v_d*v_d*v_d*simtime*simtime ;
+    d/dt[Psi_d_spline]= v_d*kappa_d_spline;
+    d/dt[sx_d_spline]= v_d*cos(Psi_d_spline) + xi_d;
+    d/dt[sy_d_spline] = v_d*sin(Psi_d_spline) + xi_d;
+    d/dt[Psi_dot_d_spline]= v_d*(b*v_d + 2*c*v_d*v_d*simtime + 3*e*v_d*v_d*v_d*simtime*simtime);
+    
+    jump: 
+
+}
+
+init: 
+@2 (and 
+    (simtime = 0) 
+    (kappa_d_spline= 0)
+    (Psi_d_spline =0)
+    (sx_d_spline= 0) 
+    (sy_d_spline=0)
+    (Psi_dot_d_spline=0));
+
+goal:
+@1 (simtime=0.1);

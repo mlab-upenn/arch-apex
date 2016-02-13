@@ -263,11 +263,11 @@ A simple trajectory tracking controller is included with the APEX vehicle model.
 	\end{tabular}	
 \end{table}
 
-Using the approach in \cite{Snider2009} and \cite{Althoff2014} the control inputs for longitudinal acceleration (pressing the accelerator) and steering angle velocity (turning the steering wheel) can be computed as $v_w$ and $a_x$ respectively. 
+Using the approach in \cite{Snider2009} and \cite{Althoff2014} the control inputs for longitudinal acceleration (pressing the accelerator) may be computed as $a_x$. 
+
+%v_w=k_1(cos{(\Psi_d)}(s_{y,d}-s_y-w_y)-sin{(\Psi_d)}(s_{x,d}-s_x-w_x)) \notag \\ +k_2(\Psi_d-\Psi-w_{\Psi}) \notag \\ +k_3(\dot{\Psi_d}-\dot{\Psi}-w_{\psi})-k_4(\delta-w_{\delta})
 
 \begin{gather}
-v_w=k_1(cos{(\Psi_d)}(s_{y,d}-s_y-w_y)-sin{(\Psi_d)}(s_{x,d}-s_x-w_x)) \notag \\ +k_2(\Psi_d-\Psi-w_{\Psi}) \notag \\ +k_3(\dot{\Psi_d}-\dot{\Psi}-w_{\psi})-k_4(\delta-w_{\delta})
-\\
 a_x=k_5(cos{(\Psi_d)}(s_{x,d}-s_x-w_x)+sin{(\Psi_d)}(s_{y,d}-s_y-w_y)) \notag \\ +k_6(v_d-v-w_v)
 \end{gather}
 

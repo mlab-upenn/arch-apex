@@ -1,0 +1,45 @@
+
+\subsection{Road}
+\label{sect:road}
+High level view of the road is a network of connected segments. Graph describes reachability of one segment from another. Each segment need not be straight etc. We will choose to define segments via a collection of boundary points. 
+\subsubsection{Boundaries}
+Each segment must have a left and right boundary. The boundaries are defined by an ordered sequence of points. We interpolate linearly between points. 
+\subsubsection{Computing Centerline Trajectories}
+Each centerline is defined by an ordered sequence of points. In order to come to a continuous representation of the trajectory we interpolate between the points using Cubic splines. This ensures that the centerline trajectory is continuous. We may introduce offset trajectories from the centerline, but do not do so in this work. 
+Each execution of the centerline computation we require as an input the current state and a goal state as defined by the ordered sequence of waypoints. This computation is done outside of the verification instance and supplied as part of the environment data. We provide a reference implementation in C++ and a Python interface for a cubic splines trajectory generation scheme originally developed in \cite{nagy2001trajectory} and \cite{McNaughton_2011_6927} as part of these benchmarks. 
+
+In this formulation we limit trajectories to a specific class of parameterized curves known as cubic splines. A cubic spline is defined as a function of arc length:
+\begin{equation}
+\kappa(s) = \kappa_0 + a \kappa_1 s + b \kappa_2 s^2 + c \kappa_3 s^3
+\end{equation}
+
+Note that there are four free parameters $(a,b,c,s_f)$ and our goal posture has four state variables. Thus, a cubic spline is a minimal polynomial that can be assured to produce a trajectory from the current position to the goal position (if it is kinematically feasible). For any particular state, goal pair there are two steps necessary to compute the parameters. First, it is necessary to produce an initial guess. There are several approaches available such as using a neural network, lookup table, or a simple heuristic. In this case we adapt a heuristic from Nagy and Kelly \cite{nagy2001trajectory} such that it is compatible with a stable parameter formulation presented by McNaughton \cite{McNaughton_2011_6927}. The stable reparameterization is defined as:
+\begin{gather}
+\kappa(0)=p_0\\
+\kappa(s_f/3)=p_1\\
+\kappa(2s_f/3)=p_2\\
+\kappa(s_f)=p_3
+\end{gather}
+
+Where the parameters $(a,b,c,s_f)$ can now be expressed as:
+\begin{gather}
+a(p)=p_0\\
+b(p)=-\frac{11p_0 - 18p_1+9p_2-2p_3}{2s_f}\\
+c(p)=\frac{9*(2p_0-5p_1+4p_2-p_3)}{2s_f^2}\\
+d(p)=-\frac{9(p_0-3p_1 +3p_2-p_3)}{2s_f^3}
+\end{gather}
+
+\subsubsection{Computing Goal Points} 
+Given a parameterized trajectory, it is only possible to compute the evolution of the vehicle's planning state vector via forward simulation of the point-mass dynamics...
+\begin{gather}
+	    \dot{\kappa}_{cl} = b\left(v_{cl}\right) + 2c\left(v_{cl}^{2}t\right) + 3d\left(v_{cl}^{3}t^{2}\right) \\
+	    \dot{\Psi}_{cl}= v_{cl}\left(\kappa_{cl}\right)	\\
+	    \dot{s}_{x_{cl}}= v_{cl}\left(cos(\Psi_{cl})\right)\\
+	    \dot{s}_{y_{cl}}= v_{cl}\left(sin(\Psi_{cl})\right)\\
+	    \ddot{\Psi}_{cl} =v_{cl} \left( b\left(v_{cl}\right) + 2c\left(v_{cl}^{2}t\right) + 3d\left(v_{cl}^{3}t^{2}\right) \right)	    
+\end{gather}
+We define a lookahead time $t_{la}$ and forward simulate motion along the centerline trajectory through the dynamics defined above. Having, completed such an operation the next waypoint for the pure pursuit algorithm is simply:
+
+\begin{equation}
+	\left(s_{x_{cl}}(t_{la}), s_{y_{cl}}(t_{la})\right)
+\end{equation} 

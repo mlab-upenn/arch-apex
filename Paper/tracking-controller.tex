@@ -1,0 +1,31 @@
+\subsubsection{Tracking Controller}
+\label{sect:tracking}
+Steering and velocity tracking controllers implement the inputs requested by geometric path tracking methods such as pure pursuit an algorithm described in Section \ref{sect:pure-pursuit}. A successful controller maintains vehicle stability and attempts to minimize the error between the desired trajectory and actual trajectory. The parameters computed for this controller when implemented and validated on a typical crossover SUV \cite{Althoff2014} are presented in Table \ref{table:controller}. 
+
+\begin{table}[h]
+	\centering
+	\caption{Controller Parameters \cite{Althoff2014}}
+	\label{table:controller}
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		\multicolumn{6}{|c|}{Controller Parameters} \\ \hline
+		$k_1$ & $k_2$ & $k_3$ & $k_4$ & $k_5$ & $k_6$ \\ \hline
+		2 & 12 & 4 & 2 & 1 & 1.515 \\ \hline
+	\end{tabular}	
+\end{table}
+
+Using the approach in \cite{Snider2009} and \cite{Althoff2014} the control inputs for longitudinal acceleration (pressing the accelerator) may be computed as $a_x$. 
+
+
+
+\begin{gather}
+v_w=k_1(cos{(\Psi_d)}(s_{y,d}-s_y-w_y)-sin{(\Psi_d)}(s_{x,d}-s_x-w_x)) \notag \\ +k_2(\Psi_d-\Psi-w_{\Psi}) \notag \\ +k_3(\dot{\Psi_d}-\dot{\Psi}-w_{\psi})-k_4(\delta-w_{\delta})
+a_x=k_5(cos{(\Psi_d)}(s_{x,d}-s_x-w_x)+sin{(\Psi_d)}(s_{y,d}-s_y-w_y)) \notag \\ +k_6(v_d-v-w_v)
+\end{gather}
+
+%We note that in order to analyze the system we represent \(\ddot{\psi}\) as two first order differential equations. Thus we write:
+%\begin{gather}
+%	\dot{\psi}_{dot}=\left(\frac{C_rl_r-C_fl_f}{I_z} \right)\beta-\left(\frac{C_fl_f^2-C_rl_r^2}{I_z} \right)\left(\frac{\dot{\psi}}{v} \right) \notag \\+\left(\frac{C_fl_f}{I_z} \right)\delta\\
+%	\dot{\psi}=\psi_{dot}
+%\end{gather}
+%Finally, one must substitute \(\psi_{dot}\) for each appearance of \(\dot{\psi}\) in the other state equations.

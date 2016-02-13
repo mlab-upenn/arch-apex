@@ -1,0 +1,30 @@
+\section{Extensions}
+\label{sect:extensions}
+\subsection{Model Complexity}
+Higher order models can be supported in the future, and of course the parameters of the base model can be customized in order to match specific vehicles. 
+
+\subsection{Trajectory Generation and Path Tracking}
+
+\subsection{Traffic Behaviors}
+\begin{itemize}
+	\item Acceleration ceases when some maximum velocity is reached.
+	\begin{equation}
+	\Box \left( v_{env} \geq v_{max} \to a = 0 \right)
+	\end{equation}
+	\item Other agents must drive in the proper direction according to their lane.
+	\begin{equation}
+	\Box \left( v_{env} \geq 0 \right)
+	\end{equation}
+	\item The accelerations of other agents are within those rates achievable by maximum engine power
+	\begin{equation}
+	\Box \left( a_{env} \leq a_{max}\right)
+	\end{equation}
+	\item Other agents maintain their lanes unless explicitly specified not to.
+	\begin{equation}
+	\Box \left( \neg LC \to \left( y_{min} \leq s_{y_{env}} \right) \wedge \left( y_{max} \geq s_{y_{env}} \right) \right)
+	\end{equation}
+	\item Lane changes by other agents are only permitted if the alternate lane is unoccupied or unless a degenerate scenario is being modeled.
+	\begin{equation}
+	\Box \left( LO \to \neg LC \right)
+	\end{equation}
+\end{itemize}

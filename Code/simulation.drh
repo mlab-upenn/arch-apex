@@ -9,7 +9,7 @@
 
 // Cubic spline inputs
 #define a kappa_0
-#define b (-0.50*(-2*kappa_3 + 11*kappa_0 - 18*kappa_1 + 9*kappa_2)/s)
+#define b ((-0.50)*(-2*kappa_3 + 11*kappa_0 - 18*kappa_1 + 9*kappa_2)/s)
 #define c ((4.50)*(-kappa_3 + 2*kappa_0 - 5*kappa_1 +4*kappa_2)/(s*s))
 #define e ((-4.50)*(-kappa_3 + kappa_0 - 3*kappa_1 + 3*kappa_2)/(s*s*s))
 
@@ -38,6 +38,7 @@
 #define k4 2.0
 #define k5 1.0
 #define k6 10.0
+#define kd 0.28
 
 // Helpers to clean up equations...
 #define cl (Cr*lr-Cf*lf)
@@ -53,26 +54,27 @@
 #define l sqrt((waypointx - sx_0)*(waypointx - sx_0) + (waypointy - sy_0)*(waypointy - sy_0))
 #define r l*l/(2*(waypointx - sx_0))
 #define kappa_d (1.00/r)
-#define lookahead_time 0.4
+//#define delta (arctan(2*(lf+lr)*((waypointx - sx_0)/l)/(kd*v)))
+#define lookahead_time 0.1
 
 // BOUNDS ON VARIABLES //
 [0,2] tau;
-[-2,2.03] Beta;
+[-20,20] Beta;
 [-2,2.04] Psi;
 [-2,2.05] Psi_dot;
 [6,12] v;
-[0,100] sx;
+[-1,100] sx;
 [-20,20] sy;
-[-2, 2.04] delta;
+[-20, 20] delta;
 [0, 2] time;
 [-2,2.07] Psi_d;
-[0,100] sx_d;
+[-1,100] sx_d;
 [-20,20] sy_d;
 [-2,2.08] Psi_dot_d;
 [0,35] waypointx;
-[-5,5] waypointy;
+[-10,10] waypointy;
 [0,2] simtime;
-[0,2]schedtime;
+[0,2] schedtime;
 [0,100] sx_0; // Store vehicle position when we enter the mode...
 [-20,20] sy_0; // Store vehicle position when we enter the mode...
 
@@ -80,10 +82,20 @@
 // FORWARD SIMULATION VARIABLES//
 [-2,2.06] kappa_d_spline;
 [-2,2.07] Psi_d_spline;
-[0,100] sx_d_spline;
+[-1,100] sx_d_spline;
 [-20,20] sy_d_spline;
 [-2,2.08] Psi_dot_d_spline;
 [0,2] lookahead;
+
+// BOUNDS ON VARIABLES //
+[0,2] init_time;
+[0,2] init_var;
+[-10,10] kappa_env_1;
+[-10,10] Psi_env_1;
+[-100,100] sx_env_1;
+[-100,100] sy_env_1;
+[-10,10] Psi_dot_env_1;
+[-0.25, 0.25] noise [0.5];
 
 // HYBRID AUTOMATON//
 
@@ -92,9 +104,6 @@
     mode 1;
 
     invt:
-
-    // Velocity must be greater than or equal to 0
-    (v>=0);
 
     flow:
 
@@ -107,7 +116,7 @@
     // Time for forward simulation in Mode 2. Not used in this mode
     d/dt[simtime]=0;
     // Compute rate of change of the slip angle
-    d/dt[Beta]=((cl/(m*v*v))-1.0)*Psi_dot + Cf*delta/(m*v) - (Cf+Cr)*Beta/(m*v); 
+    d/dt[Beta]=((cl/(m*v*v))-1.0)*Psi_dot + Cf*delta/(m*v) - (Cf+Cr)*Beta/(m*v);  
     // Rate of change of the heading angle is equal to yaw rate
     d/dt[Psi]=Psi_dot;
     // Rate of change of yaw rate
@@ -122,7 +131,7 @@
     d/dt[delta]=vw; 
 
     /*Trajectory and Tracking Equations*/
-    d/dt[Psi_d] = -v_d/(r);
+    d/dt[Psi_d] = -v_d/r;
     d/dt[sx_d] = v_d*cos(Psi_d);
     d/dt[sy_d] = v_d*sin(Psi_d);
     d/dt[Psi_dot_d] = 0;
@@ -134,6 +143,16 @@
     d/dt[sy_d_spline] = 0;
     d/dt[Psi_dot_d_spline] = 0;
 
+    /*Forward Simulation of Environment Vehicle*/
+    d/dt[init_time]= 0;
+    d/dt[init_var]= 0;
+    d/dt[kappa_env_1]= b*v_d + 2*c*v_d*v_d*tau + 3*e*v_d*v_d*v_d*tau*tau ;
+    d/dt[Psi_env_1]= v_d*kappa_env_1;
+    d/dt[sx_env_1]= v_d*cos(Psi_env_1) + noise;
+    d/dt[sy_env_1] = v_d*sin(Psi_env_1) + noise;
+    d/dt[Psi_dot_env_1]= v_d*(b*v_d + 2*c*v_d*v_d*tau+ 3*e*v_d*v_d*v_d*tau*tau);
+    d/dt[noise] = 0;
+
     /* Constants */
     d/dt[waypointx]= 0;
     d/dt[waypointy]= 0;
@@ -142,7 +161,7 @@
     d/dt[sy_0] = 0; 
 
     jump:
-        (and (schedtime = 0.1)) ==> @2
+        (and (schedtime >= 0.1)(schedtime <=0.11)) ==> @2
             (and 
              (tau' = tau)
              (Beta' = Beta)
@@ -167,12 +186,19 @@
              (sy_d_spline' = sy_d_spline)
              (Psi_dot_d_spline' =Psi_dot_d_spline)
              (sx_0' = sx_0)
-             (sy_0' = sy_0));
+             (sy_0' = sy_0)
+             (init_time'=0)
+             (kappa_env_1'=kappa_env_1)
+             (Psi_env_1'= Psi_env_1)
+             (sx_env_1'=sx_env_1)
+             (sy_env_1'=sy_env_1)
+             (Psi_dot_env_1'=Psi_dot_env_1)
+             (init_var'= 1));
 
             // ' End the syntax highlight madness!
 }
 
-// MODE 2, compute the next waypoint, vehicle state does not evolve here
+// MODE 2, compute the next waypoint, ego vehicle state does not evolve here
 {
     mode 2;
 
@@ -211,13 +237,6 @@
     d/dt[sy_d]= 0;
     d/dt[Psi_dot_d]= 0;
 
-    /* Constants which only get updated on jumps*/
-    d/dt[waypointx]= 0;
-    d/dt[waypointy]= 0;
-    d/dt[lookahead]= 0;
-    d/dt[sx_0] = 0;
-    d/dt[sy_0] = 0; 
-
     /*Forward Simulation to find next waypoint*/
     d/dt[simtime]= 1;
     d/dt[kappa_d_spline]= b*v_d + 2*c*v_d*v_d*simtime + 3*e*v_d*v_d*v_d*simtime*simtime ;
@@ -225,10 +244,28 @@
     d/dt[sx_d_spline]= v_d*cos(Psi_d_spline);
     d/dt[sy_d_spline] = v_d*sin(Psi_d_spline);
     d/dt[Psi_dot_d_spline]= v_d*(b*v_d + 2*c*v_d*v_d*simtime + 3*e*v_d*v_d*v_d*simtime*simtime);
+
+    /*Forward Simulation of Environment Vehicle*/
+    d/dt[init_time] =0;
+    d/dt[init_var]= 0;
+    d/dt[kappa_env_1]= 0 ;
+    d/dt[Psi_env_1]= 0;
+    d/dt[sx_env_1]= 0;
+    d/dt[sy_env_1] = 0;
+    d/dt[Psi_dot_env_1]= 0;
+    d/dt[noise] = 0;
+
+    /* Constants which only get updated on jumps*/
+    d/dt[waypointx]= 0;
+    d/dt[waypointy]= 0;
+    d/dt[lookahead]= 0;
+    d/dt[sx_0] = 0;
+    d/dt[sy_0] = 0; 
+
  
 
     jump:
-    (and (simtime = lookahead)) ==> @1
+    (and (simtime = lookahead) (init_var >= 1)) ==> @1
         (and 
              (tau' = tau)
              (Beta' = Beta)
@@ -253,16 +290,148 @@
              (sy_d_spline' = sy_d_spline)
              (Psi_dot_d_spline' = Psi_dot_d_spline)
              (sx_0' = sx)
-             (sy_0' = sy));
+             (sy_0' = sy)
+             (init_time'=0)
+             (kappa_env_1'=kappa_env_1)
+             (Psi_env_1'= Psi_env_1)
+             (sx_env_1'=sx_env_1)
+             (sy_env_1'=sy_env_1)
+             (Psi_dot_env_1'=Psi_dot_env_1)
+             (init_var'= 1));
 
-             //(simtime' = simtime)
-             //(schedtime'= schedtime)
-             //(lookahead' = lookahead + 0.4)
-             //(kappa_d_spline' = kappa_d_spline)
-             //(Psi_d_spline' = Psi_d_spline)
-             //(sx_d_spline'=sx_d_spline)
-             //(sy_d_spline' = sy_d_spline)
-             //(Psi_dot_d_spline' =Psi_dot_d_spline)
+            // ' End the syntax highlight madness!
+
+        (and (simtime = lookahead) (init_var < 1)) ==> @3
+        (and 
+             (tau' = tau)
+             (Beta' = Beta)
+             (Psi' = Psi)
+             (Psi_dot' = Psi_dot)
+             (v' = v)
+             (sx' = sx)
+             (sy' = sy)
+             (delta' = delta)
+             (Psi_d' = Psi_d)
+             (sx_d' = sx_d)
+             (sy_d' = sy_d)
+             (Psi_dot_d' = Psi_dot_d)
+             (waypointx' = sx_d_spline) 
+             (waypointy' = sy_d_spline) 
+             (simtime' = simtime)
+             (schedtime'= schedtime)
+             (lookahead' = lookahead + 0.4)
+             (kappa_d_spline' = kappa_d_spline)
+             (Psi_d_spline' = Psi_d_spline)
+             (sx_d_spline'= sx_d_spline)
+             (sy_d_spline' = sy_d_spline)
+             (Psi_dot_d_spline' = Psi_dot_d_spline)
+             (sx_0' = sx)
+             (sy_0' = sy)
+             (init_time'=0)
+             (kappa_env_1'=kappa_env_1)
+             (Psi_env_1'= Psi_env_1)
+             (sx_env_1'=sx_env_1)
+             (sy_env_1'=sy_env_1)
+             (Psi_dot_env_1'=Psi_dot_env_1)
+             (init_var'= 1));
+
+            // ' End the syntax highlight madness!
+}
+
+// MODE 3, initialize the environmental vehicle, ego vehicle state does not evolve here
+{
+    mode 3;
+    invt:
+    flow:
+
+    // NOTE: ALL OF THE FOLLOWING FLOWS=0!
+    // WE are performing a computation step which doesn't involve
+    // the evolution of the vehicle state...
+
+    // In this mode we don't update total time
+    d/dt[tau]= 0;
+    d/dt[schedtime]= 0;
+    // Compute rate of change of the slip angle
+    d/dt[Beta]= 0; 
+    // Rate of change of the heading angle is equal to yaw rate
+    d/dt[Psi]= 0;
+    // Rate of change of yaw rate
+    d/dt[Psi_dot]= 0;
+    // Longitudinal acceleration
+    d/dt[v]= 0; 
+    // X component of velocity
+    d/dt[sx]= 0; 
+    // Y component of velocity
+    d/dt[sy]= 0; 
+    // Rate of change of front wheel angle.
+    d/dt[delta]= 0; 
+
+    /*Trajectory and Tracking Equations*/
+    d/dt[Psi_d]= 0;
+    d/dt[sx_d]= 0;
+    d/dt[sy_d]= 0;
+    d/dt[Psi_dot_d]= 0;
+
+    /* Constants which only get updated on jumps*/
+    d/dt[waypointx]= 0;
+    d/dt[waypointy]= 0;
+    d/dt[lookahead]= 0;
+    d/dt[sx_0] = 0;
+    d/dt[sy_0] = 0; 
+
+    /*Trajectory and Tracking Equations*/
+    d/dt[kappa_d_spline] = 0;
+    d/dt[Psi_d_spline] = 0;
+    d/dt[sx_d_spline] = 0;
+    d/dt[sy_d_spline] = 0;
+    d/dt[Psi_dot_d_spline] = 0;
+
+    /*Forward Simulation of Environment Vehicle*/
+    d/dt[init_time] =1;
+    d/dt[init_var]= 0;
+    d/dt[kappa_env_1]= b*v_d + 2*c*v_d*v_d*init_time+ 3*e*v_d*v_d*v_d*init_time*init_time ;
+    d/dt[Psi_env_1]= v_d*kappa_env_1;
+    d/dt[sx_env_1]= v_d*cos(Psi_env_1);
+    d/dt[sy_env_1] = v_d*sin(Psi_env_1);
+    d/dt[Psi_dot_env_1]= v_d*(b*v_d + 2*c*v_d*v_d*init_time + 3*e*v_d*v_d*v_d*init_time*init_time);
+    d/dt[noise] = 0;
+
+
+    jump: 
+
+        (and (init_time = 0.2)) ==> @1
+        (and 
+             (tau' = tau)
+             (Beta' = Beta)
+             (Psi' = Psi)
+             (Psi_dot' = Psi_dot)
+             (v' = v)
+             (sx' = sx)
+             (sy' = sy)
+             (delta' = delta)
+             (Psi_d' = Psi_d)
+             (sx_d' = sx_d)
+             (sy_d' = sy_d)
+             (Psi_dot_d' = Psi_dot_d)
+             (waypointx' = sx_d_spline) 
+             (waypointy' = sy_d_spline) 
+             (simtime' = simtime)
+             (schedtime'= schedtime)
+             (lookahead' = lookahead + 0.4)
+             (kappa_d_spline' = kappa_d_spline)
+             (Psi_d_spline' = Psi_d_spline)
+             (sx_d_spline'= sx_d_spline)
+             (sy_d_spline' = sy_d_spline)
+             (Psi_dot_d_spline' = Psi_dot_d_spline)
+             (sx_0' = sx)
+             (sy_0' = sy)
+             (init_time' = 0)
+             (kappa_env_1' = kappa_env_1)
+             (Psi_env_1' = Psi_env_1)
+             (sx_env_1' = sx_env_1)
+             (sy_env_1' = sy_env_1)
+             (Psi_dot_env_1' = Psi_dot_env_1)
+             (init_var' = 1));
 
             // ' End the syntax highlight madness!
 }
@@ -276,9 +445,9 @@ init:
     (v=10.9) 
     (sx=0) 
     (sy=0) 
+    (delta = 0)
     (sx_0=sx)
     (sy_0=sy)
-    (delta=0) 
     (Psi_d=0) 
     (sx_d=0) 
     (sy_d=0) 
@@ -287,11 +456,19 @@ init:
     (waypointy=0) 
     (lookahead=0.4)
     (simtime = 0) 
+    (schedtime = 0)
     (kappa_d_spline= 0)
     (Psi_d_spline =0)
     (sx_d_spline= 0) 
     (sy_d_spline=0)
-    (Psi_dot_d_spline=0));
+    (Psi_dot_d_spline=0)
+    (init_time=0)
+    (init_var=0)
+    (kappa_env_1=0)
+    (Psi_env_1 = 0)
+    (sx_env_1=0)
+    (sy_env_1=0)
+    (Psi_dot_env_1=0));
 
 goal:
-@1 (tau>0.1);
+@1 (simtime>0.1);

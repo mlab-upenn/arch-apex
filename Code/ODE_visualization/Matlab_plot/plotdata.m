@@ -30,6 +30,4 @@ function plotdata(data)
         end
         
     end
-    title(sn)
-    
 end

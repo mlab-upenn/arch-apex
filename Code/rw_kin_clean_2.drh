@@ -1,0 +1,242 @@
+// SCENARIO PARAMETERS //
+
+// Reference Trajectory
+#define s 33.831636
+#define kappa_0 0.000000
+#define kappa_1 0.006046
+#define kappa_2 (-0.000322)
+#define kappa_3 0.000000
+
+// Cubic spline inputs
+#define a kappa_0
+#define b (-0.50)*(-2*kappa_3 + 11*kappa_0 - 18*kappa_1 + 9*kappa_2)/s
+#define c (4.50)*(-kappa_3 + 2*kappa_0 - 5*kappa_1 +4*kappa_2)/(s*s)
+#define e (-4.50)*(-kappa_3 + kappa_0 - 3*kappa_1 + 3*kappa_2)/(s*s*s)
+
+// Mathematical constants...
+#define pi 3.14159265359
+
+// Width of road
+#define w 3.7
+
+// Desired velocity of ego vehicle
+#define v_d 11.11 // Approximately 25 mph
+
+// VEHICLE PARAMETERS //
+// Constants
+#define m  2273.0
+#define Iz 4423.0
+#define Cf 108000.0
+#define Cr 108000.0
+#define lf 1.292
+#define lr 1.515
+
+// CONTROLLER PARAMETERS//
+#define k1 2.0
+#define k2 12.0
+#define k3 4.0
+#define k4 2.0
+#define k5 1.0
+#define k6 10.0
+#define kd 0.28
+
+// Helpers to clean up equations...
+#define cl (Cr*lr-Cf*lf)
+
+// TRACKING CONTROLLER INPUTS //
+#define ax  k5*(cos(Psi_d)*(sx_d - sx) + sin(Psi_d)*(sy_d - sy)) +k6*(v_d-v)
+
+// PURE PURSUIT ALGORITHM //
+#define l sqrt((waypointx - sx_0)*(waypointx - sx_0) + (waypointy - sy_0)*(waypointy - sy_0))
+#define r l*l/(2*(waypointx - sx_0))
+#define kappa_d (1.00/r)
+#define lookahead_time 0.1
+
+// BOUNDS ON VARIABLES //
+[0,2] tau;
+[6,12] v;
+[-1,100] sx;
+[-20,20] sy;
+[0, 2] time;
+[-2,2.07] Psi_d;
+[-1,100] sx_d;
+[-20,20] sy_d;
+[0,35] waypointx;
+[-10,10] waypointy;
+[0,10] simtime;
+[0,2] schedtime;
+[0,100] sx_0; // Store vehicle position when we enter the mode...
+[-20,20] sy_0; // Store vehicle position when we enter the mode...
+
+// FORWARD SIMULATION VARIABLES//
+[-2,2.06] kappa_d_spline;
+[-2,2.07] Psi_d_spline;
+[-1,100] sx_d_spline;
+[-20,20] sy_d_spline;
+[-2,2.08] Psi_dot_d_spline;
+[0,10] lookahead;
+
+
+// HYBRID AUTOMATON//
+
+// MODE 1, follow reference trajectory # 1
+{
+    mode 1;
+
+    invt:
+
+    flow:
+
+    // TARGET VEHICLE //
+    // Plant equations
+    // Time for the verification effort
+    d/dt[tau]=1;
+    // Time since last entered this mode
+    d/dt[schedtime]=1;
+    // Time for forward simulation in Mode 2. Not used in this mode
+    d/dt[simtime]=0;
+    // Longitudinal acceleration
+    d/dt[v]=ax;
+    // X component of velocity
+    d/dt[sx]=v*cos(Psi_d);
+    // Y component of velocity
+    d/dt[sy]=v*sin(Psi_d);
+
+    /*Trajectory and Tracking Equations*/
+    d/dt[Psi_d] = -v_d/r;
+    d/dt[sx_d] = v_d*cos(Psi_d);
+    d/dt[sy_d] = v_d*sin(Psi_d);
+
+    /*Trajectory and Tracking Equations*/
+    d/dt[kappa_d_spline] = 0;
+    d/dt[Psi_d_spline] = 0;
+    d/dt[sx_d_spline] = 0;
+    d/dt[sy_d_spline] = 0;
+    d/dt[Psi_dot_d_spline] = 0;
+
+    /* Constants */
+    d/dt[waypointx]= 0;
+    d/dt[waypointy]= 0;
+    d/dt[lookahead]= 0;
+    d/dt[sx_0] = 0;
+    d/dt[sy_0] = 0;
+
+    jump:
+        (and (schedtime = 0.1)) ==> @2
+            (and
+             (tau' = tau)
+             (v' = v)
+             (sx' = sx)
+             (sy' = sy)
+             (Psi_d' = Psi_d)
+             (sx_d' = sx_d)
+             (sy_d' = sy_d)
+             (waypointx' = waypointx)
+             (waypointy' = waypointy)
+             (simtime' = simtime)
+             (schedtime'= 0)
+             (lookahead' = tau+0.2)
+             (kappa_d_spline' = kappa_d_spline)
+             (Psi_d_spline' = Psi_d_spline)
+             (sx_d_spline' = sx_d_spline)
+             (sy_d_spline' = sy_d_spline)
+             (Psi_dot_d_spline' = Psi_dot_d_spline)
+             (sx_0' = sx_0)
+             (sy_0' = sy_0));
+
+            // ' End the syntax highlight madness!
+}
+
+// MODE 2, compute the next waypoint, ego vehicle state does not evolve here
+{
+    mode 2;
+
+    invt:
+
+    flow:
+
+    // NOTE: ALL OF THE FOLLOWING FLOWS=0!
+    // WE are performing a computation step which doesn't involve
+    // the evolution of the vehicle state...
+
+    // In this mode we don't update total time
+    d/dt[tau]= 0;
+    d/dt[schedtime]= 0;
+    // Longitudinal acceleration
+    d/dt[v]= 0;
+    // X component of velocity
+    d/dt[sx]= 0;
+    // Y component of velocity
+    d/dt[sy]= 0;
+    /*Trajectory and Tracking Equations*/
+    d/dt[Psi_d]= 0;
+    d/dt[sx_d]= 0;
+    d/dt[sy_d]= 0;
+
+
+    /*Forward Simulation to find next waypoint*/
+    d/dt[simtime]= 1;
+    d/dt[kappa_d_spline]= b*v_d + 2*c*v_d*v_d*simtime + 3*e*v_d*v_d*v_d*simtime*simtime ;
+    d/dt[Psi_d_spline]= v_d*kappa_d_spline;
+    d/dt[sx_d_spline]= v_d*cos(Psi_d_spline);
+    d/dt[sy_d_spline] = v_d*sin(Psi_d_spline);
+    d/dt[Psi_dot_d_spline]= v_d*(b*v_d + 2*c*v_d*v_d*simtime + 3*e*v_d*v_d*v_d*simtime*simtime);
+
+    /* Constants which only get updated on jumps*/
+    d/dt[waypointx]= 0;
+    d/dt[waypointy]= 0;
+    d/dt[lookahead]= 0;
+    d/dt[sx_0] = 0;
+    d/dt[sy_0] = 0;
+
+    jump:
+    (and (simtime = lookahead)) ==> @1
+        (and
+             (tau' = tau)
+             (v' = v)
+             (sx' = sx)
+             (sy' = sy)
+             (Psi_d' = Psi_d)
+             (sx_d' = sx_d)
+             (sy_d' = sy_d)
+             (waypointx' = sx_d_spline)
+             (waypointy' = sy_d_spline)
+             (simtime' = 0)
+             (schedtime'= schedtime)
+             (lookahead' = lookahead)
+             (kappa_d_spline' = 0)
+             (Psi_d_spline' = 0)
+             (sx_d_spline'= 0)
+             (sy_d_spline' = 0)
+             (Psi_dot_d_spline' = 0)
+             (sx_0' = sx)
+             (sy_0' = sy));
+
+            // ' End the syntax highlight madness!
+}
+
+
+init:
+@2 (and
+    (tau=0)
+    (v=10.9)
+    (sx=0)
+    (sy=0)
+    (sx_0=sx)
+    (sy_0=sy)
+    (Psi_d=0)
+    (sx_d=0)
+    (sy_d=0)
+    (waypointx=0)
+    (waypointy=0)
+    (lookahead= 0.2)
+    (simtime = 0)
+    (schedtime = 0)
+    (kappa_d_spline= 0)
+    (Psi_d_spline =0)
+    (sx_d_spline= 0)
+    (sy_d_spline=0)
+    (Psi_dot_d_spline=0));
+
+goal:
+@1 (tau>=0.48);

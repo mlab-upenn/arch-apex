@@ -1,0 +1,1004 @@
+// SCENARIO PARAMETERS //
+
+// Reference Trajectory
+#define s (33.831636)
+#define kappa_0 (0.000000)
+#define kappa_1 (0.006046)
+#define kappa_2 (-0.000322)
+#define kappa_3 (0.000000)
+
+// Cubic spline inputs
+#define a kappa_0
+#define b ((-0.50)*(-2*kappa_3 + 11*kappa_0 - 18*kappa_1 + 9*kappa_2)/s)
+#define c ((4.50)*(-kappa_3 + 2*kappa_0 - 5*kappa_1 +4*kappa_2)/(s*s))
+#define e ((-4.50)*(-kappa_3 + kappa_0 - 3*kappa_1 + 3*kappa_2)/(s*s*s))
+
+// Mathematical constants...
+#define pi 3.14159265359
+
+// Width of road
+#define w 3.7
+
+// Desired velocity of ego vehicle
+#define v_d 11.11 // Approximately 25 mph
+
+// VEHICLE PARAMETERS //
+// Constants
+#define m  2273.0
+#define Iz 4423.0
+#define Cf 108000.0
+#define Cr 108000.0
+#define lf 1.292
+#define lr 1.515
+
+// CONTROLLER PARAMETERS//
+#define k1 2.0
+#define k2 12.0
+#define k3 4.0
+#define k4 2.0
+#define k5 1.0
+#define k6 10.0
+#define kd 0.28
+
+// Helpers to clean up equations...
+#define cl (Cr*lr-Cf*lf)
+
+// TRACKING CONTROLLER INPUTS //
+// Rate of change of front wheel angle
+#define vw k1*(cos(Psi_d)*(sy_d - sy) - sin(Psi_d)*(sx_d - sx)) +k2*(Psi_d - Psi) +k3*(Psi_dot_d - Psi_dot) -k4*(delta)
+
+// Longitudinal acceleration
+#define ax  k5*(cos(Psi_d)*(sx_d - sx) + sin(Psi_d)*(sy_d - sy)) +k6*(v_d-v)
+
+// PURE PURSUIT ALGORITHM //
+#define l sqrt((waypointx - sx_0)*(waypointx - sx_0) + (waypointy - sy_0)*(waypointy - sy_0))
+#define r l*l/(2*(waypointx - sx_0))
+#define kappa_d (1.00/r)
+#define lookahead_time 0.2
+
+/*Time*/
+[0,20] time;
+[0,20] tau;
+[0,20] simtime;
+[0,1] schedtime;
+[0,20] init_time_env_1;
+[0,20] init_time_env_2;
+
+/*Ego-Vehicle*/
+[-20,20] Beta;
+[-20,20.04] Psi;
+[-20,20.05] Psi_dot;
+[6,12] v;
+[-1,100] sx;
+[-20,20] sy;
+[-20, 20] delta;
+
+/*Trajectory Tracking*/
+[-20,20.07] Psi_d;
+[-1,100] sx_d;
+[-20,20] sy_d;
+[-20,20.08] Psi_dot_d;
+
+/*Forward Simulation Ref 1*/
+[-2,2.06] kappa_d_spline_1;
+[-2,2.07] Psi_d_spline_1;
+[-1,100] sx_d_spline_1;
+[-20,20] sy_d_spline_1;
+[-2,2.08] Psi_dot_d_spline_1;
+
+/*Forward Simulation Ref 2*/
+[-2,2.06] kappa_d_spline_2;
+[-2,2.07] Psi_d_spline_2;
+[-1,100] sx_d_spline_2;
+[-20,20] sy_d_spline_2;
+[-2,2.08] Psi_dot_d_spline_2;
+
+/*Environment Vehicle 1*/
+[-10,10] kappa_env_1;
+[-10,10] Psi_env_1;
+[-100,100] sx_env_1;
+[-100,100] sy_env_1;
+[-10,10] Psi_dot_env_1;
+
+/*Environment Vehicle 2*/
+[-10,10] kappa_env_2;
+[-10,10] Psi_env_2;
+[-100,100] sx_env_2;
+[-100,100] sy_env_2;
+[-10,10] Psi_dot_env_2;
+
+/*Constants*/
+[0,10] init_var_env_1;
+[0,10] init_var_env_2;
+[0,35] waypointx;
+[-10,10] waypointy;
+[0,10] lookahead;
+[0,100] sx_0; // Store vehicle position when we enter the mode...
+[-20,20] sy_0; // Store vehicle position when we enter the mode...
+
+/*Noise Terms*/
+[-0.25, 0.25] noise [0.5];
+
+// HYBRID AUTOMATON//
+
+// MODE 1, follow reference trajectory # 1
+{
+    mode 1;
+
+    invt:
+
+    flow:
+
+    /* Time */
+    d/dt[tau]= 1;
+    d/dt[schedtime]= 1;
+    d/dt[simtime]= 0;
+    d/dt[init_time_env_1]= 0;
+    d/dt[init_time_env_2]= 0;
+
+    /*Ego-Vehicle*/
+    d/dt[Beta]= ((cl/(m*v*v))-1.0)*Psi_dot + Cf*delta/(m*v) - (Cf+Cr)*Beta/(m*v);  
+    d/dt[Psi]= Psi_dot;
+    d/dt[Psi_dot]= (cl*Beta/Iz) - ((lf*lf*Cf+lr*lr*Cr)/Iz)*(Psi_dot/v) + (lf*Cf)*delta/Iz ;
+    d/dt[v]= ax; 
+    d/dt[sx]= v*cos(Beta+Psi); 
+    d/dt[sy]= v*sin(Beta+Psi); 
+    d/dt[delta]= vw; 
+
+    /*Trajectory and Tracking Equations*/
+    d/dt[Psi_d]= -v_d/r;
+    d/dt[sx_d]= v_d*cos(Psi_d);
+    d/dt[sy_d]= v_d*sin(Psi_d);
+    d/dt[Psi_dot_d]= 0;
+
+    /*Next Goal Equations Ref 1*/
+    d/dt[kappa_d_spline_1]= 0;
+    d/dt[Psi_d_spline_1]= 0;
+    d/dt[sx_d_spline_1]= 0;
+    d/dt[sy_d_spline_1]= 0;
+    d/dt[Psi_dot_d_spline_1]= 0;
+
+    /*Next Goal Equations Ref 2*/
+    d/dt[kappa_d_spline_2] = 0;
+    d/dt[Psi_d_spline_2] = 0;
+    d/dt[sx_d_spline_2] = 0;
+    d/dt[sy_d_spline_2] = 0;
+    d/dt[Psi_dot_d_spline_2] = 0;
+
+    /*Forward Simulation of 1st Environment Vehicle*/
+    d/dt[kappa_env_1]= b*v_d + 2*c*v_d*v_d*tau + 3*e*v_d*v_d*v_d*tau*tau ;
+    d/dt[Psi_env_1]= v_d*kappa_env_1;
+    d/dt[sx_env_1]= v_d*cos(Psi_env_1) + noise;
+    d/dt[sy_env_1]= v_d*sin(Psi_env_1) + noise;
+    d/dt[Psi_dot_env_1]= v_d*(b*v_d + 2*c*v_d*v_d*tau+ 3*e*v_d*v_d*v_d*tau*tau);
+
+    /*Forward Simulation of 2nd Environment Vehicle*/
+    d/dt[kappa_env_2]= b*v_d + 2*c*v_d*v_d*tau + 3*e*v_d*v_d*v_d*tau*tau ;
+    d/dt[Psi_env_2]= v_d*kappa_env_2;
+    d/dt[sx_env_2]= v_d*cos(Psi_env_2) + noise;
+    d/dt[sy_env_2]= v_d*sin(Psi_env_2) + noise;
+    d/dt[Psi_dot_env_2]= v_d*(b*v_d + 2*c*v_d*v_d*tau+ 3*e*v_d*v_d*v_d*tau*tau);
+
+    /*Constants*/
+    d/dt[init_var_env_1]= 0;
+    d/dt[init_var_env_2]= 0;
+    d/dt[waypointx]= 0;
+    d/dt[waypointy]= 0;
+    d/dt[lookahead]= 0;
+    d/dt[sx_0]= 0;
+    d/dt[sy_0]= 0; 
+
+    /*Noise*/
+    d/dt[noise] = 0;
+
+    jump:
+        (and (schedtime = 0.1)) ==> @3
+            (and 
+
+             (tau' = tau)
+             (simtime' = simtime)
+             (schedtime'= 0)
+             (init_time_env_1' = 0)
+             (init_time_env_2' = 0)
+
+             (Beta' = Beta)
+             (Psi' = Psi)
+             (Psi_dot' = Psi_dot)
+             (v' = v)
+             (sx' = sx)
+             (sy' = sy)
+             (delta' = delta)
+             (sx_0' = sx_0)
+             (sy_0' = sy_0)
+
+             (Psi_d' = Psi_d)
+             (sx_d' = sx_d)
+             (sy_d' = sy_d)
+             (Psi_dot_d' = Psi_dot_d)
+
+             (kappa_d_spline_1' = kappa_d_spline_1)
+             (Psi_d_spline_1' = Psi_d_spline_1)
+             (sx_d_spline_1' = sx_d_spline_1)
+             (sy_d_spline_1' = sy_d_spline_1)
+             (Psi_dot_d_spline_1' = Psi_dot_d_spline_1)
+
+             (kappa_d_spline_2' = kappa_d_spline_2)
+             (Psi_d_spline_2' = Psi_d_spline_2)
+             (sx_d_spline_2' = sx_d_spline_2)
+             (sy_d_spline_2' = sy_d_spline_2)
+             (Psi_dot_d_spline_2' = Psi_dot_d_spline_2)
+
+             (lookahead' = tau + 0.1)
+             (waypointx' = waypointx) 
+             (waypointy' = waypointy) 
+
+             (kappa_env_1' = kappa_env_1)
+             (Psi_env_1' = Psi_env_1)
+             (sx_env_1' = sx_env_1)
+             (sy_env_1' = sy_env_1)
+             (Psi_dot_env_1' = Psi_dot_env_1)
+
+             (kappa_env_2' = kappa_env_2)
+             (Psi_env_2' = Psi_env_2)
+             (sx_env_2' = sx_env_2)
+             (sy_env_2' = sy_env_2)
+             (Psi_dot_env_2' = Psi_dot_env_2)
+
+             (init_var_env_1' = init_var_env_1)
+             (init_var_env_2' = init_var_env_2));
+
+            // ' End the syntax highlight madness!
+}
+
+// MODE 2, follow reference trajectory # 2
+{
+    mode 2;
+
+    invt:
+
+    flow:
+
+    /* Time */
+    d/dt[tau]= 1;
+    d/dt[schedtime]= 1;
+    d/dt[simtime]= 0;
+    d/dt[init_time_env_1]= 0;
+    d/dt[init_time_env_2]= 0;
+
+    /*Ego-Vehicle*/
+    d/dt[Beta]= ((cl/(m*v*v))-1.0)*Psi_dot + Cf*delta/(m*v) - (Cf+Cr)*Beta/(m*v);  
+    d/dt[Psi]= Psi_dot;
+    d/dt[Psi_dot]= (cl*Beta/Iz) - ((lf*lf*Cf+lr*lr*Cr)/Iz)*(Psi_dot/v) + (lf*Cf)*delta/Iz ;
+    d/dt[v]= ax; 
+    d/dt[sx]= v*cos(Beta+Psi); 
+    d/dt[sy]= v*sin(Beta+Psi); 
+    d/dt[delta]= vw; 
+
+    /*Trajectory and Tracking Equations*/
+    d/dt[Psi_d]= -v_d/r;
+    d/dt[sx_d]= v_d*cos(Psi_d);
+    d/dt[sy_d]= v_d*sin(Psi_d);
+    d/dt[Psi_dot_d]= 0;
+
+    /*Next Goal Equations Ref 1*/
+    d/dt[kappa_d_spline_1]= 0;
+    d/dt[Psi_d_spline_1]= 0;
+    d/dt[sx_d_spline_1]= 0;
+    d/dt[sy_d_spline_1]= 0;
+    d/dt[Psi_dot_d_spline_1]= 0;
+
+    /*Next Goal Equations Ref 2*/
+    d/dt[kappa_d_spline_2] = 0;
+    d/dt[Psi_d_spline_2] = 0;
+    d/dt[sx_d_spline_2] = 0;
+    d/dt[sy_d_spline_2] = 0;
+    d/dt[Psi_dot_d_spline_2] = 0;
+
+    /*Forward Simulation of 1st Environment Vehicle*/
+    d/dt[kappa_env_1]= b*v_d + 2*c*v_d*v_d*tau + 3*e*v_d*v_d*v_d*tau*tau ;
+    d/dt[Psi_env_1]= v_d*kappa_env_1;
+    d/dt[sx_env_1]= v_d*cos(Psi_env_1) + noise;
+    d/dt[sy_env_1]= v_d*sin(Psi_env_1) + noise;
+    d/dt[Psi_dot_env_1]= v_d*(b*v_d + 2*c*v_d*v_d*tau+ 3*e*v_d*v_d*v_d*tau*tau);
+
+    /*Forward Simulation of 2nd Environment Vehicle*/
+    d/dt[kappa_env_2]= b*v_d + 2*c*v_d*v_d*tau + 3*e*v_d*v_d*v_d*tau*tau ;
+    d/dt[Psi_env_2]= v_d*kappa_env_2;
+    d/dt[sx_env_2]= v_d*cos(Psi_env_2) + noise;
+    d/dt[sy_env_2]= v_d*sin(Psi_env_2) + noise;
+    d/dt[Psi_dot_env_2]= v_d*(b*v_d + 2*c*v_d*v_d*tau+ 3*e*v_d*v_d*v_d*tau*tau);
+
+    /*Constants*/
+    d/dt[init_var_env_1]= 0;
+    d/dt[init_var_env_2]= 0;
+    d/dt[waypointx]= 0;
+    d/dt[waypointy]= 0;
+    d/dt[lookahead]= 0;
+    d/dt[sx_0]= 0;
+    d/dt[sy_0]= 0; 
+
+    /*Noise*/
+    d/dt[noise] = 0;
+
+    jump:
+        (and (schedtime = 0.1)) ==> @4
+            (and 
+
+             (tau' = tau)
+             (simtime' = simtime)
+             (schedtime'= 0)
+             (init_time_env_1' = 0)
+             (init_time_env_2' = 0)
+
+             (Beta' = Beta)
+             (Psi' = Psi)
+             (Psi_dot' = Psi_dot)
+             (v' = v)
+             (sx' = sx)
+             (sy' = sy)
+             (delta' = delta)
+             (sx_0' = sx_0)
+             (sy_0' = sy_0)
+
+             (Psi_d' = Psi_d)
+             (sx_d' = sx_d)
+             (sy_d' = sy_d)
+             (Psi_dot_d' = Psi_dot_d)
+
+             (kappa_d_spline_1' = kappa_d_spline_1)
+             (Psi_d_spline_1' = Psi_d_spline_1)
+             (sx_d_spline_1' = sx_d_spline_1)
+             (sy_d_spline_1' = sy_d_spline_1)
+             (Psi_dot_d_spline_1' = Psi_dot_d_spline_1)
+
+             (kappa_d_spline_2' = kappa_d_spline_2)
+             (Psi_d_spline_2' = Psi_d_spline_2)
+             (sx_d_spline_2' = sx_d_spline_2)
+             (sy_d_spline_2' = sy_d_spline_2)
+             (Psi_dot_d_spline_2' = Psi_dot_d_spline_2)
+
+             (lookahead' = tau + lookahead_time)
+             (waypointx' = waypointx) 
+             (waypointy' = waypointy) 
+
+             (kappa_env_1' = kappa_env_1)
+             (Psi_env_1' = Psi_env_1)
+             (sx_env_1' = sx_env_1)
+             (sy_env_1' = sy_env_1)
+             (Psi_dot_env_1' = Psi_dot_env_1)
+
+             (kappa_env_2' = kappa_env_2)
+             (Psi_env_2' = Psi_env_2)
+             (sx_env_2' = sx_env_2)
+             (sy_env_2' = sy_env_2)
+             (Psi_dot_env_2' = Psi_dot_env_2)
+
+             (init_var_env_1' = init_var_env_1)
+             (init_var2_env_2' = init_var_env_2));
+
+            // ' End the syntax highlight madness!
+}
+
+// MODE 3, compute the next waypoint for Ref. 1
+{
+    mode 3;
+
+    invt:
+
+    flow:
+
+    /* Time */
+    d/dt[tau]= 0;
+    d/dt[schedtime]= 0;
+    d/dt[simtime]= 1;
+    d/dt[init_time_env_1]= 0;
+    d/dt[init_time_env_2]= 0;
+
+    /*Ego-Vehicle*/
+    d/dt[Beta]= 0;
+    d/dt[Psi]= 0;
+    d/dt[Psi_dot]= 0;
+    d/dt[v]= 0; 
+    d/dt[sx]= 0; 
+    d/dt[sy]= 0; 
+    d/dt[delta]= 0; 
+
+    /*Trajectory and Tracking Equations*/
+    d/dt[Psi_d]= 0;
+    d/dt[sx_d]= 0;
+    d/dt[sy_d]= 0;
+    d/dt[Psi_dot_d]= 0;
+
+    /*Next Goal Equations Ref 1*/
+    d/dt[kappa_d_spline_1]= b*v_d + 2*c*v_d*v_d*simtime + 3*e*v_d*v_d*v_d*simtime*simtime ;
+    d/dt[Psi_d_spline_1]= v_d*kappa_d_spline_1;
+    d/dt[sx_d_spline_1]= v_d*cos(Psi_d_spline_1);
+    d/dt[sy_d_spline_1] = v_d*sin(Psi_d_spline_1);
+    d/dt[Psi_dot_d_spline_1]= v_d*(b*v_d + 2*c*v_d*v_d*simtime + 3*e*v_d*v_d*v_d*simtime*simtime);
+
+    /*Next Goal Equations Ref 2*/
+    d/dt[kappa_d_spline_2] = 0;
+    d/dt[Psi_d_spline_2] = 0;
+    d/dt[sx_d_spline_2] = 0;
+    d/dt[sy_d_spline_2] = 0;
+    d/dt[Psi_dot_d_spline_2] = 0;
+
+    /*Forward Simulation of Environment Vehicle 1*/
+    d/dt[kappa_env_1]= 0 ;
+    d/dt[Psi_env_1]= 0;
+    d/dt[sx_env_1]= 0;
+    d/dt[sy_env_1] = 0;
+    d/dt[Psi_dot_env_1]= 0;
+
+    /*Forward Simulation of Environment Vehicle 2*/
+    d/dt[kappa_env_2]= 0 ;
+    d/dt[Psi_env_2]= 0;
+    d/dt[sx_env_2]= 0;
+    d/dt[sy_env_2] = 0;
+    d/dt[Psi_dot_env_2]= 0;
+
+    /* Constants which only get updated on jumps*/
+    d/dt[init_var_env_1]= 0;
+    d/dt[init_var_env_2]= 0;
+    d/dt[waypointx]= 0;
+    d/dt[waypointy]= 0;
+    d/dt[lookahead]= 0;
+    d/dt[sx_0] = 0;
+    d/dt[sy_0] = 0; 
+
+    /*Noise*/
+    d/dt[noise] = 0;
+ 
+    jump:
+    (and (simtime = lookahead) (init_var_env_2 >= 1)) ==> @1
+        (and 
+             (tau' = tau)
+             (simtime' = 0)
+             (schedtime'= 0)
+             (init_time_env_1'=0)
+             (init_time_env_2'=0)
+
+             (Beta' = Beta)
+             (Psi' = Psi)
+             (Psi_dot' = Psi_dot)
+             (v' = v)
+             (sx' = sx)
+             (sy' = sy)
+             (delta' = delta)
+
+             (Psi_d' = Psi_d)
+             (sx_d' = sx_d)
+             (sy_d' = sy_d)
+             (Psi_dot_d' = Psi_dot_d)
+
+             (kappa_d_spline_1' = 0)
+             (Psi_d_spline_1' = 0)
+             (sx_d_spline_1'= 0)
+             (sy_d_spline_1' = 0)
+             (Psi_dot_d_spline_1' = 0)
+
+             (kappa_d_spline_2' = 0)
+             (Psi_d_spline_2' = 0)
+             (sx_d_spline_2'= 0)
+             (sy_d_spline_2' = 0)
+             (Psi_dot_d_spline_2' = 0)
+             
+             (kappa_env_1'=kappa_env_1)
+             (Psi_env_1'= Psi_env_1)
+             (sx_env_1'=sx_env_1)
+             (sy_env_1'=sy_env_1)
+             (Psi_dot_env_1'=Psi_dot_env_1)
+             
+             (kappa_env_2'=kappa_env_2)
+             (Psi_env_2'= Psi_env_2)
+             (sx_env_2'=sx_env_2)
+             (sy_env_2'=sy_env_2)
+             (Psi_dot_env_2'=Psi_dot_env_2)
+
+             (init_var_env_1'= 5)
+             (init_var_env_2'= 5)
+             (waypointx' = sx_d_spline_1) 
+             (waypointy' = sy_d_spline_1) 
+             (lookahead' = lookahead)
+             (sx_0' = sx)
+             (sy_0' = sy));
+
+            // ' End the syntax highlight madness!
+
+        (and (simtime = lookahead) (init_var_env_2 < 1)) ==> @5
+        (and 
+             (tau' = tau)
+             (simtime' = 0)
+             (schedtime' = schedtime)
+             (init_time_env_1' = 0)
+             (init_time_env_2' = 0)
+
+             (Beta' = Beta)
+             (Psi' = Psi)
+             (Psi_dot' = Psi_dot)
+             (v' = v)
+             (sx' = sx)
+             (sy' = sy)
+             (delta' = delta)
+
+             (Psi_d' = Psi_d)
+             (sx_d' = sx_d)
+             (sy_d' = sy_d)
+             (Psi_dot_d' = Psi_dot_d)
+
+             (kappa_d_spline_1' = 0)
+             (Psi_d_spline_1' = 0)
+             (sx_d_spline_1'= 0)
+             (sy_d_spline_1' = 0)
+             (Psi_dot_d_spline_1' = 0)
+
+             (kappa_d_spline_2' = 0)
+             (Psi_d_spline_2' = 0)
+             (sx_d_spline_2'= 0)
+             (sy_d_spline_2' = 0)
+             (Psi_dot_d_spline_2' = 0)
+
+             (kappa_env_1'=kappa_env_1)
+             (Psi_env_1'= Psi_env_1)
+             (sx_env_1'=sx_env_1)
+             (sy_env_1'=sy_env_1)
+             (Psi_dot_env_1'=Psi_dot_env_1)
+             
+             (kappa_env_2'=kappa_env_2)
+             (Psi_env_2'= Psi_env_2)
+             (sx_env_2'=sx_env_2)
+             (sy_env_2'=sy_env_2)
+             (Psi_dot_env_2'=Psi_dot_env_2)
+
+             (init_var_env_1'= init_var_env_2)
+             (init_var_env_2'= init_var_env_2)
+             (waypointx' = sx_d_spline_1) 
+             (waypointy' = sy_d_spline_1) 
+             (lookahead' = lookahead)
+             (sx_0' = sx)
+             (sy_0' = sy));
+
+            // ' End the syntax highlight madness!
+}
+
+// MODE 4, compute the next waypoint for Ref. 2
+{
+    mode 4;
+
+    invt:
+
+    flow:
+
+    /* Time */
+    d/dt[tau]= 0;
+    d/dt[schedtime]= 0;
+    d/dt[simtime]= 1;
+    d/dt[init_time_env_1]= 0;
+    d/dt[init_time_env_2]= 0;
+
+    /*Ego-Vehicle*/
+    d/dt[Beta]= 0;
+    d/dt[Psi]= 0;
+    d/dt[Psi_dot]= 0;
+    d/dt[v]= 0; 
+    d/dt[sx]= 0; 
+    d/dt[sy]= 0; 
+    d/dt[delta]= 0; 
+
+    /*Trajectory and Tracking Equations*/
+    d/dt[Psi_d]= 0;
+    d/dt[sx_d]= 0;
+    d/dt[sy_d]= 0;
+    d/dt[Psi_dot_d]= 0;
+
+    /*Next Goal Equations Ref 1*/
+    d/dt[kappa_d_spline_1] = 0;
+    d/dt[Psi_d_spline_1] = 0;
+    d/dt[sx_d_spline_1] = 0;
+    d/dt[sy_d_spline_1] = 0;
+    d/dt[Psi_dot_d_spline_1] = 0;
+
+    /*Next Goal Equations Ref 2*/
+    d/dt[kappa_d_spline_2]= b*v_d + 2*c*v_d*v_d*simtime + 3*e*v_d*v_d*v_d*simtime*simtime ;
+    d/dt[Psi_d_spline_2]= v_d*kappa_d_spline_2;
+    d/dt[sx_d_spline_2]= v_d*cos(Psi_d_spline_2);
+    d/dt[sy_d_spline_2] = v_d*sin(Psi_d_spline_2);
+    d/dt[Psi_dot_d_spline_2]= v_d*(b*v_d + 2*c*v_d*v_d*simtime + 3*e*v_d*v_d*v_d*simtime*simtime);
+
+    /*Forward Simulation of Environment Vehicle 1*/
+    d/dt[kappa_env_1]= 0 ;
+    d/dt[Psi_env_1]= 0;
+    d/dt[sx_env_1]= 0;
+    d/dt[sy_env_1] = 0;
+    d/dt[Psi_dot_env_1]= 0;
+
+    /*Forward Simulation of Environment Vehicle 2*/
+    d/dt[kappa_env_2]= 0 ;
+    d/dt[Psi_env_2]= 0;
+    d/dt[sx_env_2]= 0;
+    d/dt[sy_env_2] = 0;
+    d/dt[Psi_dot_env_2]= 0;
+
+    /* Constants which only get updated on jumps*/
+    d/dt[init_var_env_1]= 0;
+    d/dt[init_var_env_2]= 0;
+    d/dt[waypointx]= 0;
+    d/dt[waypointy]= 0;
+    d/dt[lookahead]= 0;
+    d/dt[sx_0] = 0;
+    d/dt[sy_0] = 0; 
+
+    /*Noise*/
+    d/dt[noise] = 0;
+ 
+    jump:
+    (and (simtime = lookahead)) ==> @2
+        (and 
+             (tau' = tau)
+             (simtime' = 0)
+             (schedtime'= schedtime)
+             (init_time_env_1'=0)
+             (init_time_env_2'=0)
+
+             (Beta' = Beta)
+             (Psi' = Psi)
+             (Psi_dot' = Psi_dot)
+             (v' = v)
+             (sx' = sx)
+             (sy' = sy)
+             (delta' = delta)
+
+             (Psi_d' = Psi_d)
+             (sx_d' = sx_d)
+             (sy_d' = sy_d)
+             (Psi_dot_d' = Psi_dot_d)
+
+             (kappa_d_spline_1' = 0)
+             (Psi_d_spline_1' = 0)
+             (sx_d_spline_1'= 0)
+             (sy_d_spline_1' = 0)
+             (Psi_dot_d_spline_1' = 0)
+
+             (kappa_d_spline_2' = 0)
+             (Psi_d_spline_2' = 0)
+             (sx_d_spline_2'= 0)
+             (sy_d_spline_2' = 0)
+             (Psi_dot_d_spline_2' = 0)
+             
+             (kappa_env_1'=kappa_env_1)
+             (Psi_env_1'= Psi_env_1)
+             (sx_env_1'=sx_env_1)
+             (sy_env_1'=sy_env_1)
+             (Psi_dot_env_1'=Psi_dot_env_1)
+             
+             (kappa_env_2'=kappa_env_2)
+             (Psi_env_2'= Psi_env_2)
+             (sx_env_2'=sx_env_2)
+             (sy_env_2'=sy_env_2)
+             (Psi_dot_env_2'=Psi_dot_env_2)
+
+             (init_var_env_1'= 5)
+             (init_var_env_2'= 5)
+             (waypointx' = sx_d_spline_2) 
+             (waypointy' = sy_d_spline_2) 
+             (lookahead' = lookahead)
+             (sx_0' = sx)
+             (sy_0' = sy));
+
+            // ' End the syntax highlight madness!
+}
+
+// MODE 5, initialize environmental vehicle 1
+{
+    mode 5;
+
+    invt:
+
+    flow:
+
+    /* Time */
+    d/dt[tau]= 0;
+    d/dt[schedtime]= 0;
+    d/dt[simtime]= 0;
+    d/dt[init_time_env_1]= 1;
+    d/dt[init_time_env_2]= 0;
+
+    /*Ego-Vehicle*/
+    d/dt[Beta]= 0;
+    d/dt[Psi]= 0;
+    d/dt[Psi_dot]= 0;
+    d/dt[v]= 0; 
+    d/dt[sx]= 0; 
+    d/dt[sy]= 0; 
+    d/dt[delta]= 0; 
+
+    /*Trajectory and Tracking Equations*/
+    d/dt[Psi_d]= 0;
+    d/dt[sx_d]= 0;
+    d/dt[sy_d]= 0;
+    d/dt[Psi_dot_d]= 0;
+
+    /*Next Goal Equations Ref 1*/
+    d/dt[kappa_d_spline_1] = 0;
+    d/dt[Psi_d_spline_1] = 0;
+    d/dt[sx_d_spline_1] = 0;
+    d/dt[sy_d_spline_1] = 0;
+    d/dt[Psi_dot_d_spline_1] = 0;
+
+    /*Next Goal Equations Ref 2*/
+    d/dt[kappa_d_spline_1] = 0;
+    d/dt[Psi_d_spline_1] = 0;
+    d/dt[sx_d_spline_1] = 0;
+    d/dt[sy_d_spline_1] = 0;
+    d/dt[Psi_dot_d_spline_1] = 0;
+
+    /*Forward Simulation of Environment Vehicle 1*/
+    d/dt[kappa_env_1]= b*v_d + 2*c*v_d*v_d*init_time_env_1+ 3*e*v_d*v_d*v_d*init_time_env_1*init_time_env_1 ;
+    d/dt[Psi_env_1]= v_d*kappa_env_1;
+    d/dt[sx_env_1]= v_d*cos(Psi_env_1);
+    d/dt[sy_env_1] = v_d*sin(Psi_env_1);
+    d/dt[Psi_dot_env_1]= v_d*(b*v_d + 2*c*v_d*v_d*init_time_env_1 + 3*e*v_d*v_d*v_d*init_time_env_1*init_time_env_1);
+    
+    /*Forward Simulation of Environment Vehicle 2*/
+    d/dt[kappa_env_2]= 0 ;
+    d/dt[Psi_env_2]= 0;
+    d/dt[sx_env_2]= 0;
+    d/dt[sy_env_2] = 0;
+    d/dt[Psi_dot_env_2]= 0;
+
+    /* Constants which only get updated on jumps*/
+    d/dt[init_var_env_1]= 0;
+    d/dt[init_var_env_2]= 0;
+    d/dt[waypointx]= 0;
+    d/dt[waypointy]= 0;
+    d/dt[lookahead]= 0;
+    d/dt[sx_0] = 0;
+    d/dt[sy_0] = 0; 
+
+    /*Noise*/
+    d/dt[noise] = 0;
+
+
+
+    jump: 
+
+        (and (init_time_env_1 = 0.2)) ==> @6
+        (and 
+             (tau' = tau)
+             (simtime' = simtime)
+             (schedtime'= schedtime)
+             (init_time_env_1' = 0)
+             (init_time_env_2' = 0)
+
+             (Beta' = Beta)
+             (Psi' = Psi)
+             (Psi_dot' = Psi_dot)
+             (v' = v)
+             (sx' = sx)
+             (sy' = sy)
+             (delta' = delta)
+
+             (Psi_d' = Psi_d)
+             (sx_d' = sx_d)
+             (sy_d' = sy_d)
+             (Psi_dot_d' = Psi_dot_d)
+
+             (kappa_d_spline_1' = kappa_d_spline_1)
+             (Psi_d_spline_1' = Psi_d_spline_1)
+             (sx_d_spline_1' = sx_d_spline_1)
+             (sy_d_spline_1' = sy_d_spline_1)
+             (Psi_dot_d_spline_1' = Psi_dot_d_spline_1)
+
+             (kappa_d_spline_2' = kappa_d_spline_2)
+             (Psi_d_spline_2' = Psi_d_spline_2)
+             (sx_d_spline_2' = sx_d_spline_2)
+             (sy_d_spline_2' = sy_d_spline_2)
+             (Psi_dot_d_spline_2' = Psi_dot_d_spline_2)
+             
+             (kappa_env_1' = kappa_env_1)
+             (Psi_env_1' = Psi_env_1)
+             (sx_env_1' = sx_env_1)
+             (sy_env_1' = sy_env_1)
+             (Psi_dot_env_1' = Psi_dot_env_1)
+
+             (kappa_env_2' = kappa_env_2)
+             (Psi_env_2' = Psi_env_2)
+             (sx_env_2' = sx_env_2)
+             (sy_env_2' = sy_env_2)
+             (Psi_dot_env_2' = Psi_dot_env_2)
+
+             (init_var_env_1' = 5)
+             (init_var_env_2' = 5)
+             (waypointx' = waypointx) 
+             (waypointy' = waypointy) 
+             (lookahead' = lookahead)
+             (sx_0' = sx_0)
+             (sy_0' = sy_0));
+
+            // ' End the syntax highlight madness!
+}
+
+
+// MODE 6, initialize the environmental vehicle 2
+{
+    mode 6;
+
+    invt:
+
+    flow:
+    /* Time */
+    d/dt[tau]= 0;
+    d/dt[schedtime]= 0;
+    d/dt[simtime]= 0;
+    d/dt[init_time_env_1]= 0;
+    d/dt[init_time_env_2]= 1;
+
+    /*Ego-Vehicle*/
+    d/dt[Beta]= 0;
+    d/dt[Psi]= 0;
+    d/dt[Psi_dot]= 0;
+    d/dt[v]= 0; 
+    d/dt[sx]= 0; 
+    d/dt[sy]= 0; 
+    d/dt[delta]= 0; 
+
+    /*Trajectory and Tracking Equations*/
+    d/dt[Psi_d]= 0;
+    d/dt[sx_d]= 0;
+    d/dt[sy_d]= 0;
+    d/dt[Psi_dot_d]= 0;
+
+    /*Next Goal Equations Ref 1*/
+    d/dt[kappa_d_spline_1] = 0;
+    d/dt[Psi_d_spline_1] = 0;
+    d/dt[sx_d_spline_1] = 0;
+    d/dt[sy_d_spline_1] = 0;
+    d/dt[Psi_dot_d_spline_1] = 0;
+
+    /*Next Goal Equations Ref 2*/
+    d/dt[kappa_d_spline_1] = 0;
+    d/dt[Psi_d_spline_1] = 0;
+    d/dt[sx_d_spline_1] = 0;
+    d/dt[sy_d_spline_1] = 0;
+    d/dt[Psi_dot_d_spline_1] = 0;
+
+    /*Forward Simulation of Environment Vehicle 1*/
+    d/dt[kappa_env_1]= 0 ;
+    d/dt[Psi_env_1]= 0;
+    d/dt[sx_env_1]= 0;
+    d/dt[sy_env_1] = 0;
+    d/dt[Psi_dot_env_1]= 0;
+
+    /*Forward Simulation of Environment Vehicle 2*/
+    d/dt[kappa_env_2]= b*v_d + 2*c*v_d*v_d*init_time_env_2+ 3*e*v_d*v_d*v_d*init_time_env_2*init_time_env_2 ;
+    d/dt[Psi_env_2]= v_d*kappa_env_2;
+    d/dt[sx_env_2]= v_d*cos(Psi_env_2);
+    d/dt[sy_env_2] = v_d*sin(Psi_env_2);
+    d/dt[Psi_dot_env_2]= v_d*(b*v_d + 2*c*v_d*v_d*init_time_env_2 + 3*e*v_d*v_d*v_d*init_time_env_2*init_time_env_2);
+
+    /* Constants which only get updated on jumps*/
+    d/dt[init_var_env_1]= 0;
+    d/dt[init_var_env_2]= 0;
+    d/dt[waypointx]= 0;
+    d/dt[waypointy]= 0;
+    d/dt[lookahead]= 0;
+    d/dt[sx_0] = 0;
+    d/dt[sy_0] = 0; 
+
+    /*Noise*/
+    d/dt[noise] = 0;
+
+
+    jump: 
+
+        (and (init_time_env_2 = 0.2)) ==> @1
+        (and 
+             (tau' = tau)             
+             (simtime' = simtime)
+             (schedtime'= schedtime)
+             (init_time_env_1' = 0)
+             (init_time_env_2' = 0)
+
+             (Beta' = Beta)
+             (Psi' = Psi)
+             (Psi_dot' = Psi_dot)
+             (v' = v)
+             (sx' = sx)
+             (sy' = sy)
+             (delta' = delta)
+
+             (Psi_d' = Psi_d)
+             (sx_d' = sx_d)
+             (sy_d' = sy_d)
+             (Psi_dot_d' = Psi_dot_d)
+
+             (kappa_d_spline_1' = kappa_d_spline_1)
+             (Psi_d_spline_1' = Psi_d_spline_1)
+             (sx_d_spline_1' = sx_d_spline_1)
+             (sy_d_spline_1' = sy_d_spline_1)
+             (Psi_dot_d_spline_1' = Psi_dot_d_spline_1)
+
+             (kappa_d_spline_2' = kappa_d_spline_2)
+             (Psi_d_spline_2' = Psi_d_spline_2)
+             (sx_d_spline_2' = sx_d_spline_2)
+             (sy_d_spline_2' = sy_d_spline_2)
+             (Psi_dot_d_spline_2' = Psi_dot_d_spline_2)
+
+             (kappa_env_1' = kappa_env_1)
+             (Psi_env_1' = Psi_env_1)
+             (sx_env_1' = sx_env_1)
+             (sy_env_1' = sy_env_1)
+             (Psi_dot_env_1' = Psi_dot_env_1)
+
+             (kappa_env_2' = kappa_env_2)
+             (Psi_env_2' = Psi_env_2)
+             (sx_env_2' = sx_env_2)
+             (sy_env_2' = sy_env_2)
+             (Psi_dot_env_2' = Psi_dot_env_2)
+
+             (init_var_env_1' = 5)
+             (init_var_env_2' = 5)
+             (waypointx' = waypointx) 
+             (waypointy' = waypointy)
+             (lookahead' = lookahead)
+             (sx_0' = sx_0)
+             (sy_0' = sy_0));
+
+            // ' End the syntax highlight madness!
+}
+
+init: 
+@3 (and 
+    (tau=0) 
+    (simtime = 0) 
+    (schedtime = 0)
+    (init_time_env_1=0)
+    (init_time_env_2=0)
+
+    (Beta=0) 
+    (Psi=0) 
+    (Psi_dot=0) 
+    (v=10.9) 
+    (sx=0) 
+    (sy=0) 
+    (delta = 0)
+
+    (Psi_d=0) 
+    (sx_d=0) 
+    (sy_d=0) 
+    (Psi_dot_d=0) 
+
+    (kappa_d_spline_1= 0)
+    (Psi_d_spline_1 =0)
+    (sx_d_spline_1= 0) 
+    (sy_d_spline_1=0)
+    (Psi_dot_d_spline_1=0)
+
+    (kappa_d_spline_2= 0)
+    (Psi_d_spline_2 =0)
+    (sx_d_spline_2= 0) 
+    (sy_d_spline_2=0)
+    (Psi_dot_d_spline_2=0)
+
+    (kappa_env_1=0)
+    (Psi_env_1 = 0)
+    (sx_env_1=0)
+    (sy_env_1=0)
+    (Psi_dot_env_1=0)
+
+    (kappa_env_2=0)
+    (Psi_env_2 = 0)
+    (sx_env_2=0)
+    (sy_env_2=0)
+    (Psi_dot_env_2=0)
+
+    (init_var_env_1=0)
+    (init_var_env_2=0)
+    (waypointx=0) 
+    (waypointy=0) 
+    (lookahead= 0.1)
+    (sx_0=sx)
+    (sy_0=sy));
+
+goal:
+@1 (tau>=0.4);

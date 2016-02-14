@@ -1,0 +1,92 @@
+dReal v3.16.02 (commit 10f8f48bc02f) : delta-complete SMT solver
+
+USAGE: dReal [OPTIONS] <input file>
+
+OPTIONS:
+
+-h, -help, --help, --usage                                              Display usage instructions.
+
+--aggressive ARG                                                        number of samples to use for aggressive sampling
+
+--bmc-heuristic, --bmc_heuristic ARG                                    BMC heuristic
+
+--debug                                                                 output debugging messages
+
+--delta                                                                 interpret precision as delta instead of epsilon
+
+--delta-heuristic, --delta_heuristic                                    use residual delta to select variables to split
+
+--in                                                                    read formula from standard input
+
+--local-opt                                                             use local optimization to refine counter example (for exist-forall problems)
+
+--model                                                                 output delta-sat model if found
+
+--multiple-soln, --multiple-solution, --multiple_soln ARG               maximum number of solutions to find
+
+--ncbt                                                                  use non-chronological backtracking in ICP loop
+
+--no-precision-output                                                   do not print precision in case of delta-sat
+
+--no-simp                                                               do not use simplification in preprocessing
+
+--ode-backward-timeout, --ode-bwd-timeout ARG                           specify the timeout (msec) for a backward ODE pruning step (default: +oo)
+
+--ode-cache, --ode_cache                                                enable reusing ODE computation by caching them
+
+--ode-forward-only, --ode_forward_only                                  use only forward ODE pruning and do not use backward pruning
+
+--ode-forward-timeout, --ode-fwd-timeout ARG                            specify the timeout (msec) for a forward ODE pruning step (default: +oo)
+
+--ode-grid, --ode_grid ARG                                              specify the number of grids that we use in ODE solving (default: 16)
+
+--ode-order, --ode_order ARG                                            specify the maximum order that will be used in Taylor method ODE solving (Default: 20)
+
+--ode-parallel, --ode_parallel                                          specify to solve ODEs in parallel
+
+--ode-sampling, --ode_sampling                                          use sampling method for ODE (using GNU GSL)
+
+--ode-show-progress, --ode_show_progress                                show the progress of ODE computation
+
+--ode-step, --ode_step ARG                                              manually specify the step size (positive double) in ODE solving (default: automatic
+                                                                        control)
+
+--ode-timeout ARG                                                       specify the timeout (msec) for ODE pruning steps (both for forward and backward)
+                                                                        (default: +oo)
+
+--parallel                                                              enable parallelization
+
+--polytope                                                              use polytope contractor in IBEX
+
+--precision ARG                                                         set precision (default 0.001)
+                                                                        this overrides the value specified in input files
+
+--proof                                                                 produce an addition file "filename.proof" which contains a proof for UNSAT
+
+--random-seed, --random_seed ARG                                        specify the random seed (default: non-deterministic random number from
+                                                                        std::random_device())
+
+--readable-proof, --readable_proof                                      generate human-readable proof
+
+--sample ARG                                                            number of samples to use for sound sampling
+
+--sat-prep-bool, --sat-preprocess-booleans, --sat_preprocess_booleans   Activate satelite on booleans (default: off)
+
+--short-sat, --short_sat                                                short cut SAT solver assignments if SAT
+
+--shrink-for-dop                                                        shrink forall domain for dOp optimization
+
+--simp                                                                  use simplification in preprocessing (default: on)
+
+--stat                                                                  output solving stats
+
+--theory-propagation, --theory_propagation                              use theory propagation
+
+--verbose                                                               output info messages
+
+--version                                                               print out version information.
+
+--vis, --visualize                                                      output visualization file (.json)
+
+--worklist-fp                                                           use worklist fixpoint algorithm
+

@@ -1,0 +1,1005 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[0,20] time;
+[0,20] tau;
+[0,20] simtime;
+[0,1] schedtime;
+[0,20] init_time_env_1;
+[0,20] init_time_env_2;
+
+
+[-20,20] Beta;
+[-2,2.04] Psi;
+[-2,2.05] Psi_dot;
+[6,12] v;
+[-1,100] sx;
+[-20,20] sy;
+[-20, 20] delta;
+
+
+[-2,2.07] Psi_d;
+[-1,100] sx_d;
+[-20,20] sy_d;
+[-2,2.08] Psi_dot_d;
+
+
+[-2,2.06] kappa_d_spline_1;
+[-2,2.07] Psi_d_spline_1;
+[-1,100] sx_d_spline_1;
+[-20,20] sy_d_spline_1;
+[-2,2.08] Psi_dot_d_spline_1;
+
+
+[-2,2.06] kappa_d_spline_2;
+[-2,2.07] Psi_d_spline_2;
+[-1,100] sx_d_spline_2;
+[-20,20] sy_d_spline_2;
+[-2,2.08] Psi_dot_d_spline_2;
+
+
+[-10,10] kappa_env_1;
+[-10,10] Psi_env_1;
+[-100,100] sx_env_1;
+[-100,100] sy_env_1;
+[-10,10] Psi_dot_env_1;
+
+
+[-10,10] kappa_env_2;
+[-10,10] Psi_env_2;
+[-100,100] sx_env_2;
+[-100,100] sy_env_2;
+[-10,10] Psi_dot_env_2;
+
+
+[0,10] init_var_env_1;
+[0,10] init_var_env_2;
+[0,35] waypointx;
+[-10,10] waypointy;
+[0,10] lookahead;
+[0,100] sx_0; 
+[-20,20] sy_0; 
+
+
+[-0.25, 0.25] noise [0.5];
+
+
+
+
+{
+    mode 1;
+
+    invt:
+
+    flow:
+
+    
+    d/dt[tau]= 1;
+    d/dt[schedtime]= 1;
+    d/dt[simtime]= 0;
+    d/dt[init_time_env_1]= 0;
+    d/dt[init_time_env_2]= 0;
+
+    
+    d/dt[Beta]= (((108000.0*1.515 -108000.0*1.292)/(2273.0*v*v))-1.0)*Psi_dot + 108000.0*delta/(2273.0*v) - (108000.0 +108000.0)*Beta/(2273.0*v);  
+    d/dt[Psi]= Psi_dot;
+    d/dt[Psi_dot]= ((108000.0*1.515 -108000.0*1.292)*Beta/4423.0) - ((1.292*1.292*108000.0 +1.515*1.515*108000.0)/4423.0)*(Psi_dot/v) + (1.292*108000.0)*delta/4423.0 ;
+    d/dt[v]= 1.0*(cos(Psi_d)*(sx_d - sx) + sin(Psi_d)*(sy_d - sy)) +10.0*(11.11 -v); 
+    d/dt[sx]= v*cos(Beta+Psi); 
+    d/dt[sy]= v*sin(Beta+Psi); 
+    d/dt[delta]= 2.0*(cos(Psi_d)*(sy_d - sy) - sin(Psi_d)*(sx_d - sx)) +12.0*(Psi_d - Psi) +4.0*(Psi_dot_d - Psi_dot) -2.0*(delta); 
+
+    
+    d/dt[Psi_d]= -11.11/sqrt((waypointx - sx_0)*(waypointx - sx_0) + (waypointy - sy_0)*(waypointy - sy_0))*sqrt((waypointx - sx_0)*(waypointx - sx_0) + (waypointy - sy_0)*(waypointy - sy_0))/(2*(waypointx - sx_0));
+    d/dt[sx_d]= 11.11*cos(Psi_d);
+    d/dt[sy_d]= 11.11*sin(Psi_d);
+    d/dt[Psi_dot_d]= 0;
+
+    
+    d/dt[kappa_d_spline_1]= 0;
+    d/dt[Psi_d_spline_1]= 0;
+    d/dt[sx_d_spline_1]= 0;
+    d/dt[sy_d_spline_1]= 0;
+    d/dt[Psi_dot_d_spline_1]= 0;
+
+    
+    d/dt[kappa_d_spline_2] = 0;
+    d/dt[Psi_d_spline_2] = 0;
+    d/dt[sx_d_spline_2] = 0;
+    d/dt[sy_d_spline_2] = 0;
+    d/dt[Psi_dot_d_spline_2] = 0;
+
+    
+    d/dt[kappa_env_1]= ((-0.50)*(-2*(0.000000) + 11*(0.000000) - 18*(0.006046) + 9*(-0.000322))/(33.831636))*11.11 + 2*((4.50)*(-(0.000000) + 2*(0.000000) - 5*(0.006046) +4*(-0.000322))/((33.831636)*(33.831636)))*11.11*11.11*tau + 3*((-4.50)*(-(0.000000) + (0.000000) - 3*(0.006046) + 3*(-0.000322))/((33.831636)*(33.831636)*(33.831636)))*11.11*11.11*11.11*tau*tau ;
+    d/dt[Psi_env_1]= 11.11*kappa_env_1;
+    d/dt[sx_env_1]= 11.11*cos(Psi_env_1) + noise;
+    d/dt[sy_env_1]= 11.11*sin(Psi_env_1) + noise;
+    d/dt[Psi_dot_env_1]= 11.11*(((-0.50)*(-2*(0.000000) + 11*(0.000000) - 18*(0.006046) + 9*(-0.000322))/(33.831636))*11.11 + 2*((4.50)*(-(0.000000) + 2*(0.000000) - 5*(0.006046) +4*(-0.000322))/((33.831636)*(33.831636)))*11.11*11.11*tau+ 3*((-4.50)*(-(0.000000) + (0.000000) - 3*(0.006046) + 3*(-0.000322))/((33.831636)*(33.831636)*(33.831636)))*11.11*11.11*11.11*tau*tau);
+
+    
+    d/dt[kappa_env_2]= ((-0.50)*(-2*(0.000000) + 11*(0.000000) - 18*(0.006046) + 9*(-0.000322))/(33.831636))*11.11 + 2*((4.50)*(-(0.000000) + 2*(0.000000) - 5*(0.006046) +4*(-0.000322))/((33.831636)*(33.831636)))*11.11*11.11*tau + 3*((-4.50)*(-(0.000000) + (0.000000) - 3*(0.006046) + 3*(-0.000322))/((33.831636)*(33.831636)*(33.831636)))*11.11*11.11*11.11*tau*tau ;
+    d/dt[Psi_env_2]= 11.11*kappa_env_2;
+    d/dt[sx_env_2]= 11.11*cos(Psi_env_2) + noise;
+    d/dt[sy_env_2]= 11.11*sin(Psi_env_2) + noise;
+    d/dt[Psi_dot_env_2]= 11.11*(((-0.50)*(-2*(0.000000) + 11*(0.000000) - 18*(0.006046) + 9*(-0.000322))/(33.831636))*11.11 + 2*((4.50)*(-(0.000000) + 2*(0.000000) - 5*(0.006046) +4*(-0.000322))/((33.831636)*(33.831636)))*11.11*11.11*tau+ 3*((-4.50)*(-(0.000000) + (0.000000) - 3*(0.006046) + 3*(-0.000322))/((33.831636)*(33.831636)*(33.831636)))*11.11*11.11*11.11*tau*tau);
+
+    
+    d/dt[init_var_env_1]= 0;
+    d/dt[init_var_env_2]= 0;
+    d/dt[waypointx]= 0;
+    d/dt[waypointy]= 0;
+    d/dt[lookahead]= 0;
+    d/dt[sx_0]= 0;
+    d/dt[sy_0]= 0; 
+
+    
+    d/dt[noise] = 0;
+
+    jump:
+        (and (schedtime = 0.1)) ==> @3
+            (and 
+
+             (tau' = tau)
+             (simtime' = simtime)
+             (schedtime'= 0)
+             (init_time_env_1' = 0)
+             (init_time_env_2' = 0)
+
+             (Beta' = Beta)
+             (Psi' = Psi)
+             (Psi_dot' = Psi_dot)
+             (v' = v)
+             (sx' = sx)
+             (sy' = sy)
+             (delta' = delta)
+             (sx_0' = sx_0)
+             (sy_0' = sy_0)
+
+             (Psi_d' = Psi_d)
+             (sx_d' = sx_d)
+             (sy_d' = sy_d)
+             (Psi_dot_d' = Psi_dot_d)
+
+             (kappa_d_spline_1' = kappa_d_spline_1)
+             (Psi_d_spline_1' = Psi_d_spline_1)
+             (sx_d_spline_1' = sx_d_spline_1)
+             (sy_d_spline_1' = sy_d_spline_1)
+             (Psi_dot_d_spline_1' = Psi_dot_d_spline_1)
+
+             (kappa_d_spline_2' = kappa_d_spline_2)
+             (Psi_d_spline_2' = Psi_d_spline_2)
+             (sx_d_spline_2' = sx_d_spline_2)
+             (sy_d_spline_2' = sy_d_spline_2)
+             (Psi_dot_d_spline_2' = Psi_dot_d_spline_2)
+
+             (lookahead' = tau + 0.5)
+             (waypointx' = waypointx) 
+             (waypointy' = waypointy) 
+
+             (kappa_env_1' = kappa_env_1)
+             (Psi_env_1' = Psi_env_1)
+             (sx_env_1' = sx_env_1)
+             (sy_env_1' = sy_env_1)
+             (Psi_dot_env_1' = Psi_dot_env_1)
+
+             (kappa_env_2' = kappa_env_2)
+             (Psi_env_2' = Psi_env_2)
+             (sx_env_2' = sx_env_2)
+             (sy_env_2' = sy_env_2)
+             (Psi_dot_env_2' = Psi_dot_env_2)
+
+             (init_var_env_1' = init_var_env_1)
+             (init_var_env_2' = init_var_env_2));
+
+            
+}
+
+
+{
+    mode 2;
+
+    invt:
+
+    flow:
+
+    
+    d/dt[tau]= 1;
+    d/dt[schedtime]= 1;
+    d/dt[simtime]= 0;
+    d/dt[init_time_env_1]= 0;
+    d/dt[init_time_env_2]= 0;
+
+    
+    d/dt[Beta]= (((108000.0*1.515 -108000.0*1.292)/(2273.0*v*v))-1.0)*Psi_dot + 108000.0*delta/(2273.0*v) - (108000.0 +108000.0)*Beta/(2273.0*v);  
+    d/dt[Psi]= Psi_dot;
+    d/dt[Psi_dot]= ((108000.0*1.515 -108000.0*1.292)*Beta/4423.0) - ((1.292*1.292*108000.0 +1.515*1.515*108000.0)/4423.0)*(Psi_dot/v) + (1.292*108000.0)*delta/4423.0 ;
+    d/dt[v]= 1.0*(cos(Psi_d)*(sx_d - sx) + sin(Psi_d)*(sy_d - sy)) +10.0*(11.11 -v); 
+    d/dt[sx]= v*cos(Beta+Psi); 
+    d/dt[sy]= v*sin(Beta+Psi); 
+    d/dt[delta]= 2.0*(cos(Psi_d)*(sy_d - sy) - sin(Psi_d)*(sx_d - sx)) +12.0*(Psi_d - Psi) +4.0*(Psi_dot_d - Psi_dot) -2.0*(delta); 
+
+    
+    d/dt[Psi_d]= -11.11/sqrt((waypointx - sx_0)*(waypointx - sx_0) + (waypointy - sy_0)*(waypointy - sy_0))*sqrt((waypointx - sx_0)*(waypointx - sx_0) + (waypointy - sy_0)*(waypointy - sy_0))/(2*(waypointx - sx_0));
+    d/dt[sx_d]= 11.11*cos(Psi_d);
+    d/dt[sy_d]= 11.11*sin(Psi_d);
+    d/dt[Psi_dot_d]= 0;
+
+    
+    d/dt[kappa_d_spline_1]= 0;
+    d/dt[Psi_d_spline_1]= 0;
+    d/dt[sx_d_spline_1]= 0;
+    d/dt[sy_d_spline_1]= 0;
+    d/dt[Psi_dot_d_spline_1]= 0;
+
+    
+    d/dt[kappa_d_spline_2] = 0;
+    d/dt[Psi_d_spline_2] = 0;
+    d/dt[sx_d_spline_2] = 0;
+    d/dt[sy_d_spline_2] = 0;
+    d/dt[Psi_dot_d_spline_2] = 0;
+
+    
+    d/dt[kappa_env_1]= ((-0.50)*(-2*(0.000000) + 11*(0.000000) - 18*(0.006046) + 9*(-0.000322))/(33.831636))*11.11 + 2*((4.50)*(-(0.000000) + 2*(0.000000) - 5*(0.006046) +4*(-0.000322))/((33.831636)*(33.831636)))*11.11*11.11*tau + 3*((-4.50)*(-(0.000000) + (0.000000) - 3*(0.006046) + 3*(-0.000322))/((33.831636)*(33.831636)*(33.831636)))*11.11*11.11*11.11*tau*tau ;
+    d/dt[Psi_env_1]= 11.11*kappa_env_1;
+    d/dt[sx_env_1]= 11.11*cos(Psi_env_1) + noise;
+    d/dt[sy_env_1]= 11.11*sin(Psi_env_1) + noise;
+    d/dt[Psi_dot_env_1]= 11.11*(((-0.50)*(-2*(0.000000) + 11*(0.000000) - 18*(0.006046) + 9*(-0.000322))/(33.831636))*11.11 + 2*((4.50)*(-(0.000000) + 2*(0.000000) - 5*(0.006046) +4*(-0.000322))/((33.831636)*(33.831636)))*11.11*11.11*tau+ 3*((-4.50)*(-(0.000000) + (0.000000) - 3*(0.006046) + 3*(-0.000322))/((33.831636)*(33.831636)*(33.831636)))*11.11*11.11*11.11*tau*tau);
+
+    
+    d/dt[kappa_env_2]= ((-0.50)*(-2*(0.000000) + 11*(0.000000) - 18*(0.006046) + 9*(-0.000322))/(33.831636))*11.11 + 2*((4.50)*(-(0.000000) + 2*(0.000000) - 5*(0.006046) +4*(-0.000322))/((33.831636)*(33.831636)))*11.11*11.11*tau + 3*((-4.50)*(-(0.000000) + (0.000000) - 3*(0.006046) + 3*(-0.000322))/((33.831636)*(33.831636)*(33.831636)))*11.11*11.11*11.11*tau*tau ;
+    d/dt[Psi_env_2]= 11.11*kappa_env_2;
+    d/dt[sx_env_2]= 11.11*cos(Psi_env_2) + noise;
+    d/dt[sy_env_2]= 11.11*sin(Psi_env_2) + noise;
+    d/dt[Psi_dot_env_2]= 11.11*(((-0.50)*(-2*(0.000000) + 11*(0.000000) - 18*(0.006046) + 9*(-0.000322))/(33.831636))*11.11 + 2*((4.50)*(-(0.000000) + 2*(0.000000) - 5*(0.006046) +4*(-0.000322))/((33.831636)*(33.831636)))*11.11*11.11*tau+ 3*((-4.50)*(-(0.000000) + (0.000000) - 3*(0.006046) + 3*(-0.000322))/((33.831636)*(33.831636)*(33.831636)))*11.11*11.11*11.11*tau*tau);
+
+    
+    d/dt[init_var_env_1]= 0;
+    d/dt[init_var_env_2]= 0;
+    d/dt[waypointx]= 0;
+    d/dt[waypointy]= 0;
+    d/dt[lookahead]= 0;
+    d/dt[sx_0]= 0;
+    d/dt[sy_0]= 0; 
+
+    
+    d/dt[noise] = 0;
+
+    jump:
+        (and (schedtime = 0.1)) ==> @4
+            (and 
+
+             (tau' = tau)
+             (simtime' = simtime)
+             (schedtime'= 0)
+             (init_time_env_1' = 0)
+             (init_time_env_2' = 0)
+
+             (Beta' = Beta)
+             (Psi' = Psi)
+             (Psi_dot' = Psi_dot)
+             (v' = v)
+             (sx' = sx)
+             (sy' = sy)
+             (delta' = delta)
+             (sx_0' = sx_0)
+             (sy_0' = sy_0)
+
+             (Psi_d' = Psi_d)
+             (sx_d' = sx_d)
+             (sy_d' = sy_d)
+             (Psi_dot_d' = Psi_dot_d)
+
+             (kappa_d_spline_1' = kappa_d_spline_1)
+             (Psi_d_spline_1' = Psi_d_spline_1)
+             (sx_d_spline_1' = sx_d_spline_1)
+             (sy_d_spline_1' = sy_d_spline_1)
+             (Psi_dot_d_spline_1' = Psi_dot_d_spline_1)
+
+             (kappa_d_spline_2' = kappa_d_spline_2)
+             (Psi_d_spline_2' = Psi_d_spline_2)
+             (sx_d_spline_2' = sx_d_spline_2)
+             (sy_d_spline_2' = sy_d_spline_2)
+             (Psi_dot_d_spline_2' = Psi_dot_d_spline_2)
+
+             (lookahead' = tau + lookahead_time)
+             (waypointx' = waypointx) 
+             (waypointy' = waypointy) 
+
+             (kappa_env_1' = kappa_env_1)
+             (Psi_env_1' = Psi_env_1)
+             (sx_env_1' = sx_env_1)
+             (sy_env_1' = sy_env_1)
+             (Psi_dot_env_1' = Psi_dot_env_1)
+
+             (kappa_env_2' = kappa_env_2)
+             (Psi_env_2' = Psi_env_2)
+             (sx_env_2' = sx_env_2)
+             (sy_env_2' = sy_env_2)
+             (Psi_dot_env_2' = Psi_dot_env_2)
+
+             (init_var_env_1' = init_var_env_1)
+             (init_var2_env_2' = init_var_env_2));
+
+            
+}
+
+
+{
+    mode 3;
+
+    invt:
+
+    flow:
+
+    
+    d/dt[tau]= 0;
+    d/dt[schedtime]= 0;
+    d/dt[simtime]= 1;
+    d/dt[init_time_env_1]= 0;
+    d/dt[init_time_env_2]= 0;
+
+    
+    d/dt[Beta]= 0;
+    d/dt[Psi]= 0;
+    d/dt[Psi_dot]= 0;
+    d/dt[v]= 0; 
+    d/dt[sx]= 0; 
+    d/dt[sy]= 0; 
+    d/dt[delta]= 0; 
+
+    
+    d/dt[Psi_d]= 0;
+    d/dt[sx_d]= 0;
+    d/dt[sy_d]= 0;
+    d/dt[Psi_dot_d]= 0;
+
+    
+    d/dt[kappa_d_spline_1]= ((-0.50)*(-2*(0.000000) + 11*(0.000000) - 18*(0.006046) + 9*(-0.000322))/(33.831636))*11.11 + 2*((4.50)*(-(0.000000) + 2*(0.000000) - 5*(0.006046) +4*(-0.000322))/((33.831636)*(33.831636)))*11.11*11.11*simtime + 3*((-4.50)*(-(0.000000) + (0.000000) - 3*(0.006046) + 3*(-0.000322))/((33.831636)*(33.831636)*(33.831636)))*11.11*11.11*11.11*simtime*simtime ;
+    d/dt[Psi_d_spline_1]= 11.11*kappa_d_spline_1;
+    d/dt[sx_d_spline_1]= 11.11*cos(Psi_d_spline_1);
+    d/dt[sy_d_spline_1] = 11.11*sin(Psi_d_spline_1);
+    d/dt[Psi_dot_d_spline_1]= 11.11*(((-0.50)*(-2*(0.000000) + 11*(0.000000) - 18*(0.006046) + 9*(-0.000322))/(33.831636))*11.11 + 2*((4.50)*(-(0.000000) + 2*(0.000000) - 5*(0.006046) +4*(-0.000322))/((33.831636)*(33.831636)))*11.11*11.11*simtime + 3*((-4.50)*(-(0.000000) + (0.000000) - 3*(0.006046) + 3*(-0.000322))/((33.831636)*(33.831636)*(33.831636)))*11.11*11.11*11.11*simtime*simtime);
+
+    
+    d/dt[kappa_d_spline_2] = 0;
+    d/dt[Psi_d_spline_2] = 0;
+    d/dt[sx_d_spline_2] = 0;
+    d/dt[sy_d_spline_2] = 0;
+    d/dt[Psi_dot_d_spline_2] = 0;
+
+    
+    d/dt[kappa_env_1]= 0 ;
+    d/dt[Psi_env_1]= 0;
+    d/dt[sx_env_1]= 0;
+    d/dt[sy_env_1] = 0;
+    d/dt[Psi_dot_env_1]= 0;
+
+    
+    d/dt[kappa_env_2]= 0 ;
+    d/dt[Psi_env_2]= 0;
+    d/dt[sx_env_2]= 0;
+    d/dt[sy_env_2] = 0;
+    d/dt[Psi_dot_env_2]= 0;
+
+    
+    d/dt[init_var_env_1]= 0;
+    d/dt[init_var_env_2]= 0;
+    d/dt[waypointx]= 0;
+    d/dt[waypointy]= 0;
+    d/dt[lookahead]= 0;
+    d/dt[sx_0] = 0;
+    d/dt[sy_0] = 0; 
+
+    
+    d/dt[noise] = 0;
+ 
+    jump:
+    (and (simtime = lookahead) (init_var_env_2 >= 1)) ==> @1
+        (and 
+             (tau' = tau)
+             (simtime' = 0)
+             (schedtime'= 0)
+             (init_time_env_1'=0)
+             (init_time_env_2'=0)
+
+             (Beta' = Beta)
+             (Psi' = Psi)
+             (Psi_dot' = Psi_dot)
+             (v' = v)
+             (sx' = sx)
+             (sy' = sy)
+             (delta' = delta)
+
+             (Psi_d' = Psi_d)
+             (sx_d' = sx_d)
+             (sy_d' = sy_d)
+             (Psi_dot_d' = Psi_dot_d)
+
+             (kappa_d_spline_1' = 0)
+             (Psi_d_spline_1' = 0)
+             (sx_d_spline_1'= 0)
+             (sy_d_spline_1' = 0)
+             (Psi_dot_d_spline_1' = 0)
+
+             (kappa_d_spline_2' = 0)
+             (Psi_d_spline_2' = 0)
+             (sx_d_spline_2'= 0)
+             (sy_d_spline_2' = 0)
+             (Psi_dot_d_spline_2' = 0)
+             
+             (kappa_env_1'=kappa_env_1)
+             (Psi_env_1'= Psi_env_1)
+             (sx_env_1'=sx_env_1)
+             (sy_env_1'=sy_env_1)
+             (Psi_dot_env_1'=Psi_dot_env_1)
+             
+             (kappa_env_2'=kappa_env_2)
+             (Psi_env_2'= Psi_env_2)
+             (sx_env_2'=sx_env_2)
+             (sy_env_2'=sy_env_2)
+             (Psi_dot_env_2'=Psi_dot_env_2)
+
+             (init_var_env_1'= 5)
+             (init_var_env_2'= 5)
+             (waypointx' = sx_d_spline_1) 
+             (waypointy' = sy_d_spline_1) 
+             (lookahead' = lookahead)
+             (sx_0' = sx)
+             (sy_0' = sy));
+
+            
+
+        (and (simtime = lookahead) (init_var_env_2 < 1)) ==> @5
+        (and 
+             (tau' = tau)
+             (simtime' = 0)
+             (schedtime' = schedtime)
+             (init_time_env_1' = 0)
+             (init_time_env_2' = 0)
+
+             (Beta' = Beta)
+             (Psi' = Psi)
+             (Psi_dot' = Psi_dot)
+             (v' = v)
+             (sx' = sx)
+             (sy' = sy)
+             (delta' = delta)
+
+             (Psi_d' = Psi_d)
+             (sx_d' = sx_d)
+             (sy_d' = sy_d)
+             (Psi_dot_d' = Psi_dot_d)
+
+             (kappa_d_spline_1' = 0)
+             (Psi_d_spline_1' = 0)
+             (sx_d_spline_1'= 0)
+             (sy_d_spline_1' = 0)
+             (Psi_dot_d_spline_1' = 0)
+
+             (kappa_d_spline_2' = 0)
+             (Psi_d_spline_2' = 0)
+             (sx_d_spline_2'= 0)
+             (sy_d_spline_2' = 0)
+             (Psi_dot_d_spline_2' = 0)
+
+             (kappa_env_1'=kappa_env_1)
+             (Psi_env_1'= Psi_env_1)
+             (sx_env_1'=sx_env_1)
+             (sy_env_1'=sy_env_1)
+             (Psi_dot_env_1'=Psi_dot_env_1)
+             
+             (kappa_env_2'=kappa_env_2)
+             (Psi_env_2'= Psi_env_2)
+             (sx_env_2'=sx_env_2)
+             (sy_env_2'=sy_env_2)
+             (Psi_dot_env_2'=Psi_dot_env_2)
+
+             (init_var_env_1'= init_var_env_2)
+             (init_var_env_2'= init_var_env_2)
+             (waypointx' = sx_d_spline_1) 
+             (waypointy' = sy_d_spline_1) 
+             (lookahead' = lookahead)
+             (sx_0' = sx)
+             (sy_0' = sy));
+
+            
+}
+
+
+{
+    mode 4;
+
+    invt:
+
+    flow:
+
+    
+    d/dt[tau]= 0;
+    d/dt[schedtime]= 0;
+    d/dt[simtime]= 1;
+    d/dt[init_time_env_1]= 0;
+    d/dt[init_time_env_2]= 0;
+
+    
+    d/dt[Beta]= 0;
+    d/dt[Psi]= 0;
+    d/dt[Psi_dot]= 0;
+    d/dt[v]= 0; 
+    d/dt[sx]= 0; 
+    d/dt[sy]= 0; 
+    d/dt[delta]= 0; 
+
+    
+    d/dt[Psi_d]= 0;
+    d/dt[sx_d]= 0;
+    d/dt[sy_d]= 0;
+    d/dt[Psi_dot_d]= 0;
+
+    
+    d/dt[kappa_d_spline_1] = 0;
+    d/dt[Psi_d_spline_1] = 0;
+    d/dt[sx_d_spline_1] = 0;
+    d/dt[sy_d_spline_1] = 0;
+    d/dt[Psi_dot_d_spline_1] = 0;
+
+    
+    d/dt[kappa_d_spline_2]= ((-0.50)*(-2*(0.000000) + 11*(0.000000) - 18*(0.006046) + 9*(-0.000322))/(33.831636))*11.11 + 2*((4.50)*(-(0.000000) + 2*(0.000000) - 5*(0.006046) +4*(-0.000322))/((33.831636)*(33.831636)))*11.11*11.11*simtime + 3*((-4.50)*(-(0.000000) + (0.000000) - 3*(0.006046) + 3*(-0.000322))/((33.831636)*(33.831636)*(33.831636)))*11.11*11.11*11.11*simtime*simtime ;
+    d/dt[Psi_d_spline_2]= 11.11*kappa_d_spline_2;
+    d/dt[sx_d_spline_2]= 11.11*cos(Psi_d_spline_2);
+    d/dt[sy_d_spline_2] = 11.11*sin(Psi_d_spline_2);
+    d/dt[Psi_dot_d_spline_2]= 11.11*(((-0.50)*(-2*(0.000000) + 11*(0.000000) - 18*(0.006046) + 9*(-0.000322))/(33.831636))*11.11 + 2*((4.50)*(-(0.000000) + 2*(0.000000) - 5*(0.006046) +4*(-0.000322))/((33.831636)*(33.831636)))*11.11*11.11*simtime + 3*((-4.50)*(-(0.000000) + (0.000000) - 3*(0.006046) + 3*(-0.000322))/((33.831636)*(33.831636)*(33.831636)))*11.11*11.11*11.11*simtime*simtime);
+
+    
+    d/dt[kappa_env_1]= 0 ;
+    d/dt[Psi_env_1]= 0;
+    d/dt[sx_env_1]= 0;
+    d/dt[sy_env_1] = 0;
+    d/dt[Psi_dot_env_1]= 0;
+
+    
+    d/dt[kappa_env_2]= 0 ;
+    d/dt[Psi_env_2]= 0;
+    d/dt[sx_env_2]= 0;
+    d/dt[sy_env_2] = 0;
+    d/dt[Psi_dot_env_2]= 0;
+
+    
+    d/dt[init_var_env_1]= 0;
+    d/dt[init_var_env_2]= 0;
+    d/dt[waypointx]= 0;
+    d/dt[waypointy]= 0;
+    d/dt[lookahead]= 0;
+    d/dt[sx_0] = 0;
+    d/dt[sy_0] = 0; 
+
+    
+    d/dt[noise] = 0;
+ 
+    jump:
+    (and (simtime = lookahead)) ==> @2
+        (and 
+             (tau' = tau)
+             (simtime' = 0)
+             (schedtime'= schedtime)
+             (init_time_env_1'=0)
+             (init_time_env_2'=0)
+
+             (Beta' = Beta)
+             (Psi' = Psi)
+             (Psi_dot' = Psi_dot)
+             (v' = v)
+             (sx' = sx)
+             (sy' = sy)
+             (delta' = delta)
+
+             (Psi_d' = Psi_d)
+             (sx_d' = sx_d)
+             (sy_d' = sy_d)
+             (Psi_dot_d' = Psi_dot_d)
+
+             (kappa_d_spline_1' = 0)
+             (Psi_d_spline_1' = 0)
+             (sx_d_spline_1'= 0)
+             (sy_d_spline_1' = 0)
+             (Psi_dot_d_spline_1' = 0)
+
+             (kappa_d_spline_2' = 0)
+             (Psi_d_spline_2' = 0)
+             (sx_d_spline_2'= 0)
+             (sy_d_spline_2' = 0)
+             (Psi_dot_d_spline_2' = 0)
+             
+             (kappa_env_1'=kappa_env_1)
+             (Psi_env_1'= Psi_env_1)
+             (sx_env_1'=sx_env_1)
+             (sy_env_1'=sy_env_1)
+             (Psi_dot_env_1'=Psi_dot_env_1)
+             
+             (kappa_env_2'=kappa_env_2)
+             (Psi_env_2'= Psi_env_2)
+             (sx_env_2'=sx_env_2)
+             (sy_env_2'=sy_env_2)
+             (Psi_dot_env_2'=Psi_dot_env_2)
+
+             (init_var_env_1'= 5)
+             (init_var_env_2'= 5)
+             (waypointx' = sx_d_spline_2) 
+             (waypointy' = sy_d_spline_2) 
+             (lookahead' = lookahead)
+             (sx_0' = sx)
+             (sy_0' = sy));
+
+            
+}
+
+
+{
+    mode 5;
+
+    invt:
+
+    flow:
+
+    
+    d/dt[tau]= 0;
+    d/dt[schedtime]= 0;
+    d/dt[simtime]= 0;
+    d/dt[init_time_env_1]= 1;
+    d/dt[init_time_env_2]= 0;
+
+    
+    d/dt[Beta]= 0;
+    d/dt[Psi]= 0;
+    d/dt[Psi_dot]= 0;
+    d/dt[v]= 0; 
+    d/dt[sx]= 0; 
+    d/dt[sy]= 0; 
+    d/dt[delta]= 0; 
+
+    
+    d/dt[Psi_d]= 0;
+    d/dt[sx_d]= 0;
+    d/dt[sy_d]= 0;
+    d/dt[Psi_dot_d]= 0;
+
+    
+    d/dt[kappa_d_spline_1] = 0;
+    d/dt[Psi_d_spline_1] = 0;
+    d/dt[sx_d_spline_1] = 0;
+    d/dt[sy_d_spline_1] = 0;
+    d/dt[Psi_dot_d_spline_1] = 0;
+
+    
+    d/dt[kappa_d_spline_1] = 0;
+    d/dt[Psi_d_spline_1] = 0;
+    d/dt[sx_d_spline_1] = 0;
+    d/dt[sy_d_spline_1] = 0;
+    d/dt[Psi_dot_d_spline_1] = 0;
+
+    
+    d/dt[kappa_env_1]= ((-0.50)*(-2*(0.000000) + 11*(0.000000) - 18*(0.006046) + 9*(-0.000322))/(33.831636))*11.11 + 2*((4.50)*(-(0.000000) + 2*(0.000000) - 5*(0.006046) +4*(-0.000322))/((33.831636)*(33.831636)))*11.11*11.11*init_time_env_1+ 3*((-4.50)*(-(0.000000) + (0.000000) - 3*(0.006046) + 3*(-0.000322))/((33.831636)*(33.831636)*(33.831636)))*11.11*11.11*11.11*init_time_env_1*init_time_env_1 ;
+    d/dt[Psi_env_1]= 11.11*kappa_env_1;
+    d/dt[sx_env_1]= 11.11*cos(Psi_env_1);
+    d/dt[sy_env_1] = 11.11*sin(Psi_env_1);
+    d/dt[Psi_dot_env_1]= 11.11*(((-0.50)*(-2*(0.000000) + 11*(0.000000) - 18*(0.006046) + 9*(-0.000322))/(33.831636))*11.11 + 2*((4.50)*(-(0.000000) + 2*(0.000000) - 5*(0.006046) +4*(-0.000322))/((33.831636)*(33.831636)))*11.11*11.11*init_time_env_1 + 3*((-4.50)*(-(0.000000) + (0.000000) - 3*(0.006046) + 3*(-0.000322))/((33.831636)*(33.831636)*(33.831636)))*11.11*11.11*11.11*init_time_env_1*init_time_env_1);
+    
+    
+    d/dt[kappa_env_2]= 0 ;
+    d/dt[Psi_env_2]= 0;
+    d/dt[sx_env_2]= 0;
+    d/dt[sy_env_2] = 0;
+    d/dt[Psi_dot_env_2]= 0;
+
+    
+    d/dt[init_var_env_1]= 0;
+    d/dt[init_var_env_2]= 0;
+    d/dt[waypointx]= 0;
+    d/dt[waypointy]= 0;
+    d/dt[lookahead]= 0;
+    d/dt[sx_0] = 0;
+    d/dt[sy_0] = 0; 
+
+    
+    d/dt[noise] = 0;
+
+
+
+    jump: 
+
+        (and (init_time_env_1 = 0.2)) ==> @6
+        (and 
+             (tau' = tau)
+             (simtime' = simtime)
+             (schedtime'= schedtime)
+             (init_time_env_1' = 0)
+             (init_time_env_2' = 0)
+
+             (Beta' = Beta)
+             (Psi' = Psi)
+             (Psi_dot' = Psi_dot)
+             (v' = v)
+             (sx' = sx)
+             (sy' = sy)
+             (delta' = delta)
+
+             (Psi_d' = Psi_d)
+             (sx_d' = sx_d)
+             (sy_d' = sy_d)
+             (Psi_dot_d' = Psi_dot_d)
+
+             (kappa_d_spline_1' = kappa_d_spline_1)
+             (Psi_d_spline_1' = Psi_d_spline_1)
+             (sx_d_spline_1' = sx_d_spline_1)
+             (sy_d_spline_1' = sy_d_spline_1)
+             (Psi_dot_d_spline_1' = Psi_dot_d_spline_1)
+
+             (kappa_d_spline_2' = kappa_d_spline_2)
+             (Psi_d_spline_2' = Psi_d_spline_2)
+             (sx_d_spline_2' = sx_d_spline_2)
+             (sy_d_spline_2' = sy_d_spline_2)
+             (Psi_dot_d_spline_2' = Psi_dot_d_spline_2)
+             
+             (kappa_env_1' = kappa_env_1)
+             (Psi_env_1' = Psi_env_1)
+             (sx_env_1' = sx_env_1)
+             (sy_env_1' = sy_env_1)
+             (Psi_dot_env_1' = Psi_dot_env_1)
+
+             (kappa_env_2' = kappa_env_2)
+             (Psi_env_2' = Psi_env_2)
+             (sx_env_2' = sx_env_2)
+             (sy_env_2' = sy_env_2)
+             (Psi_dot_env_2' = Psi_dot_env_2)
+
+             (init_var_env_1' = 5)
+             (init_var_env_2' = 5)
+             (waypointx' = waypointx) 
+             (waypointy' = waypointy) 
+             (lookahead' = lookahead)
+             (sx_0' = sx_0)
+             (sy_0' = sy_0));
+
+            
+}
+
+
+
+{
+    mode 6;
+
+    invt:
+
+    flow:
+    
+    d/dt[tau]= 0;
+    d/dt[schedtime]= 0;
+    d/dt[simtime]= 0;
+    d/dt[init_time_env_1]= 0;
+    d/dt[init_time_env_2]= 1;
+
+    
+    d/dt[Beta]= 0;
+    d/dt[Psi]= 0;
+    d/dt[Psi_dot]= 0;
+    d/dt[v]= 0; 
+    d/dt[sx]= 0; 
+    d/dt[sy]= 0; 
+    d/dt[delta]= 0; 
+
+    
+    d/dt[Psi_d]= 0;
+    d/dt[sx_d]= 0;
+    d/dt[sy_d]= 0;
+    d/dt[Psi_dot_d]= 0;
+
+    
+    d/dt[kappa_d_spline_1] = 0;
+    d/dt[Psi_d_spline_1] = 0;
+    d/dt[sx_d_spline_1] = 0;
+    d/dt[sy_d_spline_1] = 0;
+    d/dt[Psi_dot_d_spline_1] = 0;
+
+    
+    d/dt[kappa_d_spline_1] = 0;
+    d/dt[Psi_d_spline_1] = 0;
+    d/dt[sx_d_spline_1] = 0;
+    d/dt[sy_d_spline_1] = 0;
+    d/dt[Psi_dot_d_spline_1] = 0;
+
+    
+    d/dt[kappa_env_1]= 0 ;
+    d/dt[Psi_env_1]= 0;
+    d/dt[sx_env_1]= 0;
+    d/dt[sy_env_1] = 0;
+    d/dt[Psi_dot_env_1]= 0;
+
+    
+    d/dt[kappa_env_2]= ((-0.50)*(-2*(0.000000) + 11*(0.000000) - 18*(0.006046) + 9*(-0.000322))/(33.831636))*11.11 + 2*((4.50)*(-(0.000000) + 2*(0.000000) - 5*(0.006046) +4*(-0.000322))/((33.831636)*(33.831636)))*11.11*11.11*init_time_env_2+ 3*((-4.50)*(-(0.000000) + (0.000000) - 3*(0.006046) + 3*(-0.000322))/((33.831636)*(33.831636)*(33.831636)))*11.11*11.11*11.11*init_time_env_2*init_time_env_2 ;
+    d/dt[Psi_env_2]= 11.11*kappa_env_2;
+    d/dt[sx_env_2]= 11.11*cos(Psi_env_2);
+    d/dt[sy_env_2] = 11.11*sin(Psi_env_2);
+    d/dt[Psi_dot_env_2]= 11.11*(((-0.50)*(-2*(0.000000) + 11*(0.000000) - 18*(0.006046) + 9*(-0.000322))/(33.831636))*11.11 + 2*((4.50)*(-(0.000000) + 2*(0.000000) - 5*(0.006046) +4*(-0.000322))/((33.831636)*(33.831636)))*11.11*11.11*init_time_env_2 + 3*((-4.50)*(-(0.000000) + (0.000000) - 3*(0.006046) + 3*(-0.000322))/((33.831636)*(33.831636)*(33.831636)))*11.11*11.11*11.11*init_time_env_2*init_time_env_2);
+
+    
+    d/dt[init_var_env_1]= 0;
+    d/dt[init_var_env_2]= 0;
+    d/dt[waypointx]= 0;
+    d/dt[waypointy]= 0;
+    d/dt[lookahead]= 0;
+    d/dt[sx_0] = 0;
+    d/dt[sy_0] = 0; 
+
+    
+    d/dt[noise] = 0;
+
+
+    jump: 
+
+        (and (init_time_env_2 = 0.2)) ==> @1
+        (and 
+             (tau' = tau)             
+             (simtime' = simtime)
+             (schedtime'= schedtime)
+             (init_time_env_1' = 0)
+             (init_time_env_2' = 0)
+
+             (Beta' = Beta)
+             (Psi' = Psi)
+             (Psi_dot' = Psi_dot)
+             (v' = v)
+             (sx' = sx)
+             (sy' = sy)
+             (delta' = delta)
+
+             (Psi_d' = Psi_d)
+             (sx_d' = sx_d)
+             (sy_d' = sy_d)
+             (Psi_dot_d' = Psi_dot_d)
+
+             (kappa_d_spline_1' = kappa_d_spline_1)
+             (Psi_d_spline_1' = Psi_d_spline_1)
+             (sx_d_spline_1' = sx_d_spline_1)
+             (sy_d_spline_1' = sy_d_spline_1)
+             (Psi_dot_d_spline_1' = Psi_dot_d_spline_1)
+
+             (kappa_d_spline_2' = kappa_d_spline_2)
+             (Psi_d_spline_2' = Psi_d_spline_2)
+             (sx_d_spline_2' = sx_d_spline_2)
+             (sy_d_spline_2' = sy_d_spline_2)
+             (Psi_dot_d_spline_2' = Psi_dot_d_spline_2)
+
+             (kappa_env_1' = kappa_env_1)
+             (Psi_env_1' = Psi_env_1)
+             (sx_env_1' = sx_env_1)
+             (sy_env_1' = sy_env_1)
+             (Psi_dot_env_1' = Psi_dot_env_1)
+
+             (kappa_env_2' = kappa_env_2)
+             (Psi_env_2' = Psi_env_2)
+             (sx_env_2' = sx_env_2)
+             (sy_env_2' = sy_env_2)
+             (Psi_dot_env_2' = Psi_dot_env_2)
+
+             (init_var_env_1' = 5)
+             (init_var_env_2' = 5)
+             (waypointx' = waypointx) 
+             (waypointy' = waypointy)
+             (lookahead' = lookahead)
+             (sx_0' = sx_0)
+             (sy_0' = sy_0));
+
+            
+}
+
+init: 
+@3 (and 
+    (tau=0) 
+    (simtime = 0) 
+    (schedtime = 0)
+    (init_time_env_1=0)
+    (init_time_env_2=0)
+
+    (Beta=0) 
+    (Psi=0) 
+    (Psi_dot=0) 
+    (v=10.9) 
+    (sx=0) 
+    (sy=0) 
+    (delta = 0)
+
+    (Psi_d=0) 
+    (sx_d=0) 
+    (sy_d=0) 
+    (Psi_dot_d=0) 
+
+    (kappa_d_spline_1= 0)
+    (Psi_d_spline_1 =0)
+    (sx_d_spline_1= 0) 
+    (sy_d_spline_1=0)
+    (Psi_dot_d_spline_1=0)
+
+    (kappa_d_spline_2= 0)
+    (Psi_d_spline_2 =0)
+    (sx_d_spline_2= 0) 
+    (sy_d_spline_2=0)
+    (Psi_dot_d_spline_2=0)
+
+    (kappa_env_1=0)
+    (Psi_env_1 = 0)
+    (sx_env_1=0)
+    (sy_env_1=0)
+    (Psi_dot_env_1=0)
+
+    (kappa_env_2=0)
+    (Psi_env_2 = 0)
+    (sx_env_2=0)
+    (sy_env_2=0)
+    (Psi_dot_env_2=0)
+
+    (init_var_env_1=0)
+    (init_var_env_2=0)
+    (waypointx=0) 
+    (waypointy=0) 
+    (lookahead= 0.4)
+    (sx_0=sx)
+    (sy_0=sy));
+
+goal:
+@1 (tau>=0.3);
+

@@ -32,7 +32,7 @@ v_d =2;
 sx_0 = 0;
 sy_0 = 0;
 
-%% Goal point is in Quadrant I.
+%% Pure Pursuit Computations
 % Init Goal Pair
 waypointx = sx_0-4;
 waypointy= sy_0+7;
@@ -40,16 +40,24 @@ waypointy= sy_0+7;
 l = sqrt((waypointx - sx_0)*(waypointx - sx_0) + (waypointy - sy_0)*(waypointy - sy_0));
 r = abs(l*l/(2*(waypointx - sx_0)));
 
-%%
-% Vehicle Dynamics
+%% Vehicle Dynamics
+
+% Desired Psi
 if waypointx>sx_0 && waypointy>=sy_0
     dPsid=-(-((sy_0 + r*sin((t*v_d)/r))*(-2*v_d*(r + sx_0 + r*cos((t*v_d)/r))*sin((t*v_d)/r) + 2*v_d*cos((t*v_d)/r)*(sy_0 + r*sin((t*v_d)/r))))/(2*((r + sx_0 + r*cos((t*v_d)/r))^2 + (sy_0 + r*sin((t*v_d)/r))^2)^(3/2)) + (v_d*cos((t*v_d)/r))/sqrt((r + sx_0 + r*cos((t*v_d)/r))^2 + (sy_0 + r*sin((t*v_d)/r))^2))/sqrt(1 - (sy_0 + r*sin((t*v_d)/r))^2/((r + sx_0 + r*cos((t*v_d)/r))^2 + (sy_0 + r*sin((t*v_d)/r))^2));
 elseif waypointx<sx_0 && waypointy>=sx_0
     dPsid=(-((sy_0 + r*sin((t*v_d)/r))*(-2*v_d*(r + sx_0 + r*cos((t*v_d)/r))*sin((t*v_d)/r) + 2*v_d*cos((t*v_d)/r)*(sy_0 + r*sin((t*v_d)/r))))/(2*((r + sx_0 + r*cos((t*v_d)/r))^2 + (sy_0 + r*sin((t*v_d)/r))^2)^(3/2)) + (v_d*cos((t*v_d)/r))/sqrt((r + sx_0 + r*cos((t*v_d)/r))^2 + (sy_0 + r*sin((t*v_d)/r))^2))/sqrt(1 - (sy_0 + r*sin((t*v_d)/r))^2/((r + sx_0 + r*cos((t*v_d)/r))^2 + (sy_0 + r*sin((t*v_d)/r))^2));
 end
+
+% Beta
 dbeta = ((A/(m*v^2))-1)*psidot + Cf*delta/(m*v) - (Cf+Cr)*beta/(m*v);
+
+% Psi
 dpsi = psidot;
+
+% Psi_dot
 dpsidot = A*beta/Iz - ((lf^2*Cf+lr^2*Cr)/Iz)*(psidot/v) + (lf*Cf)*delta/Iz;
+
 % Steering Tracking
 vw = k1*(cos(Psid)*(syd - sy) - sin(Psid)*(sxd - sx)) ...
     +k2*(Psid - psi)...
@@ -59,9 +67,15 @@ vw = k1*(cos(Psid)*(syd - sy) - sin(Psid)*(sxd - sx)) ...
 % Velocity Tracking 
 ax = k5*(cos(Psid)*(sxd - sx) + sin(Psid)*(syd - sy))...
     +k6*(v_d-v);
+
+% Velocity
 dv = ax;
+
+% X and Y position
 dsx = v*cos(beta+psi);
 dsy = v*sin(beta+psi);
+
+% Desired X and Y Positions
 if waypointx>sx_0 && waypointy>=sy_0
     dsxd = v_d*sin(v_d*t/r);
     dsyd = v_d*cos(v_d*t/r);
@@ -69,7 +83,9 @@ elseif waypointx<sx_0 && waypointy>=sx_0
     dsxd= -v_d*sin(v_d*t/r);
     dsyd= v_d*cos(v_d*t/r);
 end
+
+% Steering angle
 ddelta = vw;
 
-
+%% Return to ODE solver
 d = [dbeta,dpsi,dpsidot,dv,dsx,dsy,ddelta,dPsid,dsxd,dsyd]';

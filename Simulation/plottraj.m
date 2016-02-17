@@ -42,6 +42,7 @@ b = ((-0.50)*(-2*kappa_3 + 11*kappa_0 - 18*kappa_1 + 9*kappa_2)/s);
 c = ((4.50)*(-kappa_3 + 2*kappa_0 - 5*kappa_1 +4*kappa_2)/(s*s));
 e = ((-4.50)*(-kappa_3 + kappa_0 - 3*kappa_1 + 3*kappa_2)/(s*s*s));
 
+%Initial Step
 g1=ode45(@traj_dynamics,[0,tlookahead],[0,0,0,0,0]);
 deltax=g1.y(3,end)
 deltay=g1.y(4,end)
@@ -71,27 +72,13 @@ title('Trajectory of Ego Vehicle in X-Y Plane Quadrant I')
 xlabel('x (m)')
 ylabel('y (m)')
 
+% Follow the path
 while tlookahead<3.6
 tlookahead= tfinal +0.1
-s = (33.831636);
-kappa_0 =(0.000000);
-kappa_1 = (0.006046);
-kappa_2 = (-0.000322);
-kappa_3 = (0.000000);
 
-a = kappa_0;
-b = ((-0.50)*(-2*kappa_3 + 11*kappa_0 - 18*kappa_1 + 9*kappa_2)/s);
-c = ((4.50)*(-kappa_3 + 2*kappa_0 - 5*kappa_1 +4*kappa_2)/(s*s));
-e = ((-4.50)*(-kappa_3 + kappa_0 - 3*kappa_1 + 3*kappa_2)/(s*s*s));
-%kappa, psi, sx, sy, psidot
-% [dbeta,dpsi,dpsidot,dv,dsx,dsy,ddelta,dPsid,dsxd,dsyd]';
 g1=ode45(@traj_dynamics,[0,tlookahead],[0,0,0,0,0]);
 deltax=g1.y(3,end)
 deltay=g1.y(4,end)
-
-
-
-%% Quadrant I
 
 waypointx = 0+deltax
 waypointy = 0+deltay

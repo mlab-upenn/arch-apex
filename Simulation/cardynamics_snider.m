@@ -22,12 +22,6 @@ psidot=x(3);
 v=x(4);
 sx=x(5);
 sy=x(6);
-sxd=x(7);
-syd=x(8);
-
-%% Simulation Parameters
-sx_0 = 0;
-sy_0 = 0;
 
 %% Pure Pursuit Computations
 % Init Goal Pair
@@ -37,12 +31,12 @@ global sx_0
 global sy_0
 global psi_0
 global v_d
+
 % Pure Pursuit Calculations
 l = sqrt((waypointx - sx_0)*(waypointx - sx_0) + (waypointy - sy_0)*(waypointy - sy_0));
-r = abs(l*l/(2*(waypointx - sx_0)));
-slope = atan2(waypointy-sy_0, waypointx-sx_0)
-alpha = angdiff(psi_0,slope)
-delta= 2*sin(alpha)/l
+slope = atan2(waypointy-sy_0, waypointx-sx_0);
+alpha = angdiff(psi_0,slope);
+delta= 2*sin(alpha)/l;
 
 %%
             % Angle between robot heading and the line connecting robot and
@@ -78,20 +72,6 @@ dv = ax;
 dsx = v*cos(beta+psi);
 dsy = v*sin(beta+psi);
 
-% Desired X and Y Positions
-if waypointx>sx_0 && waypointy>=sy_0
-    dsxd = v_d*sin(v_d*t/r);
-    dsyd = v_d*cos(v_d*t/r);
-elseif waypointx<sx_0 && waypointy>=sy_0
-    dsxd= -v_d*sin(v_d*t/r);
-    dsyd= v_d*cos(v_d*t/r);
-elseif waypointx<sx_0 && waypointy<=sy_0
-    dsxd= -v_d*sin(v_d*t/r);
-    dsyd= -v_d*cos(v_d*t/r);
-elseif waypointx>sx_0 && waypointy<=sy_0
-    dsxd= v_d*sin(v_d*t/r);
-    dsyd= -v_d*cos(v_d*t/r);
-end
 
 %% Return to ODE solver
-d = [dbeta,dpsi,dpsidot,dv,dsx,dsy,dsxd,dsyd]';
+d = [dbeta,dpsi,dpsidot,dv,dsx,dsy]';

@@ -40,15 +40,8 @@ r = abs(l*l/(2*(waypointx - sx_0)));
 %% Vehicle Dynamics
 
 % Desired Psi
-if waypointx>sx_0 && waypointy>=sy_0
-    dPsid=-(-((sy_0 + r*sin((t*v_d)/r))*(-2*v_d*(r + sx_0 + r*cos((t*v_d)/r))*sin((t*v_d)/r) + 2*v_d*cos((t*v_d)/r)*(sy_0 + r*sin((t*v_d)/r))))/(2*((r + sx_0 + r*cos((t*v_d)/r))^2 + (sy_0 + r*sin((t*v_d)/r))^2)^(3/2)) + (v_d*cos((t*v_d)/r))/sqrt((r + sx_0 + r*cos((t*v_d)/r))^2 + (sy_0 + r*sin((t*v_d)/r))^2))/sqrt(1 - (sy_0 + r*sin((t*v_d)/r))^2/((r + sx_0 + r*cos((t*v_d)/r))^2 + (sy_0 + r*sin((t*v_d)/r))^2));
-elseif waypointx<sx_0 && waypointy>=sy_0
-    dPsid=(-((sy_0 + r*sin((t*v_d)/r))*(-2*v_d*(r + sx_0 + r*cos((t*v_d)/r))*sin((t*v_d)/r) + 2*v_d*cos((t*v_d)/r)*(sy_0 + r*sin((t*v_d)/r))))/(2*((r + sx_0 + r*cos((t*v_d)/r))^2 + (sy_0 + r*sin((t*v_d)/r))^2)^(3/2)) + (v_d*cos((t*v_d)/r))/sqrt((r + sx_0 + r*cos((t*v_d)/r))^2 + (sy_0 + r*sin((t*v_d)/r))^2))/sqrt(1 - (sy_0 + r*sin((t*v_d)/r))^2/((r + sx_0 + r*cos((t*v_d)/r))^2 + (sy_0 + r*sin((t*v_d)/r))^2));
-elseif waypointx<sx_0 && waypointy<=sy_0
-    dPsid=-(-((sy_0 + r*sin((t*v_d)/r))*(-2*v_d*(r + sx_0 + r*cos((t*v_d)/r))*sin((t*v_d)/r) + 2*v_d*cos((t*v_d)/r)*(sy_0 + r*sin((t*v_d)/r))))/(2*((r + sx_0 + r*cos((t*v_d)/r))^2 + (sy_0 + r*sin((t*v_d)/r))^2)^(3/2)) + (v_d*cos((t*v_d)/r))/sqrt((r + sx_0 + r*cos((t*v_d)/r))^2 + (sy_0 + r*sin((t*v_d)/r))^2))/sqrt(1 - (sy_0 + r*sin((t*v_d)/r))^2/((r + sx_0 + r*cos((t*v_d)/r))^2 + (sy_0 + r*sin((t*v_d)/r))^2));
-elseif waypointx>sx_0 && waypointy<=sy_0
-    dPsid=(-((sy_0 + r*sin((t*v_d)/r))*(-2*v_d*(r + sx_0 + r*cos((t*v_d)/r))*sin((t*v_d)/r) + 2*v_d*cos((t*v_d)/r)*(sy_0 + r*sin((t*v_d)/r))))/(2*((r + sx_0 + r*cos((t*v_d)/r))^2 + (sy_0 + r*sin((t*v_d)/r))^2)^(3/2)) + (v_d*cos((t*v_d)/r))/sqrt((r + sx_0 + r*cos((t*v_d)/r))^2 + (sy_0 + r*sin((t*v_d)/r))^2))/sqrt(1 - (sy_0 + r*sin((t*v_d)/r))^2/((r + sx_0 + r*cos((t*v_d)/r))^2 + (sy_0 + r*sin((t*v_d)/r))^2));
-end
+dPsid=-(-((sy_0 + r*sin((t*v_d)/r))*(-2*v_d*(r + sx_0 + r*cos((t*v_d)/r))*sin((t*v_d)/r) + 2*v_d*cos((t*v_d)/r)*(sy_0 + r*sin((t*v_d)/r))))/(2*((r + sx_0 + r*cos((t*v_d)/r))^2 + (sy_0 + r*sin((t*v_d)/r))^2)^(3/2)) + (v_d*cos((t*v_d)/r))/sqrt((r + sx_0 + r*cos((t*v_d)/r))^2 + (sy_0 + r*sin((t*v_d)/r))^2))/sqrt(1 - (sy_0 + r*sin((t*v_d)/r))^2/((r + sx_0 + r*cos((t*v_d)/r))^2 + (sy_0 + r*sin((t*v_d)/r))^2));
+
 
 % Beta
 dbeta = ((A/(m*v^2))-1)*psidot + Cf*delta/(m*v) - (Cf+Cr)*beta/(m*v);

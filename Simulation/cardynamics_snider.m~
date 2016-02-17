@@ -22,8 +22,10 @@ psidot=x(3);
 v=x(4);
 sx=x(5);
 sy=x(6);
-sxd=x(7);
-syd=x(8);
+delta=x(7);
+Psid=x(8);
+sxd=x(9);
+syd=x(10);
 
 %% Simulation Parameters
 v_d =2;
@@ -36,14 +38,10 @@ global waypointx
 global waypointy
 global sx_0
 global sy_0
-global psi_0
 % Pure Pursuit Calculations
 l = sqrt((waypointx - sx_0)*(waypointx - sx_0) + (waypointy - sy_0)*(waypointy - sy_0));
 r = abs(l*l/(2*(waypointx - sx_0)));
 slope = atan2(waypointy-sy_0, waypointx-sx_0)
-alpha = angdiff(psi_0,slope)
-delta= 2*sin(alpha)/l
-
 %%
             % Angle between robot heading and the line connecting robot and
             % the carrot point
@@ -94,4 +92,4 @@ elseif waypointx>sx_0 && waypointy<=sy_0
 end
 
 %% Return to ODE solver
-d = [dbeta,dpsi,dpsidot,dv,dsx,dsy,dsxd,dsyd]';
+d = [dbeta,dpsi,dpsidot,dv,dsx,dsy,ddelta,dPsid,dsxd,dsyd]';

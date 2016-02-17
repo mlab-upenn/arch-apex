@@ -1,4 +1,4 @@
-function d = cardynamics_pp(t,x)
+function d = cardynamics_snider(t,x)
 %% Simulation Parameters Ego Vehicle
 % Vehicle Constants
 m =2273;
@@ -7,8 +7,8 @@ Cf= 108000;
 Cr =108000;
 lf =1.292;
 lr =1.515;
-k1 =2;
-k2 =12;
+k1 =12;
+k2 =2;
 k3 =4;
 k4 =2;
 k5 =1;
@@ -26,13 +26,16 @@ delta=x(7);
 Psid=x(8);
 sxd=x(9);
 syd=x(10);
+
+%% Simulation Parameters
+v_d =2;
+sx_0 = 0;
+sy_0 = 0;
+
 %% Pure Pursuit Computations
 % Init Goal Pair
 global waypointx
 global waypointy
-global v_d
-global sx_0
-global sy_0
 % Pure Pursuit Calculations
 l = sqrt((waypointx - sx_0)*(waypointx - sx_0) + (waypointy - sy_0)*(waypointy - sy_0));
 r = abs(l*l/(2*(waypointx - sx_0)));
@@ -60,14 +63,13 @@ dpsi = psidot;
 dpsidot = A*beta/Iz - ((lf^2*Cf+lr^2*Cr)/Iz)*(psidot/v) + (lf*Cf)*delta/Iz;
 
 % Steering Tracking
-vw = k1*(cos(Psid)*(syd - sy) - sin(Psid)*(sxd - sx)) ...
-    +k2*(Psid - psi)...
-    +k3*(dPsid - dpsi)...
-    -k4*(delta);
+%vw = k1*(cos(Psid)*(syd - sy) - sin(Psid)*(sxd - sx)) ...
+%    +k2*(Psid - psi)...
+%    +k3*(dPsid - dpsi)...
+%    -k4*(delta);
 
 % Velocity Tracking 
-ax = k5*(cos(Psid)*(sxd - sx) + sin(Psid)*(syd - sy))...
-    +k6*(v_d-v);
+ax = k6*(v_d-v);
 
 % Velocity
 dv = ax;

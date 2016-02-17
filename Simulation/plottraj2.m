@@ -7,13 +7,10 @@ global b
 global c
 global e
 global v_d
-global init_psi
-
-init_psi=0;
 % Desired velocity (m/s)
-v_d =11.1;
+v_d =2;
 % Time horizon (s)
-tfinal= 0.5;
+tfinal= 4;
 % Time series
 t=[0:0.1:tfinal];
 % Initial position x (m)
@@ -39,9 +36,8 @@ b = ((-0.50)*(-2*kappa_3 + 11*kappa_0 - 18*kappa_1 + 9*kappa_2)/s);
 c = ((4.50)*(-kappa_3 + 2*kappa_0 - 5*kappa_1 +4*kappa_2)/(s*s));
 e = ((-4.50)*(-kappa_3 + kappa_0 - 3*kappa_1 + 3*kappa_2)/(s*s*s));
 
-g1=ode45(@traj_dynamics,[0,0.5],[0,0,0,0,0]);
-deltax=g1.y(3,end)
-deltay=g1.y(4,end)
+g1=ode45(@traj_dynamics,[0,0.2],[0,0,0,0,0]);
+
 
 
 %% Quadrant I
@@ -49,7 +45,7 @@ deltay=g1.y(4,end)
 waypointx = sx_0+deltax;
 waypointy = sy_0+deltay;
 
-s1=ode45(@cardynamics_pp,[0,tfinal],[0,init_psi,0,init_v,0,0,0,pi/2,0,0]);
+s1=ode45(@cardynamics_pp,[0,tfinal],[0,pi/2,0,init_v,0,0,0,pi/2,0,0]);
 figure
 subplot(4,2,2); 
 plot(s1.x,s1.y)
@@ -62,11 +58,7 @@ plot(s1.y(5,:), s1.y(6,:))
 hold on
 subplot(4,2,4); 
 plot(s1.y(9,:), s1.y(10,:))
-plot(g1.y(3,:),g1.y(4,:))
-
-plot(deltax,deltay, 'd')
-plot(waypointx,waypointy, 'd')
-legend('sim', 'ref', 'spline', 'spline end', 'waypoint')
+legend('sim', 'ref')
 title('Trajectory of Ego Vehicle in X-Y Plane Quadrant I')
 xlabel('x (m)')
 ylabel('y (m)')
@@ -75,7 +67,8 @@ hold off
 %% Quadrant II
 waypointx = sx_0-deltax;
 waypointy = sy_0+deltay;
-s2=ode45(@cardynamics_pp,[0,tfinal],[0,2*pi,0,init_v,0,0,0,pi/2,0,0]);
+
+s2=ode45(@cardynamics_pp,[0,tfinal],[0,pi/2,0,init_v,0,0,0,pi/2,0,0]);
 
 subplot(4,2,1); 
 plot(s2.x,s2.y)
@@ -100,7 +93,7 @@ waypointx = sx_0-deltax;
 waypointy = sy_0-deltay;
 
 % Note initial orientation and Psid init are both -pi/2 rather than pi/2
-s3=ode45(@cardynamics_pp,[0,tfinal],[0,2*pi,0,init_v,0,0,0,-pi/2,0,0]);
+s3=ode45(@cardynamics_pp,[0,tfinal],[0,-pi/2,0,init_v,0,0,0,-pi/2,0,0]);
 
 subplot(4,2,7); 
 plot(s3.x,s3.y)
@@ -123,7 +116,7 @@ hold off
 waypointx = sx_0+deltax;
 waypointy = sy_0-deltay;
 
-s4=ode45(@cardynamics_pp,[0,tfinal],[0,init_psi,0,init_v,0,0,0,-pi/2,0,0]);
+s4=ode45(@cardynamics_pp,[0,tfinal],[0,-pi/2,0,init_v,0,0,0,-pi/2,0,0]);
 subplot(4,2,8); 
 plot(s4.x,s4.y)
 legend('beta','psi','psidot','v','sx','sy', 'delta','Psid', 'sxd', 'syd')

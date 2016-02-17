@@ -26,7 +26,6 @@ sxd=x(7);
 syd=x(8);
 
 %% Simulation Parameters
-v_d =2;
 sx_0 = 0;
 sy_0 = 0;
 
@@ -37,6 +36,7 @@ global waypointy
 global sx_0
 global sy_0
 global psi_0
+global v_d
 % Pure Pursuit Calculations
 l = sqrt((waypointx - sx_0)*(waypointx - sx_0) + (waypointy - sy_0)*(waypointy - sy_0));
 r = abs(l*l/(2*(waypointx - sx_0)));

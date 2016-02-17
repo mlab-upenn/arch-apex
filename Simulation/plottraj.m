@@ -25,10 +25,10 @@ sx_0 = 0;
 % Initial position y (m)
 sy_0 = 0;
 % Initial velocity (m/s)
-init_v = 3;
+init_v = 11.1;
 
 %% Set Pure Pursuit Lookahead Time and the Schedule Time
-tlookahead=0.4;
+tlookahead=0.2;
 tsched=0.1;
 
 %% Define Parameters for Road Centerline
@@ -58,25 +58,28 @@ tprev=tfinal;
 %% Call Plotting Routine
 subplot(2,1,2); 
 plot(s1.x,s1.y)
-legend('beta','psi','psidot','v','sx','sy', 'delta','Psid', 'sxd', 'syd')
-title('Evolution of Ego-Vehicle State Quadrant I')
+legend('beta','psi','psidot','v','sx','sy', 'sxd', 'syd')
+title('Evolution of Ego-Vehicle State')
 xlabel('Time (s)')
 ylabel('x(t)')
+
 subplot(2,1,1); 
 plot(s1.y(5,:), s1.y(6,:))
 hold on
-subplot(2,1,1); 
-plot(g1.y(3,:),g1.y(4,:))
 
+subplot(2,1,1); 
+hold on
 plot(waypointx,waypointy, 'd')
-legend('desired', 'actual')
-title('Trajectory of Ego Vehicle in X-Y Plane Quadrant I')
+
+
+title('Trajectory of Ego Vehicle in X-Y Plane')
 xlabel('x (m)')
 ylabel('y (m)')
-
+time=tsched
 %% Follow the Road Centerline
-while tlookahead<3.6
-tlookahead= tlookahead +0.4
+while tlookahead<5
+
+tlookahead= time+0.2
 
 % Compute the Next Waypoint
 g1=ode45(@traj_dynamics,[0,tlookahead],[0,0,0,0,0]);
@@ -99,19 +102,16 @@ s1=ode45(@cardynamics_snider,[0,0.1],[s1.y(1,end),s1.y(2,end),s1.y(3,end),s1.y(4
 
 subplot(2,1,2); 
 plot(s1.x,s1.y)
-legend('beta','psi','psidot','v','sx','sy', 'delta','Psid', 'sxd', 'syd')
-title('Evolution of Ego-Vehicle State Quadrant I')
-xlabel('Time (s)')
-ylabel('x(t)')
+legend('beta','psi','psidot','v','sx','sy', 'sxd', 'syd')
+title('Evolution of Ego-Vehicle State')
+
 subplot(2,1,1); 
 plot(s1.y(5,:), s1.y(6,:))
-hold on
-subplot(2,1,1); 
-plot(g1.y(3,:),g1.y(4,:), 'g')
 
+subplot(2,1,1); 
 plot(waypointx, waypointy, 'd')
-title('Trajectory of Ego Vehicle in X-Y Plane Quadrant I')
-xlabel('x (m)')
-ylabel('y (m)')
+
+time=time+tsched
+
 
 end

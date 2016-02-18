@@ -73,7 +73,10 @@ plot(waypointx,waypointy, 'd')
 title('Trajectory of Ego Vehicle in X-Y Plane')
 xlabel('x (m)')
 ylabel('y (m)')
-axis([sx_0 sx_0+60 sy_0-2 sy_0+5])
+gleft=ode45(@traj_dynamics,[0:0.0001:4],[0,0,0,0,0]);
+plot(gleft.y(3,:),gleft.y(4,:)+1, 'black')
+plot(gleft.y(3,:),gleft.y(4,:)-1, 'black')
+axis([sx_0 sx_0+(4*11.1) sy_0-2 sy_0+5])
 time=tsched;
 %% Follow the Road Centerline
 while tlookahead<4
@@ -124,3 +127,4 @@ time=time+tsched;
 
 
 end
+

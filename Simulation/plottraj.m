@@ -57,23 +57,23 @@ tprev=tfinal;
 
 %% Call Plotting Routine
 %Plot Ego State Variables
-subplot(2,1,2); 
-plot(s1.x,s1.y)
-legend('beta','psi','psidot','v','sx','sy')
-title('Evolution of Ego-Vehicle State')
-xlabel('Time (s)')
-ylabel('x(t)')
+%subplot(2,1,2); 
+%plot(s1.x,s1.y)
+%legend('beta','psi','psidot','v','sx','sy')
+%title('Evolution of Ego-Vehicle State')
+%xlabel('Time (s)')
+%ylabel('x(t)')
 
 % Plot Trajectory and Waypoints
-subplot(2,1,1); 
-plot(s1.y(5,:), s1.y(6,:))
+%plot(s1.y(5,:), s1.y(6,:))
 hold on
-subplot(2,1,1); 
+%subplot(2,1,1); 
 hold on
 plot(waypointx,waypointy, 'd')
 title('Trajectory of Ego Vehicle in X-Y Plane')
 xlabel('x (m)')
 ylabel('y (m)')
+axis([sx_0 sx_0+60 sy_0-2 sy_0+5])
 time=tsched;
 %% Follow the Road Centerline
 while tlookahead<4
@@ -98,17 +98,27 @@ psi_0= s1.y(2,end);
 
 s1=ode45(@cardynamics_snider,[0,0.1],[s1.y(1,end),s1.y(2,end),s1.y(3,end),s1.y(4,end),s1.y(5,end),s1.y(6,end)]);
 
+%subplot(2,1,2); 
+%plot(s1.x,s1.y)
+%legend('beta','psi','psidot','v','sx','sy')
+%title('Evolution of Ego-Vehicle State')
 
-subplot(2,1,2); 
-plot(s1.x,s1.y)
-legend('beta','psi','psidot','v','sx','sy')
-title('Evolution of Ego-Vehicle State')
-
-subplot(2,1,1); 
+%subplot(2,1,1); 
 plot(s1.y(5,:), s1.y(6,:))
-
-subplot(2,1,1); 
+hold on
+%subplot(2,1,1); 
 plot(waypointx, waypointy, 'd')
+
+for i=1:length(s1.y(5,:))
+x=[s1.y(5,i)-1  s1.y(5,i)+1 s1.y(5,i)+1 s1.y(5,i)-1]
+y=[s1.y(6,i)-0.5 s1.y(6,i)-0.5 s1.y(6,i)+0.5 s1.y(6,i)+0.5]
+direction = [0 0 1]
+origin=[s1.y(5,i) s1.y(6,i) 0]
+obj =patch(x,y,'red')
+rotate(obj, direction, rad2deg(s1.y(2,i)), origin)
+drawnow
+hidem(obj)
+end
 
 time=time+tsched;
 

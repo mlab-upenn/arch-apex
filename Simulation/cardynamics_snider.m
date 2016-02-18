@@ -32,7 +32,7 @@ global sy_0
 global psi_0
 global v_d
 
-% Pure Pursuit Calculations
+%% Controller
 l = sqrt((waypointx - sx_0)*(waypointx - sx_0) + (waypointy - sy_0)*(waypointy - sy_0));
 % Angle between robot heading and the line connecting robot and the carrot point
 slope = atan2(waypointy-sy_0, waypointx-sx_0);
@@ -41,7 +41,6 @@ alpha = angdiff(psi_0,slope);
 delta= 2*sin(alpha)/l;
 
 %% Vehicle Dynamics
-
 % Beta
 dbeta = ((A/(m*v^2))-1)*psidot + Cf*delta/(m*v) - (Cf+Cr)*beta/(m*v);
 % Psi

@@ -56,16 +56,7 @@ s1=ode45(@cardynamics_snider,[0,tsched],[0,0,0,init_v,0,0]);
 tprev=tfinal;
 
 %% Call Plotting Routine
-%Plot Ego State Variables
-%subplot(2,1,2); 
-%plot(s1.x,s1.y)
-%legend('beta','psi','psidot','v','sx','sy')
-%title('Evolution of Ego-Vehicle State')
-%xlabel('Time (s)')
-%ylabel('x(t)')
-
 % Plot Trajectory and Waypoints
-%plot(s1.y(5,:), s1.y(6,:))
 hold on
 %subplot(2,1,1); 
 hold on
@@ -82,7 +73,6 @@ time=tsched;
 while tlookahead<4
 
 tlookahead= time+0.2;
-
 % Compute the Next Waypoint
 g1=ode45(@traj_dynamics,[0,tlookahead],[0,0,0,0,0]);
 deltax=g1.y(3,end);
@@ -113,18 +103,17 @@ hold on
 plot(waypointx, waypointy, 'd')
 
 for i=1:length(s1.y(5,:))
-x=[s1.y(5,i)-1  s1.y(5,i)+1 s1.y(5,i)+1 s1.y(5,i)-1]
-y=[s1.y(6,i)-0.5 s1.y(6,i)-0.5 s1.y(6,i)+0.5 s1.y(6,i)+0.5]
-direction = [0 0 1]
-origin=[s1.y(5,i) s1.y(6,i) 0]
-obj =patch(x,y,'red')
-rotate(obj, direction, rad2deg(s1.y(2,i)), origin)
-drawnow
-hidem(obj)
+    x=[s1.y(5,i)-1  s1.y(5,i)+1 s1.y(5,i)+1 s1.y(5,i)-1]
+    y=[s1.y(6,i)-0.5 s1.y(6,i)-0.5 s1.y(6,i)+0.5 s1.y(6,i)+0.5]
+    direction = [0 0 1]
+    origin=[s1.y(5,i) s1.y(6,i) 0]
+    obj =patch(x,y,'red')
+    rotate(obj, direction, rad2deg(s1.y(2,i)), origin)
+    drawnow
+    hidem(obj)
 end
 
 time=time+tsched;
-
 
 end
 

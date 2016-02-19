@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2014)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: ITCreport2015.aux
+The style file: unsrt.bst
+Database file #1: mok.bib
+Warning--empty journal in volvo15Liability
+Warning--empty journal in russell2015research
+You've used 14 entries,
+            1791 wiz_defined-function locations,
+            530 strings with 6300 characters,
+and the built_in function-call counts, 3893 in all, are:
+= -- 328
+> -- 228
+< -- 6
++ -- 82
+- -- 68
+* -- 276
+:= -- 621
+add.period$ -- 45
+call.type$ -- 14
+change.case$ -- 11
+chr.to.int$ -- 0
+cite$ -- 16
+duplicate$ -- 173
+empty$ -- 339
+format.name$ -- 68
+if$ -- 864
+int.to.chr$ -- 0
+int.to.str$ -- 14
+missing$ -- 15
+newline$ -- 73
+num.names$ -- 14
+pop$ -- 54
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 90
+stack$ -- 0
+substring$ -- 224
+swap$ -- 56
+text.length$ -- 6
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 2
+while$ -- 34
+width$ -- 16
+write$ -- 155
+(There were 2 warnings)

@@ -1,0 +1,62 @@
+\documentclass[11pt]{article}              % Book class in 11 points
+
+\usepackage[ruled]{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{todonotes}
+\usepackage{tabularx}
+\usepackage{latexsym}    
+\usepackage[ruled]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{acronym}
+\newcommand{\quotes}[1]{``#1''}
+
+
+
+\parindent0pt  \parskip10pt             % make block paragraphs
+\raggedright                            % do not right justify
+
+\title{Autonomous Vehicle Plan Execution and Verification: 2015-2016 Report}   % Supply information
+\author{Matthew O'Kelly, Houssam Abbas, Aditya Pinapala, Rahul Mangharam \\ \large University of Pennsylvania,
+	Philadelphia, PA, U.S.A.\\}              %   for the title page. 
+\date{\today}                           %   Use current date. 
+
+% Note that book class by default is formatted to be printed back-to-back.
+\begin{document}                        % End of preamble, start of text.
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.25]{figures/apexlogo}
+\end{figure}
+
+\maketitle                              % Print title page.
+
+\pagebreak
+\tableofcontents                        % Print table of contents
+\pagebreak
+\part{Background}
+\section{Introduction}
+\input{background}
+
+\section{Contributions} 
+
+\part{Modeling Autonomous Vehicles}
+\section{Autonomous Vehicle Software Architecture}
+
+\part{Case Studies}
+\section{Case Study 1: SAE 2016}
+
+\section{Case Study 2: IROS 2016}
+
+\part{Implementation}
+\section{APEX Tool}
+
+\section{Simulation and GUI}
+
+
+\bibliographystyle{plain}
+\bibliography{mok}
+ 
+\end{document}                          % The required last line

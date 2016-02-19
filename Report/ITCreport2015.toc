@@ -1,0 +1,16 @@
+\contentsline {part}{I\hspace {1em}Background}{4}
+\contentsline {section}{\numberline {1}Introduction}{4}
+\contentsline {section}{\numberline {2}Verification of Autonomous Vehicle Planning}{4}
+\contentsline {subsection}{\numberline {2.1}How do you give a self-driving car a driver's license?}{4}
+\contentsline {subsection}{\numberline {2.2}New and Old Challenges}{5}
+\contentsline {subsection}{\numberline {2.3}The APEX approach}{6}
+\contentsline {subsection}{\numberline {2.4}Future Work: verification, learning, ethics, and control}{9}
+\contentsline {section}{\numberline {3}Contributions}{10}
+\contentsline {part}{II\hspace {1em}Modeling Autonomous Vehicles}{10}
+\contentsline {section}{\numberline {4}Autonomous Vehicle Software Architecture}{10}
+\contentsline {part}{III\hspace {1em}Case Studies}{10}
+\contentsline {section}{\numberline {5}Case Study 1: SAE 2016}{10}
+\contentsline {section}{\numberline {6}Case Study 2: IROS 2016}{10}
+\contentsline {part}{IV\hspace {1em}Implementation}{10}
+\contentsline {section}{\numberline {7}APEX Tool}{10}
+\contentsline {section}{\numberline {8}Simulation and GUI}{10}

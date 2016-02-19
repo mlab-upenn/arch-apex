@@ -5,7 +5,7 @@ A level-1 auxiliary file: vehicle-dynamics.aux
 A level-1 auxiliary file: tracking-controller.aux
 A level-1 auxiliary file: vehicle-parameters.aux
 A level-1 auxiliary file: pure-pursuit.aux
-A level-1 auxiliary file: hybrid-system.aux
+A level-1 auxiliary file: hybrid-sys.aux
 A level-1 auxiliary file: road.aux
 A level-1 auxiliary file: traffic-participants.aux
 A level-1 auxiliary file: formal-scenario.aux
@@ -20,7 +20,7 @@ Warning--I didn't find a database entry for "McNaughton_2011_6927"
 Warning--I didn't find a database entry for "blah"
 You've used 0 entries,
             2118 wiz_defined-function locations,
-            516 strings with 4289 characters,
+            516 strings with 4286 characters,
 and the built_in function-call counts, 18 in all, are:
 = -- 0
 > -- 0

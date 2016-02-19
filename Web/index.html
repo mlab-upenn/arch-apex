@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>APEX: Autonomous Vehicle Plan Verification and Execution</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="assets/css/docs.css" rel="stylesheet">
+    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!-- <[if lt IE 9]> -->
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <!-- <![endif]> -->
+
+    <!-- Le fav and touch icons -->
+    <!--<link rel="shortcut icon" href="assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-∑precomposed.png">-->
+
+  </head>
+
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="./index.html">Home</a>
+              </li>
+              <!--<li class="active">
+                <a href="./tutorial.html">Tutorial</a>
+              </li>
+              <li class="active">
+                <a href="https://github.com/mlab/mlep_v1.1/wiki/Troubleshooting">Troubleshooting</a>
+              </li>-->  
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- Subhead
+================================================== -->
+<header class="jumbotron subhead" id="overview">
+  <div class="container">
+    <h1>APEX: Autonomous Vehicle Plan Verification and Execution</h1>
+    <p class="lead">Autonomous cars earn a driver's license.</p>
+  </div>
+</header>
+
+
+  <div class="container">
+
+    <!-- Docs nav
+    ================================================== -->
+    <div class="row">
+      <div class="span3 bs-docs-sidebar">
+        <ul class="nav nav-list bs-docs-sidenav">
+          <li><a href="#introduction"><i class="icon-chevron-right"></i> Introduction</a></li>
+	        <li><a href="#requirements"><i class="icon-chevron-right"></i> Requirements</a></li>
+          <li><a href="#installation"><i class="icon-chevron-right"></i> Installation</a></li>
+          <li><a href="#tutorial"><i class="icon-chevron-right"></i> Tutorial</a></li>
+	        <li><a href="#dreach"><i class="icon-chevron-right"></i> dReach</a></li>
+          <li><a href="#publication"><i class="icon-chevron-right"></i> Publications</a></li>
+	        <li><a href="#aboutus"><i class="icon-chevron-right"></i> About us</a></li>
+          <li><a href="#contact"><i class="icon-chevron-right"></i> Contact us</a></li>
+          <!--<li><a href="#videos"><i class="icon-chevron-right"></i> Videos</a></li>-->
+	  <!--<li><a href="#testCases"><i class="icon-chevron-right"></i> Test Cases</a></li>
+          <li><a href="#development"><i class="icon-chevron-right"></i> Development</a></li>-->
+       </ul>
+      </div>
+      <div class="span9"
+
+        <!-- Introduction
+        ================================================== -->
+        <section id="introduction">
+          <div class="row">
+            <div class="page-header">
+              <h1>The Problem</h1>
+            </div>
+            <p> Earning a driver’s license implies competency and safety in a large variety of driving scenarios. 
+                It is a skill assessment used to bound the risk of operating a vehicle.</p>
+                <p style="text-align:center;"> <img src="img/Untitled.png" alt=":License" height="40%" width="40%"  /> </p>
+            <p> Under what criteria can we determine that an autonomous vehicle is safe? 
+                How can we generalize its actions beyond simple tests? </p>
+
+         
+        </section>
+
+
+        <!-- The APEX Approach
+        ================================================== -->
+        <section id="approach">
+          <div class="row">
+            <div class="page-header">
+              <h1>Our Solution</h1>
+            </div>
+            <p>APEX is design-time approach to formally verifying the trajectory planning and trajectory tracking stacks of an ADAS/AV as they interact with potentially dynamic participants in a variety of driving scenarios.</p>
+            <p>Identify suit of canonical driving scenarios and map scenarios to agents. Compose agents according to formal semantics of hybrid systems. Specify a set of desireable properties for each scenario and formally verify that such properties are satisfied.</p>
+        </section>
+
+        <!-- The APEX Approach
+        ================================================== -->
+        <section id="approach">
+          <div class="row">
+            <div class="page-header">
+              <h1>Understanding Autonomous Vehicle Plans</h1>
+            </div>
+            <p>TLA Architecture </p>
+        </section>
+            
+                  <!--  Carousel -->
+      <!--  consult Bootstrap docs at 
+            http://twitter.github.com/bootstrap/javascript.html#carousel -->
+      <div id="this-carousel-id" class="carousel slide">
+        <div class="carousel-inner">
+	  <div class="item active">
+            <!--<a href="http://mlab.seas.upenn.edu/mlep">  <img src="assets/img/overview_test2.png" alt="MLE+ Overview" />
+            </a>
+            <div class="carousel-caption">
+              <p>MLE+ Overview</p>
+              <p><a>MLE+ Architecture &raquo;</a></p>
+            </div>
+          </div>
+          <div class="item">
+            <a href="http://mlab.seas.upenn.edu/mlep">  <img src="assets/img/startup.png" alt="Start Screen" />
+            </a>
+            <div class="carousel-caption">
+              <p>Initial Screen</p>
+              <p><a>Select EnergyPlus and weather file &raquo;</a></p>
+            </div>
+          </div>
+          <div class="item">
+            <a href="http://mlab.seas.upenn.edu/mlep">  <img src="assets/img/variable.png" alt="Variable Screen" />
+            </a>
+            <div class="carousel-caption">
+              <p>Variable Screen</p>
+              <p><a>Select In/Out Variables &raquo;</a></p>
+            </div>
+          </div>
+          <div class="item">
+            <a href="http://mlab.seas.upenn.edu/mlep">  <img src="assets/img/control.png" alt="Control Screen" />
+            </a>
+            <div class="carousel-caption">
+              <p>Control Screen</p>
+              <p><a>Design the Control file &raquo;</a></p>
+            </div>
+          </div>
+          <div class="item">
+            <a href="http://mlab.seas.upenn.edu/mlep">  <img src="assets/img/code1.png" alt="Matlab Code" />
+            </a>
+            <div class="carousel-caption">
+              <p>Matlab Control Code</p>
+              <p><a href="http://mlab.seas.upenn.edu/mlep">You can design your control loop in a regular Matlab file &raquo;</a></p>
+            </div>
+          </div>
+          <div class="item">
+            <a href="http://mlab.seas.upenn.edu/mlep">  <img src="assets/img/simulate.png" alt="Simulation Screen" />
+            </a>
+            <div class="carousel-caption">
+              <p>Simulation & Visualization Screen</p>
+              <p><a href="http://mlab.seas.upenn.edu/mlep">You can simulate and visualize the results &raquo;</a></p>
+            </div>
+          </div>-->
+        </div><!-- .carousel-inner --> 
+        <!--  next and previous controls here
+              href values must reference the id for this carousel -->
+          <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
+          <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
+      </div><!-- .carousel -->
+      <!-- end carousel -->
+	    <!--<table class="image" align="center" >-->
+            <!--  <caption align="bottom">Figure 1. MLE+ Overview</caption>-->
+            <!--  <tr><td><img src="assets/img/overview.png" alt="Not supported" width="600" height="400"/></td></tr>-->
+            <!--</table>-->
+            
+            <!--<h3>1. Simulation configuration:</h3>
+            <p>The MLE+ front-end streamlines the con- figuration process of linking the building model and the controllers by ab- stracting the necessary parameters from the co-simulation. This reduces setup time and configuration problems. </p>
+            
+            <h3>2. Controller design:</h3>
+            <p>MLE+ provides a control development workflow as well as graphical front-ends for designing advanced control strategies, in which the building simulation is carried out by EnergyPlus while the controllers are implemented in Matlab or Simulink.</p>
+            
+            <h3>3. Simulation-based optimization:</h3>
+            <p>MLE+ can be used to find optimal parameters or control sequences for building system simulations in EnergyPlus.</p>
+            
+            <h3>4. Data analysis:</h3>
+            <p>After a co-simulation run, using MLE+, the output data from EnergyPlus can be aggregated, analyzed and visualized in Matlab. </p>
+            
+            <h3>5. Building Management System Interface: </h3>
+            <p>MLE+ provides a BAC- net interface to develop and implement control methods for real building equipment.</p>
+            
+            <h3>6. Matlab environment:</h3>
+            <p>MLE+ allows complete access to the Matlab environment and toolboxes such as Global Optimization Toolbox, System Identification Toolbox and Model Predictive Control Toolbox. The user can step through the code for debugging and pause the co-simulation at any time.</p>-->
+        </div>
+          
+          
+        </section>
+
+        <!-- Requirements
+        ================================================== -->
+        <section id="requirements">
+          <div class="row">
+            <div class="page-header">
+              <h1>Requirements</h1>
+            </div>
+            <h3>Operating Systems</h3>
+            <h4>Linux and OSX</h4>
+              <p>APEX supports Ubuntu 14.04+ and Mac OSX 10.9.5+</p>
+            <h3> Utilities </h3>
+              <h4> Homebrew </h4>
+              <p> It is recommended that OSX users utilize the Homebrew package manager </p>
+            <h3>Compiler</h3>
+            <h4>GCC</h4>
+            <p> GCC is used to compile C++ planning stack implementation</p>
+            <h3>Languages</h3>
+            <h4>Python</h4>
+            <p>Verification instances of scenarios are compiled from composable hybrid agents using Python</p>
+            <!--<p>MLE+ uses the GUILayout Toolbox. This is included in the MLE+ distribution. MLE+ has been tested
+                in Matlab 2011a and 2012a versions1.</p>-->
+
+            <h3>Additional Libraries</h3>
+            <h4>Swig</h4>
+            <p>Swig is used to wrap implementation-grade C++ trajectory generation libraries</p>
+
+            <!--<p>By default, Java is already enabled in Matlab, so no
+                further action is required. The Java socket library is used by MLE+ for communication
+                with EnergyPlus.</p>-->
+            <h4>Armadillo</h4>
+            <p>Armardillo is a C++ linear algebra library used for matrix manipulation</p>
+
+            <!--<p>MLE+ should work well with previous versions of
+                EnergyPlus: versions 7.0.0 and 6.0.0. However, it has not been tested thoroughly. We
+                strongly recommend to download EnergyPlus 8.0.0 as the example files correspond to
+                this version.</p>-->
+            <h3>Verification Tools </h3>
+            <h4> dReach </h4>
+            <p> APEX currently implements driving scenarios as hyrbid automata and checks model properties using dReach.
+              The lastest dReach binaries are included as part of the APEX source </p>
+          </div>
+        </section>
+
+        <!-- Installation
+        ================================================== -->
+        <section id="installation">
+          <div class="row">
+            <div class="page-header">
+              <h1>Installation</h1>
+            </div>
+            <h3>GCC</h3>
+            <p>UBUNTU: sudo apt-get install build-essential</p>
+            
+            <h3>Python</h3>
+            <p>OSX: Should already be there… 
+               UBUNTU: sudo apt-get install python-dev</p>
+            
+            <h3>Swig</h3>
+            <p>OSX: brew install swig
+               UBUNTU: sudo apt-get install swig</p> 
+            
+            <h3>Armadillo</h3>
+            <p>OSX: brew install armadillo
+               UBUNTU: sudo apt-get install libarmadillo-dev</p>
+
+            <h3>Build Trajectory Generator Library and Wrap in Python</h3>
+            <h4>Create interface:</h4>
+              <p>OSX and UBUNTU: swig -c++ -python trajectorygenerator.i</p>
+
+            <h4>Build library and link armadillo:</h4>
+               <p>OSX and UBUNTU: g++ -fPIC -c trajectorygenerator.cpp -O2 -larmadillo</p>
+
+               <h4>Build wrapper:</h4>
+               <p>OSX: g++ -fPIC -c trajectorygenerator_wrap.cxx -I/usr/lib/python2.7 -O2 -larmadillo </p> 
+
+               <p>Note make sure that the Python.h file path is right. usually in most systems you will have to change to pythonX.X/Python.h</p>
+
+               <p>UBUNTU: g++ -shared trajectorygenerator.o libtraj_gen_v2.o trajectorygenerator_wrap.o -L/usr/lib/python2.7 -lpython2.7 -o _trajectorygenerator.so -O2 -larmadillo</p>
+
+
+               <h4>Build file containing specific function which we will expose to APEX tool:</h4>
+               <p>OSX and UBUNTU: g++ -fPIC -c libtraj_gen_v2.cpp -O2 -larmadillo</p>
+
+               <h4>Link:</h4>
+               <p>OSX and UBUNTU: g++ -shared trajectorygenerator.o libtraj_gen_v2.o trajectorygenerator_wrap.o -L/usr/lib/python2.7 -lpython2.7 -o _trajectorygenerator.so -O2 -larmadillo</p>
+ 
+               <h4>Make APEX.py executable:</h4>
+               <p>OSX and UBUNTU: chmod +x APEX.py</p>
+
+               <h4>Run APEX:</h4>
+               <p>OSX and UBUNTU: ./APEX.py 3.15.10.02</p>
+
+           <!-- <table class="image" align="center" >
+              <caption align="bottom">Figure 2. Installation Screen</caption>
+              <tr><td><img src="assets/img/installation.png" alt="Pulpit rock" width="600" height="400"/></td></tr>
+            </table>-->
+
+          </div>
+        </section>
+
+
+
+        <!-- Tutorial
+        ================================================== -->
+        <section id="tutorial">
+          <div class="row">
+            <div class="page-header">
+              <h1>Tutorial</h1>
+            </div>
+            <p>This section consists of tutorial videos and screenshots</p>
+
+            <!--<p>You can download MLE+ Tutorial <a href="https://seas.upenn.edu/~willyg/mleplustutorial.pdf ">here</a>. This tutorial is also included in MLE+ distribution</p>
+            <h1>Videos</h1>
+	    <p>The following videos help you getting started with MLE+.</p>
+	    <ol>
+	      <li>Video 1 - MLE+ Introduction</li>
+	      <iframe width="560" height="315" src="http://www.youtube-nocookie.com/embed/f5OT14CyYpw" frameborder="0" allowfullscreen></iframe>
+	      <li>Video 2 - Getting Started</li>
+              <iframe width="560" height="315" src="http://www.youtube-nocookie.com/embed/pemLA4MxIDU" frameborder="0" allowfullscreen></iframe>
+	      <li>Video 3 - Shading Example Tutorial</li>
+              <iframe width="560" height="315" src="http://www.youtube-nocookie.com/embed/-Wb3bWyY1GU" frameborder="0" allowfullscreen></iframe>
+	      <li>Video 4 - Simulink Example</li>
+	      <iframe width="560" height="315" src="http://www.youtube-nocookie.com/embed/Pv5qIrgC4GE" frameborder="0" allowfullscreen></iframe>
+	    </ol>-->
+          </div>
+        </section>
+        
+        <!-- dReach
+        ================================================== -->
+        <section id="dreach">
+          <div class="row">
+            <div class="page-header">
+              <h1>dReach</h1>
+            </div>
+            <p> 
+                <h3>Inputs</h3>
+                
+               <textarea cols="25" rows="7"></textarea> 
+        <br />
+         <h3>Goals</h3>
+                
+               <textarea cols="25" rows="7"></textarea> 
+        <br />
+        <input type="submit" value="Solve" />
+
+           </p>
+          </div>
+        </section>
+	        <!-- Publication                                                                                                                                                  
+        ================================================== -->
+        <section id="publication">
+          <div class="row">
+            <div class="page-header">
+              <h1>Publications</h1>
+            </div>
+            
+          </div>
+        </section> 
+
+                <!-- Awards                                                                                                                                                     
+        ================================================== -->
+       <!-- <section id="award">
+          <div class="row">
+            <div class="page-header">
+              <h1>Awards</h1>
+            </div>
+            <p>MLE+ has received the Best Demo Award at the 4th ACM Workshop On Embedded Sensing Systems For Energy-Efficiency In Buildings (Toronto, Canada 2012). You can view details about the conference at the following link</p>
+
+
+            <p><a class="lead" href="http://www.buildsys.org/2012/">Best Demo Award for MLE+</a></p>
+
+          </div>
+        </section> -->
+
+	  <!-- Contact us                                                                                                                                                     
+        ================================================== -->
+        <section id="aboutus">
+          <div class="row">
+            <div class="page-header">
+              <h1>About Us</h1>
+            </div>
+      
+	    <h2>Members</h2>
+	    <ol>
+	      <li>Matthew O’Kelly</li>
+        <li>Houssam Abbas</li>
+        <li>Aditya Pinapala</li>
+	      <li>Rahul Mangharam</li>
+	    </ol>
+	     
+	    </ol>
+          </div>
+        </section>
+                                
+	  <!-- Contact us                                                                                                                                                     
+        ================================================== -->
+        <section id="contact">
+          <div class="row">
+            <div class="page-header">
+              <h1>Contact Us</h1>
+            </div>
+
+          </div>
+        </section>
+
+	  <!-- End Last Section
+        ================================================== -->
+
+      </div>
+    </div>
+  </div>
+
+
+
+    <!-- Footer
+    ================================================== -->
+    <footer class="footer">
+      <div class="container">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>Developed by <a href="http://mlab.seas.upenn.edu" target="_blank">mLab</a> at the <a href="http://www.upenn.edu" target="_blank">University of Pennsylvania</a>.
+      </div>
+    </footer>
+
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    <!--<script src="assets/js/jquery.js"></script>-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="assets/js/jquery.js"><\/script>')</script>
+    <script>
+      $(document).ready(function(){
+        $('.carousel').carousel({
+          interval: 6000
+        });
+      });
+    </script>  
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+    <script src="assets/js/bootstrap-transition.js"></script>
+    <script src="assets/js/bootstrap-alert.js"></script>
+    <script src="assets/js/bootstrap-modal.js"></script>
+    <script src="assets/js/bootstrap-dropdown.js"></script>
+    <script src="assets/js/bootstrap-scrollspy.js"></script>
+    <script src="assets/js/bootstrap-tab.js"></script>
+    <script src="assets/js/bootstrap-tooltip.js"></script>
+    <script src="assets/js/bootstrap-popover.js"></script>
+    <script src="assets/js/bootstrap-button.js"></script>
+    <script src="assets/js/bootstrap-collapse.js"></script>
+    <script src="assets/js/bootstrap-carousel.js"></script>
+    <script src="assets/js/bootstrap-typeahead.js"></script>
+    <script src="assets/js/bootstrap-affix.js"></script>
+    <script src="assets/js/application.js"></script>
+    <script src="assets/js/custom.js"></script>
+
+  </body>
+</html>

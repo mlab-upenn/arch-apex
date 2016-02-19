@@ -1,0 +1,391 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML; 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<title>PHP Click Counter - README</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* Style sheet and XHTML code
+Author: Mauricio Samy Silva http://www.maujor.com/ A Web Standard evangelist site
+City: Rio de Janeiro - Brazil
+Contact: maujorcss[at]maujor[dot]com
+Date: 2006-05-11
+*/
+body {
+        margin:5px 0;
+        padding:0;
+        background:#eee;
+        color: black;
+        font : 68.8%/1.5 Verdana, Geneva, Arial, Helvetica, sans-serif;
+        text-align:center;
+        }
+#wrapper {
+        width:700px;
+        background:#fff;
+        margin:0 auto;
+        text-align:left;
+        border:1px solid #ccc;
+        padding:10px 20px;
+        }
+h1 {
+        font-size:1.5em;
+        }
+h2 {
+        font-size:1.2em;
+        border-top:1px solid #999;
+        padding-top:1.8em;
+        }
+h3 {
+        font-size:1.0em;
+        }
+span.dest { color:#f00;}
+span.tip { color:#008000; font-weight:bold;}
+p {
+        color : black;
+        font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+        font-size: 1.0em;
+        }
+address {
+        font-weight:bold;
+        font-style:normal;
+        }
+ul.nobullets {
+        margin:0 0 1.0em;
+        padding:0;
+        list-style:none;
+        }
+ol li {margin-bottom:1.0em;}
+samp, code {
+        font-size:1.3em;
+        font-weight:bold;
+        }
+a:hover {
+        color : red;
+        background:#ccc;
+        text-decoration : none;
+        }
+table#installation {
+        border-collapse:collapse;
+        margin: 5px 15px 10px -25px;
+        border: 2px solid #999;
+        }
+table#installation thead {
+        text-align:center;
+        text-transform:uppercase;
+        }
+table#installation tr td, table#installation tr th {
+        padding: 2px 5px;
+        border: 1px solid #ccc;
+        }
+table#installation tr th {
+        border-bottom-width:2px;
+        border-bottom-color:#999;
+        }
+
+table#installation tr td var {
+        font-weight:bold;
+        font-style:normal;
+        }
+table#installation tr.odd {
+        background: #fafafa;
+        }
+
+
+</style>
+</head>
+<body>
+<div id="wrapper">
+<div id="main">
+<h1><span class="dest">CCount</span><br />
+PHP Click Counter</h1>
+
+<ul class="nobullets">
+<li>PHP Click Counter (CCount)</li>
+<li>Version: 1.2 from 29th October 2007</li>
+<li>Author: Klemen Stirn</li>
+<li><a href="http://www.phpjunkyard.com" target="_blank">PHPJunkyard.com - Free PHP scripts</a></li>
+<li><a href="http://www.phpjunkyard.com/php-click-counter.php" target="_blank">PHP Click Counter</a></li>
+<li><a href="http://developers.phpjunkyard.com/" target="_blank">Support and developers forum</a></li>
+</ul>
+
+<p><b>PLEASE NOTE:</b> I <span class="dest">cannot</span> provide free installation support for this free script! Please contact me ONLY about possible bug reports, suggestions or comments! Thank you!</p>
+
+<h2>INDEX</h2>
+
+<ul class="nobullets">
+    <li><a href="#copy">Copyright notice and license</a></li>
+    <li><a href="#desc">Description &amp; requirements</a></li>
+    <li><a href="#install">Installation</a></li>
+    <li><a href="#upgrade">Upgrading from old versions</a></li>
+    <li><a href="#display">Displaying number of clicks on a link</a></li>
+    <li><a href="#help">HELP and Troubleshooting</a></li>
+    <li><a href="#other">Newsletter, rating this script and other</a></li>
+</ul>
+
+<h2 id="copy">COPYRIGHT NOTICE</h2>
+
+<p>Copyright 2004-2007 Klemen Stirn. All Rights Reserved.</p>
+<p>The CCount may be used and modified free of charge by anyone AS LONG AS COPYRIGHT NOTICES AND ALL THE COMMENTS REMAIN INTACT. By using this code you agree to indemnify Klemen Stirn from any liability that might arise from it's use.</p>
+<p><b>Selling the code for this program, in part or full, without prior written consent is expressly forbidden.</b></p>
+<p><b>Obtain permission before redistributing this software over the Internet or in any other medium.</b> In all cases copyright and header must remain intact. This Copyright is in full effect in any country that has International Trade Agreements with the United States of America or with the European Union.</p>
+
+<p><b>Removing copyright notice (&quot;Powered by&quot; statement)</b><br />
+Removing any of the copyright notices without purchasing a license is <b>illegal</b>! To remove PHPJunkyard copyright notice you must purchase a license for this script. For more information on how to obtain a license please visit the site below:<br />
+<a href="http://www.phpjunkyard.com/copyright-removal.php" target="_blank">http://www.phpjunkyard.com/copyright-removal.php</a></p>
+
+<h2 id="desc">DESCRIPTION</h2>
+
+<p>CCount is a PHP click counter. With it's help you can count clicks on any link
+on your website. A great tool if you want to know how many times a link has been
+clicked, a file downloaded or similar. You can also hide your affiliate links
+with PHP click counter. As long as it's a link - CCount can count clicks on it!</p>
+
+<p><b>Changes in 1.2</b><br />
+- links can now be edited<br />
+- added file locking to minimize the chance of database getting corrupted<br />
+- can count unique clicks now<br />
+- re-written parts of code for efficiency<br />
+- other minor changes</p>
+
+<h2>REQUIREMENTS</h2>
+
+<ul>
+    <li>UNIX, Windows, FreeBSD server (or other with working PHP/MySQL)</li>
+    <li>PHP 4.3 or never</li>
+    <li>FTP access and a FTP program</li>
+</ul>
+
+<h2 id="install">&raquo; Installation</h2>
+
+<p style="font-weight:bold"><span class="dest">Please take 5 minutes time and read installation instructions carefully and completely! This will ensure a proper and easy installation.</span></p>
+
+<p style="font-weight:bold"><span class="dest">If you have problems/questions see the &quot;Troubleshooting and HELP&quot; section further down.</span></p>
+
+<ol>
+<li>Open file <b>settings.php</b> in your favorite <b>PLAIN TEXT</b> editor (like Notepad or Wordpad on Windows systems, DO NOT use MS Word or similar editor), scroll down to where it says "SETUP YOUR COUNTER" and set these variables:<br /><br />
+<table id="installation" summary="This is a simple two columns table - the first column names a variable and in second one has a descripton and the settings for the varible">
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description/Setup</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td nowrap="nowrap"><var>$settings['apass']</var></td>
+<td>Change the default password <b>admin</b> to the password you will use to login
+to the Admin panel. Use only letters a-Z, A-Z and digits 0-9.<br /><br />
+<span class="tip">TIP:</span> For security reasons choose a unique password and
+not a password you use to access other parts of your website (like FTP, control panel, e-mail, ...).</td>
+</tr>
+<tr>
+<td nowrap="nowrap"><var>$settings['click_url']</var></td>
+<td>Set this variable to the URL of <b>click.php</b>
+file when uploaded to your server, for example:<br />http://www.yourdomain.com/ccount/click.php</td>
+</tr>
+<tr class="odd">
+<td><var>$settings['count_unique']</var></td>
+<td>Enable counting clicks hits only. For more information read
+<b>Counting UNIQUE clicks</b> below.</td>
+</tr>
+<tr>
+<td nowrap="nowrap"><var>$settings['unique_hours']</var></td>
+<td>Number of hours a click is considered unique. For more information
+read <b>Counting UNIQUE clicks</b> below.</td>
+</tr>
+</tbody>
+</table>
+<p><span class="tip">TIP:</span> There are few optional advanced settings in the settings.php file,
+don't change any of them unless you understand what they do.</p>
+</li>
+<li>
+<p>Save and close the settings.php file.</p>
+</li>
+<li>
+<p>FTP to the public folder of your server (where the rest of your website is;
+usually called &quot;public_html&quot;, &quot;www&quot; or &quot;site&quot;) and create
+a folder where you will install CCount (for example named &quot;ccount&quot;).<br />
+Example: /public_html/ccount<br />
+Corresponding URL: http://www.yourdomain.com/ccount</p>
+<p><span class="tip">TIP:</span> If you don't know how to FTP or CHMOD files read my simple
+<a href="http://www.phpjunkyard.com/ftp-chmod-tutorial.php" target="_blank">FTP and CHMOD tutorial</a></p>
+</li>
+<li>
+<p>Upload all CCount files to this folder. Images (delete.gif, edit.gif, line.gif and reset.gif) must be transferred in BINARY mode, all other files in ASCII mode (refer to your FTP client instructions for details on how to set transfer mode properly).</p>
+</li>
+<li>
+<p>Make sure that the PHP scripts have permission to write to files <b>clicks.txt</b> and
+<b>ids.txt</b>. On Unix (Linux) servers CHMOD these files to <b>666</b> (rw-rw-rw-).</p>
+</li>
+</ol>
+
+<p>That's it, your CCount should work now! In your browser open
+URL where you have installed CCount, for example:<br />
+http://www.yourdomain.com/ccount</p></p>
+
+<p>Type in the admin password you set in settings.php, click Enter admin panel and voila,
+you are in the Admin panel! Things should be easy from now on. Use the <b>Add a link</b>
+form to add links you wish to count clicks on and follow instructions.</p>
+
+<p>Got an error message or can'tlogin? A few solutions can be found below under <a href="#help">HELP and Troubleshooting</a>.</p>
+
+<p>&raquo; <b>Using PHP Click Counter</b></p>
+
+<p>Not sure how to use CCount to count click? Here is a sample setup:</p>
+
+<ol>
+<li>You want to count how many times the link to Yahoo.com has been clicked
+from your website. You have the link pointing to http://www.yahoo.com
+and this is the HTML code on your website:<br />
+&lt;a href=&quot;http://www.yahoo.com&quot;&gt;Go to Yahoo!&lt;/a&gt;</li>
+<li>Login into the CCount Admin panel. Open<br />
+http://www.yourdomain.com/ccount<br />
+and enter your admin password.</li>
+<li>Find the form titled <b>Add a link</b>. In the <b>Link URL:</b> enter
+the link you want to count clicks on. In this example you would enter<br />
+http://www.yahoo.com<br /><br />
+Optionally you can also choose a name for your link (for example <b>Link to Yahoo from homepage</b>)
+and the number you want to start counting from (if you want to start counting from
+100 enter 100 in the box).</li>
+<li>Click the <b>Add link</b> button and the link will be added to CCount.<br /><br />
+You will be given a link ending with <b>click.php?id=ID</b> where <b>ID</b> is
+a number, for example:<br />
+http://www.yourdomain.com/ccount/click.php?id=<b>1</b><br /><br />
+This is called a <b>tracking link</b>.</li>
+<li>Now instead of linking directly to the link you
+are counting clicks on, you need
+to link to your tracking link instead! In our example instead of
+linking directly to http://www.yahoo.com, you must link to<br />
+http://www.yourdomain.com/ccount/click.php?id=1<br /><br />
+The HTML code you would use for your link is for example<br />
+&lt;a href=&quot;http://www.yourdomain.com/ccount/click.php?id=1&quot;&gt;Go to Yahoo!&lt;/a&gt;<br /><br />
+When someone clicks on the tracking link CCount will count click on the link
+and then redirect your visitor to http://www.yahoo.com
+</li>
+</ol>
+
+<p>&raquo; <b>Counting UNIQUE hits</b></p>
+
+<p>If you wish to count unique clicks only, then set <b>$settings['count_unique']</b>
+to <b>1</b> in the settings.php file. Doing so CCount will only count clicks
+considered unique.</p>
+
+<p>Unique clicks are tracked with the help of cookies. Number of hours a click
+is considered unique can be adjusted by modifying value for <b>$settings['count_unique']</b>
+in the settings.php file. A value of 24 means only one click from the same browser
+will count as unique within a 24-hour period.</p>
+
+<h2 id="upgrade">&raquo; Upgrading from CCount version 1.0 and 1.1</h2>
+
+<p style="font-weight:bold"><span class="dest">Please take 5 minutes time and read upgrade instructions carefully and completely! This will ensure a proper and easy upgrade.</span></p>
+
+<ol>
+<li><b>backup</b> all existing CCount files!</li>
+<li>Edit the new settings.php file</li>
+<li>Upload all CCount files to your server <b>except</b> files clicks.txt and ids.txt!
+Do NOT upload these two files, leave the old ones already on your server!</li>
+</ol>
+
+<p>That's it, you are ready to go! Your old links and counts will remain intact.</p>
+
+<h2 id="display">&raquo; Displaying number of clicks on a link</h2>
+
+<p>CCount fallows you to display the number of clicks on a link on your website.
+To display number of clicks on your web page follow these two steps:</p>
+
+<p><b>1.</b> Add this code in your HTML document HEAD (paste it somewhere between &lt;head&gt;
+and &lt;/head&gt; HTML tags):</p>
+
+<p><b>&lt;script language=&quot;Javascript&quot;
+src=&quot;http://www.domain.com/ccount/display.php&quot;&gt;<br />
+&lt;!--<br />
+//--&gt;<br />
+&lt;/script&gt;</b></p>
+
+<p>CHANGE http://www.domain.com/ccount/display.php to the URL of display.php on your server!</p>
+
+<p><b>2.</b> Add this code where you want the number of clicks to appear:</p>
+
+<p><b>&lt;script language=&quot;Javascript&quot;&gt;ccount_display('LINK_ID')&lt;/script&gt;</b></p>
+
+<p>REPLACE LINK_ID with the ID number of the link you want to display the count for
+(IDs can be found when you login to CCount admin panel)! To display number of clicks
+on the link with ID 13 you would use this code:</p>
+
+<p>&lt;script language=&quot;Javascript&quot;&gt;ccount_display('<b>13</b>')&lt;/script&gt;</p>
+
+<p>You may add any HTML tags around this code to format the count number. This
+code for example:<br /><br />
+This link has been clicked &lt;font color=&quot;#FF0000&quot;&gt;&lt;script
+language=&quot;Javascript&quot;&gt;ccount_display('9')&lt;/script&gt;&lt;/font&gt;
+times<br /><br />
+would produce such output:<br /><br />
+This link has been clicked <font color="#FF0000">478</font> times</p>
+
+<p>If you get an <b>undefined</b> error instead of a number please double-check the ID number you entered in the code above!</p>
+
+<h2 id="help">&raquo; HELP and Troubleshooting</h2>
+
+<h3>1. What is CHMOD and FTP?</h3>
+
+<p>I have prepared a simple <a href="http://www.phpjunkyard.com/ftp-chmod-tutorial.php" target="_blank">FTP
+and CHMOD tutorial</a> which will help you FTP files to your server and set correct CHMOD settings.</p>
+
+<h3>2. I get an ERROR saying &quot;Can't write to the log file, please make sure this file exists and is CHMOD to 666 (rw-rw-rw-)!&quot;</h3>
+
+<p>PHP script doesn't have permission to write to your file(s). Make sure PHP scripts have permission
+to write to clicks.txt and ids.txt. On Unix (Linux) servers CHMOD these files to <b>666</b> (rw-rw-rw-).
+If you are not sure how, see my <a href="http://www.phpjunkyard.com/ftp-chmod-tutorial.php" target="_blank">FTP
+and CHMOD tutorial</a>.
+
+<h3>3. I get an ERROR saying &quot;This ID doesn't exist!&quot; or &quot;Invalid ID, numbers (0-9) only!&quot;</h3>
+
+<p>Make sure you added the link inside the Admin panel (see <b>Using CCount</b> above) and that you are using the correct
+link ID number.</p>
+
+<h3>4. How can I show my visitors how many times a link has been clicked?</h3>
+
+<p>Read the section <b>Displaying number of clicks on a link</b>.</p>
+
+<h3>5. Displaying click count on my website doesn't work! Why?</h3>
+
+<p>Read the section <b>Displaying number of clicks on a link</b> again.</p>
+
+<p>Some FREE hosts automatically add code to your web pages. This code may break
+Javascript code generated by display.php file. Solution? I'm afraid you will
+need to find a better host, probably <a href="http://www.phpjunkyard.com/hosting.php"
+target="_blank">paid php hosting</a>.</p>
+
+
+<p>&nbsp;</p>
+
+<p>Since these scripts are free no support is guaranteed. If you can't get the script to work please go
+through this readme file again carefully and repeat the installation step-by-step (also delete old
+files and folders from the server). Also please feel free to post any questions or problems you might have
+in <a href="http://developers.phpjunkyard.com">PHPJunkyard forum</a>!</p>
+
+<h2 id="other">&raquo; Stay updated!</h2>
+
+<p>Join my FREE newsletter and you will be notified about new scripts, new versions of the existing scripts and other important news from PHPJunkYard.<br />
+<a href="http://www.phpjunkyard.com/newsletter.php" target="_blank">Click here for more info</a></p>
+
+<h2>&raquo; Please rate this script</h2>
+
+<p>If you like this script please rate it or even write a review at:</p>
+
+<p><a href="http://php.resourceindex.com/rate?05216" target="_new">Rate this Script @ The PHP Resource Index</a></p>
+
+<p><a href="http://www.hotscripts.com/Detailed/36872.html" target="_blank">Rate this Script @ Hot Scripts</a></p>
+
+<h2>&raquo; What else?</h2>
+
+<p>That's it! If you use PHPJunkYard free scripts or any portion of their code  please place a link to PHPJunkYard.com on your website. I won't sue you if you don't, but I believe it is a fair trade for a free script/code. Think about it. You can find link suggestions <a href="http://www.phpjunkyard.com/link2us.php">here</a>.</p>
+
+<p>Best regards,</p>
+<address>Klemen Stirn<br />
+PHP JunkYard<br />
+<a href="http://www.phpjunkyard.com">http://www.PHPJunkYard.com</a></address>
+
+</div>
+</div>
+</body>
+</html>

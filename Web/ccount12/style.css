@@ -1,0 +1,131 @@
+body, td, p {
+	background-color : #FFFFFF;
+	color : #000000;
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 11px;
+}
+
+td.head {
+	background-color : #336699;
+	color : #FFFFFF;
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	font-weight : bold;
+}
+
+td.glava {
+	background-color : #336699;
+	color : #FFFFFF;
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 11px;
+}
+
+td.copyright {
+	background-color : #336699;
+	color : #FFFFFF;
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 9px;
+}
+
+td.vmes {
+BORDER-RIGHT: #336699 1px solid;
+BORDER-TOP: #336699 1px solid; 
+background-color: #FFFFFF; 
+BORDER-LEFT: #336699 1px solid; 
+BORDER-BOTTOM: #336699 1px solid
+}
+
+td.dol {
+BORDER-RIGHT: #336699 2px solid;
+BORDER-TOP: #336699 2px solid; 
+background-color: #FFFFFF; 
+BORDER-LEFT: #336699 2px solid; 
+BORDER-BOTTOM: #336699 2px solid;
+}
+
+td.sec{
+	background-color:#FFFFFF;
+}
+
+a {
+	color : blue;
+	text-decoration : underline;
+}
+
+a.copy {
+	color : White;
+	text-decoration : underline;
+}
+
+a.link {
+	font-size : 10px;
+}
+
+a:hover {
+	color : #FF0000;
+	text-decoration : none;
+}
+
+a.copy:hover {
+	color : yellow;
+	text-decoration : none;
+}
+
+font.header {
+	color : #FFFFFF;
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	font-weight : bold;
+}
+
+font.notice {
+	color: #FF0000;
+}
+
+hr {
+	color : #8080FF;
+	height: 1pt;
+}
+
+p.head {
+	color : #000000;
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 14px;
+	font-weight : bold;
+}
+
+input {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#000000;
+	border-top:1px solid #1162B6;
+	border-left:1px solid #1162B6;
+	border-right:1px solid #1162B6;
+	border-bottom:1px solid #1162B6;
+	background:#FFFFFF;
+}
+
+td.first {
+	background-color : #FFFFFF;
+	color : #000000;
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+}
+
+td.second {
+	background-color : #F4F4F4;
+	color : #000000;
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+}
+
+span.tip {
+	color : Green;
+	font-size : 11px;
+	font-weight: bold;
+} 
+
+img.line {
+	border: 1px solid #009900;
+	vertical-align: text-bottom;
+}

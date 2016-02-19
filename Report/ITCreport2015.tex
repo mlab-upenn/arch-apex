@@ -12,6 +12,7 @@
 \usepackage{algpseudocode}
 \usepackage{acronym}
 \newcommand{\quotes}[1]{``#1''}
+\usepackage{csquotes}
 
 
 
@@ -41,13 +42,18 @@
 \input{background}
 
 \section{Contributions} 
-
-\part{Modeling Autonomous Vehicles}
+\pagebreak
+\part{Vehicle Modeling}
 \section{Autonomous Vehicle Software Architecture}
+\input{architecture}
+\input{planning}
 
-\part{Case Studies}
+\pagebreak
+\part{Tree Based Verification}
 \section{Case Study 1: SAE 2016}
 
+\pagebreak
+\part{Composable Hybrid Agents}
 \section{Case Study 2: IROS 2016}
 
 \part{Implementation}
@@ -55,7 +61,11 @@
 
 \section{Simulation and GUI}
 
+\pagebreak
+\part{Conclusions}
+\input{future}
 
+\pagebreak
 \bibliographystyle{plain}
 \bibliography{mok}
  

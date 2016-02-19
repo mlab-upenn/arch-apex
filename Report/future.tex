@@ -1,0 +1,31 @@
+ \subsection{Future Work: verification, learning, ethics, and control}
+ 
+ %In the literature on robot ethics, it remains arguable whether artificial agents without free
+ %will can truly exhibit moral behavior [1]. However, it seems certain that other road users
+ %and society will interpret the actions of automated vehicles and the priorities placed by their
+ %programmers through an ethical lens. Whether in a court of law or the court of public opinion,
+ %the control algorithms that determine the actions of automated vehicles will be subject
+ %to close scrutiny after the fact if they result in injury or damage. In a less dramatic, if no
+ %less important, manner, the way these vehicles move through the social interactions that
+ %define traffic on a daily basis will strongly influence their societal acceptance. This places
+ %a considerable responsibility on the programmers of automated vehicles to ensure their
+ %control algorithms collectively produce actions that are legally and ethically acceptable to
+ %humans.
+ %\begin{itemize}
+ %	\item Trolley problem
+ %	\begin{itemize}
+ %		\item Level of semantic detail and embellishment added to such scenarios is unrealistic.
+ %		\item The first vehicles to market will simply be programmed with a concept of forward safety.
+ %		\item No manufacturer will ever program an autonomous vehicle to swerve into another vehicle. The pretense of such problems is ridiculous.
+ %		\item Trolley problem does not have a correct solution, instead we should be asking how can we prove that \emph{trolley problems cannot occur based on decisions made by an autonomous agent}
+ %	\end{itemize}
+ %\end{itemize}
+ 
+ The likely arrival of learned behaviors and the accompanying cost functions which allow the discrimination between multiple feasible strategies will necessitate careful consideration regarding the quantification of desireable robot behaviors. It is easy to personify the \emph{software agent} which operates an AV; naturally, this leads to the consideration of such an agent's ethical duties. It is not clear whether such software can truly exhibit ethical behavior or rather simply mimic the instructions of the designer. Nevertheless, \quotes{it seems certain that other road users and society will interpret the actions of automated vehicles and the priorities placed by their programmers through an ethical lens} \cite{maurer2015autonomes}. In order to improve the safety, efficacy, and percieved morals of AVs we propose 3 areas of promising future research: 
+ \begin{itemize}
+ 	\item Automatic verification of learned behaviors and cost functions
+ 	\item Hierarchical property satisfaction and instantiation of temporal logic constraints in a model predictive control framework
+ 	\item Online verification of behavioral plans \cite{wei2014behavioral} over a range of 5-10 seconds
+ \end{itemize}
+ 
+ We have already argued that verification of learned behaviors and cost functions is necessary; we propose that such activities should be fully \emph{automated} in manner similar to static verification of source code. Before an update is released it will be subjected to an ever increasing battery of common verification scenarios. Secondly, we intuit that describing vehicle actions as ethical implies that there exists a ranking function over potential behaviors; if vehicle specifications are described hierarchically we can actually dictate and examine the ethics of a particular AV. For example, it may be desirable that only in a near crash situation the AV disregards the speed limit and lane keeping behaviors in order to avoid an accident. Finally, we propose that such \emph{offline} verification techniques in APEX be reimagined and refactored for short-horizon online verification of all potential vehicle actions. It is likely that initial forays into autonomy may require handoffs between human and machine. Studies show \cite{blanco2013human} that a safe handoff requires 5-8 seconds of preparation. Thus, online verification techniques may be used to discover potential system failures and provide fair warning to the driver. 

@@ -31,6 +31,7 @@ global sx_0
 global sy_0
 global psi_0
 global v_d
+global delta
 
 %% Controller
 l = sqrt((waypointx - sx_0)*(waypointx - sx_0) + (waypointy - sy_0)*(waypointy - sy_0));

@@ -16,7 +16,7 @@
 \contentsline {part}{III\hspace {1em}Tree Based Verification}{19}
 \contentsline {section}{\numberline {6}Case Study 1: SAE 2016}{19}
 \contentsline {part}{IV\hspace {1em}Composable Hybrid Agents}{20}
-\contentsline {section}{\numberline {7}Case Study 2: IROS 2016}{20}
+\contentsline {section}{\numberline {7}Case Study 2}{20}
 \contentsline {part}{V\hspace {1em}Implementation}{20}
 \contentsline {section}{\numberline {8}APEX Tool}{20}
 \contentsline {section}{\numberline {9}Simulation and GUI}{20}

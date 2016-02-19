@@ -33,7 +33,7 @@ global psi_0
 global v_d
 global delta
 
-%% Controller
+%% Controller as defined by J. Snider
 l = sqrt((waypointx - sx_0)*(waypointx - sx_0) + (waypointy - sy_0)*(waypointy - sy_0));
 % Angle between robot heading and the line connecting robot and the carrot point
 slope = atan2(waypointy-sy_0, waypointx-sx_0);

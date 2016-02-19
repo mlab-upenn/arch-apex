@@ -1,3 +1,4 @@
+ \subsection{Software agents are now drivers...}
 The NHSTA describes Level 4 autonomous vehicles as designed:
 \begin{displayquote}
 	\emph{To perform all safety-critical driving functions and monitor roadway conditions for an entire trip. Such a design anticipates that the driver will provide destination or navigation input, but is not expected to be available for control at any time during the trip. This includes both occupied and unoccupied vehicles. By design, safe operation rests solely on the automated vehicle system.} 
@@ -10,13 +11,11 @@ In a letter to \emph{Google Inc.} regarding their Level 4 autonomous vehicles, t
 
 Given this interpretation of the latest AV technology, and the ever-growing gap between the capabilities of current testing frameworks and regulations several pressing questions \emph{must} be answered:
 \begin{itemize}
-	\item The NHTSA says AV software is considered a driver. How does one bound the risk posed to society by an autonomous software agent?
-	\item A driver's license is a set of tests, we attempt to generalize human behavior based on tests. AV's don't necessarily fail in predictable ways, tests cover an infitesimal portion of the state space. How do we gain confidence that algorithms are sound, free of bugs, or even ethical?
+	\item The NHTSA states AV software is considered a driver. How does one bound the risk posed to society by an autonomous software agent?
+	\item A driver's license is a set of tests, we attempt to generalize human behavior based on tests. AV's don't necessarily fail in predictable ways. Tests cover an infinitesimal portion of the state space. How do we gain confidence that algorithms are sound, free of bugs, or even ethical?
 \end{itemize}
 
 Our perspective encompasses an integrated approach that captures the manifestation of errors in the physical world. At its heart is the use of formal models of system and precise mathematical specifications of desired behavior. Specifically in APEX, we are interested in developing the appropriate formal models, a set of specifications, and a battery of testable scenarios. As part of this work we must investigate how such methods scale, or fail to scale, and provide new solutions and interfaces to the underlying tools. 
-
- \section{Verification of Autonomous Vehicle Planning}
  
  \subsection{How do you give a self-driving car a driver's license?}
  Each year there are an average of 1.24 million traffic fatalities around the world \cite{Waldrop2015}. Estimates indicate that more than 90 percent of all accidents are due to driver error \cite{Waldrop2015}. Competent autonomous vehicles (AVs) could drastically reduce the occurrence of such incidents, but a major question first needs be answered:
@@ -45,8 +44,8 @@ Our perspective encompasses an integrated approach that captures the manifestati
  In contrast to the Urban Challenge in 2007, in which only 6 teams out of an original 89 applicants were able to finish, many research labs find themselves in the position of being able to construct a convincing AV in a matter of months; such a vehicle might be relatively competent in 75 percent of the situations it faces, but the long tail of special cases beckons. In fact Sebastian Thrun, a veteran of Google's Self Driving Car project and the Urban Challenge, notes that \emph{there were many more of unusual situations than we believed in the beginning}. One possible solution to handling rare events and scenarios is to record such occurrences using consumer vehicles driving in real traffic; with each new scenario existing behavioral planners can be adjusted via a reinforcement learning scheme \cite{wei2013autonomous, Silver_2010, Waldrop2015}. Just as in the more vanilla scenarios, timely updates to controllers provided on the basis of a single example will need to be verified offline, before shipping, and without the thousands of miles of testing necessary for a typical safety feature. 
  
  \begin{figure}
- 	\includegraphics[width=\columnwidth]{figures/apex_planning.png}
- 	\caption{Autonomous vehicle}
+ 	\includegraphics[width=\columnwidth]{figures/duck.png}
+ 	\caption{New Challenges: A woman in a wheelchair chasing a duck; autonomous vehicles are driving in real traffic engineers face an extremely long tail of events for which they must provide solutions}
  \end{figure}
  
  
@@ -64,8 +63,55 @@ Our perspective encompasses an integrated approach that captures the manifestati
  \begin{itemize}
  	\item Use of realistic planning software which runs on actual vehicles.
  	\item Modular vehicle model construction which can easily be replaced when new algorithms or alternate vehicle dynamics are necessary.
- 	\item Non-conservative evaluation of safety and liveness at the level of the ego-vehicles actual spatial-temporal evolution. 
+ 	\item Non-conservative evaluation of safety at the level of the ego-vehicles actual spatial-temporal evolution. 
  \end{itemize}
  
  Thus, verification of realistic scenarios under all possible configurations over a length of 1-7 seconds is potentially feasible. Using such an approach a manufacturer, regulator, or insurer can begin to build a library of scenarios on which to test new vehicle software or updates made to the behavioral layer made through a reinforcement learner.
+ 
+ \subsection{Contributions}
+ 
+ Our main contribution is a design-time approach to \emph{formally} verifying the trajectory planning and trajectory tracking stacks of an ADAS/AV as they interact with potentially dynamic participants in a \emph{variety} of driving scenarios.
+ This approach is implemented in a software tool, APEX, and illustrated with examples of a lane change maneuver.
+ The verification approach has two characteristics:
+ \vspace{-10pt}
+ \begin{itemize}
+ 	\item It is formal: we are \emph{guaranteed} that if APEX determines a scenario to be safe, then it is safe. 
+ 	No amount of simulation can find an unsafe behavior in a scenario verified as correct by APEX.
+ 	\item It allows the use of an arbitrary trajectory planner, for example, it could be code or an abstraction. 
+ 	That is, there is no need to model the trajectory planner, which is often very complex software.
+ 	Moreover, the same trajectory planner can then be run on a real vehicle.
+ 	In the case study presented in this paper, APEX uses a trajectory planner that has been tested on  a real vehicle.	
+ \end{itemize}
+ In APEX, the verification engineer can
+ \vspace{-10pt}
+ \begin{itemize}
+ 	\item Specify the low-level dynamics of the vehicle, including the trajectory tracker. 
+ 	Unlike other approaches and existing tools the dynamics can be nonlinear. 
+ 	The default model in APEX is a 7D bicycle model.
+ 	\item Provide a motion planner that takes in a starting position and end position and returns a trajectory that links the two points.
+ 	The motion planner can be \emph{any piece of software}: there are no restrictions on it.
+ 	The default planner in APEX is a state lattice planner incorporated in ROS and tested on a real vehicle. Figure \ref{fig:ros} shows the planner GUI available as part of Autoware
+ 	\cite{kato}.
+ 	\item Specify a sequence of goal positions (or \emph{waypoints}) that the vehicle must visit, or a behavioral planner that computes these waypoints in a reactive manner.
+ 	The default behavioral planner in APEX is a simple 2-state automaton that decides whether to execute lane following or lane changing. However, we expect that designers will implement many other more complex behavioral planners.
+ 	\item Specify the uncertainty sets for the ego vehicle and the other agents in the scenario.
+ 	\item Specify the unsafe conditions to be avoided by the vehicle. 
+ 	APEX supports a rich specification language, Metric Interval Temporal Logic (MITL) for the description of unsafe behaviors \cite{alur91benefits}.
+ \end{itemize}
+ 
+ 
+ 
+ APEX will then verify, in an exhaustive fashion, that the ego vehicle can complete the scenario under the specified uncertainty, or return a specific case where it fails.
+ The engineers can then use this \emph{counter-example} in order to debug the controllers, and better understand how to avoid this failure at design-time. 
+ \begin{figure}[h]
+ 	\centering
+ 	\includegraphics[width = \textwidth]{figures/apex_planning.png}
+ 	\vspace{-10pt}
+ 	\caption{ROS APEX planning implementation GUI.}
+ 	\vspace{-10pt}
+ 	\label{fig:ros}
+ \end{figure}
+ 
+ One real-world example of an AV software bug related to plan execution was highlighted by the first ever crash between AVs at the Urban Challenge \cite{fletcher2008cornell}. At the time of the accident, participants noted that there are no known \quotes{formal methods that would allow definitive statements about the completeness or correctness of a vehicle interacting with a static environment, much less a dynamic one} \cite{urmson2008autonomous}. It is beyond the scope of this paper to review the numerous developments in verification and synthesis technology;
+ we note attempts exist to reason about the safety of autonomous vehicles in static environments via synthesis \cite{Wongpiromsarn2010}, but such methods cannot currently scale to realistic systems and are extremely conservative. In response the authors of \cite{Wongpiromsarn2010} propose a receding horizon framework, but still rely on coarse grid-based abstractions. Others have sought to verify Adaptive Cruise Control Algorithms (ACC) which severely restrict scenarios in which the car may operate (no lane changes) \cite{nilssoncorrect}. Finally, some research which eschews discretization in favor of continuous linearized dynamics focuses on moving the verification task online \cite{althoff2012}.
  

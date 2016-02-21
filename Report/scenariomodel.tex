@@ -1,0 +1,134 @@
+\section{Specification}
+Formal verification requires both a system model and a specification. This means that the project stakeholders must provide an exact definition of the desirable system properties. Furthermore, it is often the case that such properties are expressed as occurring only under certain conditions. For convenience we provide the symbols used to describe the vehicle specification in Table \ref{table:vehiclespec}.
+\begin{table}[h]
+	\centering
+	\caption{Symbols for Specifications}
+	\label{table:vehiclespec}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\multicolumn{3}{|c|}{Symbol List} \\ \hline
+		Symbol & Units & Description \\ \hline
+		$k$ & - & Search Depth \\ \hline
+		$\phi$ & - & Ego Vehicle Spec \\ \hline
+		$\xi$ & - & Environment Spec \\ \hline
+		$LC$ & Boolean & Lane Change Request \\ \hline
+		$LO$ & Boolean & Lane Occupied \\ \hline
+		$v_{ego}$ & m/s & Velocity of Ego Vehicle \\ \hline
+		$s_{x_{ego}}$ & m & Position of Ego Vehicle, x \\ \hline
+		$s_{y_{ego}}$ & m & Position of Ego Vehicle, y \\ \hline
+		$v_{limit}$ & m/s & Speed Limit \\ \hline
+		$s_{x_{ref}}$ & m & Centerline Reference, x \\ \hline
+		$s_{y_{ref}}$ & m & Centerline Reference, y \\ \hline
+		$w(s_{x_{ref}},s_{y_{ref}})$ & m & Lane Width \\ \hline
+		$B$ & m & Buffer\\ \hline
+		$r$ & m & Collision Radius \\ \hline
+		$t$ & s & Current Timestep \\ \hline
+		$t_{max}$ & s & Max Timestep \\ \hline
+		$\Box$ & - & Always \\ \hline
+		$\to$ & - & Implies \\ \hline
+		$\neg$ & - & Not \\ \hline
+		$ \wedge$ & - & And \\ \hline
+		$ \vee$ & - & Or \\ \hline
+	\end{tabular}	
+\end{table}
+\label{sec:exp specification}
+
+\pagebreak
+ An example specification follows: the ego vehicle should drive in the selected lane at the speed limit \emph{unless} a stop sign is encountered. We note that the traffic laws of a given region provide a partial, but informal definition of many of the high level specifications which the ego vehicle should adhere to. 
+
+\subsection{Ego Vehicle Specifcation}
+The specification for the ego vehicle has two components: safety properties and liveness properties. A specification for the ego vehicle in the case study follows:
+\begin{itemize}
+	\item The ego vehicle travels at a velocity less than or equal to the speed limit
+	\begin{equation}
+		\Box \left(v_{ego} \leq v_{limit}\right)
+	\end{equation}
+	\item The ego vehicle does not drive backwards
+	\begin{equation}
+		\Box \left( v_{ego} \geq 0 \right)
+	\end{equation}
+	\item The ego vehicle does not collide with any of the $n$ other objects in the environment
+	\begin{gather}
+		\Box \left( \sqrt{(s_{x_{ego}} - s_{x_{env_i}})^2 + (s_{y_{ego}}- s_{y_{env_i}})^2 }  \geq r \right) \notag \\ \forall i = 1...n 
+	\end{gather}
+	\item If a timed lane change request is invoked, the ego vehicle completes the lane change on time.
+	\begin{equation}
+		\Box \left( LC \to \left(s_{y_{ego}} > w\right) \wedge \left(t \leq t_{max}\right)\right)
+	\end{equation}
+\end{itemize}
+
+\subsection{Environment Specification}
+The other vehicles operating within a scenario present both an interesting challenge and a primary motivation for formal verification. It is clear that it is impossible to know the intentions of the agents operating such vehicles; their execution represents a significant source of non-determinism. In fact, a more complex model of such agents which includes details such as steering angle or tire friction will not enable less conservative results, for it is the control input not the plant that remains the largest unknown. Thus, we conclude that:
+{\it for verifying the autonomous agent, only the perceptible behavior of other agents is important, not their internal structure.}
+
+Still it remains clear that {\it the behavior of other agents must be part of the scenario description.} As such we present a safety case which assumes that other agents will follow a certain minimal set of driving rules. For brevity we will reference the following specification as $\xi$ in the case studies.% as specified in \cite{Althoff2014} which is a subset of the Vienna Convention on Road Traffic \cite{Europe.TransportDivision2007}:
+
+\begin{itemize}
+	\item Acceleration ceases when some maximum velocity is reached.
+	\begin{equation}
+		\Box \left( v_{env} \geq v_{max} \to a = 0 \right)
+	\end{equation}
+	\item Other agents must drive in the proper direction according to their lane.
+	\begin{equation}
+		\Box \left( v_{env} \geq 0 \right)
+	\end{equation}
+	\item The accelerations of other agents are within those rates achievable by maximum engine power
+	\begin{equation}
+		\Box \left( a_{env} \leq a_{max}\right)
+	\end{equation}
+	\item Other agents maintain their lanes unless explicitly specified not to.
+	\begin{equation}
+		\Box \left( \neg LC \to \left( y_{min} \leq s_{y_{env}} \right) \wedge \left( y_{max} \geq s_{y_{env}} \right) \right)
+	\end{equation}
+	\item Lane changes by other agents are only permitted if the alternate lane is unoccupied or unless a degenerate scenario is being modeled.
+	\begin{equation}
+		\Box \left( LO \to \neg LC \right)
+	\end{equation}
+	
+\end{itemize}
+
+\section{APEX internals and theory}
+\label{sec:apex internals}
+
+APEX maintains an internal representation of the scenario as a \emph{hybrid system}.
+The components of this hybrid system are:
+\begin{itemize}
+	\item The behavioral planners of all vehicles involved, $\Bc_1,\ldots,\Bc_m$.
+	Fig. \ref{fig:beh planner} shows the behavioral planner we used in the case study for a lane change.
+	A behavioral planner is a finite state system. 
+	We will refer to each state of a behavioral planner as a \emph{mode}.	
+	\item For every vehicle, the continuous dynamics involved in each of the modes of its behavioral planner.
+	%	These dynamics govern the evolution of the continuous state $x_i \in \Re^N$ which includes position, velocity, etc, of the vehicle.
+	In general, different modes may require different dynamics: e.g. a Collision Avoidance mode which is invoked when a collision is imminent requires more stability control than a turn at a low speed.
+	The continuous dynamics are given in terms of Ordinary Differential Equations (ODEs) $\dot{x}_i = f_i(x_i)$, 
+	where $x_i \in R^n$ is the continuous state of the $i^{th}$ agent.
+	%
+	\item For each vehicle, transition conditions between the modes of the behavioral planner $\Bc_i$ are expressed in terms of the state vector $x_i$.
+	The planner transitions between two modes $q$ and $q'$ only if a \emph{guard condition} $G_{q,q'}$ is satisfied.
+	In general, the guard condition for $\Bc_i$ is expressed as a set in the state space of \emph{all the agents}, since transitions will occur based on, for example, how close two vehicles are to each other.
+	Specifically, let $x = (x_1,\ldots,x_n)$ combine the states $x_i$ of the individual vehicles.
+	So $x \in R^{n\cdot m}$.
+	Then there's a transition between two states $q$ and $q'$ of $\Bc_i$ only if $x \in G_{qq'} \subset R^{n\cdot m}$.
+	For example, there's a LF-to-LC transition only if the two cars are closer than $10m$ and the following car is faster than the leading car.
+	In this case $G_{LF,LC} = \{x \;|\; ||x_1 - x_2|| \leq 10 \land v_2 > v_1\}$.
+\end{itemize}
+Together, these make up a hybrid system, so-called because it combines discrete dynamics in the behavioral planner with continuous dynamics in each mode.
+We will refer to the $n$ hybrid systems of the $n$ agents in the scenario as $H_1,\ldots,H_m$.
+The \emph{state of the scenario} $x$ is simply $x = (x_1,\ldots,x_n)$.
+
+APEX does not keep an internal representation of the motion planner. 
+Rather, as explained in earlier sections, APEX issues calls to the motion planner in the course of the verification, and obtains a trajectory from it.
+
+APEX also needs to maintain a description of the scenario specification.
+This specification is provided by the user and can be any formula in first-order logic over the set of modes and states of all agents. 
+See the \emph{Case Study}.% \ref{sec:specifications}.
+For example the following is a possible specification:
+\[Mode_1 = LC \to |\dot{\psi}| \leq b \]
+
+The following sections describe how APEX verifies a property of the scenario using this internal representation.
+
+\input{executionTree}
+
+\input{motionplanner}
+
+\input{verifyingeachtraj}

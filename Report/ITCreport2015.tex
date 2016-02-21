@@ -1,5 +1,4 @@
 \documentclass[11pt]{article}              % Book class in 11 points
-
 \usepackage[ruled]{algorithm}
 \usepackage{algpseudocode}
 
@@ -13,32 +12,39 @@
 \usepackage{acronym}
 \newcommand{\quotes}[1]{``#1''}
 \usepackage{csquotes}
+\usepackage{fainekos-macros}
 
 
 
-\parindent0pt  \parskip10pt             % make block paragraphs
-\raggedright                            % do not right justify
+\parindent0pt  \parskip10pt           
+\raggedright                            
 
-\title{Autonomous Vehicle Plan Execution and Verification: 2015-2016 Report}   % Supply information
+\title{Autonomous Vehicle Plan Execution and Verification: 2015-2016 Report} 
 \author{Matthew O'Kelly, Houssam Abbas, Aditya Pinapala, Rahul Mangharam \\ \large University of Pennsylvania,
-	Philadelphia, PA, U.S.A.\\}              %   for the title page. 
-\date{\today}                           %   Use current date. 
+	Philadelphia, PA, U.S.A.\\}             
+\date{\today}                        
 
-% Note that book class by default is formatted to be printed back-to-back.
-\begin{document}                        % End of preamble, start of text.
+
+\begin{document}                      
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{figure}
 	\centering
 	\includegraphics[scale=0.25]{figures/apexlogo}
 \end{figure}
-
-\maketitle                              % Print title page.
-
+\maketitle                            
 \pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section*{Executive Summary}
+\input{execsummary}
 \pagebreak
-\tableofcontents                        % Print table of contents
+\tableofcontents                        
 \pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \part{Background}
 \section{Introduction}
 \input{background} 
@@ -47,29 +53,41 @@
 \section{Autonomous Vehicle Software Architecture}
 \input{architecture}
 \input{planning}
-
 \pagebreak
-\part{Tree Based Verification}
-\section{Case Study 1: SAE 2016}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\part{Verification of Lane Change Scenario}
+\input{scenariomodel}
+\input{casestudies}
 \pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \part{Composable Hybrid Agents}
+\input{purepursuit}
 \section{Case Study 2}
-
 \pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \part{Implementation}
 \section{APEX Tool}
 \input{tool}
-
 \section{Simulation and GUI}
-
 \pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \part{Conclusions}
 \input{future}
-
 \pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \bibliographystyle{plain}
-\bibliography{mok}
+\bibliography{emsoft15,fainekos_bibrefs,mok1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
-\end{document}                          % The required last line
+\end{document}

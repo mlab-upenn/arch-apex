@@ -1,0 +1,46 @@
+\subsection{Verifying each trajectory}
+\label{sec:verif each traj}
+Once a trajectory is generated connecting $x_A \in X_A$ to the neighborhood $X_B$ of $x_B$, it remains to verify that the ego vehicle will always reach $X_B$ within a specified amount of time $T$, regardless of where it starts in $X_A$.
+To verify that the specification is satisfied, APEX builds a \emph{reachability problem}.
+This reachability problem is characterized by the following:
+\begin{itemize}
+	\item The system: in this case, the system consists of the scenario hybrid system.
+	\item The target set: this is the set that the system should reach. 
+	In this case the state of the ego vehicle $x_1$ should reach $X_B$, and there are no target sets for the other agents. 
+	\item The unsafe set: this is the set that the scenario hybrid system must \emph{not} reach at any point in time.
+	In this case, the ego vehicle must not get closer than $d_{min}$ to any other agent in the scenario.
+	\item A time bound: the target set must be reached within a certain amount of time $T$.
+\end{itemize}
+
+We call the above a bounded reachability problem. %- see Fig. \ref{fig:unsafe}.
+To solve this problem, APEX passes it to dReach \cite{KongGCC15}, a reachability analysis tool for nonlinear hybrid systems.
+dReach answers the question: is there a trajectory of the vehicle starting in $X_A$ that will violate the constraints? (e.g. will not reach the target set $X_B$ or will get too close to another vehicle).
+dReach returns one of two answers.
+If the answer dReach returns is SAFE, then it is \emph{guaranteed} that \emph{no} behavior of the ego vehicle will violate the constraints.
+It should be stressed that this is a mathematical guarantee: no amount of simulation in this case will reveal a violation, because dReach guarantees that no such violation exists.
+If dReach answers $\delta$-UNSAFE, then this means that there exists a behavior of the ego vehicle which, when perturbed by an amount $\delta >0$, violates the constraints.
+See Fig. \ref{fig:reachability}.
+The parameter $\delta$ can be set by the user.
+It suffices to choose $\delta$ small enough so $\delta$-SAT means the system is not robust since a small perturbation of size $\delta$ could cause it to violate the constraints.
+
+%\subsubsection{Hybrid Systems}
+%In this section, we define a hybrid system, a formalism for describing mixed discrete-continuous systems. The tuple $\mathcal{H}$ represents a hybrid system:
+%\begin{equation}
+%\mathcal{H} = \left[ \mathcal{X},\mathcal{Q},\mathcal{X}_{init},\mathcal{X}_{inv},\mathcal{F}(\mathcal{P}),T \right]
+%\end{equation} 
+%where $\mathcal{X}$ represents the continuous states, $\mathcal{Q}$ denotes the discrete modes, $\mathcal{X}_{init} \in \mathcal{R}_{\mathcal{X}}$ specifies the initial condition space, $\mathcal{F}(\mathcal{P})$ captures the flows parameterized by a vector $\mathcal{P} \in \mathcal{R}_{P}$, $\mathcal{X}_{inv}$ identifies invariants mapping modes to flows, and $T$ relates the transitions between modes. A measurable output $y = \phi (t;\mathcal{X}_{init})$ is a vector which defines an observable state of the system, with $\phi(t,\mathcal{X}_{init})$ describing the measurement at time $t \in [0, t_{\max}]$, having evolved from initial condition $\mathcal{X}_{init}$. 
+
+%The dReach approach utilizes the framework of $\delta$-complete decision procedures that aims to solve first-order logic formulas with arbitrary computable real  functions (\cite{gao2013satisfiability}). 
+%The dReach tool can be employed to prove safety properties of hybrid systems over finite time by identifying safe and unsafe regions of the state space and defining a corresponding $\delta$-decision problem. 
+%Following \cite{gao2013satisfiability}, we consider the $\delta$-$decision$ problem 
+%
+%\begin{equation}
+%\label{eq:deltadecision}
+%\begin{split}
+%\exists x_0 \in X_0 \wedge \exists t \in [0,t_{max}] \wedge \exists y \in \mathcal{R}_{unsafe}\\ \mbox{s.t.}
+%|x_0| \leq \delta_1 \wedge | y-\phi(t;x_0)| \leq \delta_2
+%\end{split}
+%\end{equation}
+%
+%where $\delta_i$ is a numerical error bound specified by an arbitrary rational number \cite{ko1991complexity}.
+%

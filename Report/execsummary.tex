@@ -1,0 +1,46 @@
+
+Part I: Understanding algorithms and models for AVs
+\begin{itemize}
+	\item Creation of realistic planning stack
+	\item Creation of simulation environment for planning stack
+	\item Validation of planning stack on real vehicle
+\end{itemize}
+
+Part II: Verifying scenarios involving lane changes on periodic road structures
+\begin{itemize}
+	\item Formalization of vehicle model and environment as a hybrid system
+	\item Interface between planning stack and verification instances
+	\item Proof of chaining for verified decisions
+	\item Infinite time property for periodic roads
+	\item Verification of a lane change scenario
+\end{itemize}
+
+Part III: Alternate formal representations of scenarios via geometric methods, computation modes, and differential inclusions
+\begin{itemize}
+	\item Implementation and simulation of a new planning mechanism: pure pursuit
+	\item Addition of differential inclusions to dReach language
+	\item New hybrid systems representation of AV which does not require chaining
+	\item New hybrid systems representation of traffic participant behaviors
+	\item Ongoing work to understand scalability
+\end{itemize}
+
+Part IV: Using our tools, lessons from implementations and installation
+\begin{itemize}
+	\item Understanding the limitations of dReach environment in the design process
+	\item New recommended workflow for development of AV algorithms
+\end{itemize}
+
+Part V: Conclusions and Future Work:
+\begin{itemize}
+	\item Must build simulation tools
+	\item Likely will need to find clever ways to identify portions of scenarios such that verification is scalable
+	\item Finish building bottom up components such that users can work in top down manner to specify scenarios
+\end{itemize}
+
+Key Results:\\
+\begin{itemize}
+	\item Build and Test Planning Stack
+	\item Formalize planning stack and verify lane change scenario
+	\item Understand alternative stack representations which relax requirements for verification
+	\item Tool available for download
+\end{itemize}

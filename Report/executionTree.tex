@@ -1,0 +1,59 @@
+\subsection{Execution tree and formal model}
+\label{sec:execution tree}
+Let $\Bc$ be a behavioral planner of a given vehicle.
+%(For simplicity of description we assume the other vehicles have the same behavioral planner, though in general this need not be the case).
+The formal model of the behavioral planner is a finite transition system $\Bc = (Q,q_0, \Sigma, \rightarrow)$ where $Q$ is the finite set of modes, $q_0$ is the initial mode, $\Sigma$ is a set of output labels, and $\rightarrow \subset Q\times \Sigma \times Q$ is the labeled transition relation of the system.
+We write $q \trans{\sigma}q'$ for $(q,\sigma,q') \in \trans{}$.
+Fig. \ref{fig:beh planner} shows the behavioral planner that is used by APEX by default for modeling a lane change controller.
+It can be described as $\Bc = (\{LC, LF\}, LF, R^n, \{(LF,LF), (LF,LC), (LC,LF)\})$.
+In mode LF, the vehicle's goal is to follow the current lane.
+In mode LC, the vehicle's goal is to change lanes.
+In general, a mode represents a decision by the controller, a \emph{behavior} that the vehicle should follow.
+With every transition between modes, the behavioral planner outputs a vector $x_B$ in $R^n$: this is the destination that the vehicle must reach.
+The planner transitions between modes when certain \emph{guard conditions} are satisfied.
+
+The behavioral planner advances in discrete time.
+The discrete time advances, for example, with every update of the vehicle's sensors.
+Thus $\Bc$ makes a decision on what to do everytime its information about the environment is updated.
+The planner may decide to maintain the current decision, i.e., stay in the same mode, if that mode has a self-loop.
+Mode $LF$ has a self-loop in Fig. \ref{fig:beh planner}.
+Let $\Delta t >0$ be the update period.
+Since every scenario is time-limited, and every transition takes fixed non-zero time $\Delta t$, there is a natural limit $D$ on the number of decisions, or transitions, that can be taken in any given scenario.
+
+In the first step of the verification process, APEX builds an execution tree: the root of the tree is the initial mode $q_0$, and every branch of the tree represents one possible sequence of decisions, i.e. one possible execution of $\Bc$.
+See Fig. \ref{fig:extree} for the execution tree of the behavioral planner of Fig. \ref{fig:beh planner}.
+Since the number of transitions is bounded by $D$ in a given scenario, this tree has a depth at most $D$.
+
+With the execution tree built, APEX must next verify that the sequence of decisions taken by the behavioral planner can be implemented by the low-level controllers.
+E.g., let $(LF,LF,LC)$ be a sequence of decisions of depth 3.
+In every occurrence of LF, APEX must check that the vehicle can indeed follow the lane, and in every occurrence of LC, APEX must verify that the vehicle can indeed change lanes.
+In the next section, we define what it means to `follow the lane' and 'change lanes' via the motion planner.
+%At every discrete time step, $\Bc$ either stays in LF, or transitions to LC, depending on whether the state $x$ of the scenario satisfies the guard set $G$ for the LF-to-LC transition.
+%Note that the transition of $\Bc_1$ to LC depends on the states of other cars, not just the state $x_1$ of the ego vehicle.
+%Hence, we need to consider whether $x=(x_1,\ldots,x_n)$ is in the guard set or not.
+
+%Before proceeding, we give the rest of the formal model of the scenario in APEX.
+%In addition to the mode, each vehicle is also described by its continuous state $x \in R^n$, which contains states such as position, velocity, pose, yaw rate, steering angle, etc.
+%Thus the state of the vehicle is given by the pair $(q,x) \equiv h \in Q \times R^n$. 
+%At time 0 of the scenario, the initial mode is $q_0$ and the initial state is $x(0) \in X_0 \subset R^n$.
+%When the behavioral planner is in mode $q$, the continuous state evolves according to the mode-specific ODE $\dot{x} = f_q(x)$.
+%The ODE is mode-specific since in general, depending on the current behavior of the vehicle, different dynamic forces are applied, or with different parameters.
+%E.g. stability control is activated in more aggressive maneuvers.
+
+%The decision to switch modes is made depending on the current state $x$. 
+%E.g., if two vehicles are closer than some distance, the trailing vehicle will decide to change lanes.
+%We may re-express this in terms of guard \emph{sets}:
+%the behavioral planner $\Bc_2$ of the trailing vehicle will transition $LF \trans{x_B} LC$ if their states $x_1$, $x_2$ are in the set $\{(x_1,x_2) \;|\; ||(s_{x,1},s_{y,1}) - (s_{x,2},s_{y,2})|| \leq \varepsilon \}$.
+%This behavior is formalized by the guard conditions on the transitions of the behavioral planner.
+%If we let $x_i$ in $\in R^n$ denote the state of the $i^{th}$ vehicle in the scenario, $i=1,\ldots,m$, 
+%then we define $x = (x_1,\ldots,x_m) \in R^{nm}$ to be the state of the scenario.
+%Then in the behavioral planner $\Bc_i$, the transition $q_i \trans{\sigma} q_i'$ is taken when $x \in G_{q_iq_i'} \subset R^{nm}$.
+%$ G_{q_iq_i'}$ is referred to as a guard set.
+%
+%When the behavioral planner $\Bc_i$ of the $i^{th}$ vehicle is in mode $q_i$, then $x$ is governed by 
+%$\dot{x} = f_q(x) \in R^{n\cdot m}$, where $q = (q_1,\ldots,q_m) \in Q_1 \times \ldots \times Q_m := Q$ and 
+%$f(x) = (f_{q_1}(x_1), \ldots, f_{q_m}(x_m))$.
+%We may similarly define a composite initial state for the scenario: $q_0 := (q_{0,1},\ldots,q_{0,m})$, and a composite label set $\Sigma = \Sigma_1 \times \ldots \times \Sigma_m$.
+%When $\Bc_i$ transitions $q_i \trans{\sigma_i}q_i'$, we consider that the composite system $(\Bc_1,\ldots,\Bc_m)$ transitions $q \trans{\sigma}q'$ where $q$, $q'$ and $\sigma$ are defined in the natural manner.
+%
+%The composite system $H = (Q,q_0,\Sigma,\trans{}_H,\{f_q\}_{q\in Q}, \{G_{qq'}\}_{(q,*,q') \in \trans{}})$ is a \emph{hybrid system}: it has discrete transitions in its behavioral planner, and continuous evolutions in its continuous states.

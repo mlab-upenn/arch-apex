@@ -1,0 +1,272 @@
+% Some macros for temporal logic robustness papers.
+% Some macros for temporal logic robustness papers.
+% G. Fainekos - Last update 2009.10.09
+
+% Latex editing
+\newcommand{\nocontentsline}[3]{}
+\newcommand{\tocless}[2]{\bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup}
+% Usage examples:
+%\tocless\section{hide}
+%\tocless\subsection{subhide}
+
+\usepackage{color,soul}
+\newboolean{HIGHLIGHTCHANGES}
+\setboolean{HIGHLIGHTCHANGES}{true}
+\newcommand \yhl[1]{\ifthenelse{\boolean{HIGHLIGHTCHANGES}}{\textcolor{blue}{#1}}{#1}}
+\newboolean{SHOW_WHAT_IT_WAS}
+\setboolean{SHOW_WHAT_IT_WAS}{true}
+\newcommand \shl[1]{\ifthenelse{\boolean{SHOW_WHAT_IT_WAS}}{\yhl{\sout{#1}}}{}}
+
+\newcommand{\sut}{\;|\;}
+
+% Distances
+\newcommand \GDF {\mathbf{d_h}}
+\newcommand \dhinf {\GDF^{\infty}}
+\newcommand \GDFzero {\mathbf{d_h^0}}
+\newcommand \NeighTo[1] {\mathcal{N_{#1}}}
+\newcommand \NeighFrom[1] {\mathcal{B_{#1}}}
+\newcommand \dist[1] {\mathbf{dist}_{#1}}
+\newcommand \Dist[1] {\mathbf{Dist}_{#1}}
+\newcommand \genMet {d}
+
+% Reachability
+\newcommand{\reach}{\mathcal{R}}
+\newcommand{\reacht}{\reach_t}
+\newcommand{\targetset}{\mathcal{T}}
+\newcommand{\Omapeps}{\Oc_\varepsilon}
+\newcommand{\excon}[2]{\left\langle #1, #2\right\rangle}
+
+% Number sets
+\newcommand \reals \Re
+\newcommand{\preals}{\reals_+^*}
+\newcommand{\nnreals}{\reals_+}
+\def\CoRe{\overline{\reals}}
+\newcommand{\copreals}{\overline{\preals}}
+\newcommand{\connreals}{\overline{\nnreals}}
+\newcommand{\argmin}{\text{argmin}}
+\newcommand{\argmax}{\text{argmax}}
+\newcommand{\largerof}{\sqcup}
+\newcommand{\smallerof}{\sqcap}
+
+% Systems theory
+\newcommand \Sys {\Sigma}
+\newcommand \SysFun {\Delta}
+\newcommand{\reset}{Re}
+\newcommand{\guard}{\Gamma}
+\newcommand{\spaut}{w} % state of a product automaton
+
+% Signals and their sets
+\newcommand \outSet {Y} 
+\newcommand \outPt {y}
+\newcommand \outtraj {\mathbf{\outPt}}
+\newcommand \outSpace {\mathfrak{\outSet}}
+\newcommand \hotraj \outtraj
+\newcommand \hoPt {\outPt}
+\newcommand \hoSet \outSet
+\newcommand \hoSpace {\mathfrak{Y}}
+%
+\newcommand \inpPt {u}
+\newcommand \inpSig {u}
+\newcommand \inpSet {U}
+\newcommand \inpSpace {\mathfrak{\inpSet}} 
+%
+\newcommand \hsPt {h}
+\newcommand \hsSet {H}
+\newcommand \hstraj {\mathbf{\phi}}
+\newcommand \stPt {x}
+\newcommand \stSet{X}
+\newcommand \sttraj {\mathbf{\stPt}}
+%
+\newcommand \mode \ell
+\newcommand \modetraj {\mathbf{\mode}}
+\newcommand \modeSet L
+\newcommand{\Omap}{\Pc(\genOut)^{AP}}
+\newcommand{\loc}{\mbox{loc}}
+
+% Time domains
+\newcommand \CTD {[0,T]}
+\newcommand \DTD {\{0,\ldots,J\}}
+\newcommand \HTD {\CTD \times \DTD}
+
+% Conformance
+\newcommand{\teps}{(\tau,\varepsilon)}
+\newcommand{\TJte}{(T, J, (\tau,\varepsilon))}
+\newcommand{\teconforms}{\preceq^C_{\tau,\varepsilon}}
+\newcommand{\teclose}{\approx_{\tau,\varepsilon}}
+\newcommand \staliro {\sc S-TaLiRo}
+\newcommand{\ret}{\rho}
+\newcommand \behavior {\mathcal{B}}
+\newcommand{\tikzcircle}[2][black,fill=black]{\tikz[baseline=-0.5ex]\draw[#1,radius=#2] (0,0) circle ;}
+\newcommand{\tlabel}{\fulllabel_\chi}
+\newcommand{\ulabel}{\fulllabel_u}
+\newcommand{\ulabelSet}{\labelSet_u}
+\newcommand{\tlabelSet}{\labelSet_\chi}
+\newcommand{\trans}[1]{\xrightarrow{#1}}
+\newcommand{\out}[1]{\left\langle #1\right\rangle}
+\newcommand{\funcOut}{\Pi} % a functional notation of output mapping, y = \funcOut(x)
+\newcommand{\CDtau}{\textbf{CD}_\tau(\Sys_1 , \Sys_2)}
+
+\newcommand{\proj}[2]{{\bf pr}_{#2}(#1)}
+
+% Logic
+\def\Wn{\, \Wc} % the unless temp operator
+\def\mmodels{\mathrel|\joinrel\equiv}
+\def\dle{[\![} \def\dri{]\!]} % double-brace
+\def\dla{\langle \!\langle} \def\dra{\rangle\!\rangle} % double-angles
+\def\Un{\, \Uc} % the until temp operator
+\def\rUn{\, \overline{\Uc}} % the restricted until temp operator
+\def\rRl{\overline{\Rc}} % the restricted release temp operator
+\def\lor{\vee}
+\def\land{\wedge}
+
+\newcommand{\mtl}{MTL}
+\newcommand{\mitl}{MITL}
+\newcommand{\ltl}{LTL}
+\newcommand{\modMTL}[2]{[#1]_{#2}}
+\newcommand{\always}{\square}
+\newcommand{\eventually}{\Diamond}
+\newcommand{\until}{\Uc}
+\newcommand{\release}{\Rc}
+\newcommand{\defeq}{:=}
+\def\dle{[\![} \def\dri{]\!]} % double-brace
+\newcommand \abstractor {\sqcup}
+\newcommand \bigabstractor {\bigsqcup}
+\newcommand \abstractand {\sqcap}
+\newcommand \bigabstractand {\bigsqcap}
+\newcommand \tupleof[1] { \left\langle #1 \right \rangle}
+\newcommand \formula \varphi
+\def\exmpspc{\phi} % symbol for specification used as examples globally in a paper
+\newcommand{\unsafe}{\mathcal{U}}
+\newcommand{\hunsafe}{\stSet_\unsafe}
+\newcommand{\lu}{\mode_\unsafe}
+
+% Calligraphy
+\newcommand{\Ce}{\mathbb{C}}
+\newcommand{\Be}{\mathbb{B}}
+\newcommand{\Fe}{\mathbb{F}}
+\newcommand{\Me}{\mathbb{M}}
+\newcommand{\Ne}{\mathbb{N}}
+\newcommand{\Oe}{\mathbb{O}}
+\newcommand{\Pe}{\mathbb{P}}
+\newcommand{\Qe}{\mathbb{Q}}
+\renewcommand{\Re}{\mathbb{R}}
+\newcommand{\Se}{\mathbb{S}}
+\newcommand{\Te}{\mathbb{T}}
+\newcommand{\Ze}{\mathbb{Z}}
+\newcommand{\Ve}{\mathbb{V}}
+\newcommand{\Xe}{\mathbb{X}}
+
+\newcommand{\Ac}{\mathcal{A}}
+\newcommand{\Bc}{\mathcal{B}}
+\newcommand{\Dc}{\mathcal{D}}
+\newcommand{\Fc}{\mathcal{F}}
+\newcommand{\Ec}{\mathcal{E}}
+\newcommand{\Hc}{\mathcal{H}}
+\newcommand{\Ic}{\mathcal{I}}
+\newcommand{\Jc}{\mathcal{J}}
+\newcommand{\Kc}{\mathcal{K}}
+\newcommand{\Lc}{\mathcal{L}}
+\newcommand{\Mc}{\mathcal{M}}
+\newcommand{\Nc}{\mathcal{N}}
+\newcommand{\Oc}{\mathcal{O}}
+\newcommand{\Zc}{\mathcal{Z}}
+\newcommand{\Pc}{\mathcal{P}}
+\newcommand{\Qc}{\mathcal{Q}}
+\newcommand{\Rc}{\mathcal{R}}
+\newcommand{\Sc}{\mathcal{S}}
+\newcommand{\Tc}{\mathcal{T}}
+\newcommand{\Uc}{\mathcal{U}}
+\newcommand{\Vc}{\mathcal{V}}
+\newcommand{\Wc}{\mathcal{W}}
+\newcommand{\Xc}{\mathcal{X}}
+%
+\newcommand{\Br}{\mathfrak{B}}
+\newcommand{\Fr}{\mathfrak{F}}
+%\newcommand{\Gr}{\mathfrak{G}}
+\newcommand{\Ir}{\mathfrak{I}}
+\newcommand{\Kr}{\mathfrak{K}}
+\newcommand{\Lr}{\mathfrak{L}}
+\newcommand{\Rr}{\mathfrak{R}}
+\newcommand{\Sr}{\mathfrak{S}}
+\newcommand{\Tr}{\mathfrak{T}}
+\newcommand{\Ur}{\mathfrak{U}}
+\newcommand{\Xr}{\mathfrak{X}}
+
+\newcommand{\BSig}{\Bc(R,X)}
+\newcommand{\dsig}{\sigma}
+\newcommand{\DSig}{\Fr(N,X)}
+\newcommand{\sam}{{\hat \tau}}
+\newcommand{\Sam}{\Fr^\uparrow(N,R)}
+\newcommand{\SamC}{\Fr^\uparrow_c(N,R)}
+\newcommand{\tfun}{\tau}
+\newcommand{\TFun}{\Fr^\uparrow(N,\Re_{\geq 0})}
+\newcommand{\tss}{\mu}
+\newcommand{\TSS}{\DSig \times \TFun}
+
+\newcommand{\dom}{\mathbf{dom}}
+\newcommand{\gph}{\mathbf{gph}}
+\newcommand{\nnf}{\mathbf{nnf}}
+\newcommand{\str}{\mathbf{str}_{\Delta\sam}}
+\newcommand{\dur}{\mathbf{dur}}
+
+\newcommand{\Le}{\domV_\epsilon}
+\newcommand{\Hez}{H_{\epsilon, \zeta}}
+\newcommand{\Hezi}{H_{\epsilon, \zeta^{(i)}}}
+\newcommand{\powerset}{\mathcal{P}}
+\newcommand{\domV}{\mathcal{D}}
+\newcommand{\ranV}{\mathcal{R}}
+\newcommand{\graphH}{\mathcal{G}}
+
+\newcommand{\FTS}{\Tc}
+\newcommand{\SYS}{\Sigma}
+\newcommand{\DSYS}{\SYS}
+\newcommand{\DASYS}{\mathcal{D}} % Symbol for discrete abstraction
+\newcommand{\exmpDASYS}{\DASYS} % symbol for system used as example globally in a paper
+\newcommand{\LPV}{\SYS^{\bf LPV}}
+\newcommand{\clLPV}{\overline{\SYS}^{\bf LPV}}
+\newcommand{\LTI}{\SYS^{\bf LTI}}
+\newcommand{\clLTI}{\overline{\SYS}^{\bf LTI}}
+\newcommand{\LTV}{\SYS^{\bf LTV}}
+\newcommand{\clLTV}{\overline{\SYS}^{\bf LTV}}
+\newcommand{\clDSYS}{\overline{\SYS}}
+\newcommand{\OmapSYS}{\Fr(AP,\Pc(Y))}
+
+\newcommand{\xinX}{\hat x}
+\newcommand{\pinP}{\hat p}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% danger sign
+\font\manual=manfnt
+\def\dbend{{\manual\char127}} % dangerous bend sign
+% Danger, Will Robinson!
+\def\danger{\begin{trivlist}\item[]\noindent%
+\begingroup\hangindent=3pc\hangafter=-2%\clubpenalty=10000%
+\def\par{\endgraf\endgroup}%
+\hbox to0pt{\hskip-\hangindent\dbend\hfill}\ignorespaces}
+\def\enddanger{\par\end{trivlist}}
+% Danger! Danger!
+\def\ddanger{\begin{trivlist}\item[]\noindent%
+\begingroup\hangindent=3pc\hangafter=-2%\clubpenalty=10000%
+\def\par{\endgraf\endgroup}%
+\hbox to0pt{\hskip-\hangindent\dbend\kern2pt\dbend\hfill}\ignorespaces}
+\def\endddanger{\par\end{trivlist}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{rem}{Remark}[section]
+\newtheorem{prob}{Problem}
+\newtheorem{clm}{Claim}[section]
+\newtheorem{ass}{Assumption}[section]
+\newtheorem{defn}{Definition}[section]
+\newtheorem{exmp}{Example}
+\newtheorem{scenario}{Scenario}
+
+% "box" symbols at end of proofs
+\def\IEEEQEDclosed{\mbox{\rule[0pt]{1.3ex}{1.3ex}}} % for a filled box
+% V1.6 some journals use an open box instead that will just fit around a closed one
+\def\IEEEQEDopen{{\setlength{\fboxsep}{0pt}\setlength{\fboxrule}{0.2pt}\fbox{\rule[0pt]{0pt}{1.3ex}\rule[0pt]{1.3ex}{0pt}}}}
+\def\IEEEQED{\IEEEQEDclosed} % otherwise default to closed
+% Ending examples mark
+% \newcommand{\exmend}{\hfill \ensuremath{\Box}}
+\newcommand{\exmend}{\hfill \ensuremath{\bigtriangleup }}
+

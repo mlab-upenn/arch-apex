@@ -2,58 +2,61 @@ This is BibTeX, Version 0.99d (TeX Live 2014)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: ITCreport2015.aux
 The style file: plain.bst
-Database file #1: mok.bib
-Warning--I didn't find a database entry for "kato"
-Warning--I didn't find a database entry for "alur91benefits"
-Warning--I didn't find a database entry for "Wongpiromsarn2010"
-Warning--I didn't find a database entry for "nilssoncorrect"
-Warning--I didn't find a database entry for "Gat98"
-Warning--I didn't find a database entry for "Rajamani2011"
-Warning--I didn't find a database entry for "Althoff2014"
-Warning--I didn't find a database entry for "Snider2009"
-Warning--I didn't find a database entry for "McNaughton_2011_6927"
-Warning--I didn't find a database entry for "nagy2001trajectory"
-Warning--empty journal in russell2015research
+Database file #1: emsoft15.bib
+Database file #2: fainekos_bibrefs.bib
+Database file #3: mok1.bib
+Warning--I didn't find a database entry for "weld1994first"
+Warning--I didn't find a database entry for "Iozzio2014"
+Warning--I didn't find a database entry for "maurer2015autonomes"
+Warning--I didn't find a database entry for "russell2015research"
+Warning--I didn't find a database entry for "buehler2009darpa"
+Warning--I didn't find a database entry for "wei2013autonomous"
+Warning--I didn't find a database entry for "Silver_2010"
+Warning--I didn't find a database entry for "wei2014behavioral"
+Warning--to sort, need author or key in volvo15Liability
+Warning--empty author in volvo15Liability
 Warning--empty journal in volvo15Liability
-You've used 15 entries,
+Warning--empty journal in nilssoncorrect
+Warning--empty year in nilssoncorrect
+You've used 20 entries,
             2118 wiz_defined-function locations,
-            604 strings with 7180 characters,
-and the built_in function-call counts, 6406 in all, are:
-= -- 615
-> -- 391
-< -- 7
-+ -- 159
-- -- 140
-* -- 481
-:= -- 1060
-add.period$ -- 49
-call.type$ -- 15
-change.case$ -- 108
+            638 strings with 8065 characters,
+and the built_in function-call counts, 7681 in all, are:
+= -- 734
+> -- 448
+< -- 5
++ -- 182
+- -- 158
+* -- 573
+:= -- 1282
+add.period$ -- 62
+call.type$ -- 20
+change.case$ -- 134
 chr.to.int$ -- 0
-cite$ -- 17
-duplicate$ -- 226
-empty$ -- 425
-format.name$ -- 140
-if$ -- 1325
+cite$ -- 25
+duplicate$ -- 278
+empty$ -- 532
+format.name$ -- 158
+if$ -- 1587
 int.to.chr$ -- 0
-int.to.str$ -- 15
-missing$ -- 16
-newline$ -- 78
-num.names$ -- 30
-pop$ -- 126
+int.to.str$ -- 20
+missing$ -- 20
+newline$ -- 101
+num.names$ -- 38
+pop$ -- 146
 preamble$ -- 1
-purify$ -- 96
+purify$ -- 116
 quote$ -- 0
-skip$ -- 172
+skip$ -- 205
 stack$ -- 0
-substring$ -- 343
-swap$ -- 69
-text.length$ -- 7
+substring$ -- 398
+swap$ -- 70
+text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 56
-warning$ -- 2
-while$ -- 53
-width$ -- 17
-write$ -- 167
-(There were 12 warnings)
+type$ -- 78
+warning$ -- 5
+while$ -- 62
+width$ -- 22
+write$ -- 216
+(There were 13 warnings)

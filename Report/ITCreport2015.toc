@@ -1,27 +1,40 @@
-\contentsline {part}{I\hspace {1em}Background}{5}
-\contentsline {section}{\numberline {1}Introduction}{5}
-\contentsline {subsection}{\numberline {1.1}Software agents are now drivers...}{5}
-\contentsline {subsection}{\numberline {1.2}How do you give a self-driving car a driver's license?}{6}
-\contentsline {subsection}{\numberline {1.3}New and Old Challenges}{7}
-\contentsline {subsection}{\numberline {1.4}The APEX approach}{9}
-\contentsline {subsection}{\numberline {1.5}Contributions}{10}
-\contentsline {part}{II\hspace {1em}Vehicle Modeling}{13}
-\contentsline {section}{\numberline {2}Autonomous Vehicle Software Architecture}{13}
-\contentsline {section}{\numberline {3}Building an Autonomous Vehicle Agent}{14}
-\contentsline {subsection}{\numberline {3.1}Modeling}{14}
-\contentsline {subsubsection}{\numberline {3.1.1}Ego Vehicle Model}{14}
-\contentsline {subsubsection}{\numberline {3.1.2}Vehicle Parameters}{17}
-\contentsline {subsubsection}{\numberline {3.1.3}Tracking Controller}{17}
-\contentsline {subsubsection}{\numberline {3.1.4}Planning}{18}
-\contentsline {part}{III\hspace {1em}Tree Based Verification}{22}
-\contentsline {section}{\numberline {4}Case Study 1: SAE 2016}{22}
-\contentsline {part}{IV\hspace {1em}Composable Hybrid Agents}{23}
-\contentsline {section}{\numberline {5}Case Study 2}{23}
-\contentsline {part}{V\hspace {1em}Implementation}{24}
-\contentsline {section}{\numberline {6}APEX Tool}{24}
-\contentsline {subsection}{\numberline {6.1}The APEX Approach}{24}
-\contentsline {subsection}{\numberline {6.2}Tool Input}{26}
-\contentsline {subsection}{\numberline {6.3}Tool Output}{27}
-\contentsline {section}{\numberline {7}Simulation and GUI}{27}
-\contentsline {part}{VI\hspace {1em}Conclusions}{28}
-\contentsline {subsection}{\numberline {7.1}Future Work: verification, learning, ethics, and control}{28}
+\contentsline {part}{I\hspace {1em}Background}{7}
+\contentsline {section}{\numberline {1}Introduction}{7}
+\contentsline {subsection}{\numberline {1.1}Software agents are now drivers...}{7}
+\contentsline {subsection}{\numberline {1.2}How do you give a self-driving car a driver's license?}{8}
+\contentsline {subsection}{\numberline {1.3}New and Old Challenges}{9}
+\contentsline {subsection}{\numberline {1.4}The APEX approach}{11}
+\contentsline {subsection}{\numberline {1.5}Contributions}{12}
+\contentsline {part}{II\hspace {1em}Vehicle Modeling}{15}
+\contentsline {section}{\numberline {2}Autonomous Vehicle Software Architecture}{15}
+\contentsline {section}{\numberline {3}Building an Autonomous Vehicle Agent}{16}
+\contentsline {subsection}{\numberline {3.1}Modeling}{16}
+\contentsline {subsubsection}{\numberline {3.1.1}Ego Vehicle Model}{16}
+\contentsline {subsubsection}{\numberline {3.1.2}Vehicle Parameters}{19}
+\contentsline {subsubsection}{\numberline {3.1.3}Tracking Controller}{19}
+\contentsline {subsubsection}{\numberline {3.1.4}Planning}{20}
+\contentsline {part}{III\hspace {1em}Verification of Lane Change Scenario}{24}
+\contentsline {section}{\numberline {4}Specification}{24}
+\contentsline {subsection}{\numberline {4.1}Ego Vehicle Specifcation}{25}
+\contentsline {subsection}{\numberline {4.2}Environment Specification}{26}
+\contentsline {section}{\numberline {5}APEX internals and theory}{27}
+\contentsline {subsection}{\numberline {5.1}Execution tree and formal model}{28}
+\contentsline {subsection}{\numberline {5.2}Calling the motion planner}{29}
+\contentsline {subsection}{\numberline {5.3}Verifying each trajectory}{30}
+\contentsline {section}{\numberline {6}Case Study}{31}
+\contentsline {subsection}{\numberline {6.1}An unsafe lane change scenario}{32}
+\contentsline {subsubsection}{\numberline {6.1.1}Behavioral controller}{33}
+\contentsline {subsubsection}{\numberline {6.1.2}Verification and Result}{33}
+\contentsline {subsection}{\numberline {6.2}A safe lane change scenario}{34}
+\contentsline {subsection}{\numberline {6.3}A supplier issues a specification change}{35}
+\contentsline {part}{IV\hspace {1em}Composable Hybrid Agents}{36}
+\contentsline {subsubsection}{\numberline {6.3.1}Pure Pursuit}{36}
+\contentsline {section}{\numberline {7}Case Study 2}{38}
+\contentsline {part}{V\hspace {1em}Implementation}{39}
+\contentsline {section}{\numberline {8}APEX Tool}{39}
+\contentsline {subsection}{\numberline {8.1}The APEX Approach}{39}
+\contentsline {subsection}{\numberline {8.2}Tool Input}{41}
+\contentsline {subsection}{\numberline {8.3}Tool Output}{42}
+\contentsline {section}{\numberline {9}Simulation and GUI}{42}
+\contentsline {part}{VI\hspace {1em}Conclusions}{44}
+\contentsline {subsection}{\numberline {9.1}Future Work: verification, learning, ethics, and control}{44}

@@ -1,0 +1,141 @@
+%% Read in Counterexample
+% Convert JSON to .mat
+data = loadjson('data.json');
+
+%% Read in intervals for x,y position
+% Read time intervals into new data structure
+
+% Associate time with interval position
+
+
+%% Choose a value within the interval at each time step
+
+for i=1:length(data.traces{1,1}{1,8}.values)
+% Read in first value sx:
+sx1(i)=data.traces{1,1}{1,8}.values{1,i}.enclosure(1,1);
+% Read in the second value sx:
+sx2(i)=data.traces{1,1}{1,8}.values{1,i}.enclosure(1,2);
+% Read in first value sy:
+sy1(i)=data.traces{1,1}{1,10}.values{1,i}.enclosure(1,1);
+% Read in the second value sy:
+sy2(i)=data.traces{1,1}{1,10}.values{1,i}.enclosure(1,2);
+% Read in first value Psi:
+psi1(i)=data.traces{1,1}{1,2}.values{1,i}.enclosure(1,1);
+% Read in second value Psi:
+psi2(i)=data.traces{1,1}{1,2}.values{1,i}.enclosure(1,2);
+end
+
+for i=1:length(data.traces{1,1}{1,14}.values)
+    sx_env1(i)=data.traces{1,1}{1,14}.values{1,i}.enclosure(1,1);
+    sx_env2(i)=data.traces{1,1}{1,14}.values{1,i}.enclosure(1,2);
+end
+    
+
+sx(1)=0;
+sy(1)=0;
+psi(1)=0;
+for i=2:length(sy1)
+    % Pick a value for sx
+    sx(i)=(sx2(i)-sx(i-1)).*rand(1,1) + sx(i-1);
+    % Pick a value for sy
+    sy(i)=(sy2(i)-sy(i-1)).*rand(1,1) + sy(i-1);
+    symin(i)=min(sy2(i),sy1(i));
+    symax(i)=min(sy2(i),sy(i
+    % Pick a value for Psi
+    psi(i)=(psi2(i)-psi(i-1)).*rand(1,1) + psi(i-1);
+end
+
+
+%% Animate Scenario 
+% Get current position ready to draw
+figure
+title('Trajectory of Ego Vehicle in X-Y Plane')
+xlabel('x (m)')
+ylabel('y (m)')
+pbaspect([40 7 1])
+axis([0 50 -2 10])
+
+x=[sx_env1(1)-1  sx_env1(1)+1 sx_env1(1)+1 sx_env1(1)-1];
+y=[-0.5 -0.5 +0.5 +0.5];
+direction = [0 0 1];
+origin=[sx(i) 0 0];
+obj =patch(x,y,'red');
+%rotate(obj, direction, rad2deg(psi(i)), origin); 
+drawnow
+
+% Erase previous postion
+% Draw current position 
+for i=1:length(sx)-1
+    % Update Vehicle Body
+    x=[sx(i)-1  sx(i)+1 sx(i)+1 sx(i)-1];
+    y=[sy(i)-0.5 sy(i)-0.5 sy(i)+0.5 sy(i)+0.5];
+    direction = [0 0 1];
+    origin=[sx(i) sy(i) 0];
+    obj =patch(x,y,'blue');
+    rotate(obj, direction, rad2deg(psi(i)), origin); 
+    drawnow
+    hidem(obj)
+end
+
+% Update Vehicle Body
+i=length(sx)
+    x=[sx(i)-1  sx(i)+1 sx(i)+1 sx(i)-1];
+    y=[sy(i)-0.5 sy(i)-0.5 sy(i)+0.5 sy(i)+0.5];
+    direction = [0 0 1];
+    origin=[sx(i) sy(i) 0];
+    obj =patch(x,y,'blue');
+    rotate(obj, direction, rad2deg(psi(i)), origin); 
+    drawnow
+
+%%
+for i=1:length(s1.y(5,:))
+    deltadelta=delta-delta_old;
+    
+    % Update Vehicle Body
+    x=[s1.y(5,i)-1  s1.y(5,i)+1 s1.y(5,i)+1 s1.y(5,i)-1];
+    y=[s1.y(6,i)-0.5 s1.y(6,i)-0.5 s1.y(6,i)+0.5 s1.y(6,i)+0.5];
+    direction = [0 0 1];
+    origin=[s1.y(5,i) s1.y(6,i) 0];
+    obj =patch(x,y,'red');
+    rotate(obj, direction, rad2deg(s1.y(2,i)), origin);
+    
+    % Update Left Front Wheel
+	wheel1origin = [s1.y(5,i)+0.75, s1.y(6,i)+0.4, 0];
+	wheel1x = [(s1.y(5,i)+.6)  (s1.y(5,i)+.9)  (s1.y(5,i)+.9) (s1.y(5,i)+.6)];
+	wheel1y = [(s1.y(6,i)+.35) (s1.y(6,i)+.35) (s1.y(6,i)+.45) (s1.y(6,i)+.45)];
+	wheel1 =patch(wheel1x,wheel1y,'black');
+    rotate(wheel1, direction, rad2deg(s1.y(2,i)), origin);
+	rotate(wheel1, direction, rad2deg(deltadelta), wheel1origin);
+   
+    % Update Right Front Wheel
+    wheel2origin = [s1.y(5,i)+0.75, s1.y(6,i)-0.4, 0];
+	wheel2x = [(s1.y(5,i)+.6)  (s1.y(5,i)+.9)  (s1.y(5,i)+.9) (s1.y(5,i)+.6)];
+	wheel2y = [(s1.y(6,i)-.35) (s1.y(6,i)-.35) (s1.y(6,i)-.45) (s1.y(6,i)-.45)];
+	wheel2 =patch(wheel2x,wheel2y,'black');
+    rotate(wheel2, direction, rad2deg(s1.y(2,i)), origin);
+	rotate(wheel2, direction, rad2deg(deltadelta), wheel2origin);
+    
+    % Update Rear Right Wheel
+    wheel3origin = [s1.y(5,i)-0.75, s1.y(6,i)-0.4, 0];
+	wheel3x = [(s1.y(5,i)-.6)  (s1.y(5,i)-.9)  (s1.y(5,i)-.9) (s1.y(5,i)-.6)];
+	wheel3y = [(s1.y(6,i)-.35) (s1.y(6,i)-.35) (s1.y(6,i)-.45) (s1.y(6,i)-.45)];
+	wheel3 =patch(wheel3x,wheel3y,'black');
+    rotate(wheel3, direction, rad2deg(s1.y(2,i)), origin);
+    
+    % Update Rear Left Wheel
+    wheel4origin = [s1.y(5,i)-0.75, s1.y(6,i)+0.4, 0];
+	wheel4x = [(s1.y(5,i)-.6)  (s1.y(5,i)-.9)  (s1.y(5,i)-.9) (s1.y(5,i)-.6)];
+	wheel4y = [(s1.y(6,i)+.35) (s1.y(6,i)+.35) (s1.y(6,i)+.45) (s1.y(6,i)+.45)];
+	wheel4 =patch(wheel4x,wheel4y,'black');
+    rotate(wheel4, direction, rad2deg(s1.y(2,i)), origin);
+   
+    drawnow
+    hidem(obj)
+    hidem(wheel1)
+    hidem(wheel2)
+    hidem(wheel3)
+    hidem(wheel4)
+
+ 	delta_old = delta;
+end
+

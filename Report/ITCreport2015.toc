@@ -28,13 +28,18 @@
 \contentsline {subsection}{\numberline {6.2}A safe lane change scenario}{34}
 \contentsline {subsection}{\numberline {6.3}A supplier issues a specification change}{35}
 \contentsline {part}{IV\hspace {1em}Composable Hybrid Agents}{36}
-\contentsline {subsubsection}{\numberline {6.3.1}Pure Pursuit}{36}
-\contentsline {section}{\numberline {7}Case Study 2}{38}
-\contentsline {part}{V\hspace {1em}Implementation}{39}
-\contentsline {section}{\numberline {8}APEX Tool}{39}
-\contentsline {subsection}{\numberline {8.1}The APEX Approach}{39}
-\contentsline {subsection}{\numberline {8.2}Tool Input}{41}
-\contentsline {subsection}{\numberline {8.3}Tool Output}{42}
-\contentsline {section}{\numberline {9}Simulation and GUI}{42}
-\contentsline {part}{VI\hspace {1em}Conclusions}{44}
-\contentsline {subsection}{\numberline {9.1}Future Work: verification, learning, ethics, and control}{44}
+\contentsline {subsection}{\numberline {6.4}Motivation}{36}
+\contentsline {section}{\numberline {7}Vehicle Model}{37}
+\contentsline {subsection}{\numberline {7.1}Representing Local Planning within a Hybrid System}{37}
+\contentsline {subsubsection}{\numberline {7.1.1}Pure Pursuit}{38}
+\contentsline {subsection}{\numberline {7.2}Hybrid Model of Ego-Vehicle}{40}
+\contentsline {subsection}{\numberline {7.3}Traffic Participants}{40}
+\contentsline {section}{\numberline {8}Case Study 2}{41}
+\contentsline {part}{V\hspace {1em}Implementation}{42}
+\contentsline {section}{\numberline {9}APEX Tool}{42}
+\contentsline {subsection}{\numberline {9.1}The APEX Approach}{42}
+\contentsline {subsection}{\numberline {9.2}Tool Input}{44}
+\contentsline {subsection}{\numberline {9.3}Tool Output}{45}
+\contentsline {section}{\numberline {10}Simulation and GUI}{45}
+\contentsline {part}{VI\hspace {1em}Conclusions}{47}
+\contentsline {subsection}{\numberline {10.1}Future Work: verification, learning, ethics, and control}{47}

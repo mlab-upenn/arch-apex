@@ -1,0 +1,12 @@
+Name:         spotless-pod
+Summary:      Wrapper POD for SPOTless: Conic and Polynomial Programming Toolbox (https://github.com/mmt/spotless)
+Maintainers:  Russ Tedrake <russt@mit.edu>
+
+====
+
+This software is constructed according to the Pods software policies and
+templates.  The policies and templates can be found at:
+
+  http://sourceforge.net/projects/pods
+
+

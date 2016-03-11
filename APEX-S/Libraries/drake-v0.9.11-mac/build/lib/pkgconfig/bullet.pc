@@ -1,0 +1,6 @@
+Name: bullet
+Description: Bullet Continuous Collision Detection and Physics Library
+Requires:
+Version: 2.83
+Libs: -L/tmp/drake-19374/build/lib -lBulletSoftBody -lBulletDynamics -lBulletCollision -lLinearMath
+Cflags: -DBT_USE_DOUBLE_PRECISION -I/tmp/drake-19374/build/include/bullet -I/tmp/drake-19374/build/include

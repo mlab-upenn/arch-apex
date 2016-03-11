@@ -1,0 +1,12 @@
+prefix=/tmp/drake-19374/build
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: drakeTrajectories
+Description: drakeTrajectories
+Requires: 
+Version: 0.0.3
+Libs: -L${libdir}  -ldrakeTrajectories
+Cflags: -I${includedir} 
+classpath=

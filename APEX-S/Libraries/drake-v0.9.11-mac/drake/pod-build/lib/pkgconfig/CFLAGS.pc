@@ -1,0 +1,12 @@
+prefix=/tmp/drake-19374/build
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: CFLAGS
+Description: LCM types for drake
+Requires:  lcm
+Version: 0.0.0
+Libs: -L${libdir}  -l
+Cflags: -I${includedir} 
+classpath=

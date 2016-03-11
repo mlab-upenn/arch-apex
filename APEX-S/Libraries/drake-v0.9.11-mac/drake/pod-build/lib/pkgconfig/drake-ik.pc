@@ -1,0 +1,12 @@
+prefix=/tmp/drake-19374/build
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: drake-ik
+Description: drake-ik
+Requires:  drake-rbm
+Version: 0.0.1
+Libs: -L${libdir}  -ldrakeIK -ldrakeRigidBodyConstraint -ldrakeIKoptions
+Cflags: -I${includedir} 
+classpath=

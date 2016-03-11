@@ -1,0 +1,12 @@
+prefix=/tmp/drake-19374/build
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: drake-rbm
+Description: drake-rbm
+Requires: 
+Version: 0.0.1
+Libs: -L${libdir}  -ldrakeRBM -ldrakeCollision -ldrakeJoints -lspruce -ldrakeUtil
+Cflags: -I${includedir} 
+classpath=

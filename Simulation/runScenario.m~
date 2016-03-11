@@ -1,0 +1,26 @@
+
+computation_state = [0,0,0,0,0,0,0,0,0,0]';
+
+while tlookahead<4
+
+tlookahead= time+0.2;
+% Compute the Next Waypoint
+g1=ode45(@computation,[0,tlookahead],computation_state);
+g1=ode45(@traj_dynamics,[0,tlookahead],[0,0,0,0,0]);
+deltax=g1.y(3,end);
+deltay=g1.y(4,end);
+waypointx = 0+deltax;
+waypointy = 0+deltay;
+
+% Compute Pure Pursuit Geometry
+l = sqrt((waypointx - s1.y(5,end))*(waypointx - s1.y(5,end)) + (waypointy - s1.y(6,end))*(waypointy - s1.y(6,end)));
+r = (l*l/(2*(waypointx - s1.y(5,end))));
+
+% Update Ego Vehicle State
+sx_0 = s1.y(5,end);
+sy_0 = s1.y(6,end);
+psi_0= s1.y(2,end);
+scenario_state=[s1.y(1,end),s1.y(2,end),s1.y(3,end),s1.y(4,end),s1.y(5,end),s1.y(6,end), s1.y(7,end), s1.y(8,end), s1.y(9,end), s1.y(10,end), s1.y(11,end), s1.y(12,end), s1.y(13,end), s1.y(14,end)]'
+s1=ode45(@cardynamics_snider,[0,0.1],scen);
+
+end

@@ -1,0 +1,24 @@
+# This file was generated automatically by cmake.  Edit at your own risk
+
+group "Simulate" {
+  cmd "dynamics (cpp)" {
+    exec = "bash -c 'cd /tmp/drake-19374/drake/examples/Pendulum && /tmp/drake-19374/drake/pod-build/bin/runPendulumDynamics'";
+    host = "localhost";
+  }
+}
+group "LCM Controllers" {
+  cmd "energy shaping (cpp)" {
+    exec = "/tmp/drake-19374/drake/pod-build/bin/runPendulumEnergyShaping";
+    host = "localhost";
+  }
+}
+group "Controllers+Simulation In One" {
+  cmd "LQR (cpp)" {
+    exec = "bash -c 'cd /tmp/drake-19374/drake/examples/Pendulum && /tmp/drake-19374/drake/pod-build/bin/runPendulumLQR'";
+    host = "localhost";
+  }
+}
+cmd "viewer" {
+  exec = "/tmp/drake-19374/build/bin/ddConsoleApp -m ddapp.drakevisualizer";
+  host = "localhost";
+}

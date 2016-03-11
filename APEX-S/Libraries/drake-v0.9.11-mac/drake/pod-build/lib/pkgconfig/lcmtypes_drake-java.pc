@@ -1,0 +1,12 @@
+prefix=/tmp/drake-19374/build
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: lcmtypes_drake-java
+Description: LCM type java bindings for drake
+Requires:  lcm-java
+Version: 0.0.0
+Libs: -L${libdir} 
+Cflags: -I${includedir} 
+classpath=${prefix}/share/java/lcmtypes_drake.jar

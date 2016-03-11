@@ -1,7 +1,7 @@
 %% Read in Counterexample
 % Convert JSON to .mat... takes forever. In real software we can implement
 % more efficiently
-% data = loadjson('data.json');
+%data = loadjson('data.json');
 
 % Load .mat parsed from json file...
 cex = load('cex.mat')
@@ -36,11 +36,13 @@ for i=2:length(sy1)
     % Pick a value for sx
     sx(i)=(sx2(i)-sx(i-1)).*rand(1,1) + sx(i-1);
     sxmin(i)=min(sx2(i),sx1(i));
-    sxmax(i)=min(sx2(i),sx1(i));
+    sxmax(i)=max(sx2(i),sx1(i));
+    sxavg(i)=(sxmin(i)+sxmax(i))/2;
     % Pick a value for sy
     sy(i)=(sy2(i)-sy(i-1)).*rand(1,1) + sy(i-1);
     symin(i)=min(sy2(i),sy1(i));
-    symax(i)=min(sy2(i),sy1(i));
+    symax(i)=max(sy2(i),sy1(i));
+    syavg(i)=(symin(i)+symax(i))/2;
     % Pick a value for Psi
     psi(i)=(psi2(i)-psi(i-1)).*rand(1,1) + psi(i-1);
 end
@@ -55,8 +57,8 @@ ylabel('y (m)')
 pbaspect([40 7 1])
 axis([0 50 -2 10])
 
-x=[sx_env1(1)-1  sx_env1(1)+1 sx_env1(1)+1 sx_env1(1)-1];
-y=[-0.5 -0.5 +0.5 +0.5];
+x=[sx_env1(1)-1.5  sx_env1(1)+1.5 sx_env1(1)+1.5 sx_env1(1)-1.5];
+y=[-1 -1 +1 +1];
 direction = [0 0 1];
 origin=[sx(i) 0 0];
 obj3 =patch(x,y,'blue');
@@ -64,33 +66,33 @@ drawnow
 
 % Erase previous postion
 % Draw current position 
-for i=1:5:length(sx)-1
+for i=1:15:length(sx)-1
     % Update Vehicle Body 1 (Random)
-    x=[sx(i)-1  sx(i)+1 sx(i)+1 sx(i)-1];
-    y=[sy(i)-0.5 sy(i)-0.5 sy(i)+0.5 sy(i)+0.5];
+    x=[sxmin(i)-1.5  sxmax(i)+1.5 sxmax(i)+1.5 sxmin(i)-1.5];
+    y=[symin(i)-1 symin(i)-1 symax(i)+1 symax(i)+1];
+    direction = [0 0 1];
+    origin=[sx(i) sy(i) 0];
+    obj2 =patch(x,y,'red');
+    rotate(obj2, direction, rad2deg(psi(i)), origin);
+    
+    % Update Vehicle Body 1 (Random)
+    x=[sxavg(i)-1.5  sxavg(i)+1.5 sxavg(i)+1.5 sxavg(i)-1.5];
+    y=[syavg(i)-1 syavg(i)-1 syavg(i)+1 syavg(i)+1];
     direction = [0 0 1];
     origin=[sx(i) sy(i) 0];
     obj1 =patch(x,y,'green');
     rotate(obj1, direction, rad2deg(psi(i)), origin);
     
+
+    
     % Update Vehicle Body 2 (sxmax,symin)
-    x=[sxmax(i)-1  sxmax(i)+1 sxmax(i)+1 sxmax(i)-1];
-    y=[symin(i)-0.5 symin(i)-0.5 symin(i)+0.5 symin(i)+0.5];
-    direction = [0 0 1];
-    origin=[sxmax(i) symin(i) 0];
-    obj2 =patch(x,y,'red');
-    rotate(obj2, direction, rad2deg(psi(i)), origin); 
+    % x=[sxmin(i)-1.5  sxmax(i)+1.5 sxmax(i)+1.5 sxmin(i)-1.5];
+    % y=[symin(i)-1 symin(i)-1 symax(i)+1 symax(i)+1];
+    % direction = [0 0 1];
+    % origin=[sxmax(i) symin(i) 0];
+    % obj2 =patch(x,y,'red');
+    % rotate(obj2, direction, rad2deg(psi(i)), origin); 
     drawnow
     hidem(obj1)
     hidem(obj2)
 end
-
-% Update Vehicle Body (Random
-i=length(sx)
-    x=[sx(i)-1  sx(i)+1 sx(i)+1 sx(i)-1];
-    y=[sy(i)-0.5 sy(i)-0.5 sy(i)+0.5 sy(i)+0.5];
-    direction = [0 0 1];
-    origin=[sx(i) sy(i) 0];
-    obj1 =patch(x,y,'green');
-    rotate(obj1, direction, rad2deg(psi(i)), origin); 
-    drawnow

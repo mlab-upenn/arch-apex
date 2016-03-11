@@ -1,0 +1,12 @@
+prefix=/tmp/drake-19374/build
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: drake-control-util
+Description: drake-control-util
+Requires: 
+Version: 0.0.1
+Libs: -L${libdir}  -ldrakeControlUtil
+Cflags: -I${includedir} 
+classpath=

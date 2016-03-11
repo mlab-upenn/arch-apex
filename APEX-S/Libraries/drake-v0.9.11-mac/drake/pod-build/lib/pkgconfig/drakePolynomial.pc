@@ -1,0 +1,12 @@
+prefix=/tmp/drake-19374/build
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: drakePolynomial
+Description: drakePolynomial
+Requires: 
+Version: 0.0.2
+Libs: -L${libdir}  -ldrakePolynomial
+Cflags: -I${includedir} 
+classpath=

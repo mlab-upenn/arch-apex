@@ -1,0 +1,11 @@
+
+foreach(test-name IN ITEMS lcm-sink lcm-source lcm-tester lcm-example lcm-logfilter buftest-receiver buftest-sender)
+  add_executable(${test-name} ${test-name}.c)
+  if (WIN32)
+   set_source_files_properties(${test-name}.c PROPERTIES COMPILE_FLAGS /TP)
+   target_link_libraries(${test-name} getopt)
+  endif()
+  target_link_libraries(${test-name} lcm)
+  pods_use_pkg_config_packages(${test-name} glib-2.0)
+  add_test(NAME ${test-name} COMMAND ${test-name})
+endforeach()

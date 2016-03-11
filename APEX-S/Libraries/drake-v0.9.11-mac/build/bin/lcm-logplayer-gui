@@ -1,0 +1,2 @@
+#!/bin/sh
+exec java -server -Djava.net.preferIPv4Stack=true -Xincgc -Xmx64m -Xms32m -ea -cp "/tmp/drake-19374/build/share/java/*" lcm.logging.LogPlayer $*

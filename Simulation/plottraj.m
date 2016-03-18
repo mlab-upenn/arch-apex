@@ -1,4 +1,3 @@
-clear all
 clc
 %% Define Global Simulation Parameters
 global waypointx 
@@ -13,6 +12,11 @@ global sx_0
 global sy_0
 global psi_0
 global delta
+global s
+global kappa_0
+global kappa_1
+global kappa_2
+global kappa_3
 
 %% Set Initial Ego Vehicle State.
 init_psi=0;
@@ -34,11 +38,11 @@ tlookahead=0.2;
 tsched=0.1;
 
 %% Define Parameters for Road Centerline
-s = (33.831636);
-kappa_0 =(0.000000);
-kappa_1 = (0.006046);
-kappa_2 = (-0.000322);
-kappa_3 = (0.000000);
+%s = (33.831636);
+%kappa_0 =(0.000000);
+%kappa_1 = (0.006046);
+%kappa_2 = (-0.000322);
+%kappa_3 = (0.000000);
 
 a = kappa_0;
 b = ((-0.50)*(-2*kappa_3 + 11*kappa_0 - 18*kappa_1 + 9*kappa_2)/s);

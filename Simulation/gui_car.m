@@ -84,6 +84,8 @@ function slider_s_Callback(hObject, eventdata, handles)
 % Hints: get(hObject,'Value') returns position of slider
 %        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
 global s
+cla
+traj_plot
 s = get(handles.slider_s,'Value')
 guidata(hObject, handles);
 
@@ -108,6 +110,8 @@ function slider_kappa0_Callback(hObject, eventdata, handles)
 % Hints: get(hObject,'Value') returns position of slider
 %        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
 global kappa_0
+cla
+traj_plot
 kappa_0 = get(handles.slider_kappa0,'Value')
 guidata(hObject, handles);
 
@@ -132,6 +136,8 @@ function slider_kappa1_Callback(hObject, eventdata, handles)
 % Hints: get(hObject,'Value') returns position of slider
 %        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
 global kappa_1
+cla
+traj_plot
 kappa_1 = get(handles.slider_kappa1,'Value')
 guidata(hObject, handles);
 
@@ -156,6 +162,8 @@ function slider_kappa2_Callback(hObject, eventdata, handles)
 % Hints: get(hObject,'Value') returns position of slider
 %        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
 global kappa_2
+cla
+traj_plot
 kappa_2 = get(handles.slider_kappa2,'Value')
 guidata(hObject, handles);
 
@@ -180,6 +188,8 @@ function slider_kappa3_Callback(hObject, eventdata, handles)
 % Hints: get(hObject,'Value') returns position of slider
 %        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
 global kappa_3
+cla
+traj_plot
 kappa_3 = get(handles.slider_kappa3,'Value')
 guidata(hObject, handles);
 
@@ -200,7 +210,7 @@ function pushbutton1_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+cla
 plottraj
 
 

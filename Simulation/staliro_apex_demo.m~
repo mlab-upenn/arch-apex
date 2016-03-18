@@ -1,0 +1,36 @@
+clc 
+clear all
+
+% Define the length of the scenario
+scenario_time =4; 
+
+% Set the first pass flag
+first_pass=1; 
+
+% Define the model
+model = runScenario(scenario_time, first_pass); 
+
+% Don't define init_cond
+init_cond=[]; 
+
+% input_range describes the allowable values for t_init_env1 and
+% t_init_env2. These variables represent how far ahead (in terms of travel
+% time along the trajectories, the other vehicles in the scenario will be
+% set to). 
+input_range = [0.2,1.2; 0.2,1.2]
+
+% Don't define cp_array
+cp_array = [];
+
+
+% The predicates define the equations for the temporal logic formulas which
+% we are checking the roboustness of 
+ii = 1;
+preds(ii).str= 'P1';
+preds(ii).A = [1 -1 0 0 0];
+preds(ii).b = -3;
+
+% Define the MITL formula Phi
+phi = '[]_[0,scenario_time] P1';
+
+results = staliro(model,init_cond,input_range,cp_array,phi{i_phi},preds,time,opt);
